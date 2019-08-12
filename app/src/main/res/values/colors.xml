@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E01F22</color>
+    <color name="colorPrimaryDark">#E01F22</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="vip_title_color">#666666</color>
+    <color name="vip_name_color">#c5995b</color>
+    <color name="task_but_border">#ff5637</color>
+    <color name="task_but_bf">#bfbfbf</color>
+    <color name="task_but_93">#939292</color>
+    <color name="view_line">#f7f7f7</color>
+    <color name="vip_price_color">#a57459</color>
+    <color name="vip_old_price_color">#999999</color>
+    <color name="color_ee5151">#EE5151</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_f3">#f37632</color>
+
+
+
+</resources>

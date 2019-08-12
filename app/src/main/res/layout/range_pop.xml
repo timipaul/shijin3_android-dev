@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="@dimen/dp_270"
+        android:layout_height="@dimen/dp_77"
+        android:background="@mipmap/icon_block_5">
+        <com.jaygoo.widget.RangeSeekBar
+            android:id="@+id/rangeseekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            app:rsb_mode="single"
+            app:rsb_progress_height="2dp"
+            app:rsb_progress_radius="0dp"
+            app:rsb_progress_default_color="@color/rsbColorThumbPressed"
+            app:rsb_progress_color="#E01F22"
+            app:rsb_indicator_height="25dp"
+            app:rsb_indicator_margin="0dp"
+            app:rsb_tick_mark_text_array="@array/wordsArray"
+            app:rsb_tick_mark_text_margin="-20dp"
+            app:rsb_tick_mark_number="4"
+            app:rsb_tick_mark_mode="other"
+            app:rsb_tick_mark_gravity="center"
+            app:rsb_tick_mark_text_color="#333333"
+            app:rsb_indicator_width="0dp"
+            app:rsb_indicator_background_color="#00000000"
+            app:rsb_indicator_text_color="#ff0000"
+            app:rsb_indicator_text_size="14dp"
+            app:rsb_indicator_show_mode="alwaysShow"
+            app:rsb_thumb_drawable="@drawable/thumb_yellow"
+            app:rsb_thumb_size="15dp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

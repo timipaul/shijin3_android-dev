@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ScanFrame">
+        <attr name="maskColor" format="string" />
+    </declare-styleable>
+    <declare-styleable name="CircleTextProgressbar">
+        <attr name="in_circle_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="LotteryView">
+        <attr name="outer_small_circle_color_active" format="color"></attr>  <!-- 小圆圈变化的颜色 -->
+        <attr name="outer_small_circle_color_default" format="color"></attr> <!-- 小圆圈默认颜色 -->
+        <attr name="lottery_invalidate_times" format="integer"></attr>       <!-- 抽奖动画刷新次数 -->
+        <attr name="self_width_size_factor" format="float"></attr>           <!-- view宽度占屏幕宽度的比例 建议设置此值不小于0.75f -->
+        <attr name="inner_round_card_color_default" format="color"></attr>   <!-- 内部卡片默认背景颜色 -->
+    </declare-styleable>
+    <declare-styleable name="Custom_Round_Image_View">
+        <attr name="left_top_radius" format="dimension"/>
+        <attr name="right_top_radius" format="dimension"/>
+        <attr name="right_bottom_radius" format="dimension"/>
+        <attr name="left_bottom_radius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="Banner">
+        <attr name="delay_time" format="integer" />
+        <attr name="scroll_time" format="integer" />
+        <attr name="is_auto_play" format="boolean" />
+        <attr name="title_background" format="color|reference" />
+        <attr name="title_textcolor" format="color" />
+        <attr name="title_textsize" format="dimension" />
+        <attr name="title_height" format="dimension" />
+        <attr name="indicator_width" format="dimension" />
+        <attr name="indicator_height" format="dimension" />
+        <attr name="indicator_margin" format="dimension" />
+        <attr name="indicator_drawable_selected" format="reference" />
+        <attr name="indicator_drawable_unselected" format="reference" />
+        <attr name="banner_layout" format="reference" />
+        <attr name="banner_default_image" format="reference" />
+        <attr name="image_scale_type" format="enum">
+            <enum name="center" value="0" />
+            <enum name="center_crop" value="1" />
+            <enum name="center_inside" value="2" />
+            <enum name="fit_center" value="3" />
+            <enum name="fit_end" value="4" />
+            <enum name="fit_start" value="5" />
+            <enum name="fit_xy" value="6" />
+            <enum name="matrix" value="7" />
+        </attr>
+        <!--<attr name="indicator_animator" format="reference" />-->
+        <!--<attr name="indicator_animator_reverse" format="reference" />-->
+    </declare-styleable>
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
+        <attr name="civ_fill_color" format="color" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <!-- 投票进度条 -->
+    <declare-styleable name="MyProgressBar">
+        <attr name="progress" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="type">
+            <enum name="NORMAL_TYPE" value="1" />
+            <enum name="ALERT_TYPE" value="2" />
+        </attr>
+        <attr name="pro_color" format="color" />
+    </declare-styleable>
+</resources>

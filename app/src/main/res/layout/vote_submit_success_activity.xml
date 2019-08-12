@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="@dimen/dp_95"
+        android:layout_height="@dimen/dp_95"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_52"
+        android:src="@mipmap/icon_successful"
+        />
+
+    <TextView
+        android:id="@+id/tv_paysuccess"
+        android:layout_width="@dimen/dp_140"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_16"
+        android:gravity="center"
+        android:text="恭喜您提交成功感谢您的参与"
+        android:lineSpacingExtra="@dimen/dp_5"
+        android:textColor="@color/text_33"
+        android:textSize="@dimen/sp_20" />
+
+    <Button
+        android:id="@+id/return_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginLeft="@dimen/dp_43"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_43"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:background="@drawable/bt_red"
+        android:paddingBottom="@dimen/dp_3"
+        android:text="返回投票列表"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16" />
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按钮渐变 -->
+    <stroke android:color="@color/white" android:width="0dp"/>
+    <corners android:radius="@dimen/dp_15"/>
+    <solid android:color="@color/task_but_bf"/>
+    <gradient android:startColor="@color/task_but_93"
+        android:endColor="@color/task_but_bf"
+        android:angle="180"/>
+</shape>

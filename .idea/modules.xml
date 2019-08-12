@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hclibrary/hclibrary.iml" filepath="$PROJECT_DIR$/hclibrary/hclibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/luckly_popupwindow/luckly_popupwindow.iml" filepath="$PROJECT_DIR$/luckly_popupwindow/luckly_popupwindow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shijin3_android-dev.iml" filepath="$PROJECT_DIR$/shijin3_android-dev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/takephoto_library/takephoto_library.iml" filepath="$PROJECT_DIR$/takephoto_library/takephoto_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videolibrary/videolibrary.iml" filepath="$PROJECT_DIR$/videolibrary/videolibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ysblibrary/ysblibrary.iml" filepath="$PROJECT_DIR$/ysblibrary/ysblibrary.iml" />
+    </modules>
+  </component>
+</project>

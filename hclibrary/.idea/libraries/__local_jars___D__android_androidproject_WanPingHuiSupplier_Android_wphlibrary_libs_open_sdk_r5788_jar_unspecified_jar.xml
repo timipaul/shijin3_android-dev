@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="__local_jars__:D.\android\androidproject\WanPingHuiSupplier_Android\wphlibrary\libs\open_sdk_r5788.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../wphlibrary/libs/open_sdk_r5788.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

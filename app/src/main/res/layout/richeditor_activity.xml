@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/richeditor_title"/>
+    <com.hongchuang.hclibrary.view.RichEditor
+                android:id="@+id/rich_editor"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/mine_function_divider"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+        <ImageView
+            android:id="@+id/img_pic"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_picture"
+            android:scaleType="center"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_bold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_bold"
+            android:scaleType="center"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_middle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_left"
+            android:scaleType="center"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/img_color"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_color"
+            android:scaleType="center"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+</LinearLayout>

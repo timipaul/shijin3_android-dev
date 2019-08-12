@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item >
+        <shape android:shape="oval"
+            android:dither="true"
+            >
+            <stroke android:width="@dimen/dp_3" android:color="#FDD94B"/>
+            <size android:height="@dimen/dp_58" android:width="@dimen/dp_58" />
+        </shape>
+    </item>
+    <item android:left="@dimen/dp_3" android:right="@dimen/dp_3" android:top="@dimen/dp_3" android:bottom="@dimen/dp_3">
+        <shape android:shape="oval">
+            <solid android:color="#FEEE6F" />
+
+            <size android:height="@dimen/dp_56" android:width="@dimen/dp_56" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,98 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CommonButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+
+    <!-- 新手任务 小模块视图 -->
+    <style name="task_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/dp_20</item>
+        <item name="android:paddingTop">@dimen/dp_20</item>
+
+    </style>
+    <!-- 新手任务 标题 -->
+    <style name="new_person_task_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dp_16</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- 新手任务 提示文字 -->
+    <style name="new_person_task_hint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dp_12</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">@dimen/dp_5</item>
+    </style>
+
+    <!-- 新手任务 按钮 -->
+    <style name="new_person_task_but">
+        <item name="android:layout_width">@dimen/dp_75</item>
+        <item name="android:layout_height">@dimen/dp_24</item>
+        <item name="android:layout_marginRight">@dimen/dp_20</item>
+        <item name="android:background">@mipmap/button_orange_bg</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- 挑战任务 按钮 -->
+    <style name="challenge_task_but">
+        <item name="android:layout_width">@dimen/dp_75</item>
+        <item name="android:layout_height">@dimen/dp_24</item>
+        <item name="android:layout_marginRight">@dimen/dp_20</item>
+        <item name="android:background">@drawable/task_button_orange_border</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@color/task_but_border</item>
+    </style>
+
+    <!-- 日常任务图片 -->
+    <style name="day_task_img">
+        <item name="android:layout_width">@dimen/dp_25</item>
+        <item name="android:layout_height">@dimen/dp_25</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_marginTop">@dimen/dp_5</item>
+        <item name="android:layout_marginRight">@dimen/dp_10</item>
+
+    </style>
+
+    <!-- 视频模块 顶部菜单 -->
+    <style name="video_menu_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:layout_marginLeft">@dimen/dp_5</item>
+        <item name="android:layout_marginRight">@dimen/dp_5</item>
+        <item name="android:padding">@dimen/dp_5</item>
+        <item name="android:textColor">@color/video_menu_button_text</item>
+
+    </style>
+    <!-- 视频模块 点赞转发关注按钮 -->
+    <style name="video_right_menu_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/dp_15</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawablePadding">@dimen/dp_5</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+
+    </style>
+</resources>

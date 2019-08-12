@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="dialog_topleft_bottomright_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_tl_br_enter_anim</item>
+        <!-- 进入时的动画 -->
+        <item name="android:windowExitAnimation">@anim/pop_tl_br_exit_anim</item>
+        <!-- 退出时的动画 -->
+    </style>
+
+    <style name="dialog_bottom_top_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_bottom_top_enter_anim</item>
+        <!-- 进入时的动画 -->
+        <item name="android:windowExitAnimation">@anim/pop_bottom_top_exit_anim</item>
+        <!-- 退出时的动画 -->
+    </style>
+
+    <style name="dialog_topright_bottomleft_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_tr_bl_enter_anim</item>
+        <!-- 进入时的动画 -->
+        <item name="android:windowExitAnimation">@anim/pop_tr_bl_exit_anim</item>
+        <!-- 退出时的动画 -->
+    </style>
+
+    <style name="dialog_top_bottom_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_top_bottom_enter_anim</item>
+        <!-- 进入时的动画 -->
+        <item name="android:windowExitAnimation">@anim/pop_top_bottom_exit_anim</item>
+        <!-- 退出时的动画 -->
+    </style>
+
+    <style name="dialog_right_left_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_right_left_enter_anim</item>
+        <!-- 进入时的动画 -->
+        <item name="android:windowExitAnimation">@anim/pop_right_left_exit_anim</item>
+        <!-- 退出时的动画 -->
+    </style>
+
+    <declare-styleable name="PowerfulRecyclerView">
+        <attr name="dividerColor" format="color" />
+        <attr name="dividerSize" format="dimension" />
+        <attr name="dividerDrawable" format="reference" />
+        <attr name="useStaggerLayout" format="boolean" />
+        <attr name="numColumns" format="integer" />
+        <attr name="rvOrientation" format="enum">
+            <enum name="HORIZONTAL" value="0" />
+            <enum name="VERTICAL" value="1" />
+        </attr>
+        <attr name="dividerMarginLeft" format="dimension" />
+        <attr name="dividerMarginRight" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="vericationCodeInput">
+        <attr name="box" format="integer" />
+        <attr name="child_h_padding" format="dimension" />
+        <attr name="child_v_padding" format="dimension" />
+        <attr name="padding" format="dimension" />
+        <attr name="child_width" format="dimension"/>
+        <attr name="child_height" format="dimension"/>
+        <attr name="box_bg_focus" format="reference" />
+        <attr name="box_bg_normal" format="reference" />
+        <attr name="inputType" format="string" />
+    </declare-styleable>
+    <style name="LoadingDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 自己想要的背景 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <declare-styleable name="SectorMenuButton">
+        <attr name="aebMainButtonSizeDp" format="dimension|reference" />
+        <attr name="aebSubButtonSizeDp" format="dimension|reference" />
+        <attr name="aebButtonGapDp" format="dimension|reference" />
+        <attr name="aebStartAngleDegree" format="integer|reference" />
+        <attr name="aebEndAngleDegree" format="integer|reference" />
+        <attr name="aebAnimDurationMillis" format="integer|reference" />
+        <attr name="aebButtonElevation" format="dimension|reference" />
+        <attr name="aebMaskBackgroundColor" format="color|reference" />
+        <attr name="aebIsSelectionMode" format="boolean" />
+        <attr name="aebMainButtonTextColor" format="color|reference" />
+        <attr name="aebSubButtonTextColor" format="color|reference" />
+        <attr name="aebMainButtonTextSizeSp" format="dimension|reference" />
+        <attr name="aebSubButtonTextSizeSp" format="dimension|reference" />
+        <attr name="aebRippleEffect" format="boolean" />
+        <attr name="aebRippleColor" format="color|reference"/>
+        <attr name="aebMainButtonRotateDegree" format="integer|reference"/>
+        <attr name="aebMainButtonRotateAnimDurationMillis" format="integer|reference"/>
+        <attr name="aebBlurBackground" format="boolean" />
+        <attr name="aebBlurRadius" format="float|reference"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:my_attrs="http://schemas.android.com/apk/res-auto">
+
+    <include layout="@layout/common_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 点赞 -->
+            <RelativeLayout style="@style/task_layout">
+
+                <ImageView
+                    android:id="@+id/like_img_ic"
+                    style="@style/day_task_img"
+                    android:src="@mipmap/task_like_ic" />
+
+                <TextView
+                    android:id="@+id/like_title"
+                    style="@style/new_person_task_title"
+                    android:layout_toRightOf="@+id/like_img_ic"
+                    android:text="@string/ad_like" />
+
+                <com.shijinsz.shijin.utils.MyProgressBar
+                    android:id="@+id/likebar"
+                    android:layout_width="110dp"
+                    android:layout_height="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:background="@drawable/scheduled_show"
+                    my_attrs:max="100"
+                    my_attrs:pro_color="@color/orange"
+                    my_attrs:progress="0"
+                    my_attrs:type="ALERT_TYPE" />
+
+                <TextView
+                    android:id="@+id/like_hint"
+                    style="@style/new_person_task_hint"
+                    android:layout_below="@+id/like_title"
+                    android:layout_toRightOf="@+id/like_img_ic"
+                    android:text="@string/subtask_schedule" />
+
+                <Button
+                    android:id="@+id/like_but"
+                    style="@style/challenge_task_but"
+                    android:text="@string/immediately_like" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/like_hint"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_toRightOf="@+id/like_img_ic"
+                    android:background="@color/color_eee" />
+            </RelativeLayout>
+
+            <!-- 转发 -->
+            <RelativeLayout style="@style/task_layout">
+
+                <com.shijinsz.shijin.utils.MyProgressBar
+                    android:id="@+id/transmit_bar"
+                    android:layout_width="110dp"
+                    android:layout_height="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:background="@drawable/scheduled_show"
+                    my_attrs:max="10"
+                    my_attrs:pro_color="@color/orange"
+                    my_attrs:progress="0"
+                    my_attrs:type="ALERT_TYPE" />
+
+                <ImageView
+                    android:id="@+id/transmit_img_ic"
+                    style="@style/day_task_img"
+                    android:src="@mipmap/task_transmit_ic" />
+
+                <TextView
+                    android:id="@+id/transmit_title"
+                    style="@style/new_person_task_title"
+                    android:layout_toRightOf="@+id/transmit_img_ic"
+                    android:text="@string/transpond" />
+
+                <TextView
+                    android:id="@+id/transmit_hint"
+                    style="@style/new_person_task_hint"
+                    android:layout_below="@+id/transmit_title"
+                    android:layout_toRightOf="@+id/transmit_img_ic"
+                    android:text="@string/subtask_schedule" />
+
+                <Button
+                    android:id="@+id/transmit_but"
+                    style="@style/challenge_task_but"
+                    android:text="@string/immediately_transpond" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/transmit_hint"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_toRightOf="@+id/transmit_img_ic"
+                    android:background="@color/color_eee" />
+            </RelativeLayout>
+
+            <!-- 评论 -->
+            <RelativeLayout style="@style/task_layout">
+
+                <com.shijinsz.shijin.utils.MyProgressBar
+                    android:id="@+id/comment_bar"
+                    android:layout_width="110dp"
+                    android:layout_height="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:background="@drawable/scheduled_show"
+                    my_attrs:max="10"
+                    my_attrs:pro_color="@color/orange"
+                    my_attrs:progress="0"
+                    my_attrs:type="ALERT_TYPE" />
+
+                <ImageView
+                    android:id="@+id/comment_img_ic"
+                    style="@style/day_task_img"
+                    android:src="@mipmap/task_comment_ic" />
+
+                <TextView
+                    android:id="@+id/comment_title"
+                    style="@style/new_person_task_title"
+                    android:layout_toRightOf="@+id/comment_img_ic"
+                    android:text="@string/comment" />
+
+                <TextView
+                    android:id="@+id/comment_hint"
+                    style="@style/new_person_task_hint"
+                    android:layout_below="@+id/comment_title"
+                    android:layout_toRightOf="@+id/comment_img_ic"
+                    android:text="@string/subtask_schedule" />
+
+                <Button
+                    android:id="@+id/comment_but"
+                    style="@style/challenge_task_but"
+                    android:text="@string/immediately_comment" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/comment_hint"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_toRightOf="@+id/comment_img_ic"
+                    android:background="@color/color_eee" />
+            </RelativeLayout>
+
+            <!-- 关注 -->
+            <RelativeLayout style="@style/task_layout">
+
+                <com.shijinsz.shijin.utils.MyProgressBar
+                    android:id="@+id/attention_bar"
+                    android:layout_width="110dp"
+                    android:layout_height="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:background="@drawable/scheduled_show"
+                    my_attrs:max="10"
+                    my_attrs:pro_color="@color/orange"
+                    my_attrs:progress="0"
+                    my_attrs:type="ALERT_TYPE" />
+
+                <ImageView
+                    android:id="@+id/attention_img_ic"
+                    style="@style/day_task_img"
+                    android:src="@mipmap/task_attention_ic" />
+
+                <TextView
+                    android:id="@+id/attention_title"
+                    style="@style/new_person_task_title"
+                    android:layout_toRightOf="@+id/attention_img_ic"
+                    android:text="@string/user_like" />
+
+                <TextView
+                    android:id="@+id/attention_hint"
+                    style="@style/new_person_task_hint"
+                    android:layout_below="@+id/attention_title"
+                    android:layout_toRightOf="@+id/attention_img_ic"
+                    android:text="@string/subtask_schedule" />
+
+                <Button
+                    android:id="@+id/attention_but"
+                    style="@style/challenge_task_but"
+                    android:text="@string/immediately_attention" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/attention_hint"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_toRightOf="@+id/attention_img_ic"
+                    android:background="@color/color_eee" />
+            </RelativeLayout>
+
+            <!-- 收藏 -->
+            <RelativeLayout style="@style/task_layout">
+
+                <com.shijinsz.shijin.utils.MyProgressBar
+                    android:id="@+id/collect_bar"
+                    android:layout_width="110dp"
+                    android:layout_height="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:background="@drawable/scheduled_show"
+                    my_attrs:max="10"
+                    my_attrs:pro_color="@color/orange"
+                    my_attrs:progress="0"
+                    my_attrs:type="ALERT_TYPE" />
+
+                <ImageView
+                    android:id="@+id/collect_img_ic"
+                    style="@style/day_task_img"
+                    android:src="@mipmap/task_collect_ic" />
+
+                <TextView
+                    android:id="@+id/collect_title"
+                    style="@style/new_person_task_title"
+                    android:layout_toRightOf="@+id/collect_img_ic"
+                    android:text="@string/task_collect" />
+
+                <TextView
+                    android:id="@+id/collect_hint"
+                    style="@style/new_person_task_hint"
+                    android:layout_below="@+id/collect_title"
+                    android:layout_toRightOf="@+id/collect_img_ic"
+                    android:text="@string/subtask_schedule" />
+
+                <Button
+                    android:id="@+id/collect_but"
+                    style="@style/challenge_task_but"
+                    android:text="@string/immediately_collect" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/collect_hint"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_toRightOf="@+id/collect_img_ic"
+                    android:background="@color/color_eee" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

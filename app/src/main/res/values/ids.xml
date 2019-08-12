@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 任务模块 任务状态 按钮状态 tag值设置 -->
+    <item type="id" name="tag_task_statue"></item>
+    <item type="id" name="tag_task_button_statue"></item>
+
+</resources>
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <include layout="@layout/common_title"/>
+    <ImageView
+        android:layout_width="@dimen/dp_81"
+        android:layout_height="@dimen/dp_90"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_38"
+        android:src="@mipmap/icon_change_success"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/sp_15"
+        android:textStyle="bold"
+        android:textColor="@color/text_33"
+        android:text="兑换成功！"
+        android:layout_marginTop="@dimen/dp_28"/>
+    <TextView
+        android:id="@+id/tv_success"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textSize="@dimen/sp_13"
+        android:textColor="@color/text_999999"
+        android:layout_height="wrap_content"
+        android:text="您的零钱兑换成功，可在我的-零钱-零钱明细查看"/>
+    <Button
+        android:id="@+id/return_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginLeft="@dimen/dp_43"
+        android:layout_marginRight="@dimen/dp_43"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginTop="@dimen/dp_120"
+        android:background="@drawable/bt_red"
+        android:text="@string/finish"
+        android:textColor="@color/white"
+        android:paddingBottom="@dimen/dp_3"
+        />
+</LinearLayout>

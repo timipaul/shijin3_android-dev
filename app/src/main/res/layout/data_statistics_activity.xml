@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <include layout="@layout/common_title"/>
+    <TextView
+        android:id="@+id/tv_data_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/icon_data_user"
+        android:text="@string/data_user"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/text_33"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:drawablePadding="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_55"
+        />
+    <TextView
+        android:id="@+id/tv_data_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/icon_data_ad"
+        android:text="@string/data_ad"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/text_33"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:drawablePadding="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_55"
+        />
+    <TextView
+        android:id="@+id/tv_data_put"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:drawableTop="@mipmap/icon_data_put"
+    android:text="@string/data_put"
+    android:textSize="@dimen/sp_15"
+    android:textColor="@color/text_33"
+    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:drawablePadding="@dimen/dp_5"
+    android:layout_marginTop="@dimen/dp_55"
+    />
+</LinearLayout>
