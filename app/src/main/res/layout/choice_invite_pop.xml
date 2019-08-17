@@ -65,53 +65,55 @@
             android:layout_height="wrap_content"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_80"
-        android:gravity="center_vertical"
         android:background="@color/white"
-        android:orientation="horizontal">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
         <TextView
             android:id="@+id/copy_link"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@mipmap/icon_copythelink"
-            android:textSize="@dimen/sp_11"
-            android:textColor="@color/text_33"
-            android:text="@string/copy_link"
             android:gravity="center"
-            android:layout_height="wrap_content"
-            />
+            android:text="@string/copy_link"
+            android:textColor="@color/text_33"
+            android:textSize="@dimen/sp_11" />
+
         <TextView
             android:id="@+id/black"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@mipmap/icon_unblack"
-            android:textSize="@dimen/sp_11"
-            android:textColor="@color/text_33"
-            android:text="@string/black"
-            android:visibility="invisible"
             android:gravity="center"
-            android:layout_height="wrap_content"
-            />
+            android:text="@string/black"
+            android:textColor="@color/text_33"
+            android:textSize="@dimen/sp_11"
+            android:visibility="invisible" />
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:visibility="invisible"
             android:layout_height="wrap_content"
-            />
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:visibility="invisible"
             android:layout_height="wrap_content"
-            />
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:visibility="invisible"
             android:layout_height="wrap_content"
-            />
+            android:layout_weight="1"
+            android:visibility="invisible" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"

@@ -95,4 +95,13 @@
         <item name="android:minHeight">0dp</item>
 
     </style>
+
+    <!-- 我的页面 图标 -->
+    <style name="my_button_ic">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_35</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:background">@null</item>
+    </style>
 </resources>

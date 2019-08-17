@@ -34,11 +34,13 @@ public class PointAdapter extends BaseQuickAdapter<GoodsBean,BaseViewHolder> {
         GlideApp.with(mContext).load(item.getGoods_imgurl()).into(img);
         helper.setText(R.id.tv_name,item.getGoods_title());
         helper.setText(R.id.tv_exchange_aday,String.format(mContext.getString(R.string.exchange_aday),item.getAllowable_exchange_number()));
-        helper.setText(R.id.tv_point,item.getExchange_point()+mContext.getString(R.string.point));
         helper.setText(R.id.tv_exchanged,String.format(mContext.getString(R.string.exchanged),item.getExchange_number()));
 
         if(Integer.valueOf(item.getExchange_point()) == 0){
             helper.setText(R.id.tv_exchange,"领取");
+            helper.setText(R.id.tv_point,"免费送");
+        }else{
+            helper.setText(R.id.tv_point,item.getExchange_point()+mContext.getString(R.string.point));
         }
 
         helper.setOnClickListener(R.id.tv_exchange, new View.OnClickListener() {

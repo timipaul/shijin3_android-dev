@@ -32,15 +32,17 @@
                     android:id="@+id/circleProgress"
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_50"
-                    app:in_circle_color="#F1F1F3"
+                    app:in_circle_color="@color/view_line"
+
                     />
+
                 <ImageView
                     android:id="@+id/icon_true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:visibility="gone"
-                    android:src="@mipmap/icon_for"/>
+                    android:src="@mipmap/icon_for"
+                    android:visibility="gone" />
                 <TextView
                     android:id="@+id/chutdowm"
                     android:layout_width="@dimen/dp_44"
@@ -59,59 +61,63 @@
                 android:layout_marginLeft="@dimen/dp_27"
                 android:layout_marginRight="@dimen/dp_27"
                 android:layout_marginTop="@dimen/dp_15"
-                android:textSize="@dimen/sp_17"
+                android:textSize="@dimen/sp_18"
                 android:textColor="@color/text_33"
                 android:text=""
                 />
+
             <TextView
                 android:id="@+id/option1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
                 android:layout_marginTop="@dimen/dp_15"
                 android:layout_marginRight="@dimen/dp_18"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:background="@drawable/answar_before"
+                android:background="@mipmap/answer_option_bg"
                 android:padding="@dimen/dp_12"
-                android:text="A."
-                android:textColor="@color/text_33"
-                android:textSize="@dimen/sp_15"/>
+                android:text="A"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
             <TextView
                 android:id="@+id/option2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_18"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:background="@drawable/answar_before"
+                android:background="@mipmap/answer_option_bg"
                 android:padding="@dimen/dp_12"
-                android:text="A."
-                android:textColor="@color/text_33"
-                android:textSize="@dimen/sp_15"/>
+                android:text="A"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
             <TextView
                 android:id="@+id/option3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_18"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:background="@drawable/answar_before"
+                android:background="@mipmap/answer_option_bg"
                 android:padding="@dimen/dp_12"
-                android:text="A."
-                android:textColor="@color/text_33"
-                android:textSize="@dimen/sp_15"/>
+                android:text="A"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
             <TextView
                 android:id="@+id/option4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_18"
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_18"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:background="@drawable/answar_before"
-                android:padding="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_15"
-                android:text="A."
-                android:textColor="@color/text_33"
-                android:textSize="@dimen/sp_15"/>
+                android:background="@mipmap/answer_option_bg"
+                android:padding="@dimen/dp_12"
+                android:text="A"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
             <TextView
                 android:id="@+id/bt_onemore"
                 android:layout_width="@dimen/dp_125"
@@ -120,18 +126,19 @@
                 android:layout_marginBottom="@dimen/dp_15"
                 android:textSize="@dimen/sp_18"
                 android:textColor="@color/white"
-                android:background="@drawable/bt_answar"
+                android:background="@drawable/shade_bg_f4_f8"
                 android:gravity="center"/>
+
             <TextView
                 android:id="@+id/tv_wrong"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_40"
-                android:text="@string/answer_wrong"
                 android:layout_marginBottom="@dimen/dp_15"
-                android:textSize="@dimen/sp_14"
-                android:visibility="gone"
+                android:gravity="center"
+                android:text="@string/answer_wrong"
                 android:textColor="@color/colorPrimary"
-                android:gravity="center"/>
+                android:textSize="@dimen/sp_17"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 

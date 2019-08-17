@@ -45,11 +45,13 @@
         android:layout_height="@dimen/dp_25"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tv_exchange_aday"
-        android:background="@drawable/bt_buy"
+        android:background="@drawable/bt_oragen_5"
         android:gravity="center"
         android:textSize="@dimen/sp_15"
         android:textColor="@color/white"
         android:text="@string/exchange"/>
+
+    <!-- android:background="@drawable/bt_buy" -->
     <TextView
         android:id="@+id/tv_point"
         android:layout_width="wrap_content"

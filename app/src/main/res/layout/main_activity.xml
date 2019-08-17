@@ -7,27 +7,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
+    <com.hongchuang.ysblibrary.widget.NoScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl"
+        android:layout_weight="1" />
+
+
     <RelativeLayout
         android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
+
         <com.hongchuang.hclibrary.view.BottomNavigationViewEx
             android:id="@+id/bnve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/main_balance_bg"
             app:itemTextColor="@color/text_6"
             app:menu="@menu/menu_navigation_center_fab" />
+
     </RelativeLayout>
 
 
-        <com.hongchuang.ysblibrary.widget.NoScrollViewPager
-            android:id="@+id/vp_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/rl"
-            android:layout_weight="1" />
     <com.hongchuang.hclibrary.view.menu.SectorMenuButton
         android:id="@+id/fab"
         android:layout_width="@dimen/dp_56"
@@ -35,8 +41,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_6"
+        android:paddingRight="@dimen/dp_6"
         app:aebAnimDurationMillis="175"
-        app:aebMaskBackgroundColor="@color/transparent50"
         app:aebBlurBackground="false"
         app:aebBlurRadius="10"
         app:aebButtonElevation="0dp"
@@ -46,9 +53,12 @@
         app:aebMainButtonRotateAnimDurationMillis="300"
         app:aebMainButtonRotateDegree="45"
         app:aebMainButtonSizeDp="@dimen/dp_56"
+        app:aebMaskBackgroundColor="@color/transparent50"
         app:aebRippleEffect="true"
         app:aebStartAngleDegree="30"
-        app:aebSubButtonSizeDp="@dimen/dp_52"/>
+        app:aebSubButtonSizeDp="@dimen/dp_52" />
+
+
 
     <FrameLayout
         android:id="@+id/open"

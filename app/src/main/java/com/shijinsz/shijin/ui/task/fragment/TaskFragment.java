@@ -1,6 +1,8 @@
 package com.shijinsz.shijin.ui.task.fragment;
 
 import android.content.ActivityNotFoundException;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +15,13 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +63,9 @@ import com.shijinsz.shijin.utils.BoxGifUtils;
 import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.LoginUtil;
+import com.tencent.mm.opensdk.modelbiz.JumpToBizProfile;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -75,14 +82,10 @@ import retrofit.callback.YRequestCallback;
  */
 
 public class TaskFragment extends BaseFragment implements UnifiedBannerADListener {
-    @BindView(R.id.tv_change)
-    TextView tvChange;
-    @BindView(R.id.tv_point)
-    TextView tvPoint;
     @BindView(R.id.cutdown)
     TextView cutdown;
     @BindView(R.id.box)
-    FrameLayout box;
+    RelativeLayout box;
     @BindView(R.id.tv_share)
     TextView tvShare;
     //    @BindView(R.id.gif)
@@ -116,6 +119,8 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
     ViewGroup bannerContainer;
     @BindView(R.id.ln_new_person)
     LinearLayout mNewPerson;
+    @BindView(R.id.view_button)
+    View mView_but;
 
     private static final int INVITATION_CODE = 100;
     private static final int NEW_PERSON_TASK_PAGE_CODE = 101;
@@ -220,13 +225,9 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
         Log.e("", "onResume: " );
         if (!ShareDataManager.getInstance().getPara(SharedPreferencesKey.Key_isLogin).equals("on")) {
             box.setEnabled(true);
-            tvChange.setText(getText(R.string.change) + "0.00" + getText(R.string.yuan));
-            tvPoint.setText(getText(R.string.point) + "0");
             cutdown.setText("立即登录");
         } else {
             box.setEnabled(false);
-            tvChange.setText(getText(R.string.change) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_change) + getText(R.string.yuan));
-            tvPoint.setText(getText(R.string.point) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_points));
         }
 
         if(ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_invitation_code_state).equals("true")){
@@ -252,19 +253,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
         Log.e("", "onFragmentVisibleChange: " );
         this.isVisible=isVisible;
         if (isVisible&&ShareDataManager.getInstance().getPara(SharedPreferencesKey.Key_isLogin).equals("on")) {
-//            if (!ShareDataManager.getInstance().getPara(SharedPreferencesKey.Key_isLogin).equals("on")) {
-//                box.setEnabled(true);
-//                tvChange.setText(getText(R.string.change) + "0.00" + getText(R.string.yuan));
-//                tvPoint.setText(getText(R.string.point) + "0");
-//                cutdown.setText("立即登录");
-//            } else {
-//                box.setEnabled(false);
-//                tvChange.setText(getText(R.string.change) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_change) + getText(R.string.yuan));
-//                tvPoint.setText(getText(R.string.point) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_points));
-//                getBox();
-//            }
-            tvChange.setText(getText(R.string.change) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_change) + getText(R.string.yuan));
-            tvPoint.setText(getText(R.string.point) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_points));
+//
             if (ShareDataManager.getInstance().getPara(SharedPreferencesKey.Key_isLogin).equals("on")) {
                 if (ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_new_one_status).equals("on")) {
                     new DialogUtils(getContext()).showNewPacketDialog();
@@ -435,9 +424,6 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                     timer = new CountDownTimer(nexttime - nowtime, 1000) {
                         @Override
                         public void onTick(long l) {
-
-
-
                             String t = "";
                             int h = (int) (l / (3600 * 1000));
                             int m = (int) ((l - (3600 * 1000 * h)) / (60 * 1000));
@@ -458,13 +444,15 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                                 t = t + ":" + s;
                             }
                             box.setEnabled(false);
-                            imgBox.setImageResource(R.mipmap.bx);
+                            mView_but.setVisibility(View.VISIBLE);
+                            imgBox.setImageResource(R.mipmap.icon_open_box);
                             cutdown.setText(t);
                         }
 
                         @Override
                         public void onFinish() {
                             box.setEnabled(true);
+                            mView_but.setVisibility(View.GONE);
                             if (isAdded()) {
                                 imgBox.setImageResource(R.mipmap.icon_open_box);
                                 cutdown.setText(getString(R.string.open_box));
@@ -525,7 +513,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                                     t = t + ":" + s;
                                 }
                                 box.setEnabled(false);
-                                imgBox.setImageResource(R.mipmap.bx);
+                                imgBox.setImageResource(R.mipmap.icon_open_box);
                                 cutdown.setText(t);
                             }
 
@@ -558,6 +546,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
 
     private String boxid = "";
 
+    //点击打开宝箱
     public void openBox() {
         Map map = new HashMap();
         map.put("mode", "box");
@@ -607,8 +596,6 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                 ShareDataManager.getInstance().save(getContext(), SharedPreferencesKey.KEY_USER_NAME, var1.getUsername());
                 ShareDataManager.getInstance().save(getContext(), SharedPreferencesKey.KEY_withdraw_change_number, var1.getWithdraw_change_number());
                 ShareDataManager.getInstance().save(getContext(), SharedPreferencesKey.KEY_OPENID, var1.getOpenid());
-                tvChange.setText(getText(R.string.change) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_change) + getText(R.string.yuan));
-                tvPoint.setText(getText(R.string.point) + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_points));
             }
 
             @Override
@@ -623,10 +610,10 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
         });
     }
 
-    @OnClick({R.id.tv_change,R.id.tv_point,R.id.ln_sign, R.id.ln_invite, R.id.ln_show_income,
+    @OnClick({R.id.ln_sign, R.id.ln_invite, R.id.ln_show_income,
             R.id.ln_prefect_information, R.id.good_comment, R.id.ln_share_answer, R.id.ln_good_feedback,
             R.id.ln_follow_wechat, R.id.box,R.id.ln_vote,R.id.invite_code_layout,R.id.ln_new_person,
-            R.id.ln_day_person,R.id.ln_challenge_person})
+            R.id.ln_day_person,R.id.ln_challenge_person,R.id.view_button})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ln_sign:
@@ -635,19 +622,8 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                 }
                 startActivity(new Intent(mActivity, SignInActivity.class));
                 break;
-            case R.id.tv_change:
-                if (!LoginUtil.isLogin(mActivity)){
-                    return;
-                }
-                startActivity(new Intent(getContext(), WalletActivity.class));
-                break;
-            case R.id.tv_point:
-                if (!LoginUtil.isLogin(mActivity)){
-                    return;
-                }
-                startActivity(new Intent(getContext(), PointActivity.class));
-                break;
             case R.id.ln_invite:
+                //邀请好友
                 if (!LoginUtil.isLogin(mActivity)){
                     return;
                 }
@@ -691,7 +667,17 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                 if (!LoginUtil.isLogin(mActivity)){
                     return;
                 }
-                getWechatApi();
+                //关注微信公众号
+                DialogUtils dialogWeChat = new DialogUtils(getContext());
+                dialogWeChat.showTaskAttentionWeChatDialog(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ClipboardManager systemService = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                        systemService.setPrimaryClip(ClipData.newPlainText("text", "十金公众号"));
+                        dialogWeChat.dismissTaskAttentionWeChatDialog();
+                        getWechatApi();
+                    }
+                });
                 break;
             case R.id.box:
                 if (!LoginUtil.isLogin(mActivity)){
@@ -746,6 +732,11 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                 }
                 //挑战任务
                 startActivityForResult(new Intent(getContext(),ChallengeTaskActivity.class),CHALLENGE_TASK_CODE);
+                break;
+            case R.id.view_button:
+                Toast toast = Toast.makeText(getContext(), "等待倒计时结束再领取吧！", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
                 break;
         }
     }

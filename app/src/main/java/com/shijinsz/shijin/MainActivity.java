@@ -128,9 +128,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
 
 
-        //设置图标消息数量提示
-        BadgeUtil.setBadgeCount(getApplication(),10);
-
 //        if (ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_is_open).equals("on")) {
 //            ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_is_open, "off");
 //            if (appDir.exists()) {
@@ -185,7 +182,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         List<Fragment> mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new VideoFragment());
-        //mFragments.add(new AskFragment());
+        mFragments.add(new AskFragment());
         mFragments.add(new TaskFragment());
         mFragments.add(new MineFragment());
         MainTabAdapter mTabAdapter = new MainTabAdapter(mFragments, getSupportFragmentManager());
@@ -214,6 +211,11 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                     case R.id.i_empty: {
                         return false;
                     }
+                }
+                if(position == 1){
+                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏
+                }else{
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 }
                 if (previousPosition != position) {
                     vpContent.setCurrentItem(position, false);
@@ -405,6 +407,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         bnve.setTextTintList(1, getResources().getColorStateList(R.color.home_bottom));
         bnve.setTextTintList(2, getResources().getColorStateList(R.color.home_bottom));
         bnve.setTextTintList(3, getResources().getColorStateList(R.color.home_bottom));
+        bnve.setTextTintList(4, getResources().getColorStateList(R.color.home_bottom));
         bnve.setItemHeight(BottomNavigationViewEx.dp2px(this, 52));
         bnve.setIconsMarginTop(BottomNavigationViewEx.dp2px(this, 10));
 

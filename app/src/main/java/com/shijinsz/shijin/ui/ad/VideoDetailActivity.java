@@ -3,13 +3,17 @@ package com.shijinsz.shijin.ui.ad;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -59,6 +63,7 @@ import com.shijinsz.shijin.utils.GlideApp;
 import com.shijinsz.shijin.utils.LoginUtil;
 import com.shijinsz.shijin.utils.ShareDialog;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -74,6 +79,7 @@ import static android.widget.PopupWindow.*;
 
 /**
  * Created by yrdan on 2018/8/24.
+ * 内容答题页
  */
 
 public class VideoDetailActivity extends BaseActivity {
@@ -549,26 +555,26 @@ public class VideoDetailActivity extends BaseActivity {
                     isFollow = true;
                     btFollow.setText(mContext.getString(R.string.isfollow));
                     btFollow.setTextColor(mContext.getResources().getColor(R.color.text_999999));
-                    btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
+                    //btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
                     btFollow.setBackgroundResource(R.drawable.bg_follow);
                     btFollow.setPadding(10, 0, 0, 0);
                     tvFollow.setText(mContext.getString(R.string.isfollow));
                     tvFollow.setTextColor(mContext.getResources().getColor(R.color.text_999999));
-                    tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
+                    //tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
                     tvFollow.setBackgroundResource(R.drawable.bg_follow);
                     tvFollow.setPadding(0, 0, 0, 0);
                 } else {
                     isFollow = false;
                     btFollow.setText(mContext.getString(R.string.user_like));
-                    btFollow.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
-                    btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
+                    btFollow.setTextColor(mContext.getResources().getColor(R.color.white));
+                    //btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
                     btFollow.setBackgroundResource(R.drawable.bg_addfollow);
-                    btFollow.setPadding(24, 0, 0, 0);
+                    //btFollow.setPadding(24, 0, 0, 0);
                     tvFollow.setText(mContext.getString(R.string.user_like));
-                    tvFollow.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
-                    tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
+                    tvFollow.setTextColor(mContext.getResources().getColor(R.color.white));
+                    //tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
                     tvFollow.setBackgroundResource(R.drawable.bg_addfollow);
-                    tvFollow.setPadding(20, 0, 0, 0);
+                    //tvFollow.setPadding(20, 0, 0, 0);
                 }
 
 
@@ -748,7 +754,7 @@ public class VideoDetailActivity extends BaseActivity {
         progress.setProgressType(CircleTextProgressbar.ProgressType.COUNT_BACK);
         progress.setProgressLineWidth(10);
         progress.setOutLineColor(getResources().getColor(R.color.orange));
-        progress.setProgressColor(getResources().getColor(R.color.colorPrimary));
+        progress.setProgressColor(getResources().getColor(R.color.color_f8b));
         progress.setTimeMillis(5000);
         progress.setCountdownProgressListener(1, new CircleTextProgressbar.OnCountdownProgressListener() {
             @Override
@@ -1139,10 +1145,10 @@ public class VideoDetailActivity extends BaseActivity {
             Log.i(TAG, "乱序后: " + s);
         }
         tv_wrong = mailBoxLay.findViewById(R.id.tv_wrong);
-        option1.setText("A." + listoption.get(0));
-        option2.setText("B." + listoption.get(1));
-        option3.setText("C." + listoption.get(2));
-        option4.setText("D." + listoption.get(3));
+        option1.setText(setOptionStyle("A",listoption.get(0)));
+        option2.setText(setOptionStyle("B",listoption.get(1)));
+        option3.setText(setOptionStyle("C",listoption.get(2)));
+        option4.setText(setOptionStyle("D",listoption.get(3)));
         answar_title.setText(tvtitle);
         onemore = mailBoxLay.findViewById(R.id.bt_onemore);
         chutdowm = mailBoxLay.findViewById(R.id.chutdowm);
@@ -1152,9 +1158,9 @@ public class VideoDetailActivity extends BaseActivity {
             onemore.setVisibility(View.GONE);
         }
         circleTextProgressbar.setProgressType(CircleTextProgressbar.ProgressType.COUNT_BACK);
-        circleTextProgressbar.setProgressLineWidth(10);
-        circleTextProgressbar.setOutLineColor(getResources().getColor(R.color.transparent));
-        circleTextProgressbar.setProgressColor(getResources().getColor(R.color.colorPrimary));
+        circleTextProgressbar.setProgressLineWidth(5);
+        circleTextProgressbar.setOutLineColor(getResources().getColor(R.color.color_cccccc));
+        circleTextProgressbar.setProgressColor(getResources().getColor(R.color.color_f8b));
         circleTextProgressbar.setTimeMillis(15000);
         circleTextProgressbar.setProgress(100);
         circleTextProgressbar.setCountdownProgressListener(1, new CircleTextProgressbar.OnCountdownProgressListener() {
@@ -1191,52 +1197,7 @@ public class VideoDetailActivity extends BaseActivity {
                         text.setEnabled(false);
                         circleTextProgressbar.stop();
                         mailBoxDialog.dismiss();
-//                        Map map = new HashMap();
-//                        if (isoption1) {
-//                            if (option1.getText().toString().substring(2,option1.getText().toString().length()).equals(tvOption1)){
-//                                map.put("option1", tvOption1);
-//                            }else if (option1.getText().toString().substring(2,option1.getText().toString().length()).equals(tvOption2)){
-//                                map.put("option2", tvOption2);
-//                            }else if (option1.getText().toString().substring(2,option1.getText().toString().length()).equals(tvOption3)){
-//                                map.put("option3", tvOption3);
-//                            }else {
-//                                map.put("option4", tvOption4);
-//                            }
-//                        }
-//                        if (isoption2) {
-//                            if (option2.getText().toString().substring(2,option2.getText().toString().length()).equals(tvOption1)){
-//                                map.put("option1", tvOption1);
-//                            }else if (option2.getText().toString().substring(2,option2.getText().toString().length()).equals(tvOption2)){
-//                                map.put("option2", tvOption2);
-//                            }else if (option2.getText().toString().substring(2,option2.getText().toString().length()).equals(tvOption3)){
-//                                map.put("option3", tvOption3);
-//                            }else {
-//                                map.put("option4", tvOption4);
-//                            }
-//                        }
-//                        if (isoption3) {
-//                            if (option3.getText().toString().substring(2,option3.getText().toString().length()).equals(tvOption1)){
-//                                map.put("option1", tvOption1);
-//                            }else if (option3.getText().toString().substring(2,option3.getText().toString().length()).equals(tvOption2)){
-//                                map.put("option2", tvOption2);
-//                            }else if (option3.getText().toString().substring(2,option3.getText().toString().length()).equals(tvOption3)){
-//                                map.put("option3", tvOption3);
-//                            }else {
-//                                map.put("option4", tvOption4);
-//                            }
-//                        }
-//                        if (isoption4) {
-//                            if (option4.getText().toString().substring(2,option4.getText().toString().length()).equals(tvOption1)){
-//                                map.put("option1", tvOption1);
-//                            }else if (option4.getText().toString().substring(2,option4.getText().toString().length()).equals(tvOption2)){
-//                                map.put("option2", tvOption2);
-//                            }else if (option4.getText().toString().substring(2,option4.getText().toString().length()).equals(tvOption3)){
-//                                map.put("option3", tvOption3);
-//                            }else {
-//                                map.put("option4", tvOption4);
-//                            }
-//                        }
-//                        answar(map);
+
                     }
                 }
             }
@@ -1306,48 +1267,16 @@ public class VideoDetailActivity extends BaseActivity {
                 } else {
                     Map map = new HashMap();
                     if (isoption1) {
-                        if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption1)) {
-                            map.put("option1", tvOption1);
-                        } else if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption2)) {
-                            map.put("option2", tvOption2);
-                        } else if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption3)) {
-                            map.put("option3", tvOption3);
-                        } else {
-                            map.put("option4", tvOption4);
-                        }
+                        map = setOptionDMap(option1);
                     }
                     if (isoption2) {
-                        if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption1)) {
-                            map.put("option1", tvOption1);
-                        } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption2)) {
-                            map.put("option2", tvOption2);
-                        } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption3)) {
-                            map.put("option3", tvOption3);
-                        } else {
-                            map.put("option4", tvOption4);
-                        }
+                        map = setOptionDMap(option2);
                     }
                     if (isoption3) {
-                        if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption1)) {
-                            map.put("option1", tvOption1);
-                        } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption2)) {
-                            map.put("option2", tvOption2);
-                        } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption3)) {
-                            map.put("option3", tvOption3);
-                        } else {
-                            map.put("option4", tvOption4);
-                        }
+                        map = setOptionDMap(option3);
                     }
                     if (isoption4) {
-                        if (option4.getText().toString().substring(2, option4.getText().toString().length()).equals(tvOption1)) {
-                            map.put("option1", tvOption1);
-                        } else if (option4.getText().toString().substring(2, option4.getText().toString().length()).equals(tvOption2)) {
-                            map.put("option2", tvOption2);
-                        } else if (option4.getText().toString().substring(2, option4.getText().toString().length()).equals(tvOption3)) {
-                            map.put("option3", tvOption3);
-                        } else {
-                            map.put("option4", tvOption4);
-                        }
+                        map = setOptionDMap(option4);
                     }
                     answar(map);
 
@@ -1356,6 +1285,7 @@ public class VideoDetailActivity extends BaseActivity {
 
             }
         });
+
         isoption1 = false;
         isoption2 = false;
         isoption3 = false;
@@ -1365,10 +1295,10 @@ public class VideoDetailActivity extends BaseActivity {
             public void onClick(View view) {
                 if (isoption1) {
                     isoption1 = false;
-                    option1.setBackground(getResources().getDrawable(R.drawable.answar_before));
+                    option1.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
                 } else {
                     isoption1 = true;
-                    option1.setBackground(getResources().getDrawable(R.drawable.answar_after));
+                    option1.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
                 }
                 if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
                     if (isFirst) {
@@ -1388,10 +1318,10 @@ public class VideoDetailActivity extends BaseActivity {
             public void onClick(View view) {
                 if (isoption2) {
                     isoption2 = false;
-                    option2.setBackground(getResources().getDrawable(R.drawable.answar_before));
+                    option2.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
                 } else {
                     isoption2 = true;
-                    option2.setBackground(getResources().getDrawable(R.drawable.answar_after));
+                    option2.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
                 }
                 if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
                     if (isFirst) {
@@ -1411,10 +1341,10 @@ public class VideoDetailActivity extends BaseActivity {
             public void onClick(View view) {
                 if (isoption3) {
                     isoption3 = false;
-                    option3.setBackground(getResources().getDrawable(R.drawable.answar_before));
+                    option3.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
                 } else {
                     isoption3 = true;
-                    option3.setBackground(getResources().getDrawable(R.drawable.answar_after));
+                    option3.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
                 }
                 if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
                     if (isFirst) {
@@ -1434,10 +1364,10 @@ public class VideoDetailActivity extends BaseActivity {
             public void onClick(View view) {
                 if (isoption4) {
                     isoption4 = false;
-                    option4.setBackground(getResources().getDrawable(R.drawable.answar_before));
+                    option4.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
                 } else {
                     isoption4 = true;
-                    option4.setBackground(getResources().getDrawable(R.drawable.answar_after));
+                    option4.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
                 }
                 if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
                     if (isFirst) {
@@ -1454,6 +1384,36 @@ public class VideoDetailActivity extends BaseActivity {
         });
         circleTextProgressbar.start();
 
+    }
+
+    //设置数据内容
+    public Map setOptionDMap(TextView option){
+        Map map = new HashMap();
+        if (option.getText().toString().substring(6, option.getText().toString().length()).equals(tvOption1)) {
+            map.put("option1", tvOption1);
+        } else if (option.getText().toString().substring(6, option.getText().toString().length()).equals(tvOption2)) {
+            map.put("option2", tvOption2);
+        } else if (option.getText().toString().substring(6, option.getText().toString().length()).equals(tvOption3)) {
+            map.put("option3", tvOption3);
+        } else {
+            map.put("option4", tvOption4);
+        }
+        return map;
+    }
+
+    //设置样式
+    public SpannableString setOptionStyle(String option,String str){
+        ForegroundColorSpan text_color = new ForegroundColorSpan(Color.WHITE);
+        SpannableString string = new SpannableString(option + "     " + str);
+        string .setSpan(text_color,0,1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return string;
+    }
+    //设置样式
+    public SpannableString setTextStyle(String str){
+        ForegroundColorSpan text_color = new ForegroundColorSpan(Color.WHITE);
+        SpannableString string = new SpannableString(str);
+        string .setSpan(text_color,0,1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return string;
     }
 
     @Override
@@ -1503,76 +1463,45 @@ public class VideoDetailActivity extends BaseActivity {
                     chutdowm.setVisibility(View.GONE);
                     circleTextProgressbar.setProgress(100);
                     circleTextProgressbar.setInCircleColor(getResources().getColor(R.color.white));
+
                     for (String s : var1.getAnswers_right()) {
                         switch (s) {
                             case "option1":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption1)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption1)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption1)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption1);
                                 break;
                             case "option2":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption2)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption2)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption2)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption2);
                                 break;
                             case "option3":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption3)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption3)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption3)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption3);
                                 break;
                             case "option4":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption4)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption4)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption4)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption4);
                                 break;
                         }
                     }
+
                     if (var1.getIs_reward().equals("on")) {
                         try {
                             String num = var1.getReward_number_add();
-                            dialogUtils.showRedpacketDialog(ad_type, var1.getReward_number(),num,uri);
+                            //答题红包改为直接显示
+                            String number;
+                            if(ad_type == 1){
+                                number = var1.getReward_number();
+                            }else{
+                                //判断是否为会员
+                                if(num.equals("0")){
+                                    number = var1.getReward_number();
+                                }else{
+                                    number = var1.getReward_number() +" +"+ num;
+                                }
+
+                            }
+                            dialogUtils.showTaskAwardDialog(number);
+                            //dialogUtils.showRedpacketDialog(ad_type, var1.getReward_number(),num,uri);
                         }catch (Exception e) {
-                            dialogUtils.showRedpacketDialog(ad_type, var1.getReward_number(),"0",uri);
+                            //dialogUtils.showTaskAwardDialog(var1.getReward_number());
+                            //dialogUtils.showRedpacketDialog(ad_type, var1.getReward_number(),"0",uri);
                         }
 
                     } else {
@@ -1587,79 +1516,34 @@ public class VideoDetailActivity extends BaseActivity {
                     chutdowm.setVisibility(View.GONE);
                     circleTextProgressbar.setInCircleColor(getResources().getColor(R.color.white));
                     circleTextProgressbar.setProgress(100);
+
+
                     if (isoption1) {
-                        option1.setBackground(getResources().getDrawable(R.drawable.answar_false));
+                        option1.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_off));
                     }
                     if (isoption2) {
-                        option2.setBackground(getResources().getDrawable(R.drawable.answar_false));
+                        option2.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_off));
                     }
                     if (isoption3) {
-                        option3.setBackground(getResources().getDrawable(R.drawable.answar_false));
+                        option3.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_off));
                     }
                     if (isoption4) {
-                        option4.setBackground(getResources().getDrawable(R.drawable.answar_false));
+                        option4.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_off));
                     }
+
                     for (String s : var1.getAnswers_right()) {
                         switch (s) {
                             case "option1":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption1)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption1)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption1)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption1);
                                 break;
                             case "option2":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption2)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption2)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption2)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption2);
                                 break;
                             case "option3":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption3)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption3)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption3)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption3);
                                 break;
                             case "option4":
-                                if (option1.getText().toString().substring(2, option1.getText().toString().length()).equals(tvOption4)) {
-                                    option1.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option1.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option2.getText().toString().substring(2, option2.getText().toString().length()).equals(tvOption4)) {
-                                    option2.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option2.setTextColor(getResources().getColor(R.color.white));
-                                } else if (option3.getText().toString().substring(2, option3.getText().toString().length()).equals(tvOption4)) {
-                                    option3.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option3.setTextColor(getResources().getColor(R.color.white));
-                                } else {
-                                    option4.setBackground(getResources().getDrawable(R.drawable.answar_true));
-                                    option4.setTextColor(getResources().getColor(R.color.white));
-                                }
+                                answerResultSet(tvOption4);
                                 break;
                         }
                     }
@@ -1681,6 +1565,19 @@ public class VideoDetailActivity extends BaseActivity {
                 mStateView.showContent();
             }
         });
+    }
+
+    //答题结果选项显示
+    public void answerResultSet(String tvOption){
+        if (option1.getText().toString().substring(6, option1.getText().toString().length()).equals(tvOption)) {
+            option1.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
+        } else if (option2.getText().toString().substring(6, option2.getText().toString().length()).equals(tvOption)) {
+            option2.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
+        } else if (option3.getText().toString().substring(6, option3.getText().toString().length()).equals(tvOption)) {
+            option3.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
+        } else {
+            option4.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
+        }
     }
 
     public void fatherComment(String comment) {
@@ -1724,12 +1621,12 @@ public class VideoDetailActivity extends BaseActivity {
                 isFollow = true;
                 btFollow.setText(mContext.getString(R.string.isfollow));
                 btFollow.setTextColor(mContext.getResources().getColor(R.color.text_999999));
-                btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
+                //btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
                 btFollow.setBackgroundResource(R.drawable.bg_follow);
                 btFollow.setPadding(10, 0, 0, 0);
                 tvFollow.setText(mContext.getString(R.string.isfollow));
                 tvFollow.setTextColor(mContext.getResources().getColor(R.color.text_999999));
-                tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
+                //tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow), null, null, null);
                 tvFollow.setBackgroundResource(R.drawable.bg_follow);
                 tvFollow.setPadding(0, 0, 0, 0);
             }
@@ -1760,15 +1657,15 @@ public class VideoDetailActivity extends BaseActivity {
                     public void onSuccess(PicCodeBean var1) {
                         isFollow = false;
                         btFollow.setText(mContext.getString(R.string.user_like));
-                        btFollow.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
-                        btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
+                        btFollow.setTextColor(mContext.getResources().getColor(R.color.white));
+                        //btFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
                         btFollow.setBackgroundResource(R.drawable.bg_addfollow);
-                        btFollow.setPadding(24, 0, 0, 0);
+                        //btFollow.setPadding(24, 0, 0, 0);
                         tvFollow.setText(mContext.getString(R.string.user_like));
-                        tvFollow.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
-                        tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
+                        tvFollow.setTextColor(mContext.getResources().getColor(R.color.white));
+                        //tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow), null, null, null);
                         tvFollow.setBackgroundResource(R.drawable.bg_addfollow);
-                        tvFollow.setPadding(20, 0, 0, 0);
+                        //tvFollow.setPadding(20, 0, 0, 0);
                         mailDialog.dismiss();
                     }
 

@@ -6,16 +6,22 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.hongchuang.hclibrary.storage.ShareDataManager;
+import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.AdAllianceBean;
 import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
 import com.hongchuang.ysblibrary.model.model.bean.PointDetailBean;
+import com.hongchuang.ysblibrary.model.model.bean.ShareBean;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -23,9 +29,11 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
+import com.shijinsz.shijin.base.Comment;
 import com.shijinsz.shijin.ui.mine.adapter.CouponListViewAdapter;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.HeaderView;
+import com.shijinsz.shijin.utils.ShareDialog;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 
 import java.util.ArrayList;
@@ -54,6 +62,9 @@ public class ShoppingCouponActivity extends BaseActivity implements OnLoadMoreLi
     @BindView(R.id.rl_empty)
     RelativeLayout rlEmpty;
 
+    @BindView(R.id.but_share)
+    Button mbt_right;
+
     private int pageIndex = 1;
     private boolean isRefresh = true;
 
@@ -68,16 +79,21 @@ public class ShoppingCouponActivity extends BaseActivity implements OnLoadMoreLi
     @Override
     public void initView(View view) {
         StatusBarUtil.setStatusTextColor(true, mActivity);
-        setTitle("优惠劵");
+        setTitle("领劵中心");
         showTitleBackButton();
+        mbt_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getShare();
+            }
+        });
+
+        mbt_right.setVisibility(View.VISIBLE);
+        
 
         refresh.setRefreshHeader(new HeaderView(mContext));
         refresh.setOnLoadMoreListener(this);
         refresh.setOnRefreshListener(this);
-        ImageView iv = new ImageView(mContext);
-        iv.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.vote_show_log));
-
-        mlistView.addHeaderView(iv);
         mAdapter = new CouponListViewAdapter(mContext,list,R.layout.coupon_list_item);
         mlistView.setAdapter(mAdapter);
 
@@ -95,6 +111,29 @@ public class ShoppingCouponActivity extends BaseActivity implements OnLoadMoreLi
         refresh.finishLoadMore();
         refresh.finishRefresh();
         getData();
+    }
+
+    //获取分享信息
+    public void getShare(){
+        mStateView.showLoading();
+        String mode ="share_to_friend";
+        YSBSdk.getService(OAuthService.class).share_infos(mode, new YRequestCallback<ShareBean>() {
+            @Override
+            public void onSuccess(ShareBean var1) {
+                mStateView.showContent();
+                new ShareDialog(mActivity).showWithdrapDialog(mActivity,3,var1.getShare_title(),var1.getShare_info(),var1.getShare_pic(), Comment.url+"invitation_registration?nickname="+ ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_nickname)+"&username="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_USER_NAME)+"&imageurl="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_imageurl));
+            }
+
+            @Override
+            public void onFailed(String var1, String message) {
+                mStateView.showContent();
+            }
+
+            @Override
+            public void onException(Throwable var1) {
+                mStateView.showContent();
+            }
+        });
     }
 
     private void getData(){

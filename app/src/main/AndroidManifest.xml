@@ -165,6 +165,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.shijinsz.shijin.ui.mine.PaySuccessActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name="com.shijinsz.shijin.ui.mine.CouponRecordActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.shijinsz.shijin.ui.ad.NewAdActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="com.shijinsz.shijin.ui.ad.NewGraphicActivity"

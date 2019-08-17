@@ -117,7 +117,7 @@
             android:textColor="@color/white"
             android:text="直达链接"
             android:gravity="center"
-            android:background="@mipmap/icon_drap"/>
+            android:background="@drawable/shade_circular_bg_f4_f8"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

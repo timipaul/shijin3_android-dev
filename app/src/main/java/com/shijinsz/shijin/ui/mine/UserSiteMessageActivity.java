@@ -73,6 +73,7 @@ public class UserSiteMessageActivity extends BaseActivity {
 
         mButton.setClickable(false);
 
+        mCheckbox.setText(getString(R.string.postage_hint_text,"9.9"));
         mCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

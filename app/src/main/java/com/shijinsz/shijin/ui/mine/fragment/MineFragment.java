@@ -18,6 +18,7 @@ import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -43,6 +44,7 @@ import com.shijinsz.shijin.base.AppInstallReceiver;
 import com.shijinsz.shijin.base.BaseFragment;
 import com.shijinsz.shijin.ui.message.MessageActivity;
 import com.shijinsz.shijin.ui.mine.CertificationActivity;
+import com.shijinsz.shijin.ui.mine.CouponRecordActivity;
 import com.shijinsz.shijin.ui.mine.DataCacheActivity;
 import com.shijinsz.shijin.ui.mine.FeedbackActivity;
 import com.shijinsz.shijin.ui.mine.FollowListActivity;
@@ -55,8 +57,11 @@ import com.shijinsz.shijin.ui.mine.MyVipActivity;
 import com.shijinsz.shijin.ui.mine.SettingActivity;
 import com.shijinsz.shijin.ui.mine.ShoppingCouponActivity;
 import com.shijinsz.shijin.ui.mine.UserDetailActivity;
+import com.shijinsz.shijin.ui.task.InviteFriendActivity;
 import com.shijinsz.shijin.ui.wallet.PointActivity;
+import com.shijinsz.shijin.ui.wallet.PointDetailActivity;
 import com.shijinsz.shijin.ui.wallet.WalletActivity;
+import com.shijinsz.shijin.utils.BadgeUtil;
 import com.shijinsz.shijin.utils.DownloadAPK;
 import com.shijinsz.shijin.utils.GlideApp;
 import com.shijinsz.shijin.utils.LoginUtil;
@@ -93,26 +98,10 @@ public class MineFragment extends BaseFragment {
     TextView tvJifen;
     @BindView(R.id.tv_myad)
     TextView tvMyad;
-    @BindView(R.id.tv_vip)
-    TextView tvVip;
-    @BindView(R.id.tv_looked)
-    TextView tvLooked;
     @BindView(R.id.tv_conversion)
     TextView tvConversion;
-    @BindView(R.id.tv_gz)
-    TextView tvGz;
-    @BindView(R.id.tv_sc)
-    TextView tvSc;
-    @BindView(R.id.tv_yj)
-    TextView tvYj;
-    @BindView(R.id.tv_sj)
-    TextView tvSj;
-    @BindView(R.id.tv_sz)
-    TextView tvSz;
     @BindView(R.id.img_vip)
     ImageView imgVip;
-    @BindView(R.id.img_vip_into)
-    ImageView imgVipInto;
     @BindView(R.id.ln_money)
     LinearLayout lnMoney;
     @BindView(R.id.ln_point)
@@ -121,8 +110,6 @@ public class MineFragment extends BaseFragment {
     TextView tvShenqing;
     @BindView(R.id.ln_myad)
     LinearLayout lnMyad;
-    @BindView(R.id.tv_tg)
-    TextView tvTg;
     Unbinder unbinder;
     @BindView(R.id.webview)
     WebView webview;
@@ -222,8 +209,11 @@ public class MineFragment extends BaseFragment {
                     tvNoread.setVisibility(View.VISIBLE);
                     if (Integer.parseInt(var1.getTotal_message_number()) > 99) {
                         tvNoread.setText("99");
+                        //设置图标消息数量提示
+                        BadgeUtil.setBadgeCount(getContext(),99);
                     } else {
                         tvNoread.setText(var1.getTotal_message_number());
+                        BadgeUtil.setBadgeCount(getContext(),Integer.valueOf(var1.getTotal_message_number()));
                     }
                 }
                 ShareDataManager.getInstance().save(getContext(), SharedPreferencesKey.KEY_total_message_number, var1.getTotal_message_number());
@@ -323,8 +313,6 @@ public class MineFragment extends BaseFragment {
                 }
                 tvNickname.setText(var1.getNickname());
                 GlideApp.with(mActivity).load(var1.getImageurl()).into(imgAvatar);
-                //动态设置进入会员页面的图片
-                //GlideApp.with(mActivity).load(var1.getImageurl()).into(imgVipInto);
 
                 tvMoney.setText(var1.getChange());
                 tvJifen.setText(var1.getPoints());
@@ -591,9 +579,9 @@ public class MineFragment extends BaseFragment {
         return ("http".equals(scheme) || "https".equals(scheme));
     }
     @OnClick({R.id.ln_money, R.id.ln_point, R.id.img_notica, R.id.img_avatar, R.id.ln_myad,
-            R.id.tv_vip,R.id.img_vip_into, R.id.tv_looked, R.id.tv_conversion,R.id.tv_gz,
+            R.id.tv_vip, R.id.tv_looked, R.id.tv_conversion,R.id.tv_gz,
             R.id.tv_sc, R.id.tv_yj, R.id.tv_sj, R.id.tv_sz, R.id.tv_shenqing, R.id.tv_tg,
-            R.id.tv_nickname,R.id.tv_rush,R.id.tv_coupon})
+            R.id.tv_nickname,R.id.tv_rush,R.id.tv_coupon,R.id.gift_conversion,R.id.invite_friend,R.id.friend_list})
 
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -607,7 +595,7 @@ public class MineFragment extends BaseFragment {
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
-                startActivity(new Intent(getContext(), PointActivity.class));
+                startActivity(new Intent(getContext(), PointDetailActivity.class));
                 break;
 
             case R.id.img_notica:
@@ -636,7 +624,6 @@ public class MineFragment extends BaseFragment {
 
                 break;
             case R.id.tv_vip:
-            case R.id.img_vip_into:
                 //会员机制
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
@@ -721,7 +708,31 @@ public class MineFragment extends BaseFragment {
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
+                //优惠劵
                 startActivity(new Intent(getContext(), ShoppingCouponActivity.class));
+                //优惠劵记录
+                //startActivity(new Intent(getContext(), CouponRecordActivity.class));
+                break;
+
+            case R.id.gift_conversion:
+                //礼品兑换
+                if (!LoginUtil.isLogin(mActivity)) {
+                    return;
+                }
+                startActivity(new Intent(getContext(), PointActivity.class));
+                break;
+            case R.id.invite_friend:
+                //邀请好友
+                if (!LoginUtil.isLogin(mActivity)) {
+                    return;
+                }
+                startActivity(new Intent(mActivity, InviteFriendActivity.class));
+                break;
+            case R.id.friend_list:
+                //好友列表
+                if (!LoginUtil.isLogin(mActivity)) {
+                    return;
+                }
                 break;
         }
     }

@@ -312,7 +312,7 @@ public class NewListFragment2 extends BaseFragment implements OnRefreshListener,
 
                 long temp_data = System.currentTimeMillis() / 1000;
                 //System.out.println("时间: " + (temp_data - ad_cursor));
-                if(ad_cursor == 0 || temp_data - ad_cursor > 10){
+                if(ad_cursor == 0 || temp_data - ad_cursor > 50){
                     AD_COUNT++;
                     initNativeExpressAD();
                     ad_cursor = temp_data;

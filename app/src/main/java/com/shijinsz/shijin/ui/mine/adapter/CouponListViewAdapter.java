@@ -2,6 +2,10 @@ package com.shijinsz.shijin.ui.mine.adapter;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +71,7 @@ public class CouponListViewAdapter extends BaseAdapter {
             viewHolder.old_price = view.findViewById(R.id.old_price);
             viewHolder.coupon = view.findViewById(R.id.get_coupon);
             viewHolder.buy = view.findViewById(R.id.buy_commodity);
+            viewHolder.discounts_money = view.findViewById(R.id.discounts_money);
             view.setTag(viewHolder);
         }else {
             viewHolder = (ViewHolder) view.getTag();
@@ -75,9 +80,13 @@ public class CouponListViewAdapter extends BaseAdapter {
         Glide.with(mContext).load(mList.get(i).getImg_url()).into(viewHolder.imageView);
         viewHolder.title.setText(mList.get(i).getName());
         viewHolder.hint.setText(mList.get(i).getDetails());
-        viewHolder.price.setText("￥"+mList.get(i).getCoupon_price());
-        viewHolder.old_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        viewHolder.old_price.setText("￥" + mList.get(i).getPrice());
+        viewHolder.price.setText("现价：￥"+mList.get(i).getCoupon_price());
+        viewHolder.old_price.setText("劵后：￥" + mList.get(i).getPrice());
+
+        SpannableString dis_money = new SpannableString("￥30");
+        RelativeSizeSpan sizeSpan = new RelativeSizeSpan(0.7f);
+        dis_money.setSpan(sizeSpan,0,1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        viewHolder.discounts_money.setText(dis_money);
         viewHolder.coupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +112,7 @@ public class CouponListViewAdapter extends BaseAdapter {
         private TextView old_price;
         private Button coupon;
         private Button buy;
+        private TextView discounts_money;
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    &lt;!&ndash; 阴影效果 &ndash;&gt;
+    <item >
+        <shape android:shape="oval"
+            android:dither="true">
+            <stroke android:width="@dimen/dp_1" android:color="@color/color_fd"/>
+            &lt;!&ndash;<size android:height="@dimen/dp_58" android:width="@dimen/dp_58" />&ndash;&gt;
+        </shape>
+    </item>
+    <item android:left="@dimen/dp_1" android:right="@dimen/dp_1" android:top="@dimen/dp_1" android:bottom="@dimen/dp_1">
+        <shape android:shape="oval">
+            <solid android:color="@color/color_fd" />
+            &lt;!&ndash;<size android:height="@dimen/dp_56" android:width="@dimen/dp_56" />&ndash;&gt;
+        </shape>
+    </item>
+</layer-list>-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:state_enabled="true" android:state_pressed="true">
+    <objectAnimator
+        android:duration="@android:integer/config_shortAnimTime"
+        android:propertyName="translationZ"
+        android:valueTo="@dimen/dp_4"
+        android:valueType="floatType" />
+</item>
+<item>
+    <objectAnimator
+        android:duration="@android:integer/config_shortAnimTime"
+        android:propertyName="translationZ"
+        android:valueTo="0dp"
+        android:valueType="floatType" />
+</item>
+</selector>

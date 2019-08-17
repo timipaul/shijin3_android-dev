@@ -323,7 +323,7 @@ public class HomeFragment extends BaseFragment{
                 clipPagerTitleView.setText(mDataList.get(i));
                 clipPagerTitleView.setTextSize(UIUtil.dip2px(getContext(),16));
                 clipPagerTitleView.setTextColor(getContext().getResources().getColor(R.color.text_33));
-                clipPagerTitleView.setClipColor(getContext().getResources().getColor(R.color.colorPrimary));
+                clipPagerTitleView.setClipColor(getContext().getResources().getColor(R.color.color_ffb));
                 clipPagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

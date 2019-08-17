@@ -139,7 +139,7 @@ public class CircleTextProgressbar extends TextView {
     /**
      * 设置外部轮廓的颜色。
      *
-     * @param outLineWidth 颜色值。
+     * @param outLineWidth 宽度值。
      */
     public void setOutLineWidth(@ColorInt int outLineWidth) {
         this.outLineWidth = outLineWidth;

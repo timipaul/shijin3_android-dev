@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
+import com.hongchuang.ysblibrary.model.model.bean.Ads;
 import com.hongchuang.ysblibrary.model.model.bean.AdsBean;
 import com.hongchuang.ysblibrary.widget.VerticalViewPager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -54,8 +55,10 @@ public class VideoFragment extends BaseFragment{
     @BindView(R.id.bottom_layout)
     public RelativeLayout mBottomLayout;
 
-    private List<String> urlList;
+    private List<Ads> adsList = new ArrayList<>();
     private VerticalViewPagerAdapter pagerAdapter;
+
+    private boolean isRefresh = true;
 
     @Override
     protected int provideContentViewId() {
@@ -64,6 +67,7 @@ public class VideoFragment extends BaseFragment{
 
     @Override
     protected void loadData() {
+        mStateView.showLoading();
         String cursor = System.currentTimeMillis() / 1000 + 60000 + "";
         Map map = new HashMap();
 //        map.put("mode", "recommend");
@@ -72,31 +76,19 @@ public class VideoFragment extends BaseFragment{
         YSBSdk.getService(OAuthService.class).ads("video",map, new YRequestCallback<AdsBean>() {
             @Override
             public void onSuccess(AdsBean var1) {
-
-                System.out.println("请求成功返回数据： " +var1.getAds());
-
-                //mStateView.showContent();
-                /*refresh.finishLoadMore();
-                refresh.finishRefresh();
+                mStateView.showContent();
                 if (isRefresh) {
-                    refresh.setNoMoreData(false);
-                    list.clear();
-                    list.addAll(var1.getAds());
+                    adsList.clear();
+                    adsList.addAll(var1.getAds());
 //                        if (list.size() == 0) {
 //                            banner.setVisibility(View.GONE);
 //                        } else {
 //                            banner.setVisibility(View.VISIBLE);
 //                        }
-                    if (list.size() < 10) {
-                        refresh.setNoMoreData(true);
-                    }
                 } else {
-                    list.addAll(var1.getAds());
-                    if (var1.getAds().size() < 10) {
-                        refresh.setNoMoreData(true);
-                    }
+                    adsList.addAll(var1.getAds());
                 }
-                adapter.notifyDataSetChanged();*/
+                pagerAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -133,12 +125,10 @@ public class VideoFragment extends BaseFragment{
         mBottomLayout.setAlpha(0.52f);
         hideStatusNavigationBar();
 
-        makeData();
-
         pagerAdapter = new VerticalViewPagerAdapter(rootView,getChildFragmentManager());
         vvpBackPlay.setVertical(true);
         vvpBackPlay.setOffscreenPageLimit(10);
-        pagerAdapter.setUrlList(urlList);
+        pagerAdapter.setUrlList(adsList);
         vvpBackPlay.setAdapter(pagerAdapter);
         vvpBackPlay.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -149,7 +139,9 @@ public class VideoFragment extends BaseFragment{
             @Override
             public void onPageSelected(int position) {
                 hideStatusNavigationBar();
-                if (position == urlList.size() - 1) {
+                if (position == adsList.size() - 1) {
+                    //加载数据
+
                     srlPage.setEnableAutoLoadMore(true);
                     srlPage.setEnableLoadMore(true);
                 } else {
@@ -178,7 +170,7 @@ public class VideoFragment extends BaseFragment{
     }
 
 
-    private void makeData() {
+    /*private void makeData() {
         urlList = new ArrayList<>();
         //http://prod-static.shijinsz.net/content/video_1561039115058_18977893052.mp4#length=10008
         //urlList.add("http://chuangfen.oss-cn-hangzhou.aliyuncs.com/public/attachment/201805/100651/201805181532123423.mp4");
@@ -190,29 +182,11 @@ public class VideoFragment extends BaseFragment{
         urlList.add("http://chuangfen.oss-cn-hangzhou.aliyuncs.com/public/attachment/201803/100651/201803141625005241.mp4");
         urlList.add("http://chuangfen.oss-cn-hangzhou.aliyuncs.com/public/attachment/201803/100651/201803141624378522.mp4");
         urlList.add("http://chuangfen.oss-cn-hangzhou.aliyuncs.com/public/attachment/201803/100651/201803131546119319.mp4");
-    }
+    }*/
 
-    private void hideNavigationBar() {
-        View decorView = getActivity().getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-    }
-
+    //隐藏状态栏
     private void hideStatusNavigationBar(){
-
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏
-
-        /*if(Build.VERSION.SDK_INT<16){
-            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }else{
-            int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN //hide statusBar
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION; //hide navigationBar
-            getActivity().getWindow().getDecorView().setSystemUiVisibility(uiFlags);
-        }*/
     }
 
 

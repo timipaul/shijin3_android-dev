@@ -13,7 +13,38 @@
     <color name="vip_old_price_color">#999999</color>
     <color name="color_ee5151">#EE5151</color>
     <color name="color_cccccc">#cccccc</color>
+
+    <color name="color_fe">#fefefe</color>
+    <color name="color_fd">#fdfcfc</color>
+    <color name="color_ee">#EEEEEE</color>
+    <color name="color_e8">#e8af15</color>
+    <color name="color_b5">#b5b4b4</color>
+    <color name="color_fc">#fcf2eb</color>
+
+    //主色
+    <color name="color_ffb">#ffbe01</color>
+
+    <color name="color_35">#353232</color>
     <color name="color_f3">#f37632</color>
+    <color name="color_f4">#f4b803</color>
+    <color name="color_f8">#f89401</color>
+    <color name="color_f8b">#f8b003</color>
+    <color name="color_f5">#f5bb10</color>
+    <color name="color_ff">#ff7c48</color>
+    <color name="color_fa">#fae7b0</color>
+    <color name="color_e9">#e99e34</color>
+    <color name="color_fea">#fead30</color>
+    <color name="color_fd8">#fd8814</color>
+    <color name="color_ef">#efb713</color>
+    <color name="color_fb5">#ffb54a</color>
+    <color name="color_fb">#fb6d3b</color>
+    <color name="color_ed">#ed723e</color>
+    <color name="color_fa7">#fa7f02</color>
+    <color name="color_ffd">#ffd24b</color>
+    <color name="color_fd5">#ffb54a</color>
+    <color name="color_fd6">#fb6d3b</color>
+    <color name="color_16">#16273a</color>
+    <color name="color_0a">#0abc64</color>
 
 
 

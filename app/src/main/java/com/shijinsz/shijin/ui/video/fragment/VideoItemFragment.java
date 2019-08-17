@@ -47,7 +47,7 @@ public class VideoItemFragment extends BaseFragment {
     @BindView(R.id.iv_play_thun)
     ImageView ivPlayThun;
     //private TXVodPlayer mVodPlayer;
-    private String url;
+    private String ads_id;
     @BindView(R.id.player)
     MyJzvdStd playerStandard;
 
@@ -75,7 +75,10 @@ public class VideoItemFragment extends BaseFragment {
     @Override
     public void initView(View rootView) {
         super.initView(rootView);
-        url = getArguments().getString(URL);
+        ads_id = getArguments().getString(URL);
+
+        System.out.println("接收到要显示的数据ID： " + ads_id);
+
         //创建player对象
         //mVodPlayer = new TXVodPlayer(getContext());
         //关键player对象与界面view
@@ -83,19 +86,19 @@ public class VideoItemFragment extends BaseFragment {
 //        url = "http://v.cctv.com/flash/mp4video6/TMS/2011/01/05/cf752b1c12ce452b3040cab2f90bc265_h264818000nero_aac32-1.mp4";
         //mVodPlayer.setLoop(true);
 
-        Glide.with(getContext())
+        /*Glide.with(getContext())
                 .load(url)
-                .into(ivPlayThun);
+                .into(ivPlayThun);*/
 
 
         /*if (mVodPlayer != null) {
             mVodPlayer.pause();
         }*/
-        Glide.with(getContext())
+        /*Glide.with(getContext())
                 .load(url)
-                .into(playerStandard.thumbImageView);
+                .into(playerStandard.thumbImageView);*/
 
-        playerStandard.setUp(url, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "");
+        //playerStandard.setUp(url, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "");
         playerStandard.startVideo();
         flow_play = ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_flow_play_video);
 

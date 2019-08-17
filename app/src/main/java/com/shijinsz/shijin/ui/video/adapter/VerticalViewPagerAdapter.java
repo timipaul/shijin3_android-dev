@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.hongchuang.ysblibrary.model.model.bean.Ads;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseFragment;
 import com.shijinsz.shijin.ui.video.fragment.VideoItemFragment;
@@ -26,11 +27,11 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
     private FragmentManager fragmentManager;
     private FragmentTransaction mCurTransaction;
     private BaseFragment mCurrentPrimaryItem = null;
-    private List<String> urlList;
+    private List<Ads> mData;
     private View mView;
 
-    public void setUrlList(List<String> urlList) {
-        this.urlList = urlList;
+    public void setUrlList(List<Ads> data) {
+        this.mData = data;
     }
 
 
@@ -42,7 +43,8 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return urlList.size();
+        System.out.println("适配器数据大小：" + mData.size());
+        return mData.size();
     }
 
     @Override
@@ -53,13 +55,15 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
         }
 
         VideoItemFragment fragment = new VideoItemFragment();
-        if (urlList != null && urlList.size() > 0) {
+        if (mData != null && mData.size() > 0) {
             Bundle bundle = new Bundle();
-            if (position >= urlList.size()) {
-                bundle.putString(VideoItemFragment.URL, urlList.get(position % urlList.size()));
+
+            if (position >= mData.size()) {
+                //bundle.putString(VideoItemFragment.URL, urlList.get(position % urlList.size()));
             } else {
-                bundle.putString(VideoItemFragment.URL, urlList.get(position));
+                //bundle.putString(VideoItemFragment.URL, urlList.get(position));
             }
+            bundle.putString(VideoItemFragment.URL,mData.get(position).getId());
             fragment.setArguments(bundle);
         }
 

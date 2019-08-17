@@ -6,7 +6,7 @@
     <string name="define">确定</string>
     <string name="QQNUM">2775285963</string>
 
-    <string name="banner_ad_unit_id">860</string>
+    <string name="banner_ad_unit_id">943</string>
     <!-- 设置 -->
     <string name="person_information">个人信息</string>
     <string name="setting">设置</string>
@@ -51,6 +51,7 @@
     <string name="comment">评论</string>
     <string name="ad_like">点赞</string>
     <string name="user_like">关注</string>
+    <string name="recommend_text">推荐</string>
     <string name="user_like_num">关注：</string>
     <string name="fans_num">粉丝：</string>
     <string name="fans">粉丝</string>
@@ -282,7 +283,6 @@
     <string name="get">获得:%s</string>
     <string name="myad_empty">好品牌好产品要让更多的人知道！</string>
     <string name="put_ad_now">马上发布资讯</string>
-    <string name="subtask_schedule">完成获得奖励,已完成%1$s/%2$s次</string>
 
     <!-- 我的 -->
     <string name="isfollow">已关注</string>
@@ -290,10 +290,11 @@
     <string name="unfollow_dialog">确定不再关注此人？</string>
     <string name="mylook">我看过的</string>
     <string name="convert_recode">兑换记录</string>
+    <string name="rush_recode">抢购记录</string>
     <string name="ten_gold_vip">十金大使</string>
-    <string name="vip_state_off">尊敬的用户,您暂未开通会员权益</string>
+    <string name="vip_state_off">尊敬的用户, 您暂未开通会员权益</string>
     <string name="vip_state_on">您的十金大使有效期至</string>
-    <string name="rechange_vip_hint">会员首次充值将返还等额金币 (如: %1$s,充值后可在"%2$s"中查看返还金币</string>
+    <string name="rechange_vip_hint">会员首次充值将返还等额金币 (如: %1$s,充值后可在""%2$s""中查看返还金币</string>
     <string name="total_look">共有%s条浏览记录</string>
     <string name="far_to_near">由远到近</string>
     <string name="near_to_far">由近到远</string>
@@ -320,13 +321,12 @@
     <string name="black_empty">你还没有设置黑名单用户</string>
     <string name="black">拉黑</string>
     <string name="addition_hint">亲,您还没有记录哦,立即答题吧</string>
-    <string name="vip_packet_money_hint">恭喜你获得%s金币奖励！</string>
-    <string name="official_explain">活动最终解释权十金官方所有</string>
 
 
     <!-- 我的钱包 -->
     <string name="my_wallet">我的钱包</string>
     <string name="now_balance">当前余额</string>
+    <string name="my_balance">我的余额</string>
     <string name="withdraw">提现</string>
     <string name="record">记录</string>
     <string name="shijin_box">十金宝箱</string>
@@ -335,8 +335,9 @@
     <string name="point_detail_list">金币明细</string>
     <string name="exchange">兑换</string>
     <string name="exchange_aday">每日%s次兑换机会</string>
-    <string name="exchanged">%s人已兑</string>
+    <string name="exchanged">%s人已抢</string>
     <string name="exchange_dialog">确定要兑换吗？</string>
+    <string name="exchange_success_2">兑换成功，请前往\n我的兑换 查看</string>
     <string name="exchange_fail">很抱歉，金币不足噢！</string>
     <string name="use">使用</string>
     <string name="contact_service">联系客服</string>
@@ -365,10 +366,19 @@
     <string name="withdraw_fail">提现失败</string>
     <string name="process_fail">审核失败</string>
     <string name="processing">处理中</string>
+
+    <!-- 会员专区 -->
     <string name="day_rate">今日兑换比率： %s金币=1元</string>
+    <string name="vip_packet_money_hint">恭喜获得%s元红包！</string>
+    <string name="official_explain">活动最终解释权十金官方所有</string>
+    <string name="commodity_prices">仅需%s金币</string>
+    <string name="number_people">%s人兑换</string>
+    <string name="zero_buy_hint">限量%1$s件&#160;&#160;&#160;今日%2$s结束</string>
+
 
     <!-- 任务 -->
     <string name="signin">签到</string>
+    <string name="signin_hint">签到得奖励,连续%s天抽大奖</string>
     <string name="new_person_task">新手任务</string>
     <string name="day_task">日常任务</string>
     <string name="challenge_task">挑战任务</string>
@@ -378,7 +388,7 @@
     <string name="new_task_prompt">完成指定任务,享新手福利</string>
     <string name="day_task_prompt">完成日常任务有奖励</string>
     <string name="challenge_task_prompt">完成挑战任务有奖励</string>
-    <string name="vote_prompt">每人每天一次投票机会,可领取%s金币</string>
+    <string name="vote_prompt">每天一次投票机会,可领取%s</string>
     <string name="invite_friend">邀请好友</string>
     <string name="invite_friend_prompt">每邀请一位好友可得%s</string>
     <string name="show_income">晒晒收入</string>
@@ -392,9 +402,9 @@
     <string name="good_feedback">优质反馈</string>
     <string name="good_feedback_prompt">向官方反馈产品使用时出现的问题，一经证实奖励%s金币</string>
     <string name="follow_wechat">关注微信公众号</string>
-    <string name="follow_wechat_prompt">关注十金微信公众号，各种优惠活动早知道</string>
     <string name="write_invite">填写邀请码</string>
     <string name="write_invite_prompt">填写好友邀请码，立得%s金币</string>
+    <string name="follow_wechat_prompt">关注十金微信公众号，各种优惠活动早知道</string>
     <string name="vote_end_date">截止时间: %s</string>
     <string name="vote_join_num">已参与人数: %s</string>
     <string name="day">%s天</string>
@@ -413,6 +423,7 @@
     <string name="invite_money">￥%s\n已获得奖励</string>
     <string name="invite_people">%s人\n已成功邀请</string>
     <string name="registered_at">注册于%s</string>
+    <string name="invite_earnings">到账收益%s元</string>
     <string name="invited_friend">已邀请好友</string>
     <string name="invited_record" formatted="false">%s&#160;刚刚邀请了%s位好友&#160;获得了%s奖励</string>
     <string name="invite_rule">邀请奖励规则</string>
@@ -439,21 +450,29 @@
     <string name="invite_empty">这么多的赚钱机会，赶紧分享给小伙伴吧！</string>
     <string name="start_date">发起时间: %s</string>
     <string name="join_people_number">参与人数: %s</string>
+    <string name="perfect_my_data">完善我的资料</string>
     <string name="send_one_img">发一次图文</string>
     <string name="send_one_video">发一次视频</string>
     <string name="whole_answer">完成互动问答</string>
-    <string name="perfect_my_data">完善我的资料</string>
     <string name="my_data_task_hint">完善个人资料奖励%s金币</string>
     <string name="invitation_code_task_hint">首次填写邀请码可奖励%s金币</string>
     <string name="invitation_friend_hint">邀请一位好友可奖励%s金币</string>
     <string name="first_issue_img_hint">首次发布图文可奖励%s金币</string>
     <string name="first_issue_video_hint">首次发布视频可奖励%s金币</string>
     <string name="first_finish_answer_hint">首次完成互动问答可奖励%s金币</string>
+    <string name="task_collect">收藏</string>
+    <string name="immediately_collect">立即收藏</string>
     <string name="immediately_perfection">立即完善</string>
     <string name="immediately_write">立即填写</string>
     <string name="immediately_invite">立即邀请</string>
     <string name="immediately_issue">立即发布</string>
     <string name="immediately_join">立即参与</string>
+    <string name="immediately_look">立即查看</string>
+    <string name="immediately_attention">立即关注</string>
+    <string name="immediately_comment">立即评论</string>
+    <string name="immediately_like">立即点赞</string>
+    <string name="immediately_transpond">立即转发</string>
+    <string name="task_statue_off">未完成</string>
     <string name="transpond">转发</string>
     <string name="transpond_hint">转发图文或视频可奖励%s金币</string>
     <string name="day_task_like_hint">完成日常点赞可奖励%s金币</string>
@@ -461,25 +480,33 @@
     <string name="day_task_issue_hint">每日发布视频或图文可奖励%s金币</string>
     <string name="day_task_attention_hint">关注用户可奖励%s金币</string>
     <string name="day_task_answer_hint">完成任意互动问答可奖励%s金币</string>
-    <string name="task_statue_off">未完成</string>
-    <string name="immediately_attention">立即关注</string>
     <string name="content_task">内容任务</string>
     <string name="issue_content">发布内容数</string>
     <string name="answer_num">答题数</string>
-    <string name="count_invitation">累计邀请%1$s未可奖励%2$s金币</string>
-    <string name="count_issue">累计发布内容数量达%1$s条可奖励%2$s金币</string>
-    <string name="count_answer">累计完成%1$s道答题可奖励%2$s金币</string>
+    <string name="count_invitation">累计邀请%1$s位奖励%2$s金币</string>
+    <string name="count_issue">累计发布内容数量达%1$s条奖励%2$s金币</string>
+    <string name="count_answer">累计完成%1$s道答题奖励%2$s金币</string>
+    <string name="subtask_schedule">完成获得奖励,已完成%1$s/%2$s次</string>
+    <string name="now_schedule">当前已达到21次</string>
+    <string name="subtask_schedule_hint">恭喜您获得%s金币</string>
+    <string name="loing_show_prize_hint">签到%1$s天/邀请%2$s个好友送好礼!</string>
+    <string name="get_prize">领取礼品</string>
+    <string name="postage_hint_text">免费商品,需自付%s元邮费!</string>
+
+
     <string name="new_person_task_rule">
-        活动对象：新用户均可参加，如已完成则无法重复领取
-        1.用户首次成功完善个人资料可获得金币奖励30个
-        2.用户复制个人账号上的邀请码发给好友可获得50个金币奖励。
-        3.首次成功邀请好友，好友通过你分享的邀请码下载并完成，双方即可领取8元返现并获得100个金币奖励。
-        4.新用户首次发布图文可获得50个金币奖励。
-        5.新用户首次发布视频可获得50个金币奖励。
-        6.新用户首次完成互动问答除应获得问答20金币奖励外可额外获得50个金币奖励。
-        *本次活动的最终解释权在法律允许的范围内归十金时代所有。
+        活动对象：新用户均可参加，如已完成则无法重复领取\n
+        1.用户首次成功完善个人资料可获得金币奖励30个\n
+        2.用户复制个人账号上的邀请码发给好友可获得50个金币奖励。\n
+        3.首次成功邀请好友，好友通过你分享的邀请码下载并完成，双方即可领取8元返现并获得100个金币奖励。\n
+        4.新用户首次发布图文可获得50个金币奖励。\n
+        5.新用户首次发布视频可获得50个金币奖励。\n
+        6.新用户首次完成互动问答除应获得问答20金币奖励外可额外获得50个金币奖励。\n
+        *本次活动的最终解释权在法律允许的范围内归十金时代所有。\n
 
     </string>
+
+
 
 
     <!-- 首页 -->
@@ -576,11 +603,6 @@
     <string name="APP">APP</string>
     <string name="tourism">旅游</string>
 
-    <!-- 会员 -->
-    <string name="commodity_prices">仅需%s金币</string>
-    <string name="number_people">%s人兑换</string>
-    <string name="zero_buy_hint">限量%1$s件&#160;&#160;&#160;今日%2$s结束</string>
-
 
     <!--首页-->
     <string name="exit_again">再按一次退出程序</string>
@@ -591,4 +613,6 @@
     <string name="downloading">正在下载...</string>
     <string name="about_x_yuan">约%s元</string>
     <string name="need_x_point">需要%s金币</string>
+
+    <!-- 协议 -->
 </resources>

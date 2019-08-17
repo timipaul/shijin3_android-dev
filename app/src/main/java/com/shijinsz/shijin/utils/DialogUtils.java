@@ -1,6 +1,8 @@
 package com.shijinsz.shijin.utils;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -118,6 +120,26 @@ public class DialogUtils {
     }
 
     /**
+     * 关注公众号弹框
+     */
+    private View taskAttentionWeChatView;
+    private NoticeDialog taskAttentionWeChatDialog;
+    public void showTaskAttentionWeChatDialog(View.OnClickListener clickListener){
+        taskAttentionWeChatView = (RelativeLayout) inflater.inflate(
+                R.layout.task_attetion_wechat_pop, null);
+
+        ((Button)taskAttentionWeChatView.findViewById(R.id.button)).setOnClickListener(clickListener);
+        taskAttentionWeChatDialog = new NoticeDialog(mContext);
+        taskAttentionWeChatDialog.setCanceledOnTouchOutside(false);
+        taskAttentionWeChatDialog.setCancelable(false);
+        taskAttentionWeChatDialog.showDialog(taskAttentionWeChatView, 0, 0,1);
+    }
+    public void dismissTaskAttentionWeChatDialog(){
+        taskAttentionWeChatDialog.dismiss();
+    }
+
+
+    /**
      * 挑战任务完成
      */
     private View taskAwardView;
@@ -134,6 +156,12 @@ public class DialogUtils {
         spannable.setSpan(sizeSpan, 5, 5+num.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         ((TextView)taskAwardView.findViewById(R.id.gold_num)).setText(spannable);
         ((ImageView)taskAwardView.findViewById(R.id.close)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismissTaskAwardDialog();
+            }
+        });
+        taskAwardView.findViewById(R.id.bg_img).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismissTaskAwardDialog();

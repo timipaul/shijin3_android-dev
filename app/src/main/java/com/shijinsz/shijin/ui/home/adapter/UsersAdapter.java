@@ -55,13 +55,13 @@ public class UsersAdapter extends BaseQuickAdapter<SearchedBean.Users,BaseViewHo
         if (item.getIs_follow().equals("on")){
             tvFollow.setText(mContext.getString(R.string.isfollow));
             tvFollow.setTextColor(mContext.getResources().getColor(R.color.text_999999));
-            tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow),null,null,null);
+            //tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_isfollow),null,null,null);
             tvFollow.setBackgroundResource(R.drawable.bg_follow);
             tvFollow.setPadding(10,0,0,0);
         }else {
             tvFollow.setText(mContext.getString(R.string.user_like));
-            tvFollow.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
-            tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow),null,null,null);
+            tvFollow.setTextColor(mContext.getResources().getColor(R.color.white));
+            //tvFollow.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_addfollow),null,null,null);
             tvFollow.setBackgroundResource(R.drawable.bg_addfollow);
             tvFollow.setPadding(24,0,0,0);
         }
@@ -69,7 +69,7 @@ public class UsersAdapter extends BaseQuickAdapter<SearchedBean.Users,BaseViewHo
         int index=item.getNickname().indexOf(key);
         String srt=item.getNickname();
         SpannableStringBuilder style = new SpannableStringBuilder(srt);
-        style.setSpan(new ForegroundColorSpan(mContext.getResources().getColor(R.color.colorPrimary)),index,index+key.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        style.setSpan(new ForegroundColorSpan(mContext.getResources().getColor(R.color.white)),index,index+key.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         helper.setText(R.id.tv_nickname,style);
         tvFollow.setOnClickListener(new View.OnClickListener() {
             @Override

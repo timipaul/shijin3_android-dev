@@ -280,7 +280,7 @@
     <string name="request_to">回复</string>
     <string name="comment_num">评论（%s）</string>
     <string name="report">举报</string>
-    <string name="get">获得:%s</string>
+    <string name="get">恭喜你获得%s</string>
     <string name="myad_empty">好品牌好产品要让更多的人知道！</string>
     <string name="put_ad_now">马上发布资讯</string>
 
@@ -326,6 +326,7 @@
     <!-- 我的钱包 -->
     <string name="my_wallet">我的钱包</string>
     <string name="now_balance">当前余额</string>
+    <string name="my_balance">我的余额</string>
     <string name="withdraw">提现</string>
     <string name="record">记录</string>
     <string name="shijin_box">十金宝箱</string>
@@ -382,7 +383,7 @@
     <string name="day_task">日常任务</string>
     <string name="challenge_task">挑战任务</string>
     <string name="vote_award">投票有奖</string>
-    <string name="open_box">开启宝箱</string>
+    <string name="open_box">开箱领取金币</string>
     <string name="signin_prompt">签到得金币，连续%s天抽大奖</string>
     <string name="new_task_prompt">完成指定任务,享新手福利</string>
     <string name="day_task_prompt">完成日常任务有奖励</string>
@@ -404,6 +405,7 @@
     <string name="write_invite">填写邀请码</string>
     <string name="write_invite_prompt">填写好友邀请码，立得%s金币</string>
     <string name="follow_wechat_prompt">关注十金微信公众号，各种优惠活动早知道</string>
+    <string name="task_attention_wechat_hint">关注十金微信公众号\n更多优惠活动早知道</string>
     <string name="vote_end_date">截止时间: %s</string>
     <string name="vote_join_num">已参与人数: %s</string>
     <string name="day">%s天</string>

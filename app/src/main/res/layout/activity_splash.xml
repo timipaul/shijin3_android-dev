@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -19,7 +20,8 @@
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:visibility="visible" />
 
 
 
@@ -34,7 +36,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:contentDescription="gdtslogan"
-            android:src="@mipmap/gdt_splash_logo" />
+            android:src="@mipmap/gdt_splash_logo"
+            tools:visibility="visible" />
 
         <!-- 2.开屏广告容器区域：-->
         <!-- 注意：该区域高度不得小于400dp。在本示例中没有写死splash_container的高度值，是因为第1部分的app_logo区域是一个高度很小的图片。 -->
@@ -42,7 +45,8 @@
             android:id="@+id/splash_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/app_logo" />
+            android:layout_above="@id/app_logo"
+            tools:visibility="visible" />
 
         <!-- 3.自定义跳过按钮区域：开发者可以根据需要自己实现不同样式的跳过按钮 -->
         <!-- 注意1：根据广告法规定，跳过按钮必须在屏幕当中出现。因此广告展示的时候，必须让将SkipView显示出来，即visible，否则将SDK将不展示广告，返回错误码608。。 -->
@@ -72,7 +76,8 @@
             android:layout_height="match_parent"
             android:layout_above="@id/app_logo"
             android:scaleType="fitXY"
-            android:src="@mipmap/splash_holder" />
+            android:src="@mipmap/splash_holder"
+            tools:visibility="visible" />
 </RelativeLayout>
 
 

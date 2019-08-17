@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:color="@color/orange" android:width="@dimen/dp_1"/>
-    <solid android:color="@color/orange" />
-    <corners android:radius="@dimen/dp_5" />
+
+    <solid android:color="@color/color_fd8" />
+    <corners android:radius="@dimen/dp_4" />
     <padding
         android:top="@dimen/dp_3"
         android:bottom="@dimen/dp_3"
         android:left="@dimen/dp_5"
-        android:right="@dimen/dp_5"
-        />
+        android:right="@dimen/dp_5" />
+    <gradient android:startColor="@color/color_fd8"
+        android:endColor="@color/color_ffd"
+        android:angle="360" />
 
 </shape>
