@@ -17,7 +17,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-
 import com.example.videolibrary.R;
 import com.example.videolibrary.utils.TrimVideoUtil;
 

@@ -6,9 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -23,7 +21,6 @@ import android.widget.TextView;
 
 import com.mrgao.luckly_popupwindow.adapter.ListDataAdapter;
 import com.mrgao.luckly_popupwindow.beans.DataBeans;
-import com.mrgao.luckly_popupwindow.utils.LinnerItemDivider;
 import com.mrgao.luckly_popupwindow.utils.PopouBackView;
 import com.mrgao.luckly_popupwindow.utils.PopupWindowUtils;
 import com.mrgao.luckly_popupwindow.utils.ScreenUtils;

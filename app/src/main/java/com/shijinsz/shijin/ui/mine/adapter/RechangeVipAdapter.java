@@ -2,22 +2,16 @@ package com.shijinsz.shijin.ui.mine.adapter;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.model.model.bean.VipPriceBean;
-import com.hongchuang.ysblibrary.model.model.bean.VipRechangeBean;
 import com.shijinsz.shijin.R;
 
 import java.util.List;

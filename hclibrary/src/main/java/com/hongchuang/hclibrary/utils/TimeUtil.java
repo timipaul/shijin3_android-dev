@@ -1,6 +1,5 @@
 package com.hongchuang.hclibrary.utils;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -4,7 +4,6 @@ package com.hongchuang.ysblibrary.model.model;
 import android.app.Activity;
 import android.content.Context;
 
-import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.hongchuang.ysblibrary.dao.BlackListBean;
 import com.hongchuang.ysblibrary.model.model.bean.AdAllianceBean;
 import com.hongchuang.ysblibrary.model.model.bean.AdBean;
@@ -21,12 +20,12 @@ import com.hongchuang.ysblibrary.model.model.bean.BoxlistBean;
 import com.hongchuang.ysblibrary.model.model.bean.CategoriesBean;
 import com.hongchuang.ysblibrary.model.model.bean.CertificationBean;
 import com.hongchuang.ysblibrary.model.model.bean.ChangeUserInfoBean;
+import com.hongchuang.ysblibrary.model.model.bean.CommodityCardBean;
 import com.hongchuang.ysblibrary.model.model.bean.FatherCommentBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowDetailBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowNumberBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowUserBean;
-import com.hongchuang.ysblibrary.model.model.bean.GetAdBean;
 import com.hongchuang.ysblibrary.model.model.bean.GoodsBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationInfoBean;
@@ -57,19 +56,14 @@ import com.hongchuang.ysblibrary.model.model.bean.VIpStateBean;
 import com.hongchuang.ysblibrary.model.model.bean.VipPriceBean;
 import com.hongchuang.ysblibrary.model.model.bean.VipRechangeBean;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
-import com.hongchuang.ysblibrary.model.model.bean.WXPayBean;
 import com.hongchuang.ysblibrary.model.model.bean.WechatPayBean;
 import com.hongchuang.ysblibrary.model.model.bean.YesterdayBean;
 import com.hongchuang.ysblibrary.model.model.tencent.QQLoginHandle;
 import com.hongchuang.ysblibrary.model.model.tencent.QQLoginResultBean;
 
-import java.io.File;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.RequestBody;
-import retrofit.callback.BaseResult;
 import retrofit.callback.YRequestCallback;
 
 /***
@@ -81,6 +75,10 @@ import retrofit.callback.YRequestCallback;
 public interface OAuthService {
 
 
+    /* 卡账号密码提交验证 */
+    void card_verify(Map<String, Object> map, YRequestCallback<CommodityCardBean> callback);
+    /*提交卡片兑换地址信息*/
+    void set_card_data(Map<String, Object> map, YRequestCallback<CommodityCardBean> callback);
     /* 提交商品信息 收货地址 */
     void set_goods_data(Map<String, Object> map, YRequestCallback<GoodsBean> callback);
     /* 提交转发分享信息 */

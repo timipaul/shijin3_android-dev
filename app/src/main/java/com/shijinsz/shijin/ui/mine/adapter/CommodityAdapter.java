@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hongchuang.ysblibrary.model.model.bean.GoodsBean;
-import com.hongchuang.ysblibrary.model.model.bean.VipRechangeBean;
 import com.shijinsz.shijin.R;
 
 import java.util.List;

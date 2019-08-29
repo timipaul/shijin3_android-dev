@@ -10,9 +10,6 @@ import com.hongchuang.hclibrary.utils.LogUtils;
 import com.hongchuang.hclibrary.utils.TextUtil;
 import com.hongchuang.ysblibrary.common.GrobalListener;
 import com.hongchuang.ysblibrary.model.model.OAuthServiceImp;
-//import com.tencent.mm.opensdk.openapi.IWXAPI;
-//import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-//import com.tencent.tauth.Tencent;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -24,6 +21,10 @@ import java.util.Map;
 
 import retrofit.NetWorkReceiver;
 import retrofit.callback.FailOrExceptionType;
+
+//import com.tencent.mm.opensdk.openapi.IWXAPI;
+//import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+//import com.tencent.tauth.Tencent;
 
 
 /***

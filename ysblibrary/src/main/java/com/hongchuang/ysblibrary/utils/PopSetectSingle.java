@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-
 import com.hongchuang.ysblibrary.R;
 
 import java.util.ArrayList;

@@ -17,6 +17,7 @@ import com.hongchuang.ysblibrary.model.model.bean.BoxlistBean;
 import com.hongchuang.ysblibrary.model.model.bean.CategoriesBean;
 import com.hongchuang.ysblibrary.model.model.bean.CertificationBean;
 import com.hongchuang.ysblibrary.model.model.bean.ChangeUserInfoBean;
+import com.hongchuang.ysblibrary.model.model.bean.CommodityCardBean;
 import com.hongchuang.ysblibrary.model.model.bean.FatherCommentBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowDetailBean;
@@ -52,7 +53,6 @@ import com.hongchuang.ysblibrary.model.model.bean.VIpStateBean;
 import com.hongchuang.ysblibrary.model.model.bean.VipPriceBean;
 import com.hongchuang.ysblibrary.model.model.bean.VipRechangeBean;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
-import com.hongchuang.ysblibrary.model.model.bean.WXPayBean;
 import com.hongchuang.ysblibrary.model.model.bean.WechatPayBean;
 import com.hongchuang.ysblibrary.model.model.bean.YesterdayBean;
 
@@ -62,15 +62,12 @@ import java.util.Map;
 import retrofit.callback.BaseResult;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
-import retrofit2.http.Url;
 import rx.Observable;
 
 /***
@@ -82,6 +79,12 @@ public interface IYSBApi {
     String urltop = "";
 
 
+    /* 验证兑换卡 卡号密码 */
+    @POST(urltop + "cardDetails/check")
+    Observable <BaseResult<CommodityCardBean>> card_verify(@Body Map<String, Object> map);
+    /* 优惠卡领取 */
+    @POST(urltop + "cardDetails/info")
+    Observable <BaseResult<CommodityCardBean>> set_card_data(@Body Map<String, Object> map);
     @POST(urltop + "goods/info")
     Observable <BaseResult<GoodsBean>> set_goods_data(@Body Map<String, Object> map);
     /* 提交转发记录 */

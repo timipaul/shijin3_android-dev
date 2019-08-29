@@ -12,7 +12,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-
 import com.hongchuang.ysblibrary.R;
 import com.hongchuang.ysblibrary.dao.AreaBean;
 import com.hongchuang.ysblibrary.dao.CityBean;

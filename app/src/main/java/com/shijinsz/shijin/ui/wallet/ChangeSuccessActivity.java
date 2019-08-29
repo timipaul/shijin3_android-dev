@@ -1,7 +1,5 @@
 package com.shijinsz.shijin.ui.wallet;
 
-import android.graphics.Paint;
-import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -13,7 +11,6 @@ import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

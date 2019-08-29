@@ -10,6 +10,13 @@ android {
         versionCode 45
         versionName "4.1.0"
     }
+
+    dexOptions { //优化dex配置 2019.8.27 paul
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "2g"
+    }
+
     buildTypes {
         release {
             minifyEnabled false

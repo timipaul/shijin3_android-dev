@@ -4,12 +4,13 @@ package com.hongchuang.hclibrary.utils;
  * Created by yrdan on 2018/8/7.
  */
 
-import java.io.File;
-import java.math.BigDecimal;
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
+
+import java.io.File;
+import java.math.BigDecimal;
 
 /** * 本应用数据清除管理器 */
 public class DataCleanManager {

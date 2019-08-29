@@ -71,12 +71,13 @@
                 android:scaleType="centerCrop"
                 />
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/im_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@mipmap/icon_play" />
+                android:src="@mipmap/icon_play"
+                tools:visibility="gone" />-->
 
         </FrameLayout>
 

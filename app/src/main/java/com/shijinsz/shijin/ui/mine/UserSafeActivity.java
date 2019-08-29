@@ -18,7 +18,6 @@ import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.StatusBarUtil;
-//import com.tencent.tauth.UiError;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +30,8 @@ import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 import retrofit.callback.YRequestCallback;
+
+//import com.tencent.tauth.UiError;
 
 /**
  * Created by yrdan on 2018/8/7.

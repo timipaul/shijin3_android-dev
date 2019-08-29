@@ -3,11 +3,8 @@ package com.shijinsz.shijin.base;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
-
-import java.io.File;
 
 /**
  * Created by yrdan on 2018/11/20.

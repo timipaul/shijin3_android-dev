@@ -17,7 +17,6 @@ import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.hclibrary.utils.TextUtil;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
-import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
 import com.hongchuang.ysblibrary.model.model.bean.GoodsBean;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
 import com.shijinsz.shijin.R;
@@ -26,7 +25,6 @@ import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 
-import java.text.BreakIterator;
 import java.util.HashMap;
 import java.util.Map;
 

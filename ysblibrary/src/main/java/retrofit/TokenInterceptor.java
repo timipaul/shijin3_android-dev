@@ -1,8 +1,6 @@
 package retrofit;
 
 
-import android.util.Log;
-
 import com.hongchuang.hclibrary.utils.DeviceUuidFactory;
 import com.hongchuang.hclibrary.utils.DevicesUtil;
 import com.hongchuang.hclibrary.utils.LogUtils;
@@ -18,7 +16,6 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 
-import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;

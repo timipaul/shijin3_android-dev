@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -29,13 +28,15 @@
         android:background="@drawable/video_bg_shade"
         >
 
-        <ImageView
+        <Button
             android:id="@+id/seek_but"
-            android:layout_width="@dimen/dp_14"
-            android:layout_height="@dimen/dp_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/sp_20"
-            android:src="@mipmap/video_seek_ic"
-            android:layout_marginTop="@dimen/dp_10"/>
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@null"
+            android:minHeight="@dimen/dp_20"
+            android:drawableLeft="@mipmap/video_seek_ic" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -57,8 +58,7 @@
 
             <RadioButton
                 android:id="@+id/site_but"
-                style="@style/video_menu_button"
-                android:text="深圳市" />
+                style="@style/video_menu_button" />
         </RadioGroup>
 
     </RelativeLayout>
@@ -82,32 +82,33 @@
             android:drawablePadding="@dimen/dp_3"
             android:minWidth="@dimen/dp_0"
             android:minHeight="0dp"
-            android:paddingLeft="@dimen/dp_6"
+            android:paddingLeft="@dimen/dp_10"
             android:paddingTop="@dimen/dp_3"
             android:paddingRight="@dimen/dp_6"
             android:paddingBottom="@dimen/dp_4"
-            android:text="同款草帽"
-            android:textSize="@dimen/sp_10"
-            android:textColor="@color/gray"/>
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sp_10" />
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/commodity"
+            android:layout_marginLeft="@dimen/dp_10"
             android:layout_marginTop="@dimen/dp_10"
             android:layout_marginBottom="@dimen/dp_10"
-            android:textColor="@color/white"
-            android:text="月芽儿" />
+            android:textColor="@color/white" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/video_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/username"
-            android:layout_marginBottom="@dimen/dp_25"
-            android:textColor="@color/white"
-            android:text="准备了半年的房车旅行梦终于实现了，心情美丽！" />
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_35"
+            android:text=""
+            android:textColor="@color/white" />
 
 
     </RelativeLayout>
@@ -139,7 +140,7 @@
             android:minHeight="0dp" />
 
         <Button
-            android:id="@+id/user_like"
+            android:id="@+id/user_like_video"
             style="@style/video_right_menu_button"
             android:layout_below="@id/user_img"
             android:layout_marginTop="@dimen/dp_34"
@@ -149,7 +150,7 @@
         <Button
             android:id="@+id/user_comment"
             style="@style/video_right_menu_button"
-            android:layout_below="@id/user_like"
+            android:layout_below="@id/user_like_video"
             android:drawableTop="@mipmap/video_news_ic"
             android:text="0" />
 

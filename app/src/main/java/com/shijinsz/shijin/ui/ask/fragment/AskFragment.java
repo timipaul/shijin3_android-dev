@@ -1,13 +1,10 @@
 package com.shijinsz.shijin.ui.ask.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -43,8 +40,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import retrofit.callback.YRequestCallback;
 
 /**
@@ -235,6 +230,7 @@ public class AskFragment extends BaseFragment implements OnRefreshListener, OnLo
             public void onSuccess(AdsBean var1) {
                 mStateView.showContent();
                 refresh.finishLoadMore();
+
                 refresh.finishRefresh();
                 if (isRefresh) {
                     refresh.setNoMoreData(false);

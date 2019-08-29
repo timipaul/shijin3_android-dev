@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:color="@color/mine_function_divider"
+        android:wid="@dimen/dp_1"/>
+    <corners android:radius="@dimen/dp_0"/>&lt;!&ndash; 视频评论修改 &ndash;&gt;
+    <solid android:color="@color/white"/>
+</shape>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- 底部横线 -->
+    <item >
+        <shape
+            android:dither="true">
+            <stroke android:width="@dimen/dp_1" android:color="@color/mine_function_divider"/>
+            <corners android:radius="@dimen/dp_0"/>
+        </shape>
+    </item>
+    <item android:left="@dimen/dp_0" android:right="@dimen/dp_0" android:top="@dimen/dp_0" android:bottom="@dimen/dp_1">
+        <shape>
+            <solid android:color="@color/white" />
+            <corners android:radius="@dimen/dp_0"/>
+        </shape>
+    </item>
+</layer-list>

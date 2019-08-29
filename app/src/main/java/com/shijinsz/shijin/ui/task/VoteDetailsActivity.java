@@ -14,7 +14,6 @@ import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
-import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;

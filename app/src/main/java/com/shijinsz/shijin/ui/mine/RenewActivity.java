@@ -1,7 +1,6 @@
 package com.shijinsz.shijin.ui.mine;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -42,7 +41,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit.callback.YRequestCallback;
 

@@ -26,7 +26,6 @@ import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.ui.home.PerfectInformation1Activiity;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.StatusBarUtil;
-//import com.tencent.tauth.UiError;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +39,8 @@ import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 import retrofit.ToKenUtil;
 import retrofit.callback.YRequestCallback;
+
+//import com.tencent.tauth.UiError;
 
 /**
  * Created by Administrator on 2018/7/25.
@@ -408,8 +409,7 @@ public class LoginActivity extends BaseActivity implements QQLoginHandle {
 
     public void SaveData(UserBean bean){
 
-        System.out.println("是否会员: " + bean.getUser().getMember_status());
-
+        //System.out.println("是否会员: " + bean.getUser().getMember_status());
         ToKenUtil.saveToken(bean.getToken());
         ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_first_login_status,bean.getUser().getFirst_login_status());
         ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_nickname,bean.getUser().getNickname());

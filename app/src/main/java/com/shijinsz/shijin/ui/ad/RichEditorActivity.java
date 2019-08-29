@@ -33,7 +33,6 @@ import com.hongchuang.ysblibrary.model.model.OssCallback;
 import com.hongchuang.ysblibrary.model.model.bean.StsBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
-import com.shijinsz.shijin.utils.StatusBarUtil;
 
 import org.devio.takephoto.compress.CompressConfig;
 import org.devio.takephoto.model.CropOptions;

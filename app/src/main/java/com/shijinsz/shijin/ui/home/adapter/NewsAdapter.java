@@ -1,28 +1,21 @@
 package com.shijinsz.shijin.ui.home.adapter;
 
-import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
-import com.hongchuang.hclibrary.view.CircleImageView;
 import com.hongchuang.ysblibrary.model.model.bean.Ads;
-import com.hongchuang.ysblibrary.model.model.bean.AdsBean;
 import com.hubcloud.adhubsdk.NativeAd;
 import com.hubcloud.adhubsdk.NativeAdResponse;
 import com.hubcloud.adhubsdk.internal.nativead.NativeAdEventListener;
 import com.hubcloud.adhubsdk.internal.nativead.NativeAdUtil;
-import com.qq.e.ads.nativ.NativeExpressADView;
 import com.shijinsz.shijin.R;
-import com.shijinsz.shijin.base.BaseActivity;
-import com.shijinsz.shijin.ui.mine.UserDetailActivity;
 
 import java.util.List;
 
@@ -102,10 +95,10 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
             case BIG_IMG:
                 if (item.getAd_type().equals("picture")) {
                     bigimg.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    helper.setGone(R.id.im_play,false);
+                    //helper.setGone(R.id.im_play,false);
                 }else {
                     bigimg.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                    helper.setGone(R.id.im_play,true);
+                    //helper.setGone(R.id.im_play,true);
                 }
                 helper.setGone(R.id.tv_red_type,false);
                 helper.setText(R.id.tv_red_type,"广告");
@@ -138,7 +131,7 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
                 helper.setText(R.id.tv_red_type,"广告");
                 Glide.with(mContext).load(item.getAd_title_pics().get(0)).into(bigimg);
                 bigimg.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                helper.setGone(R.id.im_play,false);
+                //helper.setGone(R.id.im_play,false);
                 helper.setGone(R.id.ln_bottom,false);
                 ImageView adimg=helper.getView(R.id.img_ad);
                 if (((NativeAdResponse)item.getAdhub()).getAdUrl().getType()==0) {

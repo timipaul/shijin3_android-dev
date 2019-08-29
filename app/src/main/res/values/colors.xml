@@ -20,12 +20,14 @@
     <color name="color_e8">#e8af15</color>
     <color name="color_b5">#b5b4b4</color>
     <color name="color_fc">#fcf2eb</color>
+    <color name="color_c9">#c9caca</color>
 
     //主色
     <color name="color_ffb">#ffbe01</color>
+    //字体颜色
+    <color name="color_f3">#f37632</color>
 
     <color name="color_35">#353232</color>
-    <color name="color_f3">#f37632</color>
     <color name="color_f4">#f4b803</color>
     <color name="color_f8">#f89401</color>
     <color name="color_f8b">#f8b003</color>
@@ -42,10 +44,13 @@
     <color name="color_fa7">#fa7f02</color>
     <color name="color_ffd">#ffd24b</color>
     <color name="color_fd5">#ffb54a</color>
+    <color name="color_ec">#ec781b</color>
     <color name="color_fd6">#fb6d3b</color>
     <color name="color_16">#16273a</color>
     <color name="color_0a">#0abc64</color>
-
-
+    <color name="color_26">#262626</color>
+    <color name="color_c0">#c0c0c0</color>
+    <color name="color_9b">#9b9a9a</color>
+    <color name="color_f8e">#f8efd5</color>
 
 </resources>

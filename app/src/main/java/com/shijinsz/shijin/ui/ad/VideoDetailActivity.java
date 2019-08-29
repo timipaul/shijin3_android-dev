@@ -63,7 +63,6 @@ import com.shijinsz.shijin.utils.GlideApp;
 import com.shijinsz.shijin.utils.LoginUtil;
 import com.shijinsz.shijin.utils.ShareDialog;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +74,7 @@ import butterknife.OnClick;
 import cn.jzvd.JZVideoPlayerStandard;
 import retrofit.callback.YRequestCallback;
 
-import static android.widget.PopupWindow.*;
+import static android.widget.PopupWindow.INPUT_METHOD_NEEDED;
 
 /**
  * Created by yrdan on 2018/8/24.
@@ -1155,7 +1154,8 @@ public class VideoDetailActivity extends BaseActivity {
         if (isFirst) {
             changeState("first_answer");
         } else {
-            onemore.setVisibility(View.GONE);
+            //onemore.setVisibility(View.GONE);
+            onemore.setEnabled(false);
         }
         circleTextProgressbar.setProgressType(CircleTextProgressbar.ProgressType.COUNT_BACK);
         circleTextProgressbar.setProgressLineWidth(5);
@@ -1293,97 +1293,57 @@ public class VideoDetailActivity extends BaseActivity {
         option1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isoption1) {
-                    isoption1 = false;
-                    option1.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
-                } else {
-                    isoption1 = true;
-                    option1.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
-                }
-                if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
-                    if (isFirst) {
-                        onemore.setText(getString(R.string.one_more));
-                    } else {
-                        onemore.setVisibility(View.INVISIBLE);
-                    }
+                isoption1 = !isoption1;
+                setOptionClick(isoption1,option1);
 
-                } else {
-                    onemore.setVisibility(View.VISIBLE);
-                    onemore.setText(getString(R.string.define));
-                }
             }
         });
+
         option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isoption2) {
-                    isoption2 = false;
-                    option2.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
-                } else {
-                    isoption2 = true;
-                    option2.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
-                }
-                if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
-                    if (isFirst) {
-                        onemore.setText(getString(R.string.one_more));
-                    } else {
-                        onemore.setVisibility(View.INVISIBLE);
-                    }
-
-                } else {
-                    onemore.setVisibility(View.VISIBLE);
-                    onemore.setText(getString(R.string.define));
-                }
+                isoption2 = !isoption2;
+                setOptionClick(isoption2,option2);
             }
         });
         option3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isoption3) {
-                    isoption3 = false;
-                    option3.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
-                } else {
-                    isoption3 = true;
-                    option3.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
-                }
-                if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
-                    if (isFirst) {
-                        onemore.setText(getString(R.string.one_more));
-                    } else {
-                        onemore.setVisibility(View.INVISIBLE);
-                    }
-
-                } else {
-                    onemore.setVisibility(View.VISIBLE);
-                    onemore.setText(getString(R.string.define));
-                }
+                isoption3 = !isoption3;
+                setOptionClick(isoption3,option3);
             }
         });
         option4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isoption4) {
-                    isoption4 = false;
-                    option4.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
-                } else {
-                    isoption4 = true;
-                    option4.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
-                }
-                if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
-                    if (isFirst) {
-                        onemore.setText(getString(R.string.one_more));
-                    } else {
-                        onemore.setVisibility(View.INVISIBLE);
-                    }
-
-                } else {
-                    onemore.setVisibility(View.VISIBLE);
-                    onemore.setText(getString(R.string.define));
-                }
+                isoption4 = !isoption4;
+                setOptionClick(isoption4,option4);
             }
         });
         circleTextProgressbar.start();
 
+    }
+
+    //设置点击内容
+    public void setOptionClick(boolean isoption,TextView option){
+        if (isoption) {
+            option.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
+        } else {
+            option.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
+        }
+        if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
+            if (isFirst) {
+                onemore.setText(getString(R.string.one_more));
+            } else {
+                onemore.setEnabled(false);
+                //onemore.setVisibility(View.INVISIBLE);
+            }
+
+        } else {
+            onemore.setVisibility(View.VISIBLE);
+            onemore.setText(getString(R.string.define));
+            onemore.setEnabled(true);
+        }
     }
 
     //设置数据内容
@@ -1458,7 +1418,8 @@ public class VideoDetailActivity extends BaseActivity {
                 text.setText(getString(R.string.isanswar));
                 text.setEnabled(false);
                 if (var1.getIs_right().equals("on")) {
-                    onemore.setVisibility(View.INVISIBLE);
+                    //onemore.setVisibility(View.INVISIBLE);
+                    onemore.setEnabled(false);
                     icon_true.setVisibility(View.VISIBLE);
                     chutdowm.setVisibility(View.GONE);
                     circleTextProgressbar.setProgress(100);
@@ -1509,7 +1470,8 @@ public class VideoDetailActivity extends BaseActivity {
                     }
                     mailBoxDialog.dismiss();
                 } else {
-                    onemore.setVisibility(View.GONE);
+                    //.setVisibility(View.GONE);
+                    onemore.setEnabled(false);
                     tv_wrong.setVisibility(View.VISIBLE);
                     icon_true.setVisibility(View.VISIBLE);
                     icon_true.setImageResource(R.mipmap.icon_wrong);

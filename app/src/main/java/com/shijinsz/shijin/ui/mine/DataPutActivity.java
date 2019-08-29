@@ -1,6 +1,5 @@
 package com.shijinsz.shijin.ui.mine;
 
-import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
@@ -28,7 +27,6 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
-import com.shijinsz.shijin.ui.ad.VideoDetailActivity;
 import com.shijinsz.shijin.ui.mine.adapter.DataPutAdapter;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.StatusBarUtil;

@@ -1,11 +1,8 @@
 package com.shijinsz.shijin.ui.home.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.renderscript.Script;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -48,14 +45,12 @@ import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.HeaderView;
 import com.shijinsz.shijin.utils.LoginUtil;
 
-import java.security.cert.CertSelector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import retrofit.SSLSocketFactoryUtils;
 import retrofit.callback.YRequestCallback;
 
 /**
@@ -83,7 +78,7 @@ public class NewListFragment2 extends BaseFragment implements OnRefreshListener,
     private String type;
 
     public static final int MAX_ITEMS = 50;
-    public static int AD_COUNT = 3;    // 加载广告的条数，取值范围为[1, 10]
+    public static int AD_COUNT = 10;    // 加载广告的条数，取值范围为[1, 10]
     public static int FIRST_AD_POSITION = 5; // 第一条广告的位置
     public static int ITEMS_PER_AD = 10;     // 每间隔10个条目插入一条广告
 
@@ -221,7 +216,7 @@ public class NewListFragment2 extends BaseFragment implements OnRefreshListener,
     }
 
     private int getMaxVideoDuration() {
-        //return getIntent().getIntExtra(Constants.MAX_VIDEO_DURATION, 0);
+        //return getActivity().getIntent().getIntExtra(Constants.MAX_VIDEO_DURATION, 0);
         return 0;
     }
 
@@ -277,7 +272,7 @@ public class NewListFragment2 extends BaseFragment implements OnRefreshListener,
         Map map = new HashMap();
 //        map.put("mode", "index");
         map.put("cursor", cursor1);
-        map.put("size", "10");
+        map.put("size", "15");
         map.put("channel",channel);
 //        if (!type.equals("individuation")&&!type.equals("follow")){
 ////            channel="dynamic";
@@ -311,8 +306,9 @@ public class NewListFragment2 extends BaseFragment implements OnRefreshListener,
 
 
                 long temp_data = System.currentTimeMillis() / 1000;
-                //System.out.println("时间: " + (temp_data - ad_cursor));
+                System.out.println("时间: " + (temp_data - ad_cursor));
                 if(ad_cursor == 0 || temp_data - ad_cursor > 50){
+                    System.out.println("加载广告*****************");
                     AD_COUNT++;
                     initNativeExpressAD();
                     ad_cursor = temp_data;
@@ -663,6 +659,13 @@ public class NewListFragment2 extends BaseFragment implements OnRefreshListener,
                         });
                         break;
                 }
+
+                customViewHolder.title.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        toClickIntent(position);
+                    }
+                });
 
                 switch (ads.getTags().toString()){
                     case "fixed":

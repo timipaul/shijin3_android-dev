@@ -7,15 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
 import com.shijinsz.shijin.R;
-
-
-import java.util.List;
 
 /**
  * Copyright (C)

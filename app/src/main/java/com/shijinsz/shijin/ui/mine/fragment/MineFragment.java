@@ -18,7 +18,6 @@ import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -32,6 +31,7 @@ import com.hongchuang.hclibrary.utils.AndroidSystemUtil;
 import com.hongchuang.hclibrary.utils.TextUtil;
 import com.hongchuang.hclibrary.view.CircleImageView;
 import com.hongchuang.ysblibrary.YSBSdk;
+import com.hongchuang.ysblibrary.common.Constants;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.DataBean;
 import com.hongchuang.ysblibrary.model.model.bean.MessageBean;
@@ -44,7 +44,6 @@ import com.shijinsz.shijin.base.AppInstallReceiver;
 import com.shijinsz.shijin.base.BaseFragment;
 import com.shijinsz.shijin.ui.message.MessageActivity;
 import com.shijinsz.shijin.ui.mine.CertificationActivity;
-import com.shijinsz.shijin.ui.mine.CouponRecordActivity;
 import com.shijinsz.shijin.ui.mine.DataCacheActivity;
 import com.shijinsz.shijin.ui.mine.FeedbackActivity;
 import com.shijinsz.shijin.ui.mine.FollowListActivity;
@@ -65,6 +64,7 @@ import com.shijinsz.shijin.utils.BadgeUtil;
 import com.shijinsz.shijin.utils.DownloadAPK;
 import com.shijinsz.shijin.utils.GlideApp;
 import com.shijinsz.shijin.utils.LoginUtil;
+import com.xiqu.sdklibrary.util.XWUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -581,7 +581,7 @@ public class MineFragment extends BaseFragment {
     @OnClick({R.id.ln_money, R.id.ln_point, R.id.img_notica, R.id.img_avatar, R.id.ln_myad,
             R.id.tv_vip, R.id.tv_looked, R.id.tv_conversion,R.id.tv_gz,
             R.id.tv_sc, R.id.tv_yj, R.id.tv_sj, R.id.tv_sz, R.id.tv_shenqing, R.id.tv_tg,
-            R.id.tv_nickname,R.id.tv_rush,R.id.tv_coupon,R.id.gift_conversion,R.id.invite_friend,R.id.friend_list})
+            R.id.tv_nickname,R.id.tv_rush,R.id.tv_coupon,R.id.gift_conversion,R.id.invite_friend,R.id.my_game})
 
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -728,11 +728,18 @@ public class MineFragment extends BaseFragment {
                 }
                 startActivity(new Intent(mActivity, InviteFriendActivity.class));
                 break;
-            case R.id.friend_list:
-                //好友列表
+            case R.id.my_game:
+                //推广游戏
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
+
+                //嘻趣游戏
+                String username = ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_ID);
+                XWUtils.getInstance(getContext()).init(Constants.XIQU_APPID,Constants.XIQU_SECRET,username);
+                //跳转进入广告展示页面
+                XWUtils.getInstance(getContext()).jumpToAd();
+
                 break;
         }
     }

@@ -1,8 +1,5 @@
 package com.hongchuang.ysblibrary.dao;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-
 /**
  * Created by Administrator on 2018/4/19.
  */

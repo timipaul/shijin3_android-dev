@@ -3,10 +3,8 @@ package com.hongchuang.hclibrary.view;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -26,11 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.hongchuang.hclibrary.R;
-import com.hongchuang.hclibrary.manager.MActivityManager;
 import com.hongchuang.hclibrary.utils.LogUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**

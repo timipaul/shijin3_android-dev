@@ -18,7 +18,6 @@ import com.github.nukc.stateview.StateView;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
-import com.hongchuang.ysblibrary.model.model.bean.ShareBean;
 import com.hongchuang.ysblibrary.model.model.bean.TaskBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.ui.mine.ReportActivity;

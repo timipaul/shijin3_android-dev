@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-
 import com.example.videolibrary.R;
 import com.example.videolibrary.features.trim.VideoTrimmerAdapter;
 import com.example.videolibrary.interfaces.IVideoTrimmerView;

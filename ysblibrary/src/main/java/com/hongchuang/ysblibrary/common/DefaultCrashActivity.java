@@ -1,21 +1,18 @@
 package com.hongchuang.ysblibrary.common;
 
-import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.hongchuang.hclibrary.utils.TextUtil;
 import com.hongchuang.ysblibrary.R;
+
 //import com.hongchuang.ysb_app_for_android.utils.exception.AppOnCrash;
-import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 
 /***
  * 功能描述:默认crash界面

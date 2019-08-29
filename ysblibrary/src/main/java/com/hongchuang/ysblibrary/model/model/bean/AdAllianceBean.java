@@ -1,7 +1,5 @@
 package com.hongchuang.ysblibrary.model.model.bean;
 
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-
 /**
  * Copyright (C)
  * FileName: AdAllianceBean

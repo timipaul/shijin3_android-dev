@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 
-import com.hongchuang.hclibrary.utils.LogUtils;
-import com.hongchuang.hclibrary.utils.TextUtil;
-import com.hongchuang.ysblibrary.R;
-import com.hongchuang.ysblibrary.YSBLibrary;
 import com.hongchuang.ysblibrary.utils.entity.ShareBean;
+
+import java.io.ByteArrayOutputStream;
+import java.util.List;
+
+import retrofit.callback.YRequestCallback;
+
 //import com.tencent.connect.share.QQShare;
 //import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
 //import com.tencent.mm.opensdk.modelmsg.WXImageObject;
@@ -22,18 +22,6 @@ import com.hongchuang.ysblibrary.utils.entity.ShareBean;
 //import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 //import com.tencent.tauth.IUiListener;
 //import com.tencent.tauth.UiError;
-
-import java.io.ByteArrayOutputStream;
-import java.util.List;
-
-import retrofit.callback.YRequestCallback;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
-import static com.hongchuang.hclibrary.utils.ImageUtil.GetLocalOrNetBitmap;
 
 
 /***

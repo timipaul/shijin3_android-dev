@@ -1,8 +1,6 @@
 package com.shijinsz.shijin.ui.mine.adapter;
 
 import android.content.Context;
-import android.graphics.Paint;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;

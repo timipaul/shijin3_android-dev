@@ -4,12 +4,11 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +21,7 @@ import android.widget.TextView;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
+import com.hongchuang.ysblibrary.common.Constants;
 import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.PicCodeBean;
@@ -29,13 +29,12 @@ import com.hongchuang.ysblibrary.utils.NetworkUtil;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
 import com.meituan.android.walle.WalleChannelReader;
 import com.shijinsz.shijin.BuildConfig;
-import com.shijinsz.shijin.MainActivity;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.ui.user.LoginActivity;
 import com.shijinsz.shijin.utils.APKVersionCodeUtils;
-import com.shijinsz.shijin.utils.ChannelUtils;
 import com.shijinsz.shijin.utils.StatusBarUtil;
+import com.xiqu.sdklibrary.util.XWUtils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -48,7 +47,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit.ToKenUtil;
 import retrofit.callback.YRequestCallback;
@@ -75,7 +73,8 @@ public class SettingActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.tv_personal_info, R.id.tv_black_list, R.id.tv_user_safe, R.id.tv_data_cache, R.id.tv_logout,R.id.now_version})
+    @OnClick({R.id.tv_personal_info, R.id.tv_black_list, R.id.tv_user_safe, R.id.tv_data_cache,
+            R.id.tv_logout,R.id.now_version,R.id.tv_discounts_info})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_personal_info:
@@ -95,6 +94,10 @@ public class SettingActivity extends BaseActivity {
                 break;
             case R.id.now_version:
                 new Thread(runnable).start();
+                break;
+            case R.id.tv_discounts_info:
+                //提货卡
+                startActivity(CommodityDiscountsActivity.class);
                 break;
         }
     }

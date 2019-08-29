@@ -52,15 +52,12 @@ import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.PicCodeBean;
 import com.hongchuang.ysblibrary.model.model.bean.PointDetailBean;
-import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
 import com.hongchuang.ysblibrary.utils.NetworkUtil;
 import com.hongchuang.ysblibrary.widget.NoScrollViewPager;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
-
 import com.meituan.android.walle.WalleChannelReader;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.ui.ad.NewAdActivity;
-
 import com.shijinsz.shijin.ui.ask.fragment.AskFragment;
 import com.shijinsz.shijin.ui.home.adapter.MainTabAdapter;
 import com.shijinsz.shijin.ui.home.fragment.HomeFragment;
@@ -72,7 +69,6 @@ import com.shijinsz.shijin.ui.mine.fragment.MineFragment;
 import com.shijinsz.shijin.ui.task.fragment.TaskFragment;
 import com.shijinsz.shijin.ui.video.fragment.VideoFragment;
 import com.shijinsz.shijin.utils.APKVersionCodeUtils;
-import com.shijinsz.shijin.utils.BadgeUtil;
 import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ImgUtils;
 import com.shijinsz.shijin.utils.LoginUtil;
@@ -124,44 +120,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
         StatusBarUtil.setStatusTextColor(true, mActivity);
         String storePath = getCacheDir().getAbsolutePath() + "/ad.png";
-        File appDir = new File(storePath);
 
-
-
-//        if (ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_is_open).equals("on")) {
-//            ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_is_open, "off");
-//            if (appDir.exists()) {
-//                GlideApp.with(mContext).load(appDir).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(imgAd);
-//                open.setVisibility(View.VISIBLE);
-//                int time = 0;
-//                try {
-//                    time = Integer.parseInt(ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_time_length));
-//                } catch (Exception e) {
-//                }
-//                timer = new CountDownTimer((time + 1) * 1000, 1000) {
-//                    @Override
-//                    public void onTick(long l) {
-//                        pass.setText(getString(R.string.pass) + "("
-//                        + l / 1000 + ")");
-////                        if (l / 1000 == 0) {
-////                            open.setVisibility(View.GONE);
-////                            if (!ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_is_login).equals("on")) {
-////                                new DialogUtils(mContext).showNewPacketDialog();
-////                            }
-////                        }
-//                    }
-//
-//                    @Override
-//                    public void onFinish() {
-//                        open.setVisibility(View.GONE);
-//                        if (!ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_is_login).equals("on")) {
-//                            new DialogUtils(mContext).showNewPacketDialog();
-//                        }
-//                    }
-//                };
-//                timer.start();
-//            }
-//        }
         initBnve();
         final List<ButtonData> buttonDatas = new ArrayList<>();
         int[] drawable = {R.mipmap.add_contacts, R.mipmap.icon_datastatistics,
@@ -182,7 +141,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         List<Fragment> mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new VideoFragment());
-        mFragments.add(new AskFragment());
+        //mFragments.add(new AskFragment());
         mFragments.add(new TaskFragment());
         mFragments.add(new MineFragment());
         MainTabAdapter mTabAdapter = new MainTabAdapter(mFragments, getSupportFragmentManager());
@@ -227,6 +186,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                 return true;
             }
         });
+
 
         // set listener to change the current checked item of bottom nav when scroll view pager
         vpContent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -361,7 +321,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
     //每日加金币
     public void setGodlData(){
-
         Map map = new HashMap();
         map.put("user_id",ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_ID));
         //points_add
@@ -463,10 +422,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
             }
         });
     }
-
-    /**
-     *
-     */
 
     /**
      * 请求读取sd卡的权限

@@ -37,9 +37,6 @@ import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
 import com.hongchuang.ysblibrary.model.model.bean.BoxlistBean;
 import com.hongchuang.ysblibrary.model.model.bean.LotteryListBean;
 import com.hongchuang.ysblibrary.model.model.bean.UserBean;
-import com.qq.e.ads.banner.ADSize;
-import com.qq.e.ads.banner.AbstractBannerADListener;
-import com.qq.e.ads.banner.BannerView;
 import com.qq.e.ads.banner2.UnifiedBannerADListener;
 import com.qq.e.ads.banner2.UnifiedBannerView;
 import com.qq.e.ads.interstitial.AbstractInterstitialADListener;
@@ -57,15 +54,10 @@ import com.shijinsz.shijin.ui.task.NewPersonTaskActivity;
 import com.shijinsz.shijin.ui.task.SignInActivity;
 import com.shijinsz.shijin.ui.task.VoteShowListActivity;
 import com.shijinsz.shijin.ui.task.WriteInvitationCodeActivity;
-import com.shijinsz.shijin.ui.wallet.PointActivity;
-import com.shijinsz.shijin.ui.wallet.WalletActivity;
 import com.shijinsz.shijin.utils.BoxGifUtils;
 import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.LoginUtil;
-import com.tencent.mm.opensdk.modelbiz.JumpToBizProfile;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -184,6 +176,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
     @Override
     public void onADReceive() {
         Log.i(TAG, "onADReceive");
+        bannerContainer.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -194,6 +187,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
     @Override
     public void onADClosed() {
         Log.i(TAG, "onADClosed");
+        bannerContainer.setVisibility(View.GONE);
     }
 
     @Override
@@ -867,5 +861,6 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
             ToastUtil.showToast("检查到您手机没有安装微信，请安装后使用该功能");
         }
     }
+
 
 }

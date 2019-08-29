@@ -1,7 +1,6 @@
 package com.shijinsz.shijin.ui.user;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -32,7 +31,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit.ToKenUtil;
 import retrofit.callback.YRequestCallback;

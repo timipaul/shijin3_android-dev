@@ -7,10 +7,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.hongchuang.ysblibrary.model.model.bean.Ads;
-import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseFragment;
 import com.shijinsz.shijin.ui.video.fragment.VideoItemFragment;
 
@@ -27,7 +25,7 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
     private FragmentManager fragmentManager;
     private FragmentTransaction mCurTransaction;
     private BaseFragment mCurrentPrimaryItem = null;
-    private List<Ads> mData;
+    public List<Ads> mData;
     private View mView;
 
     public void setUrlList(List<Ads> data) {
@@ -43,7 +41,6 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        System.out.println("适配器数据大小：" + mData.size());
         return mData.size();
     }
 
@@ -106,8 +103,6 @@ public class VerticalViewPagerAdapter extends PagerAdapter {
                 fragment.setMenuVisibility(true);
                 fragment.setUserVisibleHint(true);
             }
-
-            ((Button)mView.findViewById(R.id.user_like)).setText("100");
             mCurrentPrimaryItem = fragment;
         }
     }

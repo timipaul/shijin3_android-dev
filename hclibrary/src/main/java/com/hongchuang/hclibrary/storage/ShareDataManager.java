@@ -2,7 +2,6 @@ package com.hongchuang.hclibrary.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.LabeledIntent;
 
 import java.util.ArrayList;
 import java.util.HashSet;

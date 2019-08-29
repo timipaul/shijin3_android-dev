@@ -26,7 +26,6 @@ import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.ui.mine.adapter.PointTabAdapter;
 import com.shijinsz.shijin.ui.mine.fragment.CommonFragment;
 import com.shijinsz.shijin.ui.mine.fragment.VipFragment;
-
 import com.shijinsz.shijin.utils.StatusBarUtil;
 
 import java.util.ArrayList;

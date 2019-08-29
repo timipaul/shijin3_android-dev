@@ -1,9 +1,7 @@
 package com.hongchuang.ysblibrary.utils;
 
-import android.preference.PreferenceActivity;
 import android.util.Log;
 
-import com.baidu.mapapi.http.HttpClient;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -14,8 +12,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import cn.jiguang.net.HttpResponse;
 
 /**
  * Created by Administrator on 2018/6/7.

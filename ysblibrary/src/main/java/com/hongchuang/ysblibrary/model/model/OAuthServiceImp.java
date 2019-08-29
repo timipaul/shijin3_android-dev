@@ -35,12 +35,12 @@ import com.hongchuang.ysblibrary.model.model.bean.BoxlistBean;
 import com.hongchuang.ysblibrary.model.model.bean.CategoriesBean;
 import com.hongchuang.ysblibrary.model.model.bean.CertificationBean;
 import com.hongchuang.ysblibrary.model.model.bean.ChangeUserInfoBean;
+import com.hongchuang.ysblibrary.model.model.bean.CommodityCardBean;
 import com.hongchuang.ysblibrary.model.model.bean.FatherCommentBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowDetailBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowNumberBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowUserBean;
-import com.hongchuang.ysblibrary.model.model.bean.GetAdBean;
 import com.hongchuang.ysblibrary.model.model.bean.GoodsBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationInfoBean;
@@ -105,6 +105,30 @@ public class OAuthServiceImp implements OAuthService {
         }
     }
 
+    @Override
+    public void card_verify(Map<String, Object> map,final YRequestCallback<CommodityCardBean> callback) {
+        System.out.println("开始请求。。。");
+        Network.getApi2(IYSBApi.class).card_verify(map).
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(new Action1<BaseResult<CommodityCardBean>>() {
+                    public void call(BaseResult<CommodityCardBean> o) {
+                        callbackReturn(o, callback);
+                    }
+                }, new BaseAction<Throwable>(callback));
+    }
+
+    @Override
+    public void set_card_data(Map<String, Object> map,final YRequestCallback<CommodityCardBean> callback) {
+        Network.getApi(IYSBApi.class).set_card_data(map).
+                subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(new Action1<BaseResult<CommodityCardBean>>() {
+                    public void call(BaseResult<CommodityCardBean> o) {
+                        callbackReturn(o, callback);
+                    }
+                }, new BaseAction<Throwable>(callback));
+    }
 
     @Override
     public void set_goods_data(Map<String, Object> map,final YRequestCallback<GoodsBean> callback) {

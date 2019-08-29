@@ -53,7 +53,10 @@ public class Network<T> {
         return retrofit;
     }
 
+
+
     private synchronized static Retrofit getRetrofit2() {
+        System.out.println("请求第二个路径");
         if (retrofit2 == null) {
             retrofit2 = new Retrofit.Builder()
                     .client(okHttpClient)
@@ -130,6 +133,8 @@ public class Network<T> {
         return (T) api;
     }
 //
+
+
     public synchronized static <T> T getApi2(Class<T> apiClass) {
         if (mYSApiMap == null) {
             mYSApiMap = new HashMap<>();

@@ -1,6 +1,5 @@
 package com.shijinsz.shijin.ui.activity.adapter;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -8,7 +7,6 @@ import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

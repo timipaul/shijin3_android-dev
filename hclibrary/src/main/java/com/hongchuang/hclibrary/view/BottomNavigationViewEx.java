@@ -567,6 +567,7 @@ public class BottomNavigationViewEx extends BottomNavigationView {
          */
         BottomNavigationMenuView mMenuView = getBottomNavigationMenuView();
         mButtons = getField(mMenuView.getClass(), mMenuView, "mButtons");
+
         return mButtons;
     }
 

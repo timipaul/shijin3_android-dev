@@ -2,7 +2,6 @@ package com.shijinsz.shijin.utils;
 
 
 import android.Manifest;
-import android.content.ContentProvider;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -17,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-
 import java.util.List;
 
 import okhttp3.Call;

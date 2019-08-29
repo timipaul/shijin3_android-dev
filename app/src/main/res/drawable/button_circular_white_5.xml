@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- 按钮渐变 -->
-    <stroke android:color="@color/white" android:width="0dp"/>
-    <solid android:color="@color/white"/>
-    <corners android:radius="@dimen/dp_5"/>
-
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- 阴影效果 -->
+<item >
+    <shape
+        android:dither="true">
+        <stroke android:width="@dimen/dp_1" android:color="@color/mine_function_divider"/>
+        <corners android:radius="@dimen/dp_6"/>
+    </shape>
+</item>
+<item android:left="@dimen/dp_0" android:right="@dimen/dp_1" android:top="@dimen/dp_0" android:bottom="@dimen/dp_1">
+    <shape>
+        <solid android:color="@color/white" />
+        <corners android:radius="@dimen/dp_6"/>
+    </shape>
+</item>
+</layer-list>

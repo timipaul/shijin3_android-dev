@@ -30,7 +30,6 @@ import com.hongchuang.ysblibrary.model.model.bean.VipRechangeBean;
 import com.hongchuang.ysblibrary.model.model.bean.WechatPayBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
-
 import com.shijinsz.shijin.ui.mine.adapter.CommodityAdapter;
 import com.shijinsz.shijin.ui.mine.adapter.RechangeVipAdapter;
 import com.shijinsz.shijin.ui.mine.adapter.RedPacketAdapter;

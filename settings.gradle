@@ -1,1 +1,1 @@
-include ':app', ':hclibrary', ':ysblibrary', ':luckly_popupwindow', ':takephoto_library', ':videolibrary'
+include ':app', ':hclibrary', ':ysblibrary', ':luckly_popupwindow', ':takephoto_library', ':videolibrary', ':xiqusdklibrary'

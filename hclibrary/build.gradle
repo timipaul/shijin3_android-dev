@@ -10,6 +10,13 @@ android {
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
     }
+
+    dexOptions { //优化dex配置 2019.8.27 paul
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "2g"
+    }
+
     buildTypes {
         release {
             minifyEnabled false

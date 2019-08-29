@@ -1,6 +1,5 @@
 package com.shijinsz.shijin.ui.wallet;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -28,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit.callback.YRequestCallback;
 
 /**

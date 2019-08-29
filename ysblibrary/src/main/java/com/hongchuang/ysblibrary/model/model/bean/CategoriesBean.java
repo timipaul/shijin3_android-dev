@@ -1,7 +1,5 @@
 package com.hongchuang.ysblibrary.model.model.bean;
 
-import java.util.List;
-
 /**
  * Created by yrdan on 2018/11/14.
  */

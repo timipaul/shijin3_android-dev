@@ -4,13 +4,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
-import com.hongchuang.ysblibrary.model.model.bean.PicCodeBean;
 import com.hongchuang.ysblibrary.model.model.bean.VIpStateBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;

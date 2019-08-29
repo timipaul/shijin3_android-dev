@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/present_card_ic" />
+
+        <EditText
+            android:id="@+id/card_account"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="@dimen/dp_38"
+            android:layout_marginTop="@dimen/dp_50"
+            android:background="@drawable/tv_edit_orange_16"
+            android:gravity="center"
+            android:hint="请输入您的提货卡卡号"
+            android:inputType="number"
+            android:maxLength="10"
+            android:paddingLeft="@dimen/dp_10"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/sp_14" />
+
+        <EditText
+            android:id="@+id/card_password"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="@dimen/dp_38"
+            android:layout_marginTop="@dimen/dp_30"
+            android:background="@drawable/tv_edit_orange_16"
+            android:gravity="center"
+            android:hint="请输入您的提货卡密码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColorHint="@color/color_f3"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_25"
+
+            android:text="账号密码不正确，请重新输入"
+            android:textColor="@color/red"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/bt_submit"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/bt_selector"
+            android:enabled="false"
+            android:text="登   陆"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18" />
+    </LinearLayout>
+
+</LinearLayout>

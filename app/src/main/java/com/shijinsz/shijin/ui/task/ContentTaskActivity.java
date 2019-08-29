@@ -1,12 +1,8 @@
 package com.shijinsz.shijin.ui.task;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +17,12 @@ import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.MyProgressBar;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 
-import java.text.BreakIterator;
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit.callback.YRequestCallback;
-import retrofit2.http.GET;
 
 /**
  * Copyright (C)

@@ -1,7 +1,6 @@
 package com.shijinsz.shijin.ui.home;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,7 +14,6 @@ import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2018/8/2.

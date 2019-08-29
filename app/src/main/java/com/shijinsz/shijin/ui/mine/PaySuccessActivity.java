@@ -91,6 +91,13 @@ public class PaySuccessActivity extends BaseActivity {
             tvPaysuccess.setText("领取成功");
             tvMoney2.setText("");
             returnList.setText("返回");
+        }else if(type.equals("4")){
+            setTitle("结果");
+            payType2.setVisibility(View.GONE);
+            payType.setVisibility(View.GONE);
+            tvPaysuccess.setText("领取成功");
+            tvMoney2.setText("");
+            returnList.setText("返回");
         }else{
             setTitle(getString(R.string.reward_success));
             payType2.setVisibility(View.GONE);
@@ -121,6 +128,9 @@ public class PaySuccessActivity extends BaseActivity {
         }else if(type.equals("3")){
             finish();
             startActivity(PointActivity.class);
+        }else if(type.equals("4")){
+            finish();
+            //startActivity(.class);
         }else{
             MActivityManager.getInstance().delAllACTWithout(MainActivity.class);
             startActivity(MyPutActivity.class);

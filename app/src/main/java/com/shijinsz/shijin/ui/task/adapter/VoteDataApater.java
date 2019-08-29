@@ -1,13 +1,10 @@
 package com.shijinsz.shijin.ui.task.adapter;
 
-import android.graphics.Color;
 import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.hongchuang.ysblibrary.model.model.bean.PointDetailBean;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
-import com.hongchuang.ysblibrary.utils.SetText;
 import com.shijinsz.shijin.R;
 
 import java.util.List;

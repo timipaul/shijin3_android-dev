@@ -1,8 +1,6 @@
 package retrofit;
 
 
-import android.content.Intent;
-
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBLibrary;

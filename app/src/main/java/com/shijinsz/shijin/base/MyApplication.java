@@ -92,6 +92,10 @@ public class MyApplication extends MultiDexApplication implements GrobalListener
         if (!"generic".equalsIgnoreCase(Build.BRAND)) {
             SDKInitializer.initialize(getApplicationContext());
         }
+
+        //公司qq注册 热跟新插件
+        Bugly.init(getApplicationContext(), Constants.BuglyAppId, isDebug);
+
         Beta.betaPatchListener = new BetaPatchListener() {
             @Override
             public void onPatchReceived(String s) {
@@ -134,11 +138,7 @@ public class MyApplication extends MultiDexApplication implements GrobalListener
             }
         };
 
-        //公司qq注册 热跟新插件
-        Bugly.init(getApplicationContext(), Constants.BuglyAppId, isDebug);
-
-
-        if (channel!=null&&channel.equals("debug")) {
+        if (channel != null && channel.equals("debug")) {
             Bugly.setIsDevelopmentDevice(this, true);
         }
         JPushInterface.setDebugMode(isDebug);

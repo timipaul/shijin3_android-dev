@@ -1,8 +1,6 @@
 package com.shijinsz.shijin.utils;
 
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +11,6 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.view.Gravity;
@@ -26,7 +23,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.MediaController;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,10 +31,8 @@ import com.bumptech.glide.Glide;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
-import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.Ads;
-import com.hongchuang.ysblibrary.model.model.bean.AdsBean;
 import com.hongchuang.ysblibrary.model.model.bean.PicCodeBean;
 import com.hongchuang.ysblibrary.model.model.bean.ShareBean;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
@@ -52,10 +46,6 @@ import com.shijinsz.shijin.ui.wallet.BoxListActivity;
 import com.shijinsz.shijin.ui.wallet.PointActivity;
 import com.shijinsz.shijin.ui.wallet.WalletActivity;
 import com.shijinsz.shijin.ui.wallet.WithdrawActivity;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 import retrofit.callback.YRequestCallback;
 
@@ -129,6 +119,13 @@ public class DialogUtils {
                 R.layout.task_attetion_wechat_pop, null);
 
         ((Button)taskAttentionWeChatView.findViewById(R.id.button)).setOnClickListener(clickListener);
+        ((ImageView)taskAttentionWeChatView.findViewById(R.id.cancel)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismissTaskAttentionWeChatDialog();
+            }
+        });
+
         taskAttentionWeChatDialog = new NoticeDialog(mContext);
         taskAttentionWeChatDialog.setCanceledOnTouchOutside(false);
         taskAttentionWeChatDialog.setCancelable(false);

@@ -1,11 +1,9 @@
 package com.shijinsz.shijin.ui.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.hongchuang.ysblibrary.common.Constants;
 import com.qq.e.ads.interstitial2.UnifiedInterstitialAD;

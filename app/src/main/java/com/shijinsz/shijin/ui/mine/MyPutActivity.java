@@ -22,7 +22,6 @@ import com.hongchuang.ysblibrary.model.model.bean.Ads;
 import com.hongchuang.ysblibrary.model.model.bean.AdsBean;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shijinsz.shijin.R;

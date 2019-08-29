@@ -1,11 +1,9 @@
 package com.shijinsz.shijin.ui.home;
 
 import android.view.View;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 
 import com.hongchuang.hclibrary.view.ProgressWebView;
 import com.shijinsz.shijin.R;

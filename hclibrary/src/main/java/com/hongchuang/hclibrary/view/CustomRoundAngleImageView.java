@@ -10,7 +10,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.hongchuang.hclibrary.R;
-import com.hongchuang.hclibrary.utils.LogUtils;
 
 
 /**

@@ -26,8 +26,10 @@ import java.util.List;
 public class CommentAdatper extends BaseQuickAdapter<FatherCommentBean,BaseViewHolder> {
     public CommentAdatper(int layoutResId, @Nullable List<FatherCommentBean> data) {
         super(layoutResId, data);
+
+
     }
-    private List<FatherCommentBean.Comments> list=new ArrayList<>();
+    private List<FatherCommentBean.Comments> list = new ArrayList<>();
     private ChildAdapter adapter;
     private PowerfulRecyclerView recyclerView;
     public interface onShowListen{

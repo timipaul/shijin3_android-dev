@@ -12,7 +12,6 @@ import com.hongchuang.hclibrary.utils.TimeUtil;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
-import com.hongchuang.ysblibrary.model.model.bean.BoxBean;
 import com.hongchuang.ysblibrary.model.model.bean.PointDetailBean;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;

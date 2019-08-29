@@ -6,12 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-
 import android.widget.TextView;
 
-import com.hongchuang.hclibrary.utils.TimeUtil;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
 import com.shijinsz.shijin.R;
+
 import java.util.List;
 
 /**

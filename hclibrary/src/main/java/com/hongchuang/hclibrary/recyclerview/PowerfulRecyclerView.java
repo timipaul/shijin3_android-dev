@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
-import android.view.View;
 
 import com.hongchuang.hclibrary.R;
 import com.hongchuang.hclibrary.utils.DevicesUtil;

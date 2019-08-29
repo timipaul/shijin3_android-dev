@@ -4,14 +4,6 @@ package com.shijinsz.shijin.base;
  * Created by yrdan on 2018/11/30.
  */
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.ref.WeakReference;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -19,6 +11,13 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.ref.WeakReference;
+import java.net.Socket;
+import java.util.Arrays;
 
 /**
  * Created by dawish on 2017/7/24.

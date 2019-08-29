@@ -13,7 +13,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hongchuang.hclibrary.utils.TimeUtil;
 import com.hongchuang.ysblibrary.model.model.bean.BoxBean;
-import com.hongchuang.ysblibrary.model.model.bean.SignBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.ui.task.InviteFriendActivity;
 import com.shijinsz.shijin.ui.task.SignInActivity;

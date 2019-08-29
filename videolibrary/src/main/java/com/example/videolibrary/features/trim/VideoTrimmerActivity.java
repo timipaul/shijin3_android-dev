@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.videolibrary.R;
 import com.example.videolibrary.interfaces.TrimVideoListener;
-
 import com.example.videolibrary.widget.VideoTrimmerView;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 

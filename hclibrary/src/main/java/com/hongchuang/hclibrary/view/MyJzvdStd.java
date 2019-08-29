@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.hongchuang.hclibrary.R;
 
-import cn.jzvd.JZUserAction;
 import cn.jzvd.JZVideoPlayerStandard;
 
 /**

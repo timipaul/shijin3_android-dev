@@ -1,6 +1,5 @@
 package com.shijinsz.shijin.ui.activity;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by yrdan on 2018/10/24.

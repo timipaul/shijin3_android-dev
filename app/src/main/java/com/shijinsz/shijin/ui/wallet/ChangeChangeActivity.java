@@ -1,12 +1,9 @@
 package com.shijinsz.shijin.ui.wallet;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
@@ -29,10 +26,8 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit.callback.YRequestCallback;
-import retrofit2.http.POST;
 
 /**
  * Created by yrdan on 2018/11/26.

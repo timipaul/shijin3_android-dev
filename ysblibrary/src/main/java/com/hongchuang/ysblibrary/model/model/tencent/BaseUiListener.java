@@ -1,15 +1,8 @@
 package com.hongchuang.ysblibrary.model.model.tencent;
 
-import com.hongchuang.hclibrary.storage.LogManager;
-import com.hongchuang.ysblibrary.YSBLibrary;
 //import com.tencent.connect.UserInfo;
 //import com.tencent.tauth.IUiListener;
 //import com.tencent.tauth.UiError;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import retrofit.callback.YRequestCallback;
 
 /***
  * 功能描述:

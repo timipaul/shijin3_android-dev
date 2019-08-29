@@ -1,9 +1,5 @@
 package com.hongchuang.hclibrary.storage;
 
-import android.text.StaticLayout;
-
-import com.tencent.wxop.stat.StatServiceImpl;
-
 /***
  * 功能描述:用户数据共享，存储的信息的key
  * 作者:qiujialiu

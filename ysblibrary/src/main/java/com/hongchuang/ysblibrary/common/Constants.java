@@ -23,6 +23,10 @@ public class Constants {
     //信息流广告
     public static final String NativePosID = "1000670149646846";
 
+    //嘻趣信息
+    public static final String XIQU_APPID = "3355";  //由嘻趣提供
+    public static final String XIQU_SECRET = "4k06qtsrajsjsd21";//由嘻趣提供
+
 
 }
 

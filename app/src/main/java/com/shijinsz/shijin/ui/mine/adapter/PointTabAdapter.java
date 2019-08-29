@@ -1,11 +1,11 @@
 package com.shijinsz.shijin.ui.mine.adapter;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import android.support.v4.app.FragmentManager;
 
 /**
  * 普通和会员兑换界面

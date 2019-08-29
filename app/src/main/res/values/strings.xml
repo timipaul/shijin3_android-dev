@@ -188,6 +188,8 @@
     <string name="save_draft">存为草稿</string>
     <string name="no_save">不保存</string>
     <string name="shui" formatted="false">您当前设置的红包金额为%1$s元，扣除手续费%2$s,实际投放金额为%3$s元。</string>
+    <string name="take_person">收货人: %s</string>
+    <string name="take_site">收货地址: %s</string>
 
     <!-- 广告 -->
     <string name="small_pic">小图</string>
@@ -374,6 +376,7 @@
     <string name="commodity_prices">仅需%s金币</string>
     <string name="number_people">%s人兑换</string>
     <string name="zero_buy_hint">限量%1$s件&#160;&#160;&#160;今日%2$s结束</string>
+
 
 
     <!-- 任务 -->

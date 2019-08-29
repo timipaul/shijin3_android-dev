@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -24,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +30,9 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.bumptech.glide.Glide;
 import com.github.nukc.stateview.StateView;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
-import com.hongchuang.hclibrary.view.Utils;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
@@ -47,9 +44,7 @@ import com.shijinsz.shijin.ui.activity.UnifiedInterstitialADActivity;
 import com.shijinsz.shijin.ui.home.NewGuideActivity;
 import com.shijinsz.shijin.ui.home.SearchActivity;
 import com.shijinsz.shijin.ui.home.adapter.MainTabAdapter;
-import com.shijinsz.shijin.ui.mine.MyVipActivity;
 import com.shijinsz.shijin.ui.task.ChallengeTaskActivity;
-import com.shijinsz.shijin.ui.task.DayTaskActivity;
 import com.shijinsz.shijin.ui.wallet.PointActivity;
 import com.shijinsz.shijin.utils.LocationUtils;
 import com.shijinsz.shijin.utils.LoginUtil;
@@ -64,9 +59,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPa
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -85,8 +78,6 @@ public class HomeFragment extends BaseFragment{
     TextView tvGuide;
     @BindView(R.id.tv_selete)
     TextView tvSelete;
-//    @BindView(R.id.tab)
-//    TabLayout tab;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
     @BindView(R.id.indicator)
@@ -97,6 +88,8 @@ public class HomeFragment extends BaseFragment{
     TextView mGoods_name;
     @BindView(R.id.gif_img)
     ImageView mGif_img;
+    @BindView(R.id.goods_layout)
+    RelativeLayout goods_layout;
 
     public String ad_state = "off";
 
@@ -215,7 +208,7 @@ public class HomeFragment extends BaseFragment{
         });
 
         //动态图片
-        Glide.with(mActivity).load(R.drawable.vote_gif_img).into(mGif_img);
+        //Glide.with(mActivity).load(R.drawable.vote_gif_img).into(mGif_img);
 
         getGoods();
         //获取投票跳转链接
@@ -456,6 +449,7 @@ public class HomeFragment extends BaseFragment{
                 //跳转到兑换页面
                 Intent intent = new Intent(getActivity(),PointActivity.class);
                 startActivity(intent);
+                goods_layout.setVisibility(View.GONE);
                 break;
             case R.id.gif_img:
                 Log.i(TAG,"跳转到任务");
@@ -481,25 +475,6 @@ public class HomeFragment extends BaseFragment{
         invitestyle.setSpan(sizeSpan,11,12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         mGoods_name.setText(invitestyle);
 
-        /*Map map = new HashMap();
-        map.put("mode", "person");
-        map.put("membership", "on");
-        YSBSdk.getService(OAuthService.class).goods(map, new YRequestCallback<BaseBean<GoodsBean>>() {
-            @Override
-            public void onSuccess(BaseBean<GoodsBean> var1) {
-                mGoods_name.setText(var1.getGoods().get(0).getGoods_title());
-            }
-
-            @Override
-            public void onFailed(String var1, String message) {
-                ErrorUtils.error(getContext(), var1, message);
-            }
-
-            @Override
-            public void onException(Throwable var1) {
-                mStateView.showContent();
-            }
-        });*/
     }
 
     @Override

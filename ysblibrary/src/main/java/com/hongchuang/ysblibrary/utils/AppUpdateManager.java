@@ -3,15 +3,8 @@ package com.hongchuang.ysblibrary.utils;
 import android.app.Activity;
 import android.os.Environment;
 
-
 import com.hongchuang.hclibrary.manager.UpdateManager;
 import com.hongchuang.hclibrary.storage.StorageManager;
-
-import retrofit.Network;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /***
  * 功能描述:

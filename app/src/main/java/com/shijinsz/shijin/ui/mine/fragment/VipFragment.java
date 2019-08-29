@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hongchuang.hclibrary.recyclerview.PowerfulRecyclerView;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
@@ -18,13 +17,10 @@ import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseFragment;
 import com.shijinsz.shijin.ui.mine.MySwopActivity;
 import com.shijinsz.shijin.ui.mine.MyVipActivity;
-import com.shijinsz.shijin.ui.mine.UserSiteDataActivity;
-import com.shijinsz.shijin.ui.wallet.BoxListActivity;
 import com.shijinsz.shijin.ui.wallet.adapter.PointAdapter;
 import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ErrorUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

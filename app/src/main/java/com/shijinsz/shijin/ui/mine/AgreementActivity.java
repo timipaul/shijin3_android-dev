@@ -3,10 +3,8 @@ package com.shijinsz.shijin.ui.mine;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.utils.StatusBarUtil;

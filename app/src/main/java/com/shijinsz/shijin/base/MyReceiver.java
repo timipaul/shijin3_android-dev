@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.ysblibrary.model.model.bean.PushBean;
 import com.shijinsz.shijin.MainActivity;
 import com.shijinsz.shijin.ui.ad.VideoDetailActivity;

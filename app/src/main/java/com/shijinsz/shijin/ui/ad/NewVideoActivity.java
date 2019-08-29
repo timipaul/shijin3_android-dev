@@ -26,7 +26,6 @@ import com.alibaba.sdk.android.oss.ClientException;
 import com.alibaba.sdk.android.oss.ServiceException;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
-import com.example.videolibrary.features.trim.VideoTrimmerActivity;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.hclibrary.utils.FileUtil;
@@ -56,7 +55,7 @@ import butterknife.OnClick;
 import cn.jzvd.JZVideoPlayerStandard;
 import retrofit.callback.YRequestCallback;
 
-import static com.example.videolibrary.features.trim.VideoTrimmerActivity.*;
+import static com.example.videolibrary.features.trim.VideoTrimmerActivity.call;
 
 /**
  * Created by yrdan on 2018/8/22.

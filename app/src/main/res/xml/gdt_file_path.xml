@@ -9,10 +9,21 @@
             name="camera_photos" />
     </paths>
 </resources>-->
-
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
+<paths>
     <!-- 这个下载路径不可以修改，必须是 GDTDOWNLOAD -->
     <external-path name="gdt_sdk_download_path" path="GDTDOWNLOAD" />
     <external-files-path name="bdpath" path="bddownload/" />
     <external-path name="bdpathsd" path="bddownload/" />
+
+    <root-path
+        path=""
+        name="camera_photos" />
 </paths>
+
+
+
+
+
+
+
+

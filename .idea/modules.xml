@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/shijin3_android-dev.iml" filepath="$PROJECT_DIR$/shijin3_android-dev.iml" />
       <module fileurl="file://$PROJECT_DIR$/takephoto_library/takephoto_library.iml" filepath="$PROJECT_DIR$/takephoto_library/takephoto_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/videolibrary/videolibrary.iml" filepath="$PROJECT_DIR$/videolibrary/videolibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xiqusdklibrary/xiqusdklibrary.iml" filepath="$PROJECT_DIR$/xiqusdklibrary/xiqusdklibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/ysblibrary/ysblibrary.iml" filepath="$PROJECT_DIR$/ysblibrary/ysblibrary.iml" />
     </modules>
   </component>

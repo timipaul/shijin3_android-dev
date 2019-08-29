@@ -182,8 +182,6 @@ public class UserSiteMessageActivity extends BaseActivity {
         System.out.println("支付....");
         System.out.println("user_id: " + user_id);
 
-
-
         YSBSdk.getService(OAuthService.class).preorder(map, new YRequestCallback<WechatPayBean>() {
             @Override
             public void onSuccess(WechatPayBean var1) {
@@ -204,6 +202,7 @@ public class UserSiteMessageActivity extends BaseActivity {
             @Override
             public void onFailed(String var1, String message) {
                 ErrorUtils.error(mContext,var1,message);
+                System.out.println("zhu");
             }
 
             @Override
