@@ -212,8 +212,6 @@ public class VideoFragment extends BaseFragment{
                 }
 
                 pagerAdapter.setUrlList(adsList);
-                System.out.println("当前数据大小： " + adsList.size());
-                System.out.println("适配器数据大小： " + pagerAdapter.getCount());
                 pagerAdapter.notifyDataSetChanged();
 
 
@@ -229,7 +227,6 @@ public class VideoFragment extends BaseFragment{
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("没有数据12");
                 try {
                     mStateView.showRetry();
                     var1.printStackTrace();
@@ -256,7 +253,6 @@ public class VideoFragment extends BaseFragment{
             if(mRaBut.getText().equals("")){
                 mRaBut.setText(city);
             }
-            System.out.println("视频当前城市：" + city);
 
         }
         try {

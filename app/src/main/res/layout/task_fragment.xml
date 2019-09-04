@@ -42,10 +42,22 @@
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_10">
+                android:layout_marginBottom="@dimen/dp_10"
+                android:visibility="gone">
 
 
             </FrameLayout>
+
+            <ImageView
+                android:id="@+id/game_entrance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_10"
+                android:scaleType="fitXY"
+                android:src="@mipmap/xiqu_game_ic" />
 
             <LinearLayout
                 android:id="@+id/ln_new_person"

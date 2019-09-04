@@ -2,6 +2,7 @@ package com.shijinsz.shijin.ui.ad.adapter;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.hongchuang.ysblibrary.model.model.bean.FatherCommentBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.ui.mine.UserDetailActivity;
 import com.shijinsz.shijin.utils.GlideApp;
+import com.shijinsz.shijin.utils.LoginUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +49,12 @@ public class CommentAdatper extends BaseQuickAdapter<FatherCommentBean,BaseViewH
     }
     @Override
     protected void convert(BaseViewHolder helper, FatherCommentBean item) {
+
+        Log.w("VideoCommentAdapter","评论数据");
+
         TextView like=helper.getView(R.id.tv_givealike);
         int num=Integer.parseInt(item.getComment_number());
+        Log.i("VideoCommentAdapter",num+"");
         ImageView img =helper.getView(R.id.img_more);
         CircleImageView imgHead=helper.getView(R.id.img_head);
         GlideApp.with(mContext).load(item.getUser().getImageurl()).into(imgHead);
@@ -57,6 +63,9 @@ public class CommentAdatper extends BaseQuickAdapter<FatherCommentBean,BaseViewH
         helper.setText(R.id.tv_givealike,item.getLike_number());
         helper.setText(R.id.tv_content,item.getContent());
         helper.setText(R.id.tv_nickname,item.getUser().getNickname());
+
+        Log.d("VideoCommentAdapter",item.getContent());
+
         if (item.getIs_like().equals("on")){
             helper.setTextColor(R.id.tv_givealike,mContext.getResources().getColor(R.color.colorPrimary));
             like.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.mipmap.icon_givealike_2_clickonthe),null,null,null);

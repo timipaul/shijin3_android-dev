@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -1295,7 +1296,6 @@ public class VideoDetailActivity extends BaseActivity {
             public void onClick(View view) {
                 isoption1 = !isoption1;
                 setOptionClick(isoption1,option1);
-
             }
         });
 
@@ -1327,9 +1327,9 @@ public class VideoDetailActivity extends BaseActivity {
     //设置点击内容
     public void setOptionClick(boolean isoption,TextView option){
         if (isoption) {
-            option.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
-        } else {
             option.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_on));
+        } else {
+            option.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg));
         }
         if (!isoption1 && !isoption2 && !isoption3 && !isoption4) {
             if (isFirst) {
@@ -1470,15 +1470,14 @@ public class VideoDetailActivity extends BaseActivity {
                     }
                     mailBoxDialog.dismiss();
                 } else {
-                    //.setVisibility(View.GONE);
-                    onemore.setEnabled(false);
+                    onemore.setVisibility(View.GONE);
+                    //onemore.setEnabled(false);
                     tv_wrong.setVisibility(View.VISIBLE);
                     icon_true.setVisibility(View.VISIBLE);
                     icon_true.setImageResource(R.mipmap.icon_wrong);
                     chutdowm.setVisibility(View.GONE);
                     circleTextProgressbar.setInCircleColor(getResources().getColor(R.color.white));
                     circleTextProgressbar.setProgress(100);
-
 
                     if (isoption1) {
                         option1.setBackground(getResources().getDrawable(R.mipmap.answer_option_bg_off));
@@ -1509,6 +1508,14 @@ public class VideoDetailActivity extends BaseActivity {
                                 break;
                         }
                     }
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mailBoxDialog.dismiss();
+                        }
+                    }, 2000);    //延时1s执行
+
                 }
             }
 

@@ -7,10 +7,12 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -73,6 +75,8 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
     ImageView imgVip;
     @BindView(R.id.tv_hide)
     TextView mTvhide;
+    @BindView(R.id.comment_num)
+    TextView mComment_num;
     private List<FatherCommentBean> list = new ArrayList<>();
     private CommentAdatper adatper;
 
@@ -119,7 +123,7 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
         refresh.setOnLoadMoreListener(this);
         adatper = new CommentAdatper(R.layout.comment_list_item, list);
         recyclerView.setAdapter(adatper);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        /*recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -130,16 +134,19 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
                             if (Integer.parseInt(pos) == 0) {
 
                             } else {
-                                smoothMoveToPosition(recyclerView, Integer.parseInt(pos));
+                                //smoothMoveToPosition(recyclerView, Integer.parseInt(pos));
                             }
                         }
                     }
                 }
             }
-        });
+        });*/
         adatper.setOnShowListen(new CommentAdatper.onShowListen() {
             @Override
             public void call(int pos) {
+
+                Log.e(TAG,"call ------- pos " + pos);
+
                 if (list.get(pos).getComments().size() < Integer.parseInt(list.get(pos).getComment_number())) {
                     getChild(list.get(pos).getComments().get(list.get(pos).getComments().size() - 1).getCreated_at(), pos);
                 } else {
@@ -154,6 +161,9 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
 
             @Override
             public void callfathercall(int pos) {
+
+                Log.e(TAG,"call ------- pos " + pos);
+
                 showEarlyDialog(pos, -1, 1);
             }
 
@@ -492,6 +502,7 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
     private boolean isRefresh = true;
 
     private void getFather() {
+
         Map map = new HashMap();
         map.put("mode", "person");
         map.put("cursor", cursor);
@@ -503,20 +514,23 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
                 refresh.finishRefresh();
                 refresh.finishLoadMore();
 
-                System.out.println("拿到数据啦");
 
                 if (isRefresh) {
-                    setTitle(String.format(getString(R.string.comment_num), var1.getTotal_size()));
+                    mComment_num.setText(String.format(getString(R.string.comment_num), var1.getTotal_size()));
                     list.clear();
                 }
+
+                Log.i(TAG,var1.getComments().size()+"");
+
                 if (var1.getComments().size() < 10) {
                     refresh.setNoMoreData(true);
                 } else {
                     refresh.setNoMoreData(false);
                 }
+
                 list.addAll(var1.getComments());
                 adatper.notifyDataSetChanged();
-                if (isFirst) {
+                /*if (isFirst) {
                     isFirst = false;
                     if (pos != null) {
                         if (!pos.isEmpty()) {
@@ -536,7 +550,7 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
                             }
                         }
                     }
-                }
+                }*/
             }
 
             @Override
@@ -554,7 +568,7 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
                     refresh.finishRefresh();
                     refresh.finishLoadMore();
                 }catch (Exception e){
-
+                    Log.d(TAG,"处理报错");
                 }
 
             }

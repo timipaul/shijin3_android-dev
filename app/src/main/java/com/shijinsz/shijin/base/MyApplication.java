@@ -35,6 +35,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tendcloud.tenddata.TCAgent;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -91,10 +92,15 @@ public class MyApplication extends MultiDexApplication implements GrobalListener
         TCAgent.setReportUncaughtExceptions(true);
         if (!"generic".equalsIgnoreCase(Build.BRAND)) {
             SDKInitializer.initialize(getApplicationContext());
-        }
-
+    }
+        CrashReport.setIsDevelopmentDevice(this, true);
         //公司qq注册 热跟新插件
-        Bugly.init(getApplicationContext(), Constants.BuglyAppId, isDebug);
+        Bugly.init(getApplicationContext(), Constants.BuglyAppId, true);
+
+        //设置是否允许自动下载补丁
+        Beta.canAutoDownloadPatch = true;
+        //设置是否允许自动合成补丁
+        Beta.canAutoPatch = true;
 
         Beta.betaPatchListener = new BetaPatchListener() {
             @Override
@@ -116,25 +122,21 @@ public class MyApplication extends MultiDexApplication implements GrobalListener
             @Override
             public void onDownloadFailure(String s) {
                 LogUtils.e("bugly","补丁下载失败");
-
             }
 
             @Override
             public void onApplySuccess(String s) {
                 LogUtils.e("bugly","补丁应用成功");
-
             }
 
             @Override
             public void onApplyFailure(String s) {
                 LogUtils.e("bugly","补丁应用失败"+s);
-
             }
 
             @Override
             public void onPatchRollback() {
                 LogUtils.e("bugly","补丁回滚");
-
             }
         };
 
@@ -167,6 +169,8 @@ public class MyApplication extends MultiDexApplication implements GrobalListener
         MultiDex.install(base);
         Beta.installTinker();
     }
+
+
 
     public static void initImageLoader(Context context) {
         int memoryCacheSize = (int) (Runtime.getRuntime().maxMemory() / 10);

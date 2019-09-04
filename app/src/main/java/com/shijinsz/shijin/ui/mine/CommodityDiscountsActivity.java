@@ -134,6 +134,8 @@ public class CommodityDiscountsActivity extends BaseActivity {
                 data.putString("price",var1.getPrice());
                 data.putString("postage",var1.getPostage());
                 data.putString("cardNumber",var1.getNum());
+                data.putString("imgurl",var1.getCoverImg());
+                data.putString("insurance",var1.getInsurancePrice());
                 intent.putExtra("data",data);
                 startActivity(intent);
                 finish();

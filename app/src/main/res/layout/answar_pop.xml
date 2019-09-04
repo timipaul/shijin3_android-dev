@@ -39,6 +39,7 @@
                         android:id="@+id/icon_true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:src="@mipmap/icon_for"
                         android:visibility="gone" />
 
@@ -51,7 +52,8 @@
                         android:gravity="center"
                         android:text="15"
                         android:textColor="@color/text_33"
-                        android:textSize="@dimen/sp_20" />
+                        android:textSize="@dimen/sp_20"
+                        android:visibility="visible" />
 
                 </RelativeLayout>
 

@@ -1,6 +1,7 @@
 package com.shijinsz.shijin.ui.mine;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -59,6 +60,8 @@ public class DiscountsParticularsActivity extends BaseActivity {
     TextView mNum2;//统计数量
     @BindView(R.id.postage_price)
     TextView mPos_price;//邮费
+    @BindView(R.id.insurance_price)
+    TextView mInsurance_price;//保险费
     @BindView(R.id.total_num)
     TextView mTotal;//共计
     @BindView(R.id.ed_details)
@@ -86,12 +89,12 @@ public class DiscountsParticularsActivity extends BaseActivity {
         //接收参数
         Bundle data = getIntent().getBundleExtra("data");
         mCard.setCardId(data.getString("cardId"));
-        System.out.println("接收到的Card");
         mCard.setCategoryName(data.getString("cardName"));
-        mCard.setImgUrl(data.getString("imgurl"));
+        mCard.setCoverImg(data.getString("imgurl"));
         mCard.setPrice(data.getString("price"));
         mCard.setPostage(data.getString("postage"));
         mCard.setNum(data.getString("cardNumber"));
+        mCard.setInsurancePrice(data.getString("insurance"));
 
         api= WXAPIFactory.createWXAPI(this,getString(R.string.WEIXIN_APPID),true);
         api.registerApp(getString(R.string.WEIXIN_APPID));
@@ -127,11 +130,15 @@ public class DiscountsParticularsActivity extends BaseActivity {
         mCard_name.setText(mCard.getCategoryName());
         mNum.setText("数量 "+mCard.getNum());
         mPrice.setText("￥ "+Double.valueOf(mCard.getPrice()));
+
+        mPrice.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG ); //中间横线（删除线）
+
         mNum2.setText(mCard.getNum());
         mPos_price.setText("￥ "+Double.valueOf(mCard.getPostage()));
         mTotal.setText("￥ "+Double.valueOf(mCard.getPostage()));
+        mInsurance_price.setText("￥ " + Double.valueOf(mCard.getInsurancePrice()));
         mDescribe.setText("描述：");
-        Glide.with(this).load(mCard.getImgUrl()).into(mImg);
+        Glide.with(this).load(mCard.getCoverImg()).into(mImg);
     }
 
     //判断收货信息是否为空
@@ -179,6 +186,7 @@ public class DiscountsParticularsActivity extends BaseActivity {
         YSBSdk.getService(OAuthService.class).set_card_data(map, new YRequestCallback<CommodityCardBean>() {
             @Override
             public void onSuccess(CommodityCardBean var1) {
+                mCard.setInsurancePrice(var1.getInsurancePrice());
                 getPayData(var1.getAttach());
             }
 
@@ -202,7 +210,10 @@ public class DiscountsParticularsActivity extends BaseActivity {
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("mode","wxpay");
         map.put("channel","card");
-        map.put("change",mCard.getPrice());
+
+
+
+        map.put("change",Double.valueOf(Double.valueOf(mCard.getPostage()) + Double.valueOf(mCard.getInsurancePrice())));
         Map<String,Object> attachBean =new HashMap<String, Object>();
         Map rewardPlan=new HashMap();
         attachBean.put("reward_plan",rewardPlan);

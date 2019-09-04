@@ -279,11 +279,12 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
             }
         });
-        if (timer == null) {
+        //新手红包弹框
+        /*if (timer == null) {
             if (!ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_is_login).equals("on")) {
                 new DialogUtils(mContext).showNewPacketDialog();
             }
-        }
+        }*/
 
 
         //每日登陆弹框
@@ -303,7 +304,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                             setGodlData();
                             dialogUtils.dismissOpenCommonDialog();
                             //打开一个新的弹框
-                            dialogUtils.showopenGetGoldDialog();
+                            //dialogUtils.showopenGetGoldDialog();
                         }
                     });
                 }

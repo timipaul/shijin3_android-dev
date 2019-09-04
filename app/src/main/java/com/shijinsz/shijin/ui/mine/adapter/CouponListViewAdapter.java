@@ -81,7 +81,7 @@ public class CouponListViewAdapter extends BaseAdapter {
         viewHolder.price.setText("现价：￥"+mList.get(i).getCoupon_price());
         viewHolder.old_price.setText("劵后：￥" + mList.get(i).getPrice());
 
-        SpannableString dis_money = new SpannableString("￥30");
+        SpannableString dis_money = new SpannableString("￥" + (Integer.valueOf(mList.get(i).getCoupon_price()) - Integer.valueOf(mList.get(i).getPrice())));
         RelativeSizeSpan sizeSpan = new RelativeSizeSpan(0.7f);
         dis_money.setSpan(sizeSpan,0,1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         viewHolder.discounts_money.setText(dis_money);

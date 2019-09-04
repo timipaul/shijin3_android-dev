@@ -58,6 +58,7 @@ import com.shijinsz.shijin.utils.BoxGifUtils;
 import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.LoginUtil;
+import com.xiqu.sdklibrary.util.XWUtils;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -114,6 +115,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
     @BindView(R.id.view_button)
     View mView_but;
 
+
     private static final int INVITATION_CODE = 100;
     private static final int NEW_PERSON_TASK_PAGE_CODE = 101;
     private static final int DAT_TASK_CODE = 102;
@@ -132,7 +134,8 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
 
     @Override
     protected void loadData() {
-        this.getBanner().loadAD();
+        //广告轮播图  暂时被游戏入口代替
+        //this.getBanner().loadAD();
 
     }
     private boolean isVisible;
@@ -250,7 +253,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
 //
             if (ShareDataManager.getInstance().getPara(SharedPreferencesKey.Key_isLogin).equals("on")) {
                 if (ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_new_one_status).equals("on")) {
-                    new DialogUtils(getContext()).showNewPacketDialog();
+                    //new DialogUtils(getContext()).showNewPacketDialog();
                 }
             }
         }
@@ -604,7 +607,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
         });
     }
 
-    @OnClick({R.id.ln_sign, R.id.ln_invite, R.id.ln_show_income,
+    @OnClick({R.id.ln_sign, R.id.ln_invite, R.id.ln_show_income,R.id.game_entrance,
             R.id.ln_prefect_information, R.id.good_comment, R.id.ln_share_answer, R.id.ln_good_feedback,
             R.id.ln_follow_wechat, R.id.box,R.id.ln_vote,R.id.invite_code_layout,R.id.ln_new_person,
             R.id.ln_day_person,R.id.ln_challenge_person,R.id.view_button})
@@ -731,6 +734,18 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                 Toast toast = Toast.makeText(getContext(), "等待倒计时结束再领取吧！", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
+                break;
+            case R.id.game_entrance:
+                //推广游戏入口
+                if (!LoginUtil.isLogin(mActivity)) {
+                    return;
+                }
+
+                //嘻趣游戏
+                String username = ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_ID);
+                XWUtils.getInstance(getContext()).init(Constants.XIQU_APPID,Constants.XIQU_SECRET,username);
+                //跳转进入广告展示页面
+                XWUtils.getInstance(getContext()).jumpToAd();
                 break;
         }
     }

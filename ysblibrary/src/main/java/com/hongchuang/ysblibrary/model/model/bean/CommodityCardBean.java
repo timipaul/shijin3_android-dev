@@ -13,13 +13,15 @@ public class CommodityCardBean {
     //价格
     private String price;
     //图片
-    private String imgUrl;
+    private String coverImg;
     //分类名称
     private String categoryName;
     //数量
     private String num;
     //邮费
     private String postage;
+    //保险费
+    private String insurancePrice;
 
     private String attach;
 
@@ -82,14 +84,6 @@ public class CommodityCardBean {
         this.price = price;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
     public String getCategoryName() {
         return categoryName;
     }
@@ -120,5 +114,21 @@ public class CommodityCardBean {
 
     public void setAttach(String attach) {
         this.attach = attach;
+    }
+
+    public String getInsurancePrice() {
+        return insurancePrice;
+    }
+
+    public String getCoverImg() {
+        return coverImg;
+    }
+
+    public void setCoverImg(String coverImg) {
+        this.coverImg = coverImg;
+    }
+
+    public void setInsurancePrice(String insurancePrice) {
+        this.insurancePrice = insurancePrice;
     }
 }

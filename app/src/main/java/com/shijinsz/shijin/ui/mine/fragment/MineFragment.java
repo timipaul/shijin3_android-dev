@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hongchuang.hclibrary.manager.MActivityManager;
@@ -64,10 +65,13 @@ import com.shijinsz.shijin.utils.BadgeUtil;
 import com.shijinsz.shijin.utils.DownloadAPK;
 import com.shijinsz.shijin.utils.GlideApp;
 import com.shijinsz.shijin.utils.LoginUtil;
+import com.tencent.bugly.beta.Beta;
+import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 import com.xiqu.sdklibrary.util.XWUtils;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -669,6 +673,8 @@ public class MineFragment extends BaseFragment {
                     return;
                 }
                 startActivity(new Intent(getContext(), FeedbackActivity.class));
+                //Beta.applyDownloadedPatch();
+
                 break;
             case R.id.tv_sj:
                 if (!LoginUtil.isLogin(mActivity)) {
@@ -677,7 +683,7 @@ public class MineFragment extends BaseFragment {
                 startActivity(new Intent(getContext(), DataCacheActivity.class));
                 break;
             case R.id.tv_sz:
-//                Beta.checkUpgrade();
+                //Beta.checkUpgrade();
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }

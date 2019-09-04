@@ -130,47 +130,11 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
         IntentFilter filter = new IntentFilter();
         filter.addAction("com.shijinsz.VideoItemFragment");//只有持有相同的action的接受者才能接收此广播  
         getContext().registerReceiver(localReceiver, filter);
-
-        System.out.println("父fragment： " + getParentFragment());
-
-        /*dlBackPlay.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-
-            }
-
-            @Override
-            public void onDrawerOpened(@NonNull View drawerView) {
-                if (mVodPlayer != null) {
-                    mVodPlayer.pause();
-                }
-            }
-
-            @Override
-            public void onDrawerClosed(@NonNull View drawerView) {
-                if (mVodPlayer != null) {
-                    mVodPlayer.resume();
-                }
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });*/
-
-
-        //设置菜单内容之外其他区域的背景色
-        //dlBackPlay.setScrimColor(Color.TRANSPARENT);
-        //设置 全屏滑动
-        //setDrawerRightEdgeSize(getActivity(), dlBackPlay, 1);
-
         mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mPlay.setVisibility(View.GONE);
                 playerStandard.startVideo();
-                //mVodPlayer.startPlay(url);
                 ShareDataManager.getInstance().save(mActivity, SharedPreferencesKey.KEY_flow_play_video, "true");
             }
         });
@@ -178,36 +142,6 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
         getVideoData();
 
     }
-
-
-
-    private ScreenBroadcastReceiver mScreenReceiver;
-    private class ScreenBroadcastReceiver extends BroadcastReceiver {
-        private String action = null;
-
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            action = intent.getAction();
-            if (Intent.ACTION_SCREEN_ON.equals(action)) {
-                // 开屏
-            } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
-                // 锁屏
-                System.out.println("我锁屏啦-********************");
-            } else if (Intent.ACTION_USER_PRESENT.equals(action)) {
-                // 解锁
-            }
-        }
-    }
-    private void startScreenBroadcastReceiver() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_SCREEN_ON);
-        filter.addAction(Intent.ACTION_SCREEN_OFF);
-        filter.addAction(Intent.ACTION_USER_PRESENT);
-        getActivity().registerReceiver(mScreenReceiver, filter);
-    }
-
-
 
     //设置父类控件和监听
     private void setParentView(){
@@ -259,12 +193,10 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.user_img:
-                System.out.println("头像点击关注...");
                 follow();
                 break;
             case R.id.user_like_video:
                 mBu_like.setClickable(false);
-                System.out.println("点赞点击");
                 if (LoginUtil.isLogin(getContext())) {
                     if (isLike) {
                         System.out.println("点赞");
@@ -277,7 +209,6 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
 
                 break;
             case R.id.user_comment:
-                System.out.println("评论点击");
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
@@ -295,14 +226,12 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
 
                 break;
             case R.id.user_transmit:
-                System.out.println("转发点击");
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
                 getShare();
                 break;
             case R.id.commodity:
-                System.out.println("购物车点击");
                 break;
 
         }

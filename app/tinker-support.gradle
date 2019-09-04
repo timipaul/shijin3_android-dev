@@ -7,7 +7,7 @@ def bakPath = file("C:/Tinker/bakApk/")
  */
 //def baseApkDir = "113shangxian"
 
-def baseApkDir = "app-0827-17-40-40"
+def baseApkDir = "app-0829-18-27-15"
 
 /**
  * 对于插件各参数的详细解析请参考
@@ -38,7 +38,7 @@ tinkerSupport {
     baseApkResourceMapping = "${bakPath}/${baseApkDir}/app-release-R.txt"
 
     // 构建基准包和补丁包都要指定不同的tinkerId，并且必须保证唯一性
-    tinkerId = "base-1.2.3"
+    tinkerId = "base-1.2.7"
 
     // 构建多渠道补丁时使用
      buildAllFlavorsDir = "C:/360jiagubao_windows_64/jiagu/output/16675353515/113channel"

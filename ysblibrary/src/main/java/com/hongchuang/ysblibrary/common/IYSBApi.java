@@ -105,7 +105,7 @@ public interface IYSBApi {
     /* 获取投票显示数据 */
     @GET(urltop + "revolution/vote/{username}")
     Observable<BaseResult<BaseBean<VoteBean>>> get_vote_list(@Path("username") String uid,@QueryMap Map<String, Object> map);
-    /* 获取淘宝广告记录显示 */
+    /* 获取优惠劵记录显示 */
     @GET(urltop + "revolution/taobao")
     Observable<BaseResult<BaseBean<AdAllianceBean>>> get_alliance_ad(@QueryMap Map<String, Object> map);
     /* 提交回填邀请码 */

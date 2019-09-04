@@ -170,9 +170,9 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
             lackedPermission.add(Manifest.permission.ACCESS_FINE_LOCATION);
         }
 
-        if (!(checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
+        /*if (!(checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
             lackedPermission.add(Manifest.permission.READ_PHONE_STATE);
-        }
+        }*/
 
         // 权限都已经有了，那么直接调用SDK
         if (lackedPermission.size() == 0) {
@@ -506,9 +506,11 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
             return true;
         }
+
         return super.onKeyDown(keyCode, event);
     }
 
