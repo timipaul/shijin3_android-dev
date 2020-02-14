@@ -142,7 +142,7 @@ public class SignAfterActivity extends BaseActivity {
         style10.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ffeb7b)),style10.length()-4,style10.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         finish10.setText(style10);
         GlideApp.with(mContext).load(ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_imageurl)).into(team1);
-        SpannableStringBuilder tom = new SpannableStringBuilder(String.format(getString(R.string.tomorrow_num),"1000人","￥10000"));
+        SpannableStringBuilder tom = new SpannableStringBuilder(String.format(getString(R.string.tomorrow_num),"1000人","¥10000"));
         tom.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue)),7,12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tom.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.blue)),tom.length()-6,tom.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tomNum.setText(tom);

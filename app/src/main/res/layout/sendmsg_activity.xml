@@ -51,19 +51,19 @@
         android:layout_gravity="center_horizontal"
         ver:inputType="number"
         android:layout_marginTop="@dimen/dp_60"/>
+
     <Button
         android:id="@+id/bt_get_code"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_52"
-        android:layout_marginRight="@dimen/dp_40"
         android:layout_marginLeft="@dimen/dp_40"
-        android:background="@drawable/bt_red"
         android:layout_marginTop="@dimen/dp_36"
+        android:layout_marginRight="@dimen/dp_40"
+        android:background="@drawable/bt_red"
+        android:paddingBottom="3dp"
         android:text="@string/reget_code"
         android:textColor="@color/white"
-        android:visibility="gone"
-        android:paddingBottom="3dp"
-        />
+        android:visibility="gone" />
     <TextView
         android:id="@+id/tv_timer"
         android:layout_width="wrap_content"

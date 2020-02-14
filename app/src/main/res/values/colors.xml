@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorPrimary">#E01F22</color>
     <color name="colorPrimaryDark">#E01F22</color>
     <color name="colorAccent">#FF4081</color>
@@ -7,25 +7,47 @@
     <color name="vip_name_color">#c5995b</color>
     <color name="task_but_border">#ff5637</color>
     <color name="task_but_bf">#bfbfbf</color>
+    <color name="task_but_00" tools:keep="@color/task_but_00">#000000</color>
+
     <color name="task_but_93">#939292</color>
     <color name="view_line">#f7f7f7</color>
     <color name="vip_price_color">#a57459</color>
     <color name="vip_old_price_color">#999999</color>
     <color name="color_ee5151">#EE5151</color>
+    <color name="color_fc4" tools:keep="@color/color_fc4">#fc4747</color>
+    <color name="color_c00">#c00d0d</color>
     <color name="color_cccccc">#cccccc</color>
 
     <color name="color_fe">#fefefe</color>
+    <color name="color_f67">#f6f6f7</color>
     <color name="color_fd">#fdfcfc</color>
     <color name="color_ee">#EEEEEE</color>
     <color name="color_e8">#e8af15</color>
     <color name="color_b5">#b5b4b4</color>
     <color name="color_fc">#fcf2eb</color>
     <color name="color_c9">#c9caca</color>
+    <color name="color_dc" tools:keep="@color/color_dc">#dcdcdc</color>
+    <color name="color_98">#98999d</color>
+    <color name="color_f1">#f1f1f1</color>
+    <color name="color_6f">#ffffff</color>
+    <color name="color_f8f">#f8f6f6</color>
+    <color name="color_6d">#dddddd</color>
+    <color name="color_d4">#d4d2d2</color>
+    <color name="color_80">#808080</color>
+    <color name="color_d2">#d2d2d2</color>
+    <color name="color_be">#bebfc1</color>
+    <color name="color_91" tools:keep="@color/color_91">#919191</color>
+    <color name="color_f4f">#f4f4f4</color>
 
-    //主色
+    <!-- 主色 -->
     <color name="color_ffb">#ffbe01</color>
-    //字体颜色
+    <color name="color_fdb">#fdbf4f</color>
+    <!-- 字体颜色 -->
     <color name="color_f3">#f37632</color>
+
+    <!-- 按钮渐变 -->
+    <color name="color_f9">#f9c355</color>
+    <color name="color_f8a">#f8a641</color>
 
     <color name="color_35">#353232</color>
     <color name="color_f4">#f4b803</color>
@@ -36,21 +58,54 @@
     <color name="color_fa">#fae7b0</color>
     <color name="color_e9">#e99e34</color>
     <color name="color_fea">#fead30</color>
+    <color name="color_fda">#fdad4b</color>
+    <color name="color_f9c">#f9c65a</color>
+    <color name="color_ffa">#ffaa24</color>
+    <color name="color_f6">#f6f28e</color>
+    <color name="color_ff3" tools:keep="@color/color_ff3">#fff3d4</color>
+    <color name="color_fcb">#fcb34f</color>
+    <color name="color_fff">#fff0ea</color>
+
+
     <color name="color_fd8">#fd8814</color>
     <color name="color_ef">#efb713</color>
-    <color name="color_fb5">#ffb54a</color>
-    <color name="color_fb">#fb6d3b</color>
+    <color name="color_fb5" tools:keep="@color/color_fb5">#ffb54a</color>
+    <color name="color_fb" tools:keep="@color/color_fb">#fb6d3b</color>
     <color name="color_ed">#ed723e</color>
     <color name="color_fa7">#fa7f02</color>
     <color name="color_ffd">#ffd24b</color>
     <color name="color_fd5">#ffb54a</color>
     <color name="color_ec">#ec781b</color>
     <color name="color_fd6">#fb6d3b</color>
-    <color name="color_16">#16273a</color>
+    <color name="color_16" tools:keep="@color/color_16">#16273a</color>
     <color name="color_0a">#0abc64</color>
-    <color name="color_26">#262626</color>
-    <color name="color_c0">#c0c0c0</color>
-    <color name="color_9b">#9b9a9a</color>
+    <color name="color_8f">#8fc31f</color>
+    <color name="color_26" tools:keep="@color/color_26">#262626</color>
+    <color name="color_c0" tools:keep="@color/color_c0">#c0c0c0</color>
+    <color name="color_9b9">#9b9b9b</color>
+    <color name="color_9b" tools:keep="@color/color_9b">#9b9a9a</color>
     <color name="color_f8e">#f8efd5</color>
+    <color name="color_4a">#4a494c</color>
+    <color name="color_3c">#3c3c3c</color>
+    <color name="color_ffd7" tools:keep="@color/color_ffd7">#ffd7d7</color>
+    <color name="color_e4">#e4e4e4</color>
+    <color name="color_f2">#f2f1f1</color>
+    <color name="color_dbd">#dbdbdb</color>
+    <color name="color_c4">#c43030</color>
+    <color name="color_bf">#bf0d0d</color>
+    <color name="color_eb">#eb3d04</color>
+    <color name="color_dd">#dd392e</color>
+
+
+
+    <color name="color_dd121" tools:keep="@color/color_dd121">#ffbe01</color>
+    <color name="color_dd122" tools:keep="@color/color_dd122">#fc6866</color>
+    <color name="color_dd123" tools:keep="@color/color_dd123">#63abf4</color>
+    <color name="color_dd124" tools:keep="@color/color_dd124">#fd7598 </color>
+    <color name="color_dd125" tools:keep="@color/color_dd125">#fdb94f</color>
+
+
+
+
 
 </resources>

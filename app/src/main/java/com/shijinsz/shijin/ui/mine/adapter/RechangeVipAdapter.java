@@ -91,7 +91,7 @@ public class RechangeVipAdapter extends BaseAdapter {
         }
 
         viewHolder.title.setText(mList.get(i).getTooltip());
-        viewHolder.old_price.setText("原价￥" + mList.get(i).getOriginal_price());
+        viewHolder.old_price.setText("原价¥" + mList.get(i).getOriginal_price());
         return view;
     }
     class ViewHolder{

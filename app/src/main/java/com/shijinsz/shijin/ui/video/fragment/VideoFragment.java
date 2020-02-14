@@ -99,6 +99,64 @@ public class VideoFragment extends BaseFragment{
         mBottomLayout.setAlpha(0.52f);
         hideStatusNavigationBar();
 
+        newnotifyDataSetChanged(rootView);
+
+        mRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.attention_but:
+                        mode = "follow";
+                        break;
+                    case R.id.recommend_but:
+                        mode = "routine";
+                        break;
+                    case R.id.site_but:
+                        mode = "city";
+                        break;
+                }
+                isRefresh = true;
+                cursor = System.currentTimeMillis() / 1000 + 60000 + "";
+                //pagerAdapter.getItemPosition(POSITION_NONE);
+                adsList.clear();
+                pagerAdapter.mData.clear();
+                newnotifyDataSetChanged(rootView);
+                getVideoData();
+            }
+        });
+
+        mStateView.setOnRetryClickListener(new StateView.OnRetryClickListener() {
+            @Override
+            public void onRetryClick() {
+                isRefresh = true;
+                getVideoData();
+
+            }
+        });
+
+        mSeek_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!LoginUtil.isLogin(mActivity)) {
+                    return;
+                }
+                startActivity(new Intent(mActivity, SearchActivity.class));
+            }
+        });
+
+        mStateView.showLoading();
+        cursor = System.currentTimeMillis() / 1000 + 60000 + "";
+        pagerAdapter.mData.clear();
+
+        getVideoData();
+
+    }
+
+
+
+
+    //更新适配器数据
+    public void newnotifyDataSetChanged(View rootView){
         pagerAdapter = new VerticalViewPagerAdapter(rootView,getChildFragmentManager());
         vvpBackPlay.setVertical(true);
         vvpBackPlay.setOffscreenPageLimit(10);
@@ -132,60 +190,6 @@ public class VideoFragment extends BaseFragment{
 
             }
         });
-
-        mRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i){
-                    case R.id.attention_but:
-                        mode = "follow";
-                        break;
-                    case R.id.recommend_but:
-                        mode = "routine";
-                        break;
-                    case R.id.site_but:
-                        mode = "city";
-                        break;
-                }
-                isRefresh = true;
-                cursor = System.currentTimeMillis() / 1000 + 60000 + "";
-                pagerAdapter.getItemPosition(POSITION_NONE);
-                getVideoData();
-
-                //getChildFragmentManager()
-            }
-        });
-
-        mStateView.setOnRetryClickListener(new StateView.OnRetryClickListener() {
-            @Override
-            public void onRetryClick() {
-                isRefresh = true;
-                getVideoData();
-
-            }
-        });
-
-        mSeek_but.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!LoginUtil.isLogin(mActivity)) {
-                    return;
-                }
-                startActivity(new Intent(mActivity, SearchActivity.class));
-            }
-        });
-
-        mStateView.showLoading();
-        cursor = System.currentTimeMillis() / 1000 + 60000 + "";
-        pagerAdapter.mData.clear();
-        getVideoData();
-
-        initBackgroundCallBack();
-    }
-
-
-    public void initBackgroundCallBack(){
-
     }
 
     public void getVideoData(){
@@ -221,7 +225,6 @@ public class VideoFragment extends BaseFragment{
             public void onFailed(String var1, String message) {
                 ErrorUtils.error(getContext(), var1, message);
                 mStateView.showContent();
-                //System.out.println("没有数据1");
                 ToastUtil.showToast(message);
             }
 
@@ -261,7 +264,6 @@ public class VideoFragment extends BaseFragment{
             intent.setAction("com.shijinsz.VideoItemFragment"); // 设置你这个广播的action  
             intent.putExtra("isVisible", String.valueOf(isVisibleToUser));
             getActivity().sendBroadcast(intent); // 发送广播 
-            System.out.println("发送广播");
 
         }catch (Exception e) {
 

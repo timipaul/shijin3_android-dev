@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.github.nukc.stateview.StateView;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
-import com.shijinsz.shijin.R;
 
 import butterknife.ButterKnife;
 
@@ -41,11 +40,7 @@ public abstract class BaseFragment extends LazyLoadFragment {
             ButterKnife.bind(this, rootView);
 
             mStateView = StateView.inject(getStateViewRoot());
-            if (mStateView != null) {
-                mStateView.setLoadingResource(R.layout.page_loading);
-                mStateView.setRetryResource(R.layout.page_net_error);
-                mStateView.setEmptyResource(R.layout.page_detail_error);
-            }
+
             initView(rootView);
             initData();
             initListener();

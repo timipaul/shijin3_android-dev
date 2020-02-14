@@ -213,7 +213,6 @@ public class VideoCommentActivity extends BaseActivity implements OnRefreshListe
         mTvhide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("点击了");
                 //overridePendingTransition(R.anim.bottom_silent,R.anim.bottom_out);
                 finish();
             }

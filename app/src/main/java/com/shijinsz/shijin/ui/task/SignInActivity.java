@@ -48,6 +48,7 @@ import retrofit.callback.YRequestCallback;
  * Created by yrdan on 2018/8/31.
  */
 
+/** 签到页面 */
 public class SignInActivity extends BaseActivity {
     @BindView(R.id.img3)
     ImageView img3;
@@ -312,9 +313,6 @@ public class SignInActivity extends BaseActivity {
     }
     private void changeView(int i1, SignBean var1) {
 
-        System.out.println("签到进度: " + i1);
-        System.out.println("签到状态:" + var1.getSign_in().getMarks().get(i1).getStatus());
-
         switch (i1) {
             case 0:
                 if (var1.getSign_in().getMarks().get(i1).getStatus().equals("on")) {
@@ -455,7 +453,6 @@ public class SignInActivity extends BaseActivity {
                 style.setSpan(new AbsoluteSizeSpan(30, true), 0,  var1.getSign_in().getContinuous_number().length(), SpannableString.SPAN_EXCLUSIVE_INCLUSIVE);
                 tvDay.setText(style);
 //                tvDay.setText(String.format(getString(R.string.day), var1.getSign_in().getContinuous_number()));
-                System.out.println("当前签到信息: " + var1.getSign_in().getMarks().size());
                 for (int i1 = 0; i1 < var1.getSign_in().getMarks().size(); i1++) {
                     changeView(i1, signBean);
                 }

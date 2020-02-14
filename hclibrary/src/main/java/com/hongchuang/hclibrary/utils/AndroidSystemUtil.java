@@ -160,7 +160,6 @@ public class AndroidSystemUtil {
         int OperatorsName = 0;
         String IMSI =  ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
         // IMSI号前面3位460是国家，紧接着后面2位00 运营商代码
-//        System.out.println(IMSI);
         if (IMSI!=null) {
             if (IMSI.startsWith("46000") || IMSI.startsWith("46002") || IMSI.startsWith("46007")) {
                 OperatorsName = 1;

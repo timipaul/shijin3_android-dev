@@ -18,11 +18,11 @@ import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hongchuang.hclibrary.manager.MActivityManager;
@@ -48,6 +48,7 @@ import com.shijinsz.shijin.ui.mine.CertificationActivity;
 import com.shijinsz.shijin.ui.mine.DataCacheActivity;
 import com.shijinsz.shijin.ui.mine.FeedbackActivity;
 import com.shijinsz.shijin.ui.mine.FollowListActivity;
+import com.shijinsz.shijin.ui.mine.LoveShareActivity;
 import com.shijinsz.shijin.ui.mine.MyAdActivity;
 import com.shijinsz.shijin.ui.mine.MyCollectionActivity;
 import com.shijinsz.shijin.ui.mine.MyLookActivity;
@@ -57,6 +58,7 @@ import com.shijinsz.shijin.ui.mine.MyVipActivity;
 import com.shijinsz.shijin.ui.mine.SettingActivity;
 import com.shijinsz.shijin.ui.mine.ShoppingCouponActivity;
 import com.shijinsz.shijin.ui.mine.UserDetailActivity;
+import com.shijinsz.shijin.ui.mine.UserRankingActivity;
 import com.shijinsz.shijin.ui.task.InviteFriendActivity;
 import com.shijinsz.shijin.ui.wallet.PointActivity;
 import com.shijinsz.shijin.ui.wallet.PointDetailActivity;
@@ -65,13 +67,11 @@ import com.shijinsz.shijin.utils.BadgeUtil;
 import com.shijinsz.shijin.utils.DownloadAPK;
 import com.shijinsz.shijin.utils.GlideApp;
 import com.shijinsz.shijin.utils.LoginUtil;
-import com.tencent.bugly.beta.Beta;
-import com.tencent.bugly.beta.interfaces.BetaPatchListener;
+import com.shijinsz.shijin.utils.LoveShareDialog;
 import com.xiqu.sdklibrary.util.XWUtils;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -117,6 +117,8 @@ public class MineFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.webview)
     WebView webview;
+    @BindView(R.id.my_game)
+    Button mMyGame;
 
     private String id;
 
@@ -138,6 +140,31 @@ public class MineFragment extends BaseFragment {
             } else {
                 getAd();
             }
+        }
+
+
+    }
+
+    //判断手机型号 隐藏游戏入口
+    public void ifGameIntoEntrance(){
+        if(Build.MANUFACTURER.toLowerCase().contains("vivo") || Build.MANUFACTURER.toLowerCase().contains("huawei")){
+            YSBSdk.getService(OAuthService.class).getGameStatue(new YRequestCallback<ShenmiBean>() {
+                @Override
+                public void onSuccess(ShenmiBean var1) {
+                    mMyGame.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onFailed(String var1, String message) {
+                    Log.i("game", "onFailed");
+                    mMyGame.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onException(Throwable var1) {
+                    Log.i("game", "onException");
+                }
+            });
         }
     }
 
@@ -249,6 +276,9 @@ public class MineFragment extends BaseFragment {
         super.onResume();
         id = ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_ID);
         updata();
+
+        //判断游戏入口是否打开  用于过审核
+        ifGameIntoEntrance();
     }
 
     private void updata() {
@@ -344,9 +374,6 @@ public class MineFragment extends BaseFragment {
             try {
                 if(Intent.ACTION_PACKAGE_ADDED.equals(intent.getAction())){
 
-                    System.out.println("**************Broadcase*************");
-                    //System.out.println(uninstallApk.size()+"(*******"+uApks.size());
-                    System.out.println("******应用添加***");
                     if (shenmiBean!=null&&shenmiBean.getAds().get(0).getDplink()!=null&&!shenmiBean.getAds().get(0).getDplink().isEmpty()) {
                         if (CanOpenDeeplink(getContext(), shenmiBean.getAds().get(0).getDplink())) {
                             new Thread(new Runnable() {
@@ -371,11 +398,11 @@ public class MineFragment extends BaseFragment {
                     }
                 }
                 else  if(Intent.ACTION_PACKAGE_REMOVED.equals(intent.getAction())){
-                    System.out.println("*****应用被删除");
+                    //System.out.println("*****应用被删除");
                 }
 
                 else  if(Intent.ACTION_PACKAGE_REPLACED.equals(intent.getAction())){
-                    System.out.println("****应用被替换");
+                    //System.out.println("****应用被替换");
                     if (shenmiBean!=null){
                         for (ShenmiBean.AdsBean.Trackingevents trackingevents : shenmiBean.getAds().get(0).getTrackingevents()) {
                             if (trackingevents.getEventtype().equals("installcomplete")){
@@ -585,8 +612,8 @@ public class MineFragment extends BaseFragment {
     @OnClick({R.id.ln_money, R.id.ln_point, R.id.img_notica, R.id.img_avatar, R.id.ln_myad,
             R.id.tv_vip, R.id.tv_looked, R.id.tv_conversion,R.id.tv_gz,
             R.id.tv_sc, R.id.tv_yj, R.id.tv_sj, R.id.tv_sz, R.id.tv_shenqing, R.id.tv_tg,
-            R.id.tv_nickname,R.id.tv_rush,R.id.tv_coupon,R.id.gift_conversion,R.id.invite_friend,R.id.my_game})
-
+            R.id.tv_nickname,R.id.tv_rush,R.id.tv_coupon,R.id.gift_conversion,R.id.invite_friend,R.id.my_game,
+            R.id.tv_love_share})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ln_money:
@@ -628,6 +655,8 @@ public class MineFragment extends BaseFragment {
 
                 break;
             case R.id.tv_vip:
+
+                //Beta.downloadPatch();
                 //会员机制
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
@@ -638,6 +667,7 @@ public class MineFragment extends BaseFragment {
             case R.id.tv_looked:
                 //我看过的
                 if (!LoginUtil.isLogin(mActivity)) {
+                    System.out.println("测试一下");
                     return;
                 }
                 startActivity(new Intent(getContext(), MyLookActivity.class));
@@ -650,6 +680,9 @@ public class MineFragment extends BaseFragment {
                 startActivity(new Intent(getContext(), MySwopActivity.class));
                 break;
             case R.id.tv_rush:
+                //清除补丁
+                //Beta.cleanTinkerPatch(true);
+
                 //我抢购的
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
@@ -680,10 +713,10 @@ public class MineFragment extends BaseFragment {
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
+
                 startActivity(new Intent(getContext(), DataCacheActivity.class));
                 break;
             case R.id.tv_sz:
-                //Beta.checkUpgrade();
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
@@ -691,19 +724,19 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.tv_tg:
 
-//                Beta.checkUpgrade();
+                //Beta.checkUpgrade();
+                //Uri uri = Uri.parse("https://weidian.com/?distributorid=1392220866&userid=1392220866&ifr=shopdetail&wfr=wx&src=shop");
+                //Intent intent2 = new Intent(Intent.ACTION_VIEW, uri);
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
-                Uri uri = Uri.parse("https://weidian.com/?distributorid=1392220866&userid=1392220866&ifr=shopdetail&wfr=wx&src=shop");
-                Intent intent2 = new Intent(Intent.ACTION_VIEW, uri);
-//                Intent intent2 = new Intent(mActivity, WebViewActivity.class);
-//                intent2.putExtra("url", "https://weidian.com/?distributorid=1392220866&userid=1392220866&ifr=shopdetail&wfr=wx&src=shop");
-//                intent2.putExtra("title", "十金特供");
+                Intent intent2 = new Intent(getContext(),UserRankingActivity.class);
                 startActivity(intent2);
+
+
+
                 break;
             case R.id.tv_shenqing:
-//                Beta.checkUpgrade();
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
@@ -714,6 +747,7 @@ public class MineFragment extends BaseFragment {
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
+
                 //优惠劵
                 startActivity(new Intent(getContext(), ShoppingCouponActivity.class));
                 //优惠劵记录
@@ -747,8 +781,20 @@ public class MineFragment extends BaseFragment {
                 XWUtils.getInstance(getContext()).jumpToAd();
 
                 break;
+            case R.id.tv_love_share:
+                //跳转爱分享
+                startActivity(new Intent(mActivity, LoveShareActivity.class));
+                /*LoveShareDialog shareDialog;
+                shareDialog = new LoveShareDialog(getContext());
+                shareDialog.showWithdrapDialog(mActivity,
+                        "测试",
+                        "来自小周的测试",
+                        "http://192.168.100.174:8080",
+                        "http://192.168.100.174:8080");*/
+                break;
         }
     }
+
     private void showDownloadProgressDialog(Context context, String url) {
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("提示");

@@ -25,6 +25,7 @@ import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.ui.mine.MyPutActivity;
 import com.shijinsz.shijin.ui.mine.PaySuccessActivity;
 import com.shijinsz.shijin.utils.ErrorUtils;
+import com.shijinsz.shijin.utils.LoginUtil;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -80,8 +81,9 @@ public class PayActivity extends BaseActivity {
     @BindView(R.id.tv_money)
     TextView tvMoney;
     private IWXAPI api;
-    private float money=0;
-    private String id,total_number,people_number;
+    private float money = 0;
+    private String id, total_number, people_number;
+
     @Override
     public int bindLayout() {
         return R.layout.pay_activity;
@@ -97,16 +99,16 @@ public class PayActivity extends BaseActivity {
             }
         });
         setTitle(getString(R.string.pay));
-        id=getIntent().getStringExtra("id");
-        total_number=getIntent().getStringExtra("money");
-        people_number=getIntent().getStringExtra("num");
-        money=Float.valueOf(ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_change));
-        api= WXAPIFactory.createWXAPI(this,getString(R.string.WEIXIN_APPID),true);
+        id = getIntent().getStringExtra("id");
+        total_number = getIntent().getStringExtra("money");
+        people_number = getIntent().getStringExtra("num");
+        money = Float.valueOf(ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_change));
+        api = WXAPIFactory.createWXAPI(this, getString(R.string.WEIXIN_APPID), true);
         api.registerApp(getString(R.string.WEIXIN_APPID));
         tvMoney.setText(getIntent().getStringExtra("money"));
-        tvBalance2.setText(String.format(getString(R.string.balance), money+""));
-        tvAlipay2.setText(String.format(getString(R.string.limit),"3000"));
-        tvWechat2.setText(String.format(getString(R.string.limit),"10000"));
+        tvBalance2.setText(String.format(getString(R.string.balance), money + ""));
+        tvAlipay2.setText(String.format(getString(R.string.limit), "3000"));
+        tvWechat2.setText(String.format(getString(R.string.limit), "10000"));
     }
 
     @Override
@@ -120,12 +122,13 @@ public class PayActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    private String payType="balance";
+    private String payType = "balance";
+
     @OnClick({R.id.ln_balance, R.id.ln_alipay, R.id.ln_wechat, R.id.bt_pay_now})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ln_balance:
-                payType="balance";
+                payType = "balance";
                 rbBalance.setImageResource(R.mipmap.radio_button_on);
                 imgBalance.setImageResource(R.mipmap.icon_balance_2);
                 tvBalance.setTextColor(getResources().getColor(R.color.text_33));
@@ -142,7 +145,7 @@ public class PayActivity extends BaseActivity {
                 tvWechat3.setTextColor(getResources().getColor(R.color.text_hint));
                 break;
             case R.id.ln_alipay:
-                payType="alipay";
+                payType = "alipay";
                 rbBalance.setImageResource(R.mipmap.radio_button_off);
                 imgBalance.setImageResource(R.mipmap.icon_balance);
                 tvBalance.setTextColor(getResources().getColor(R.color.text_hint));
@@ -159,7 +162,7 @@ public class PayActivity extends BaseActivity {
                 tvWechat3.setTextColor(getResources().getColor(R.color.text_hint));
                 break;
             case R.id.ln_wechat:
-                payType="wechat";
+                payType = "wechat";
                 rbBalance.setImageResource(R.mipmap.radio_button_off);
                 imgBalance.setImageResource(R.mipmap.icon_balance);
                 tvBalance.setTextColor(getResources().getColor(R.color.text_hint));
@@ -177,35 +180,41 @@ public class PayActivity extends BaseActivity {
 
                 break;
             case R.id.bt_pay_now:
-                if (payType.equals("balance")){
-                    if(money<Float.valueOf(total_number)){
+                if (payType.equals("balance")) {
+                    if (money < Float.valueOf(total_number)) {
                         ToastUtil.showToast("余额不足");
                         return;
                     }
                     payusechange();
-                }else {
+                } else {
                     pay();
+
+                    //绑定微信
+                    new LoginUtil().isWxData(mContext);
+
                 }
 //                MActivityManager.getInstance().delAllACTWithout(MainActivity.class);
 //                startActivity(PaySuccessActivity.class);
                 break;
         }
     }
-    private void pay(){
+
+    private void pay() {
+
         Map map = new HashMap();
-        map.put("mode","wxpay");
-        map.put("channel","app");
-        map.put("change",total_number);
-        Map attachBean =new HashMap();
-        attachBean.put("mode","ad");
-        attachBean.put("ad_id",id);
-        Map rewardPlan=new HashMap();
-        Gson gson=new Gson();
-        rewardPlan.put("people_number",people_number);
-        rewardPlan.put("total_number",total_number);
-        rewardPlan.put("reward_mode","change");
-        attachBean.put("reward_plan",rewardPlan);
-        map.put("attach",gson.toJson(attachBean)+"");
+        map.put("mode", "wxpay");
+        map.put("channel", "app");
+        map.put("change", total_number);
+        Map attachBean = new HashMap();
+        attachBean.put("mode", "ad");
+        attachBean.put("ad_id", id);
+        Map rewardPlan = new HashMap();
+        Gson gson = new Gson();
+        rewardPlan.put("people_number", people_number);
+        rewardPlan.put("total_number", total_number);
+        rewardPlan.put("reward_mode", "change");
+        attachBean.put("reward_plan", rewardPlan);
+        map.put("attach", gson.toJson(attachBean) + "");
 //        Map map = new HashMap();
 //        Map attach=new HashMap();
 //        Map reward=new HashMap();
@@ -223,22 +232,22 @@ public class PayActivity extends BaseActivity {
         YSBSdk.getService(OAuthService.class).preorder(map, new YRequestCallback<WechatPayBean>() {
             @Override
             public void onSuccess(WechatPayBean var1) {
-                ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_pay_type,"1");
-                ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_pay_money,total_number+"");
+                ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_pay_type, "1");
+                ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_pay_money, total_number + "");
                 PayReq request = new PayReq();
                 request.appId = var1.getAppid();
                 request.partnerId = var1.getPartnerid();
-                request.prepayId= var1.getPrepayid();
+                request.prepayId = var1.getPrepayid();
                 request.packageValue = "Sign=WXPay";
-                request.nonceStr= var1.getNoncestr();
-                request.timeStamp= var1.getTimestamp();
-                request.sign= var1.getSign();
+                request.nonceStr = var1.getNoncestr();
+                request.timeStamp = var1.getTimestamp();
+                request.sign = var1.getSign();
                 api.sendReq(request);
             }
 
             @Override
             public void onFailed(String var1, String message) {
-                ErrorUtils.error(mContext,var1,message);
+                ErrorUtils.error(mContext, var1, message);
             }
 
             @Override
@@ -247,9 +256,10 @@ public class PayActivity extends BaseActivity {
             }
         });
     }
-    private void payusechange(){
-        PayChangeBean bean =new PayChangeBean();
-        bean.setChange(total_number+"");
+
+    private void payusechange() {
+        PayChangeBean bean = new PayChangeBean();
+        bean.setChange(total_number + "");
         bean.setMode("person");
 //        bean.getReward_plan().setPeople_number(people_number);
 //        bean.getReward_plan().setReward_mode("change");
@@ -263,17 +273,18 @@ public class PayActivity extends BaseActivity {
 //        map.put("mode","person");
 //        map.put("change",money);
 //        map.put("reward_plan",attach);
-        YSBSdk.getService(OAuthService.class).recharge(id,bean, new YRequestCallback<PicCodeBean>() {
+        YSBSdk.getService(OAuthService.class).recharge(id, bean, new YRequestCallback<PicCodeBean>() {
             @Override
             public void onSuccess(PicCodeBean var1) {
-                ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_change,money-Float.valueOf(total_number)+"");
-                ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_pay_type,"1");
-                ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_pay_money,total_number+"");
+                ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_change, money - Float.valueOf(total_number) + "");
+                ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_pay_type, "1");
+                ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_pay_money, total_number + "");
                 Toast.makeText(mContext, "支付成功", Toast.LENGTH_LONG).show();
                 MActivityManager.getInstance().delAllACTWithout(MainActivity.class);
-                Intent intent=new Intent(mContext, PaySuccessActivity.class);
+                Intent intent = new Intent(mContext, PaySuccessActivity.class);
                 intent.putExtra("type", ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_pay_type));
-                startActivity(intent);   }
+                startActivity(intent);
+            }
 
             @Override
             public void onFailed(String var1, String message) {

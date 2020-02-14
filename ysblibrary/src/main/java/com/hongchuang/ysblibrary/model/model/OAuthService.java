@@ -4,6 +4,7 @@ package com.hongchuang.ysblibrary.model.model;
 import android.app.Activity;
 import android.content.Context;
 
+import com.hongchuang.hclibrary.view.FlowTag;
 import com.hongchuang.ysblibrary.dao.BlackListBean;
 import com.hongchuang.ysblibrary.model.model.bean.AdAllianceBean;
 import com.hongchuang.ysblibrary.model.model.bean.AdBean;
@@ -27,10 +28,13 @@ import com.hongchuang.ysblibrary.model.model.bean.FollowDetailBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowNumberBean;
 import com.hongchuang.ysblibrary.model.model.bean.FollowUserBean;
 import com.hongchuang.ysblibrary.model.model.bean.GoodsBean;
+import com.hongchuang.ysblibrary.model.model.bean.GoodsClassifyBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationInfoBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationRecordBean;
+import com.hongchuang.ysblibrary.model.model.bean.InviteRecordBean;
 import com.hongchuang.ysblibrary.model.model.bean.LotteryListBean;
+import com.hongchuang.ysblibrary.model.model.bean.LoveShareGroupBean;
 import com.hongchuang.ysblibrary.model.model.bean.MessageBean;
 import com.hongchuang.ysblibrary.model.model.bean.PayChangeBean;
 import com.hongchuang.ysblibrary.model.model.bean.PaymentBean;
@@ -43,21 +47,31 @@ import com.hongchuang.ysblibrary.model.model.bean.RecomWordsBean;
 import com.hongchuang.ysblibrary.model.model.bean.SearchBean;
 import com.hongchuang.ysblibrary.model.model.bean.SearchedBean;
 import com.hongchuang.ysblibrary.model.model.bean.ShareBean;
+import com.hongchuang.ysblibrary.model.model.bean.ShareUserBean;
 import com.hongchuang.ysblibrary.model.model.bean.ShenmiBean;
+import com.hongchuang.ysblibrary.model.model.bean.ShoppingShopBean;
 import com.hongchuang.ysblibrary.model.model.bean.SignBean;
 import com.hongchuang.ysblibrary.model.model.bean.SignInsBean;
+import com.hongchuang.ysblibrary.model.model.bean.StoreBean;
+import com.hongchuang.ysblibrary.model.model.bean.StoreGoodsBean;
+import com.hongchuang.ysblibrary.model.model.bean.StoreRushBean;
+import com.hongchuang.ysblibrary.model.model.bean.StroeCommentBean;
 import com.hongchuang.ysblibrary.model.model.bean.StsBean;
 import com.hongchuang.ysblibrary.model.model.bean.SystemMessageBean;
+import com.hongchuang.ysblibrary.model.model.bean.TakeMoneyRecordBean;
 import com.hongchuang.ysblibrary.model.model.bean.TaskBean;
 import com.hongchuang.ysblibrary.model.model.bean.TodayFollowBean;
 import com.hongchuang.ysblibrary.model.model.bean.UserBean;
 import com.hongchuang.ysblibrary.model.model.bean.UserDetailBean;
+import com.hongchuang.ysblibrary.model.model.bean.UserRankingBean;
+import com.hongchuang.ysblibrary.model.model.bean.UserSiteBean;
 import com.hongchuang.ysblibrary.model.model.bean.VIpStateBean;
 import com.hongchuang.ysblibrary.model.model.bean.VipPriceBean;
 import com.hongchuang.ysblibrary.model.model.bean.VipRechangeBean;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
 import com.hongchuang.ysblibrary.model.model.bean.WechatPayBean;
 import com.hongchuang.ysblibrary.model.model.bean.YesterdayBean;
+import com.hongchuang.ysblibrary.model.model.bean.storeUserBean;
 import com.hongchuang.ysblibrary.model.model.tencent.QQLoginHandle;
 import com.hongchuang.ysblibrary.model.model.tencent.QQLoginResultBean;
 
@@ -74,11 +88,80 @@ import retrofit.callback.YRequestCallback;
 
 public interface OAuthService {
 
-
+    /* 获取用户分享信息 */
+    void getUserShare(Map<String, Object> map,YRequestCallback<ShareUserBean> callback);
+    /* 分享成功奖励 */
+    void getShareSucceed(String id,YRequestCallback<storeUserBean> callback);
+    /* 爱分享中我的团队 */
+    void getSubordinate(Map<String, Object> map,YRequestCallback<LoveShareGroupBean> callback);
+    /* 商城视频 */
+    void getVideo(Map<String, Object> map,YRequestCallback<BaseBean<StoreBean>> callback);
+    /* 微信绑定 */
+    void putBindWx(Map<String, Object> map,YRequestCallback<storeUserBean> callback);
+    /* 商城用户信息 */
+    void getStoreUser(Map<String, Object> map,YRequestCallback<storeUserBean> callback);
+    /* 提现 */
+    void getCapitalFlow(Map<String, Object> map,YRequestCallback<BaseBean<TakeMoneyRecordBean>> callback);
+    /* 提现记录 */
+    void postCapitalFlow(Map<String,Object> map,YRequestCallback<TakeMoneyRecordBean> callback);
+    /* 添加合伙人 */
+    void putMember(Map<String, Object> map,YRequestCallback<InviteRecordBean> callback);
+    /* 我的团队 */
+    void getInviteRecord(Map<String, Object> map,YRequestCallback<InviteRecordBean> callback);
+    /* 商城分类 */
+    void getClassifyList(Map<String, Object> map,YRequestCallback<BaseBean<GoodsClassifyBean>> callback);
+    /* 商城礼包 */
+    void getGiftAll(Map<String, Object> map,YRequestCallback<BaseBean<StoreGoodsBean>> callback);
+    /* 商城评论数据 */
+    void getStoreComment(String goodsId,Map<String, Object> map,YRequestCallback<BaseBean<StroeCommentBean>> callback);
+    /* 商城评论新增*/
+    void putStoreComment(Map<String, Object> map,YRequestCallback<StroeCommentBean> callback);
+    /* 商城店铺搜索 */
+    void getShopSeek(Map<String,Object> map,YRequestCallback<BaseBean<ShoppingShopBean>> callback);
+    /* 删除订单 */
+    void delOrderRecord(String id,YRequestCallback<ShoppingShopBean> callback);
+    /* 购物订单列表 */
+    void getOrderRecord(Map<String,Object> map,YRequestCallback<BaseBean<ShoppingShopBean>> callback);
+    /* 收货地址查询 */
+    void getAddress(String id,YRequestCallback<BaseBean<UserSiteBean>> callback);
+    /* 收货地址修改增加 */
+    void putAddress(String id,Map<String, Object> map,YRequestCallback<UserSiteBean> callback);
+    /* 收货地址删除 */
+    void delAddress(String id,Map<String, Object> map,YRequestCallback<UserSiteBean> callback);
+    /* 商铺列表 */
+    void getShopList(YRequestCallback<BaseBean<StoreBean>> callback);
+    /* 商城店铺信息 */
+    void getShopOne(Map<String, Object> map,YRequestCallback<StoreGoodsBean> callback);
+    /* 商城商品分类 */
+    void getShopGoods( Map<String, Object> map,YRequestCallback<BaseBean<StoreGoodsBean>> callback);
+    /* 提交购物车订单 */
+    void putCarGoods(Map<String, Object> map,YRequestCallback<WechatPayBean> callback);
+    /* 购物车增加 */
+    void addCarGoods(String goods_id,Map<String, Object> map,YRequestCallback<StoreGoodsBean> callback);
+    /* 购物车删除 */
+    void deleteCarGoods(Map<String, Object> map,YRequestCallback<StoreGoodsBean> callback);
+    /* 购物车修改 */
+    void updateCarGoods(String goods_id,Map<String, Object> map,YRequestCallback<StoreGoodsBean> callback);
+    /* 购物车查询 */
+    void getCarGoods(Map<String, Object> map,YRequestCallback<BaseBean<ShoppingShopBean>> callback);
+    /* 商城详情 */
+    void getGoodsDetails(String id,YRequestCallback<ShoppingShopBean> callback);
+    /* 获取排行榜数据 */
+    void getRanking(Map<String, Object> map,YRequestCallback<UserRankingBean> callback);
+    /*商城热门搜素*/
+    void getStoreSeekHot(YRequestCallback<BaseBean<FlowTag>> callback);
+    /* 商城轮播图 */
+    void getStoreCarousel(YRequestCallback<StoreBean> callback);
+    /* 商城视频 */
+    void getStoreVideo(YRequestCallback<BaseBean<StoreBean>> callback);
+    /* 商城限时抢购 */
+    void getStoreRush(Map<String, Object> map, YRequestCallback<StoreRushBean> callback);
+    /* 判断游戏入口是否打开 */
+    void getGameStatue(YRequestCallback<ShenmiBean> callback);
     /* 卡账号密码提交验证 */
     void card_verify(Map<String, Object> map, YRequestCallback<CommodityCardBean> callback);
     /*提交卡片兑换地址信息*/
-    void set_card_data(Map<String, Object> map, YRequestCallback<CommodityCardBean> callback);
+    void set_card_data(Map<String, Object> map, YRequestCallback<WechatPayBean> callback);
     /* 提交商品信息 收货地址 */
     void set_goods_data(Map<String, Object> map, YRequestCallback<GoodsBean> callback);
     /* 提交转发分享信息 */
@@ -596,5 +679,4 @@ public interface OAuthService {
     获取广告列表
      */
     void ads(String channel,Map<String, String> map,YRequestCallback<AdsBean> callback);
-
 }

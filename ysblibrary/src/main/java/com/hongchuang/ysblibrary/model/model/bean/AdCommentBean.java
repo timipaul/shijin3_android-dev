@@ -8,6 +8,7 @@ import java.util.List;
 
 public class AdCommentBean {
     public String type;
+    public List<MessagesBean> messages;
 
     public String getType() {
         return type;
@@ -25,7 +26,6 @@ public class AdCommentBean {
         this.messages = messages;
     }
 
-    public List<MessagesBean> messages;
     public class MessagesBean{
         public String id;
         public boolean isShow=false;
@@ -105,6 +105,7 @@ public class AdCommentBean {
         }
 
         public User user;
+
         public class User{
             public String id;
 

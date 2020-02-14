@@ -195,12 +195,10 @@ public class NewPersonTaskActivity extends BaseActivity {
 
             @Override
             public void onFailed(String var1, String message) {
-                System.out.println("失败返回数据  1 " + message);
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("失败返回数据  2 ");
             }
         });
     }
@@ -222,14 +220,12 @@ public class NewPersonTaskActivity extends BaseActivity {
 
             @Override
             public void onFailed(String var1, String message) {
-                System.out.println(var1 + "状态信息: " + message);
                 Toast.makeText(mContext,message,Toast.LENGTH_LONG).show();
 
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("状态信息: " + var1);
             }
         });
     }

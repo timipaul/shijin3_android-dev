@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="商家发货中，请等候..."
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16" />
+
+
+        <LinearLayout
+            android:id="@+id/order_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="订单编号：" />
+
+            <TextView
+                android:id="@+id/order_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:text="0000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_below="@id/order_layout"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="时间："/>
+
+            <TextView
+                android:id="@+id/order_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textColor="@color/black"
+                android:text="00-00"/>
+        </LinearLayout>
+
+
+
+
+        <com.hongchuang.hclibrary.recyclerview.PowerfulRecyclerView
+            android:id="@+id/order_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/white"
+            android:layout_below="@id/item_layout"
+            android:scrollbars="none">
+
+
+        </com.hongchuang.hclibrary.recyclerview.PowerfulRecyclerView>
+
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

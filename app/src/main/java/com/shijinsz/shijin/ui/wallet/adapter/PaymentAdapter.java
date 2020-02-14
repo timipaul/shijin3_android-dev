@@ -21,7 +21,7 @@ public class PaymentAdapter extends BaseQuickAdapter<PaymentBean,BaseViewHolder>
 
     @Override
     protected void convert(BaseViewHolder helper, PaymentBean item) {
-        helper.setText(R.id.tv_money, "￥" + item.getChange());
+        helper.setText(R.id.tv_money, "¥" + item.getChange());
         helper.setText(R.id.tv_time, item.getCreated_at());
         TextView tv = helper.getView(R.id.tv_status);
         if (item.getStatus().equals("on")) {

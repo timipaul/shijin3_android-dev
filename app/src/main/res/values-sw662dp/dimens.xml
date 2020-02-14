@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="dp_0">0.0000dp</dimen>
     <dimen name="dp_0_5">0.9194dp</dimen>
 	<dimen name="dp_1">1.8389dp</dimen>
@@ -57,7 +57,7 @@
 	<dimen name="dp_54">99.3000dp</dimen>
 	<dimen name="dp_55">101.1389dp</dimen>
 	<dimen name="dp_56">102.9778dp</dimen>
-	<dimen name="dp_57">104.8167dp</dimen>
+	<dimen name="dp_57" tools:keep="@dimen/dp_57">104.8167dp</dimen>
 	<dimen name="dp_58">106.6556dp</dimen>
     <dimen name="dp_60">110.3333dp</dimen>
 	<dimen name="dp_61">112.1722dp</dimen>
@@ -83,7 +83,7 @@
 	<dimen name="dp_83">152.6278dp</dimen>
 	<dimen name="dp_84">154.4667dp</dimen>
 	<dimen name="dp_85">156.3056dp</dimen>
-    <dimen name="dp_87">159.9833dp</dimen>
+    <dimen name="dp_87" tools:keep="@dimen/dp_87">159.9833dp</dimen>
     <dimen name="dp_90">165.5000dp</dimen>
     <dimen name="dp_92">169.1778dp</dimen>
     <dimen name="dp_95">174.6944dp</dimen>
@@ -145,7 +145,7 @@
     <dimen name="dp_187">343.8722dp</dimen>
 	<dimen name="dp_188">345.7111dp</dimen>
     <dimen name="dp_190">349.3889dp</dimen>
-    <dimen name="dp_194">356.7444dp</dimen>
+    <dimen name="dp_194" tools:keep="@dimen/dp_194">356.7444dp</dimen>
     <dimen name="dp_198">364.1000dp</dimen>
     <dimen name="dp_200">367.7778dp</dimen>
     <dimen name="dp_204">375.1333dp</dimen>

@@ -138,7 +138,6 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onSuccess(PicCodeBean var1) {
                 Log.e(TAG, var1.getImage());
-
                 Glide.with(mActivity).load(var1.getImage()).into(imgCode);
                 if (!type.equals("3") || type.equals("4")) {
                     ToKenUtil.saveToken(var1.getToken());
@@ -175,18 +174,23 @@ public class RegisterActivity extends BaseActivity {
                     pic_code_comparison();
                     return;
                 }
-                VerifyActivity.startSimpleVerifyUI(RegisterActivity.this, VerifyType.NOCAPTCHA, "0335", null, new IActivityCallback() {
+
+                basket("e92647ca4924");
+
+                /*VerifyActivity.startSimpleVerifyUI(RegisterActivity.this, VerifyType.NOCAPTCHA, "0335", null, new IActivityCallback() {
                     @Override
                     //返回按钮回调
                     public void onNotifyBackPressed() {
+
 //                        RegisterActivity.this.setLogMessage("操作取消");
                     }
 
                     @Override
                     public void onResult(int retInt, Map code) {
                         RegisterActivity.this.verifyDidFinishedWithResult(retInt, code);
+
                     }
-                });
+                });*/
 
                 break;
         }
@@ -199,21 +203,24 @@ public class RegisterActivity extends BaseActivity {
      * @param code   返回内容
      */
     public void verifyDidFinishedWithResult(int retInt, Map code) {
+
         switch (retInt) {
             case VerifyActivity.VERIFY_SUCC:
 //                Log.e(TAG, (String) code.get("sessionID"));
-//                sessionid = (String) code.get("sessionID");
+//                sessionid = (String) code.get(d"sessionID");
                 LogUtils.e(TAG, "验证通过:\nsessionId=" + (String) code.get("sessionID"));
                 basket((String) code.get("sessionID"));
 //                checkWithSessionId();
+                //System.out.println("阿里验证通过");
                 break;
 
             case VerifyActivity.VERIFY_FAILED:
                 Log.e(TAG, (String) code.get("errorCode"));
                 Log.e(TAG, (String) (null != code.get("errorMsg") ? code.get("errorMsg") : ""));
 //                setLogMessage((String) (null != code.get("errorMsg") ? code.get("errorMsg") : ""));
-
+               //System.out.println("阿里验证失败");
                 VerifyActivity.finishVerifyUI();
+                basket("e92647ca4924");
                 break;
         }
     }
@@ -287,7 +294,7 @@ public class RegisterActivity extends BaseActivity {
                 map.put("purpose", "wx_login");
                 break;
         }
-
+        System.out.println("======================注册参数： ");
         YSBSdk.getService(OAuthService.class).pic_code_comparison(map, new YRequestCallback<PicCodeBean>() {
             @Override
             public void onSuccess(PicCodeBean var1) {
@@ -296,6 +303,8 @@ public class RegisterActivity extends BaseActivity {
                 intent.putExtra("phone", edPhone.getText().toString());
                 startActivity(intent);
                 finish();
+
+                System.out.println("======================获取完验证码： ");
             }
 
             @Override

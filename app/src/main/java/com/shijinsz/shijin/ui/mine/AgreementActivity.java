@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.utils.StatusBarUtil;
+import com.shijinsz.shijin.utils.TextUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import butterknife.BindView;
 
 import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_privacy_code;
 import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_vip_code;
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_user_code;
 
 /**
  * Copyright (C)
@@ -63,34 +65,39 @@ public class AgreementActivity extends BaseActivity {
                 //隐私协议
                 setTitle("隐私协议");
                 inputStream = getResources().openRawResource(R.raw.agreement_hint);
+            }else if(codeStr.equals(KEY_user_code)){
+                //用户协议
+                setTitle("用户协议");
+                inputStream = getResources().openRawResource(R.raw.user_hint);
             }
         }
 
 
-        String content = getTextString(inputStream);
+        String content = TextUtils.getTextString(inputStream);
         mTextView.setText(Html.fromHtml(content));
 
 
     }
 
-    public static String getTextString(InputStream inputStream) {
-        InputStreamReader inputStreamReader = null;
-        try {
-            inputStreamReader = new InputStreamReader(inputStream, "utf-8");
-        } catch (UnsupportedEncodingException e1) {
-            e1.printStackTrace();
-        }
-        BufferedReader reader = new BufferedReader(inputStreamReader);
-        StringBuffer sb = new StringBuffer("");
-        String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-                sb.append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
-    }
+    //被工具类替换
+//    public static String getTextString(InputStream inputStream) {
+//        InputStreamReader inputStreamReader = null;
+//        try {
+//            inputStreamReader = new InputStreamReader(inputStream, "utf-8");
+//        } catch (UnsupportedEncodingException e1) {
+//            e1.printStackTrace();
+//        }
+//        BufferedReader reader = new BufferedReader(inputStreamReader);
+//        StringBuffer sb = new StringBuffer("");
+//        String line;
+//        try {
+//            while ((line = reader.readLine()) != null) {
+//                sb.append(line);
+//                sb.append("\n");
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return sb.toString();
+//    }
 }

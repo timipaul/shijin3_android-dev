@@ -118,12 +118,6 @@ public class UserSiteDataActivity extends BaseActivity {
         ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_consignee_site,site);
         ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_consignee_remark,remark);
 
-        if(TextUtil.isPhoneNumber(phone)){
-            System.out.println("手机号码正确");
-        }else{
-            System.out.println("手机号码不正确");
-        }
-
         if(name.trim().equals("") ||phone.trim().equals("") || site.trim().equals("")){
             Toast.makeText(mContext,"内容不能为空",Toast.LENGTH_SHORT).show();
         }else{

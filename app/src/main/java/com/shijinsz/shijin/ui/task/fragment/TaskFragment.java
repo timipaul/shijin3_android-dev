@@ -10,6 +10,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.net.Uri;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -36,6 +37,7 @@ import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
 import com.hongchuang.ysblibrary.model.model.bean.BoxlistBean;
 import com.hongchuang.ysblibrary.model.model.bean.LotteryListBean;
+import com.hongchuang.ysblibrary.model.model.bean.ShenmiBean;
 import com.hongchuang.ysblibrary.model.model.bean.UserBean;
 import com.qq.e.ads.banner2.UnifiedBannerADListener;
 import com.qq.e.ads.banner2.UnifiedBannerView;
@@ -115,6 +117,8 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
     @BindView(R.id.view_button)
     View mView_but;
 
+    @BindView(R.id.game_entrance)
+    ImageView mGameInto;
 
     private static final int INVITATION_CODE = 100;
     private static final int NEW_PERSON_TASK_PAGE_CODE = 101;
@@ -136,6 +140,26 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
     protected void loadData() {
         //广告轮播图  暂时被游戏入口代替
         //this.getBanner().loadAD();
+
+        //设置华为暂时隐藏广告
+        if(Build.MANUFACTURER.toLowerCase().contains("huawei")){
+            YSBSdk.getService(OAuthService.class).getGameStatue(new YRequestCallback<ShenmiBean>() {
+                @Override
+                public void onSuccess(ShenmiBean var1) {
+                    mGameInto.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onFailed(String var1, String message) {
+                    mGameInto.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onException(Throwable var1) {
+
+                }
+            });
+        }
 
     }
     private boolean isVisible;
@@ -235,7 +259,6 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
 
         //判断新手任务完成状态
         //ShareDataManager.getInstance().save(getContext(),SharedPreferencesKey.KEY_new_person_task,"off");
-        //System.out.println("新手任务状态: " + ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_new_person_task));
         if(ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_new_person_task).equals("true")){
             mNewPerson.setVisibility(View.GONE);
         }
@@ -670,7 +693,7 @@ public class TaskFragment extends BaseFragment implements UnifiedBannerADListene
                     @Override
                     public void onClick(View view) {
                         ClipboardManager systemService = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                        systemService.setPrimaryClip(ClipData.newPlainText("text", "十金公众号"));
+                        systemService.setPrimaryClip(ClipData.newPlainText("text", "十金时代"));
                         dialogWeChat.dismissTaskAttentionWeChatDialog();
                         getWechatApi();
                     }

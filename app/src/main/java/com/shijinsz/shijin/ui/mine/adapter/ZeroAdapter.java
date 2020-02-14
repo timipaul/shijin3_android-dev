@@ -46,7 +46,6 @@ public class ZeroAdapter extends BaseQuickAdapter<GoodsBean,BaseViewHolder> {
         helper.setText(R.id.tv_name,item.getGoods_title());
 
         try {
-            System.out.println("当前数据显示");
             String str = "";
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
@@ -54,11 +53,10 @@ public class ZeroAdapter extends BaseQuickAdapter<GoodsBean,BaseViewHolder> {
             helper.setText(R.id.tv_exchange_aday,str);
         } catch (ParseException e) {
             helper.setText(R.id.tv_exchange_aday,"");
-            System.out.println("时间格式数据异常 ");
         }
 
 
-        //helper.setText(R.id.tv_point,"￥0");
+        //helper.setText(R.id.tv_point,"¥0");
         helper.setText(R.id.tv_exchanged,String.format(mContext.getString(R.string.exchanged),item.getExchange_number()));
 
         if(item.getAble_exchange_number().equals("0")){

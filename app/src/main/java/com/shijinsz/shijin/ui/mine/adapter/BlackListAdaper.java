@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 public class BlackListAdaper extends BaseQuickAdapter<BlackListBean.Records,BaseViewHolder> {
+
     public interface onListen{
         void callback(int pos);
     }

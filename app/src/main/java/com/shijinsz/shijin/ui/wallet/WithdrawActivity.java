@@ -48,6 +48,7 @@ import retrofit.callback.YRequestCallback;
  * Created by yrdan on 2018/8/30.
  */
 
+/** 十金提现页面 */
 public class WithdrawActivity extends BaseActivity {
     @BindView(R.id.money)
     TextView money;

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.hongchuang.hclibrary.view.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myScroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10">
+
+                <TextView
+                    android:id="@+id/tv_seek"
+                    android:layout_width="@dimen/dp_293"
+                    android:layout_height="@dimen/dp_35"
+                    android:background="@drawable/bg_circular_18_white"
+                    android:drawableLeft="@mipmap/icon_search"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_15"
+                    android:text="  搜索商品名称" />
+
+                <ImageView
+                    android:id="@+id/img_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:src="@mipmap/store_message_ic" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_170"
+                android:orientation="vertical">
+
+
+                <!-- 参数网址 https://github.com/xiaohaibin/XBanner -->
+                <com.stx.xhb.xbanner.XBanner
+                    android:id="@+id/xbanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_155"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:background="@drawable/color_white_10"
+                    app:AutoPlayTime="3000"
+                    app:isShowIndicatorOnlyOne="true"
+                    app:pageChangeDuration="800"
+                    app:pointNormal="@drawable/shape_noraml"
+                    app:pointSelect="@drawable/shape_selected"
+                    app:pointsPosition="CENTER"
+                    app:tipTextSize="12sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/menu_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10">
+
+            <Button
+                android:id="@+id/bt_stock"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/menu_cate_ic"
+                android:text="家乡美食" />
+
+            <Button
+                android:id="@+id/bt_bazaar"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/menu_auction_ic"
+                android:text="海关拍卖" />
+
+            <Button
+                android:id="@+id/bt_retail"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/menu_overseas_ic"
+                android:text="香港直邮" />
+
+            <Button
+                android:id="@+id/bt_property"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/menu_travel_ic"
+                android:text="农庄游玩" />
+
+            <Button
+                android:id="@+id/bt_classify"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/store_classify_ic"
+                android:text="中国货商"
+                android:visibility="gone"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/classify_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/button_circular_white_5"
+            android:paddingTop="@dimen/dp_7"
+            android:paddingBottom="@dimen/dp_7"
+            android:visibility="visible"
+            tools:visibility="gone">
+
+            <Button
+                android:id="@+id/classify_seafood"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/store_classify_seafood_ic"
+                android:text="水果生鲜" />
+
+            <Button
+                android:id="@+id/classify_goods"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/store_goods_classify_ic"
+                android:text="家居百货" />
+
+            <Button
+                android:id="@+id/classify_snacks"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/store_classify_snacks_ic"
+                android:text="休闲零食" />
+
+            <Button
+                android:id="@+id/classify_beauty"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/store_classify_beauty_ic"
+                android:text="美妆服饰" />
+
+            <Button
+                android:id="@+id/classify_infant"
+                style="@style/store_menu_but_style"
+                android:drawableTop="@mipmap/store_classify_infant_ic"
+                android:text="母婴专场" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@drawable/button_circular_white_5"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:drawableLeft="@mipmap/store_video_title_ic"
+                android:drawablePadding="@dimen/dp_5"
+                android:text="商城视频"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
+
+
+            <com.shijinsz.shijin.utils.HorizontalListView
+                android:id="@+id/horizontal_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_145"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5">
+
+
+            </com.shijinsz.shijin.utils.HorizontalListView>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/button_circular_white_5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:drawableLeft="@mipmap/store_video_title_ic"
+                android:drawablePadding="@dimen/dp_5"
+                android:text="礼包专区"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
+
+
+            <com.shijinsz.shijin.utils.HorizontalListView
+                android:id="@+id/horizontal_gift_view"
+                android:layout_width="@dimen/dp_360"
+                android:layout_height="@dimen/dp_160"
+                android:layout_marginTop="@dimen/dp_10">
+
+            </com.shijinsz.shijin.utils.HorizontalListView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_35"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/bt_now"
+                    style="@style/store_radio_but"
+                    android:checked="true"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/dp_5"
+                    android:text="正在疯抢" />
+
+                <RadioButton
+                    android:id="@+id/bt_wait"
+                    style="@style/store_radio_but"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/dp_5"
+                    android:text="即将开抢" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/time_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:text="离本场结束"
+                android:textColor="@color/color_3c" />
+
+
+            <com.hongchuang.hclibrary.view.MyGridView
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:horizontalSpacing="@dimen/dp_10"
+                android:numColumns="2"
+                android:verticalSpacing="@dimen/dp_10"
+                android:scrollbars="none"
+                android:background="@color/color_f1"
+                android:paddingTop="@dimen/dp_10">
+
+        </com.hongchuang.hclibrary.view.MyGridView>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.hongchuang.hclibrary.view.MyScrollView>

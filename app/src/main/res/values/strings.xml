@@ -1,15 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation">
-    <string name="app_name">十金</string>
+    <string name="app_name">十金时代</string>
     <string name="QQ_GROUP_KEY">01jJwxya6ghw0NsUSUgbYLkiyeBL1qjo</string>
     <string name="WEIXIN_APPID">wx14139eb90916ba5d</string>
     <string name="cancel">取消</string>
+
     <string name="define">确定</string>
     <string name="QQNUM">2775285963</string>
+
+
+    <string name="love_share_group">团队: %d人</string>
+    <string name="love_share_my">业绩：%d</string>
+    <string name="look_details">查看详情</string>
+    <string name="love_share_hint">分享(%1$d/%2$d)</string>
+
 
     <string name="banner_ad_unit_id">943</string>
     <!-- 设置 -->
     <string name="person_information">个人信息</string>
+    <string name="person_site">收货地址</string>
+    <string name="new_guide">新手指南</string>
     <string name="setting">设置</string>
     <string name="black_list">黑名单</string>
     <string name="user_and_safe">账号与安全</string>
@@ -43,6 +53,14 @@
     <string name="net_error">网络不太给力，获取数据失败了</string>
     <string name="refresh">刷新一下吧</string>
     <string name="empty">这里空空如也~</string>
+
+    <!-- 榜单说明 -->
+    <string name="ranking_hint_1" >用户可通过阅读文章、发布文章、完成日常任务获取金币等方获取金币奖励。</string>
+    <string name="ranking_hint_2" >排行榜排名每月月底0点0分将进行重置，重置后将开始新的一轮金币积分排名。</string>
+    <string name="ranking_hint_3" >积分排名重置后，上周排名前30的用户可联系客服领取排名奖励：排名前三的依次获得150、100、80元现金奖励；7-15名用户各奖励500金币,16-30名奖励200金币。</string>
+    <string name="ranking_hint_4" >中奖须知：\n
+        1.用户通过非正规方式获得金币奖励，我们将收回金币奖励，并封号处理。\n
+        2.中奖用户请添加客服微信“shijin1”提供个人信息便于工作人员核实颁发奖励。</string>
 
     <!-- 消息 -->
     <string name="message">消息</string>
@@ -287,6 +305,21 @@
     <string name="myad_empty">好品牌好产品要让更多的人知道！</string>
     <string name="put_ad_now">马上发布资讯</string>
 
+    <!-- 商城 -->
+    <string name="goods_num">共%d件商品  小计:</string>
+    <string name="add_member_hint">商城的商品销售统一由十金平台直接收款、直接发货，并提供产品的售后服务，以及佣金发放</string>
+    <!--商城合伙人权益-->
+    <string name="store_vip_hint_1">20份公司美妆产品套餐，每份价值250元，总价值5000</string>
+    <string name="store_vip_hint_2">推荐合伙人奖励1000元现金，推荐会员奖励100元现金</string>
+    <string name="store_vip_hint_3">享有推荐会员总销售额6-10%的提成</string>
+    <!-- 商城会员权益 -->
+    <string name="store_team_hint_1">2份公司美妆产品套餐，每份价值250元，总价值500</string>
+    <string name="store_team_hint_2">推荐合伙人奖励800元现金，推荐会员奖励80元现金</string>
+    <string name="store_team_hint_3">享有推荐会员总销售额5%的提成</string>
+    <string name="my_group">我的团队</string>
+    <string name="share_period">分享周期：%d天</string>
+
+
     <!-- 我的 -->
     <string name="isfollow">已关注</string>
     <string name="myfollow">我关注的</string>
@@ -417,15 +450,15 @@
     <string name="free_lottery">剩余免费抽奖%s次</string>
     <string name="activity_rule">活动规则</string>
     <string name="activity_time">活动时间：%s开始</string>
-    <string name="sign_prompt1">活动期间，用户登录十金APP客户端进入签到活动页面，完成连续签到7天即可参与抽奖，奖品包含：签到券、邀请券、现金、金币、话费等，奖品数量有限，先到先得，抽完即止。</string>
-    <string name="sign_prompt2">实物奖品将在获奖后的七个工作日内十金官方客服联系您登记收货地址，获奖后的15个工作日内寄出。</string>
-    <string name="sign_prompt3">活动期间用户每日签到即可获得1次免费抽奖机会，同一签到周期内，最多获得7次免费抽奖机会。免费抽奖机会用完后可用金币兑换抽奖机会。</string>
+    <string name="sign_prompt1">活动期间，用户登录十金APP客户端首页进入抽奖页面，每签到一天成功可获得免费抽奖机会，成功分享好友参与可以额外获得免费抽奖机会，也可用金币兑换抽奖机会</string>
+    <string name="sign_prompt2">奖品包含：面膜，口红，爽肤水，金币，现金，爱奇艺会员，手机不等，奖品不定时更新，先到先得，抽完即止（实物奖品每个用户最多只能领取一个）</string>
+    <string name="sign_prompt3">实物奖品将在获奖后的七个工作日内由十金客服联席您登记收货地址，也可添加咨询客服微信：shijinsz1</string>
     <string name="sign_prompt4">本活动最终解释权归十金APP平台所有</string>
     <string name="share_now">立即分享</string>
     <string name="invite_code">邀请码邀请</string>
     <string name="invite_face">面对面邀请</string>
     <string name="invite_group">群发邀请</string>
-    <string name="invite_money">￥%s\n已获得奖励</string>
+    <string name="invite_money">¥%s\n已获得奖励</string>
     <string name="invite_people">%s人\n已成功邀请</string>
     <string name="registered_at">注册于%s</string>
     <string name="invite_earnings">到账收益%s元</string>
@@ -492,10 +525,10 @@
     <string name="count_issue">累计发布内容数量达%1$s条奖励%2$s金币</string>
     <string name="count_answer">累计完成%1$s道答题奖励%2$s金币</string>
     <string name="subtask_schedule">完成获得奖励,已完成%1$s/%2$s次</string>
-    <string name="now_schedule">当前已达到21次</string>
+    <string name="now_schedule" tools:keep="@string/now_schedule">当前已达到21次</string>
     <string name="subtask_schedule_hint">恭喜您获得%s金币</string>
-    <string name="loing_show_prize_hint">签到%1$s天/邀请%2$s个好友送好礼!</string>
-    <string name="get_prize">领取礼品</string>
+    <string name="loing_show_prize_hint" tools:keep="@string/loing_show_prize_hint">签到%1$s天/邀请%2$s个好友送好礼!</string>
+    <string name="get_prize" tools:keep="@string/get_prize">领取礼品</string>
     <string name="postage_hint_text">免费商品,需自付%s元邮费!</string>
 
 
@@ -511,8 +544,10 @@
 
     </string>
 
-
-
+    <string name="privacy_and_service_hint">请你务必审慎阅读、充分理解\"服务协议\"和\"隐私政策\"各条款,
+        包括但不限于：为了向你提供即时通讯、内容分享等服务，我们需要收集你的设备信息、操作日志等人信息。
+        你可以在“设置”中查看、变更、删除个人信息并管理你的授权。\n
+        你可阅读《服务协议》和《隐私政策》了解详细信息。如你同意,请点击“同意”开始接受我们的服务。</string>
 
     <!-- 首页 -->
     <string name="input_keyword">请输入关键字</string>

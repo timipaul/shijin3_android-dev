@@ -50,7 +50,6 @@ public class DownLoadService extends IntentService {
     }
 
     private void handleActionFoo(String param1) {
-        // TODO: Handle action Foo
         downloadAPK(param1);
     }
 

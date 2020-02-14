@@ -150,7 +150,6 @@ public class ChallengeTaskActivity extends BaseActivity {
 
             @Override
             public void onSuccess(TaskBean var1) {
-                System.out.println("领取成功");
                 Toast.makeText(mContext,"领取成功",Toast.LENGTH_LONG).show();
                 getTaskData();
 
@@ -158,13 +157,11 @@ public class ChallengeTaskActivity extends BaseActivity {
 
             @Override
             public void onFailed(String var1, String message) {
-                System.out.println(var1 + "状态信息: " + message);
 
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("状态信息: " + var1);
             }
         });
     }

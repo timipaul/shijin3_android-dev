@@ -512,7 +512,6 @@ public class UserInformationActivity extends BaseActivity {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-                System.out.println("the bmp toString: " + bmp);
 //                imgHead.setImageBitmap(bmp);
                 compressScale(bmp);
 //                savebitmap(bmp);
@@ -658,7 +657,6 @@ public class UserInformationActivity extends BaseActivity {
         while (baos.toByteArray().length / 1024 > 200) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
             baos.reset(); // 重置baos即清空baos
             image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
-            System.out.println("size:" + baos.toByteArray().length / 1024);
             options -= 10;// 每次都减少10
         }
         ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中

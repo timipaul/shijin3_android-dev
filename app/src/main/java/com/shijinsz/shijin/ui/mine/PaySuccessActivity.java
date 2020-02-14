@@ -95,10 +95,25 @@ public class PaySuccessActivity extends BaseActivity {
             setTitle("结果");
             payType2.setVisibility(View.GONE);
             payType.setVisibility(View.GONE);
-            tvPaysuccess.setText("领取成功");
+            tvPaysuccess.setText("订单已生成,我们尽快为您发货");
             tvMoney2.setText("");
             returnList.setText("返回");
-        }else{
+        }else if(type.equals("5")){
+            setTitle("结果");
+            payType2.setVisibility(View.GONE);
+            payType.setVisibility(View.GONE);
+            tvPaysuccess.setText("购买成功");
+            tvMoney2.setText("");
+            returnList.setText("返回");
+        }else if(type.equals("6")){
+            setTitle("结果");
+            payType2.setVisibility(View.GONE);
+            payType.setVisibility(View.GONE);
+            tvPaysuccess.setText("开通成功");
+            tvMoney2.setText("");
+            returnList.setText("返回");
+            ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_is_store_vip,"true");
+        }else {
             setTitle(getString(R.string.reward_success));
             payType2.setVisibility(View.GONE);
             payType.setVisibility(View.VISIBLE);
@@ -131,6 +146,8 @@ public class PaySuccessActivity extends BaseActivity {
         }else if(type.equals("4")){
             finish();
             //startActivity(.class);
+        }else if(type.equals("5") || type.equals("6")){
+            finish();
         }else{
             MActivityManager.getInstance().delAllACTWithout(MainActivity.class);
             startActivity(MyPutActivity.class);

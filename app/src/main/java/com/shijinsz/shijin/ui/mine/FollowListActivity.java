@@ -1,6 +1,7 @@
 package com.shijinsz.shijin.ui.mine;
 
 import android.content.Intent;
+import android.content.SyncStatusObserver;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -70,8 +71,11 @@ public class FollowListActivity extends BaseActivity implements OnLoadMoreListen
             @Override
             public void call(int pos) {
                 if (list.get(pos).getIs_follow().equals("on")){
+                    //取消关注
                     unfollow(pos);
+
                 }else {
+                    //关注
                     follow(pos);
                 }
             }
@@ -126,7 +130,6 @@ public class FollowListActivity extends BaseActivity implements OnLoadMoreListen
             @Override
             public void onClick(View view) {
                 Map map =new HashMap();
-
                 YSBSdk.getService(OAuthService.class).unfans(list.get(pos).getId(),map, new YRequestCallback<PicCodeBean>() {
                     @Override
                     public void onSuccess(PicCodeBean var1) {

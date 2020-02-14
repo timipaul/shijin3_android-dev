@@ -86,15 +86,23 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
     @BindView(R.id.play_but)
     public Button mPlay;
 
+    public AdBean bean;
+
     public MyBroadcastReceiver localReceiver;
 
 
     public static final String URL = "URL";
+
     //当前界面是否可见
     public boolean ViewStatue = false;
     //是否允许流量播放
     public String flow_play = "false";
     private String TAG = "video";
+
+    //关注用户的id
+    private String follow_id;
+    //点赞id
+    private String like_id;
 
     @Override
     protected int provideContentViewId() { return R.layout.fm_video; }
@@ -108,12 +116,11 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
     public void initView(View rootView) {
         super.initView(rootView);
         ads_id = getArguments().getString(URL);
-        //System.out.println("接收到要显示的数据ID： " + ads_id);
-
 
 
         //父类控件和监听
         setParentView();
+
         flow_play = ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_flow_play_video);
 
         shareDialog = new ShareDialog(getContext());
@@ -138,6 +145,7 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
                 ShareDataManager.getInstance().save(mActivity, SharedPreferencesKey.KEY_flow_play_video, "true");
             }
         });
+
 
         getVideoData();
 
@@ -199,10 +207,10 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
                 mBu_like.setClickable(false);
                 if (LoginUtil.isLogin(getContext())) {
                     if (isLike) {
-                        System.out.println("点赞");
+                        //点赞
                         unLike();
                     } else {
-                        System.out.println("取消点赞");
+                        //取消点赞
                         giveaLike();
                     }
                 }
@@ -237,7 +245,8 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
         }
     }
 
-    private AdBean bean;
+
+
     //获取视频数据
     public void getVideoData(){
         Map map = new HashMap();
@@ -254,7 +263,6 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
                         .into(playerStandard.thumbImageView);
 
                 if(getParentFragment().getUserVisibleHint()){
-                    //System.out.println("数据播放++++");
                     setShowData();
                     playerStandard.startVideo();
 
@@ -284,6 +292,7 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser){
             if(bean != null){
+                setParentView();
                 setShowData();
                 playerStandard.startVideo();
                 getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏
@@ -298,7 +307,7 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
             return;
         }
 
-        System.out.println("显示隐藏播放" );
+
         if (isVisibleToUser) {
             if (DevicesUtil.isWifi(getContext())) {
                 if(mVodPlayer != null){
@@ -326,16 +335,24 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
 
     //设置界面数据
     private void setShowData(){
-        System.out.println("设置数据信息*********");
         if(bean != null){
+
             mTv_User.setText(bean.getUser().nickname);
             mTv_user_title.setText(bean.getAd_title());
             mBu_like.setText(bean.getAd_like_number());
             mBu_transmit.setText(bean.getAd_share_number());
             mBu_comment.setText(bean.getAd_comment_number());
-            Glide.with(getContext()).load(bean.getUser().getImgurl()).into(mImg_head);
 
-            //System.out.println("播放视频" + bean.getAd_content());
+            try {
+                Glide.with(getContext()).load(bean.getUser().getImgurl()).into(mImg_head);
+            } catch (Exception e) {
+
+            }
+
+
+            like_id = bean.getId();
+            follow_id = bean.getUser().getId();
+
             if(bean.getIs_collection().equals("on")){
                 mBu_attention.setVisibility(View.GONE);
             }else{
@@ -356,7 +373,7 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
                 mBu_like.setCompoundDrawablesWithIntrinsicBounds(null,getContext().getResources().getDrawable(R.mipmap.video_like_off_ic),null,null);
             }
         }else{
-            System.out.println("数据是空的******");
+
         }
     }
 
@@ -431,13 +448,13 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
     public class MyBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //System.out.println("收到广播");
+
             String vis = intent.getExtras().getString("isVisible");
             if(vis.equals("true") && ViewStatue){
                 playerStandard.startVideo();
                 setShowData();
             }else{
-                //System.out.println("暂停播放");
+
                 playerStandard.releaseAllVideos();
             }
             //使用完释放掉
@@ -448,7 +465,7 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
     public void unLike() {
         Map map = new HashMap();
         map.put("mode", "person");
-        YSBSdk.getService(OAuthService.class).unlikes(bean.getId(), map, new YRequestCallback<PicCodeBean>() {
+        YSBSdk.getService(OAuthService.class).unlikes(like_id, map, new YRequestCallback<PicCodeBean>() {
             @Override
             public void onSuccess(PicCodeBean var1) {
                 mBu_like.setClickable(true);
@@ -474,7 +491,7 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
     public void giveaLike() {
         Map map = new HashMap();
         map.put("mode", "person");
-        YSBSdk.getService(OAuthService.class).likes(bean.getId(), map, new YRequestCallback<PicCodeBean>() {
+        YSBSdk.getService(OAuthService.class).likes(like_id, map, new YRequestCallback<PicCodeBean>() {
             @Override
             public void onSuccess(PicCodeBean var1) {
                 mBu_like.setClickable(true);
@@ -522,11 +539,9 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
     //关注
     private void follow() {
         Map map = new HashMap();
-        System.out.println("关注人的ID " + bean.getUser().getId());
-        YSBSdk.getService(OAuthService.class).fans(bean.getUser().getId(), map, new YRequestCallback<PicCodeBean>() {
+        YSBSdk.getService(OAuthService.class).fans(follow_id, map, new YRequestCallback<PicCodeBean>() {
             @Override
             public void onSuccess(PicCodeBean var1) {
-
                 mBu_attention.setVisibility(View.GONE);
                 ToastUtil.showToast("关注成功");
 
@@ -534,14 +549,12 @@ public class VideoItemFragment extends BaseFragment implements View.OnClickListe
 
             @Override
             public void onFailed(String var1, String message) {
-                System.out.println("关注失败 1");
                 mBu_attention.setVisibility(View.GONE);
 
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("关注失败 2");
             }
         });
     }

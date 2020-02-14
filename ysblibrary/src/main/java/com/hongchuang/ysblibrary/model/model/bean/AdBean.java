@@ -303,6 +303,16 @@ public class AdBean  {
 
         public String imgurl;
         public String is_advertiser;
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id='" + id + '\'' +
+                    ", nickname='" + nickname + '\'' +
+                    ", imgurl='" + imgurl + '\'' +
+                    ", is_advertiser='" + is_advertiser + '\'' +
+                    '}';
+        }
     }
 
     public String ad_mode;
@@ -368,4 +378,37 @@ public class AdBean  {
     public String is_answer;
     public String created_at;
     public String modified_at;
+
+
+    @Override
+    public String toString() {
+        return "AdBean{" +
+                "id='" + id + '\'' +
+                ", user=" + user +
+                ", ad_mode='" + ad_mode + '\'' +
+                ", ad_type='" + ad_type + '\'' +
+                ", ad_title_pics=" + ad_title_pics +
+                ", ad_title='" + ad_title + '\'' +
+                ", interests=" + interests +
+                ", reward_mode='" + reward_mode + '\'' +
+                ", reward='" + reward + '\'' +
+                ", status='" + status + '\'' +
+                ", adshow='" + adshow + '\'' +
+                ", answer_number='" + answer_number + '\'' +
+                ", ad_like_number='" + ad_like_number + '\'' +
+                ", ad_share_number='" + ad_share_number + '\'' +
+                ", ad_comment_number='" + ad_comment_number + '\'' +
+                ", ad_collection_number='" + ad_collection_number + '\'' +
+                ", ad_content='" + ad_content + '\'' +
+                ", question='" + question + '\'' +
+                ", options=" + options +
+                ", url='" + url + '\'' +
+                ", is_follow='" + is_follow + '\'' +
+                ", is_like='" + is_like + '\'' +
+                ", is_collection='" + is_collection + '\'' +
+                ", is_answer='" + is_answer + '\'' +
+                ", created_at='" + created_at + '\'' +
+                ", modified_at='" + modified_at + '\'' +
+                '}';
+    }
 }

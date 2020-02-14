@@ -40,6 +40,7 @@ import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.GlideApp;
 import com.shijinsz.shijin.utils.HorizontalListView;
+import com.shijinsz.shijin.utils.LoginUtil;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -102,6 +103,8 @@ public class MyVipActivity extends BaseActivity {
     public static final String KEY_vip_code = "vip_code";
     //隐私协议
     public static final String KEY_privacy_code = "privacy_code";
+    //用户协议
+    public static final String KEY_user_code = "user_code";
 
     DialogUtils mDialogUtils;
     //零元购数据
@@ -159,7 +162,7 @@ public class MyVipActivity extends BaseActivity {
             //获取兑换专区
             getExchangeData();
         }catch (Exception e) {
-            System.out.println("获取数据异常");
+
         }
 
 
@@ -242,7 +245,6 @@ public class MyVipActivity extends BaseActivity {
                         Bundle data = new Bundle();
                         data.putInt("code",1);
                         data.putString("goods_id",var1.goods.get(position).getId());
-                        System.out.println("当前点击的商品 " + var1.goods.get(position).getGoods_title());
                         startActivity(PointActivity.class,data);
                     }
                 });
@@ -304,7 +306,6 @@ public class MyVipActivity extends BaseActivity {
                             @Override
                             public void run() {
                                 view.setClickable(true);
-                                System.out.println("不可点击...");
                             }
                         },5000);
 
@@ -467,6 +468,10 @@ public class MyVipActivity extends BaseActivity {
 
     //获取支付数据
     private void getPayData() {
+        //绑定微信
+        new LoginUtil().isWxData(mContext);
+
+
 
         Map map = new HashMap();
         map.put("mode","wxpay");
@@ -479,14 +484,6 @@ public class MyVipActivity extends BaseActivity {
         rewardPlan.put("user_id",userid);
         attachBean.put("reward_plan",rewardPlan);
         map.put("attach",gson.toJson(attachBean)+"");
-
-
-        System.out.println("会员充值");
-        System.out.println("change:" + vip_price);
-        System.out.println("member_type: " + vip_state);
-        System.out.println("user_id: " + userid);
-
-
 
         YSBSdk.getService(OAuthService.class).preorder(map, new YRequestCallback<WechatPayBean>() {
             @Override

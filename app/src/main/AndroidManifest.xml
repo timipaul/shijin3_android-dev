@@ -3,24 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.shijinsz.shijin">
     <!-- 这个权限用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于访问GPS定位-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <!-- 用于读取手机当前的状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 访问网络，网络定位需要上网-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- SD卡读取权限，用户写入离线定位数据-->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -28,22 +28,26 @@
     <permission
         android:name="com.shijinsz.shijin.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.shijinsz.shijin.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
     <application
+        android:name="com.shijinsz.shijin.base.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
         android:largeHeap="true"
-        tools:replace="android:name,android:allowBackup"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:name="com.shijinsz.shijin.base.MyApplication"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.shijinsz.shijin.ui.home.SplashActivity"
+        android:theme="@style/AppTheme"
+        tools:replace="android:name,android:allowBackup">
+
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,244 +56,427 @@
         </activity>
 
         <!-- 2019.6.19 paul注释 -->
-        <!--<meta-data
+        <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="819kesvqTquuNYi7BfrSOQqtjzYTKpl0" />
-        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>-->
-        <receiver android:name=".base.AppInstallReceiver"
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
+        <receiver
+            android:name=".base.AppInstallReceiver"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <service android:name=".base.BackService"/>
+        <service android:name=".base.BackService" />
         <activity
             android:name="com.shijinsz.shijin.wxapi.WXEntryActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            />
-        <receiver android:name="com.shijinsz.shijin.wxapi.AppRegister"
+            android:label="@string/app_name" />
+        <receiver
+            android:name="com.shijinsz.shijin.wxapi.AppRegister"
             android:permission="com.tencent.mm.plugin.permission.SEND">
             <intent-filter>
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
             </intent-filter>
         </receiver>
         <!--<activity android:name=".ui.user.LoginActivity" />-->
-        <activity android:name="com.shijinsz.shijin.ui.user.RegisterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.user.SendMsgActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.user.SetPasswordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.user.ForgetPassWordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.user.SetNewPasswordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.PerfectInformation1Activiity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.PerfectInformation2Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.PerfectInformation3Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.PerfectInformation4Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.PerfectInformation5Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.MainActivity"
+        <activity
+            android:name="com.shijinsz.shijin.ui.user.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.user.SendMsgActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.user.SetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.user.ForgetPassWordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.user.SetNewPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.PerfectInformation1Activiity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.PerfectInformation2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.PerfectInformation3Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.PerfectInformation4Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.PerfectInformation5Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.LoveShareDetails"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.LoveSharePay"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.MainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.WebViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.OpenActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.user.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.user.LoginActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.UserInformationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.ChangeNicknameActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.SettingActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.BlackListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.UserSafeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.ChangePasswordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.DataCacheActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.MessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.AssetMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.TrendMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.PointMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.ChangeMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.SystemMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.SystemContentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.CommentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.FollowMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.message.LikeMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.MyAdActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.PersonalCertificationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.CertificationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.BusinessCertificationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.DataStatisticsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.DataUserActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.DataAdActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.DataPutActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.DraftActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.MyPutActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.RenewActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.PaySuccessActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.CouponRecordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.NewAdActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.NewGraphicActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.VideoCommentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.RichEditorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.UserInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.ChangeNicknameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.BlackListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.UserSafeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.DataCacheActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.MessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.AssetMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.TrendMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.PointMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.ChangeMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.SystemMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.SystemContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.CommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.FollowMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.message.LikeMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.MyAdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.PersonalCertificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.CertificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.BusinessCertificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.DataStatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.DataUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.DataAdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.DataPutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.DraftActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.MyPutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.RenewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.PaySuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.CouponRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.NewAdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.NewGraphicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.VideoCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.RichEditorActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity android:name="com.shijinsz.shijin.ui.ad.FilterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.SettingRedBagActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.PreviewActivity"
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.FilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.SettingRedBagActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.PreviewActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.PayActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.FollowListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.MyLookActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.MyCollectionActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.FeedbackActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.ShoppingCouponActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.PayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.FollowListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.MyLookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.MyCollectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.ShoppingCouponActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.shijinsz.shijin.ui.mine.UserSiteMessageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.CommodityDiscountsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.DiscountsParticularsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.UserHomeSiteActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.UserSiteMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.CommodityDiscountsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.DiscountsParticularsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.UserHomeSiteActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.example.videolibrary.features.trim.VideoTrimmerActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.NewVideoActivity"
+        <activity
+            android:name="com.example.videolibrary.features.trim.VideoTrimmerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.NewVideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.VideoDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.VideoDetailActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.ad.FatherCommentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.wallet.WalletActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.wallet.PointActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.wallet.PointDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.wallet.BoxListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.wallet.WithdrawActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.wallet.PaymentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.wallet.WalletDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.SignInActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.InviteFriendActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.InviteRecordActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.InviteRuleActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.InviteGroupActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.InviteGroupActivity2"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.InviteCodeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.InviteFaceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.WriteInvitationCodeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.VoteShowListActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.VoteRecordData"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.VoteDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.UnifiedInterstitialADActivity"
-        android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.NewPersonTaskActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.DayTaskActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.ad.FatherCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.wallet.WalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.wallet.PointActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.wallet.PointDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.wallet.BoxListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.wallet.WithdrawActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.wallet.PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.wallet.WalletDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.InviteFriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.InviteRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.InviteRuleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.InviteGroupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.InviteGroupActivity2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.InviteCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.InviteFaceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.WriteInvitationCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.VoteShowListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.VoteRecordData"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.VoteDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.UnifiedInterstitialADActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.NewPersonTaskActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.DayTaskActivity"
+            android:screenOrientation="portrait" />
 
         <!--<activity android:name="com.shijinsz.shijin.ui.activity.UnifiedInterstitialADActivity"
             android:screenOrientation="portrait"/>-->
 
 
-        <activity android:name="com.shijinsz.shijin.ui.task.ChallengeTaskActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.task.ContentTaskActivity"
-        android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.home.SearchActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.UserDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.shijinsz.shijin.ui.mine.UserFollowActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.mine.MyVipActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.mine.MySwopActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.mine.AgreementActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.mine.GetFreeVipActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.mine.UserSiteDataActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.ChallengeTaskActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.task.ContentTaskActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.UserDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.shijinsz.shijin.ui.mine.UserFollowActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.MyVipActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.MySwopActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.AgreementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.GetFreeVipActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.UserSiteDataActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.UserRankingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mine.MyRushActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.mine.MyRushActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.store.StoreSeekActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.store.StoreCommentActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.store.StoreGoodsDetails"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.store.ShopOrderActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.store.GoodsSpecificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.store.GoodsParameterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.store.UserLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.store.NewLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.store.LabelPopActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.store.StoreGoodsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.store.StoreVideoActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.store.LogisticsData"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.store.ShopOrderRecord"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.store.StoreHomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.homepage.MaGroupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.homepage.MaWalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.homepage.AddMemberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.homepage.DrawMoneyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.homepage.StorePaymentRecordActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+        android:name=".ui.mine.LoveShareActivity"
+        android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.ishare.IshareOrderPay"
+            android:screenOrientation="portrait" />
+
 
         <!--lance start-->
         <!--声明SDK所需要的组件-->
@@ -311,6 +498,8 @@
         ${applicationId}.fileprovider，请开发者根据自己的${applicationId}来设置这个值-->
 
 
+        <!--
+        广告包 删除
         <provider
             android:name=".utils.AdhubProvider"
             android:authorities="com.shijinsz.shijin.fileprovider"
@@ -319,7 +508,7 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/gdt_file_path" />
-        </provider>
+        </provider>-->
 
 
         <!--如果targetSdkVersion设置值>=24，则强烈建议添加以下provider，否则会影响app变现效率-->
@@ -334,21 +523,24 @@
                 android:resource="@xml/bd_file_paths" />
         </provider>-->
         <!--lance end-->
-        <activity android:name="com.shijinsz.shijin.wxapi.WXPayEntryActivity" android:exported="true" >
+        <activity
+            android:name="com.shijinsz.shijin.wxapi.WXPayEntryActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="@string/WEIXIN_APPID"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="@string/WEIXIN_APPID" />
             </intent-filter>
         </activity>
-        <activity android:name="com.shijinsz.shijin.ui.home.NewGuideActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.shijinsz.shijin.ui.home.NewGuideActivity"
+            android:screenOrientation="portrait" />
         <!--人机识别-->
-        <activity android:name="com.alibaba.verificationsdk.ui.VerifyActivity"
+        <activity
+            android:name="com.alibaba.verificationsdk.ui.VerifyActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="adjustResize" >
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <!-- bugly -->
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
@@ -356,12 +548,22 @@
             android:theme="@android:style/Theme.Translucent" />
 
 
-
         <!-- 广点通 -->
-        <service android:name="com.qq.e.comm.DownloadService" android:exported="false" />
-        <activity android:name="com.qq.e.ads.ADActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-        <activity android:name="com.qq.e.ads.PortraitADActivity" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-        <activity android:name="com.qq.e.ads.LandscapeADActivity" android:screenOrientation="landscape" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <service
+            android:name="com.qq.e.comm.DownloadService"
+            android:exported="false" />
+
+        <activity
+            android:name="com.qq.e.ads.ADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.qq.e.ads.PortraitADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.qq.e.ads.LandscapeADActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -380,9 +582,7 @@
         <!-- 声明 SDK 所需要的组件 -->
         <service
             android:name="com.qq.e.comm.DownloadService"
-            android:exported="false"/>
-
-
+            android:exported="false" />
 
 
         <!-- Required SDK 核心功能-->
@@ -390,7 +590,7 @@
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTER" />
                 <action android:name="cn.jpush.android.intent.REPORT" />
@@ -413,25 +613,22 @@
         </provider>
 
 
-
-
         <provider
             android:name=".utils.FileProviders"
             android:authorities="${applicationId}.fileprovider"
-            android:grantUriPermissions="true"
             android:exported="false"
+            android:grantUriPermissions="true"
             tools:replace="name,authorities,exported,grantUriPermissions">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths"
-                tools:replace="name,resource"/>
+                tools:replace="name,resource" />
         </provider>
         <!--&lt;!&ndash; since 3.0.9 Required SDK 核心功能&ndash;&gt;-->
         <provider
-            android:authorities="com.shijinsz.shijin.DataProvider"
             android:name="cn.jpush.android.service.DataProvider"
-            android:exported="true"
-            />
+            android:authorities="com.shijinsz.shijin.DataProvider"
+            android:exported="true" />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 JPush 服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
@@ -439,36 +636,35 @@
             android:name="cn.jpush.android.service.DaemonService"
             android:enabled="true"
             android:exported="true">
-            <intent-filter >
+            <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="com.shijinsz.shijin"/>
+                <category android:name="com.shijinsz.shijin" />
             </intent-filter>
         </service>
         <!--<provider-->
-            <!--android:name="android.support.v4.content.FileProvider"-->
-            <!--android:authorities="${applicationId}.fileProviders"-->
-            <!--android:exported="false"-->
-            <!--android:grantUriPermissions="true"-->
-            <!--tools:replace="name,authorities,exported,grantUriPermissions">-->
-            <!--<meta-data-->
-                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-                <!--android:resource="@xml/filepaths"-->
-                <!--tools:replace="name,resource"/>-->
+        <!--android:name="android.support.v4.content.FileProvider"-->
+        <!--android:authorities="${applicationId}.fileProviders"-->
+        <!--android:exported="false"-->
+        <!--android:grantUriPermissions="true"-->
+        <!--tools:replace="name,authorities,exported,grantUriPermissions">-->
+        <!--<meta-data-->
+        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--android:resource="@xml/filepaths"-->
+        <!--tools:replace="name,resource"/>-->
         <!--</provider>-->
         <!-- since 3.1.0 Required SDK 核心功能-->
         <provider
-            android:authorities="com.shijinsz.shijin.DownloadProvider"
             android:name="cn.jpush.android.service.DownloadProvider"
-            android:exported="true"
-            />
+            android:authorities="com.shijinsz.shijin.DownloadProvider"
+            android:exported="true" />
 
         <!-- Required SDK 核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true" >
+            android:enabled="true">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="com.shijinsz.shijin"/>
+                <category android:name="com.shijinsz.shijin" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -478,6 +674,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
@@ -486,10 +683,11 @@
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false" >
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.shijinsz.shijin" />
             </intent-filter>
@@ -521,8 +719,7 @@
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false" >
-        </service>
+            android:exported="false"></service>
 
         <!-- Required SDK 核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
@@ -533,13 +730,12 @@
         <receiver
             android:name="com.shijinsz.shijin.base.MyJPushMessageReceiver"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
                 <category android:name="com.shijinsz.shijin" />
             </intent-filter>
         </receiver>
-
 
 
         <!-- User defined. 用户自定义的广播接收器-->
@@ -567,12 +763,17 @@
         <!-- 例如: -->
         <!-- 发到 Google Play 的 APK 可以设置为 google-play; -->
         <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
         <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="1448e97bf7da98676315f2b0"/>
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="1448e97bf7da98676315f2b0" />
 
         <!-- talkingdata -->
-        <service android:name="com.talkingdata.sdk.TDAntiCheatingService"
+        <service
+            android:name="com.talkingdata.sdk.TDAntiCheatingService"
             android:process="com.talkingdata.sdk.TDAntiCheatingService">  <!--用户质量评估Service可以配置在主进程或者单独进程-->
             <intent-filter>
                 <action android:name="com.talkingdata.sdk.TDAntiCheatingService" />
@@ -580,10 +781,13 @@
         </service>
 
 
-
-        <meta-data android:name="TD_APP_ID" android:value="BEC37202538042D897558032A777EC09" />
+        <meta-data
+            android:name="TD_APP_ID"
+            android:value="BEC37202538042D897558032A777EC09" />
         <!--<meta-data android:name="TD_CHANNEL_ID" android:value="test" />-->
-        <meta-data android:value="YOUR_APP_KEY" android:name="5b98d6a7f43e480a7a000062"/>
+        <meta-data
+            android:name="5b98d6a7f43e480a7a000062"
+            android:value="YOUR_APP_KEY" />
         <!--<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>-->
 
     </application>

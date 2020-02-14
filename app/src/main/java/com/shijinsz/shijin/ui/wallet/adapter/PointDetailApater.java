@@ -31,7 +31,17 @@ public class PointDetailApater extends BaseQuickAdapter<PointDetailBean,BaseView
         helper.setText(R.id.tv_content,item.getChannel_info().getTitle());
         helper.setText(R.id.tv_time, item.getCreated_at());
 
-        if(item.getPoints().equals("-1")){
+        if(item.getPoints() == null){
+            helper.setTextColor(R.id.tv_num,mContext.getResources().getColor(R.color.black));
+            helper.setOnClickListener(R.id.tv_num,null);
+            String num = Float.valueOf(item.getChange())+"";
+            if (Float.valueOf(num)>0){
+                helper.setText(R.id.tv_num,"+"+num);
+            }else{
+                helper.setText(R.id.tv_num,""+num);
+            }
+
+        }else if(item.getPoints().equals("-1")){
             //联系客服
             helper.setText(R.id.tv_num,"联系客服");
             helper.setTextColor(R.id.tv_num,mContext.getResources().getColor(R.color.orange));
@@ -55,24 +65,13 @@ public class PointDetailApater extends BaseQuickAdapter<PointDetailBean,BaseView
             String num="";
             if (item.getPoints()!=null){
                 num=Integer.parseInt(item.getPoints())+"";
-            }else {
-                num=Float.valueOf(item.getChange())+"";
-            }
-
-            if (Float.valueOf(num)>0){
-                if (item.getPoints()!=null){
+                if (Float.valueOf(num)>0){
                     helper.setText(R.id.tv_num,"+"+item.getPoints());
                 }else {
-                    helper.setText(R.id.tv_num,"+"+item.getChange());
-                }
-
-            }else {
-                if (item.getPoints()!=null){
                     helper.setText(R.id.tv_num,item.getPoints());
-                }else {
-                    helper.setText(R.id.tv_num,item.getChange());
                 }
             }
+
         }
     }
 

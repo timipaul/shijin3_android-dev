@@ -1,6 +1,7 @@
 package com.shijinsz.shijin.ui.mine;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,8 @@ import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.CommodityCardBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
+import com.shijinsz.shijin.ui.store.LogisticsData;
+import com.shijinsz.shijin.ui.store.ShopOrderRecord;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 
@@ -33,7 +36,6 @@ import retrofit.callback.YRequestCallback;
  */
 public class CommodityDiscountsActivity extends BaseActivity {
 
-
     @BindView(R.id.card_account)
     EditText mAccount;
     @BindView(R.id.card_password)
@@ -42,6 +44,10 @@ public class CommodityDiscountsActivity extends BaseActivity {
     TextView mError;
     @BindView(R.id.bt_submit)
     Button mSubmit;
+    @BindView(R.id.top_view)
+    View topView;
+    @BindView(R.id.tv_right)
+    TextView tvRight;
 
     @Override
     public int bindLayout() {
@@ -54,6 +60,11 @@ public class CommodityDiscountsActivity extends BaseActivity {
         StatusBarUtil.setStatusTextColor(true, mActivity);
         setTitle("提货码");
         showTitleBackButton();
+        topView.setBackgroundColor(Color.WHITE);
+        tvRight.setText("订单记录");
+        tvRight.setVisibility(View.VISIBLE);
+
+
 
 
         //内容监听
@@ -68,7 +79,6 @@ public class CommodityDiscountsActivity extends BaseActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                //setErrorData(editable.toString(),"卡号");
                 mError.setVisibility(View.INVISIBLE);
                 if(!mAccount.getText().toString().equals("") || mPassword.getText().toString().equals("")){
                     mSubmit.setEnabled(true);
@@ -85,7 +95,6 @@ public class CommodityDiscountsActivity extends BaseActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                //setErrorData(editable.toString(),"卡密");
                 mError.setVisibility(View.INVISIBLE);
                 if(!mAccount.getText().toString().equals("") || mPassword.getText().toString().equals("")){
                     mSubmit.setEnabled(true);
@@ -99,28 +108,31 @@ public class CommodityDiscountsActivity extends BaseActivity {
 
     }
 
-    public boolean setErrorData(){
-        if(mAccount.getText().toString().equals("") && mPassword.getText().toString().equals("")){
-            setBttonType("卡号卡密不能为空",2);
-            return false;
-        }else if(mAccount.getText().length()!= 10 || mPassword.getText().length() != 6){
-            setBttonType("卡号卡密错误",2);
-            return false;
-        }else{
-            setBttonType("",1);
-            return true;
+    @OnClick({R.id.bt_submit,R.id.tv_right})
+    public void onClickView(View view){
+        switch (view.getId()){
+            case R.id.bt_submit:
+                //提交订单
+                PutSubmit();
+                break;
+            case R.id.tv_right:
+                //查看订单记录
+                Intent intent = new Intent(mContext,ShopOrderRecord.class);
+                intent.putExtra("type","CARD");
+                intent.putExtra("state","WAITING-DELIVER-GOODS");
+                Intent intent2 = new Intent(mContext, LogisticsData.class);
+                //intent.putExtra("type","JD");
+                //intent.putExtra("order","JDVC01674725818");
+                startActivity(intent);
+                break;
         }
+
+
+
+
     }
 
-
-
-    @OnClick(R.id.bt_submit)
-    public void PutSubmit(View view){
-
-        /*if(!setErrorData()){
-            return;
-        }*/
-
+    public void PutSubmit(){
         Map map = new HashMap();
         map.put("username", mAccount.getText().toString());
         map.put("password", mPassword.getText().toString());
@@ -152,8 +164,6 @@ public class CommodityDiscountsActivity extends BaseActivity {
                 mSubmit.setEnabled(true);
             }
         });
-
-
     }
 
     //设置按钮点击状态

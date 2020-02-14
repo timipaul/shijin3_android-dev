@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f67"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/top_menu"
+        layout="@layout/common_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"
+        android:background="@drawable/garden_border_bg" />
+
+    <RelativeLayout
+        android:id="@+id/user_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_160"
+        android:layout_below="@id/top_menu"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_130"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/circular_bead_white_bg">
+
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_80"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="十金"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:id="@+id/performance_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="团队业绩(SV)"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/gold_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/performance_text"
+                android:layout_centerHorizontal="true"
+                android:text="0.00"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/sp_16" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_35"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/my_num"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/love_share_my"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14" />
+
+            <View
+                android:layout_width="@dimen/dp_1"
+                android:layout_height="@dimen/dp_20"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/group_num"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/love_share_group"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14" />
+
+
+
+
+        </LinearLayout>
+
+        <com.hongchuang.hclibrary.view.CircleImageView
+            android:id="@+id/user_img"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="@dimen/dp_64"
+            android:src="@mipmap/zhanghu" />
+
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/user_layout"
+        android:background="@color/white"
+        android:overScrollMode="never"
+        android:layout_marginTop="@dimen/dp_10">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="center"
+            android:src="@mipmap/freshing"
+            app:layout_srlBackgroundColor="@android:color/transparent"
+            app:layout_srlSpinnerStyle="Scale" />
+
+        <com.hongchuang.hclibrary.recyclerview.PowerfulRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/color_f67"
+            android:overScrollMode="never"
+            app:dividerColor="@color/black"
+            app:dividerSize="@dimen/dp_1" />
+
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlFinishDuration="0" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <ImageView
+        android:id="@+id/not_data_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/user_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_50"
+        android:src="@mipmap/not_member_show_bg"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

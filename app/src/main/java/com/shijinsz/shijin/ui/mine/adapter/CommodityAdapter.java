@@ -89,7 +89,6 @@ public class CommodityAdapter extends BaseAdapter {
                 viewHolder.tv_two.setVisibility(View.VISIBLE);
             }
         }catch (Exception e) {
-            System.out.println("");
         }
 
         try {
@@ -98,7 +97,6 @@ public class CommodityAdapter extends BaseAdapter {
                 viewHolder.tv_three.setVisibility(View.VISIBLE);
             }
         }catch (Exception e) {
-            System.out.println("");
         }
 
 

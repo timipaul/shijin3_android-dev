@@ -86,7 +86,7 @@ public class CommonFragment extends BaseFragment {
                             intent.putExtra("goods_id",list.get(pos).getId());
                             startActivity(intent);
                         }else {
-                            //金币不足
+                            //兑换
                             exchangePoint = goods_price;
                             exchange(list.get(pos).getId());
                         }

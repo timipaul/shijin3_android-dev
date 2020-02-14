@@ -1,7 +1,6 @@
 package com.hongchuang.ysblibrary;
 
 import android.content.Context;
-
 import com.hongchuang.ysblibrary.common.GrobalListener;
 
 

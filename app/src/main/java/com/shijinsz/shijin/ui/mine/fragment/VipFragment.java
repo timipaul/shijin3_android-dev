@@ -153,15 +153,11 @@ public class VipFragment extends BaseFragment {
                 list.clear();
                 list.addAll(var1.getGoods());
 
-                System.out.println("获取的数据:" + list);
-
                 int temp = -1;
                 GoodsBean good = new GoodsBean();
                 for(int i = 0;i < list.size(); i++){
-                    System.out.println(list.get(i).getId() + "数据对比 " + goods_id);
                     if(list.get(i).getId().equals(goods_id)){
                         good = list.get(i);
-                        System.out.println("设置的数据: " + good.toString());
                         temp = i;
                         break;
                     }

@@ -3,6 +3,9 @@
     <!-- 任务模块 任务状态 按钮状态 tag值设置 -->
     <item type="id" name="tag_task_statue"></item>
     <item type="id" name="tag_task_button_statue"></item>
+    <item type="id" name="tag_goods_price" />
+    <item type="id" name="tag_goods_id" />
+    <item type="id" name="tag_rbutton_index" />
 
 </resources>
 

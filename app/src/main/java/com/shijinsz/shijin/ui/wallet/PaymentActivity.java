@@ -31,9 +31,8 @@ import butterknife.BindView;
 import retrofit.callback.YRequestCallback;
 
 /**
- * Created by yrdan on 2018/8/31.
+ * 十金提现记录
  */
-
 public class PaymentActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     @BindView(R.id.money)
     TextView money;

@@ -118,7 +118,6 @@ public class DayTaskActivity extends BaseActivity {
         if(view.getTag(R.id.tag_task_statue).equals(GET)){
             //领取奖励
             try {
-                //System.out.println("领取内容: " + view.getTag(R.id.tag_task_button_statue));
                 getTaskAward(view.getTag(R.id.tag_task_button_statue).toString());
             }catch (Exception e) {
                 e.printStackTrace();
@@ -181,12 +180,10 @@ public class DayTaskActivity extends BaseActivity {
 
             @Override
             public void onFailed(String var1, String message) {
-                System.out.println("失败返回数据  1 " + message);
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("失败返回数据  2 ");
             }
         });
     }
@@ -215,7 +212,6 @@ public class DayTaskActivity extends BaseActivity {
 
             @Override
             public void onSuccess(TaskBean var1) {
-                System.out.println("领取成功");
                 Toast.makeText(mContext,"领取成功",Toast.LENGTH_LONG).show();
                 getTaskData();
 
@@ -223,13 +219,11 @@ public class DayTaskActivity extends BaseActivity {
 
             @Override
             public void onFailed(String var1, String message) {
-                System.out.println(var1 + "状态信息: " + message);
 
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("状态信息: " + var1);
             }
         });
     }

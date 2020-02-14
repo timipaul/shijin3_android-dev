@@ -92,7 +92,6 @@ public class MySwopActivity extends BaseActivity implements OnLoadMoreListener, 
         YSBSdk.getService(OAuthService.class).rush_goods(map, new YRequestCallback<BaseBean<PointDetailBean>>() {
             @Override
             public void onSuccess(BaseBean<PointDetailBean> var1) {
-               // System.out.println("111数据: " + var1.getRecords().toString());
                 mStateView.showContent();
                 refresh.finishLoadMore();
                 refresh.finishRefresh();

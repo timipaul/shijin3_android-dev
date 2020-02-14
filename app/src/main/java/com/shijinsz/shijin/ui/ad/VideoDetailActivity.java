@@ -42,6 +42,7 @@ import com.hongchuang.hclibrary.view.CircleImageView;
 import com.hongchuang.hclibrary.view.CircleTextProgressbar;
 import com.hongchuang.hclibrary.view.MyJzvdStd;
 import com.hongchuang.ysblibrary.YSBSdk;
+import com.hongchuang.ysblibrary.common.UrlConstants;
 import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.AdBean;
@@ -125,6 +126,9 @@ public class VideoDetailActivity extends BaseActivity {
     LinearLayout lnCenter;
     @BindView(R.id.img_head_vip)
     ImageView imgHeadVip;
+    @BindView(R.id.answer_layout)
+    RelativeLayout mAnswerLayout;
+
     private TextView title;
     private LinearLayout lnHead;
     private List<FatherCommentBean> list = new ArrayList<>();
@@ -367,7 +371,7 @@ public class VideoDetailActivity extends BaseActivity {
         YSBSdk.getService(OAuthService.class).share_infos(mode, new YRequestCallback<ShareBean>() {
             @Override
             public void onSuccess(ShareBean var1) {
-                shareDialog.showWithdrapDialog(mActivity, 1, title.getText().toString(), var1.getShare_info(), bean.getAd_title_pics().get(0), "https://prod.shijinsz.net/app_h5/ads_detail#aid=" + id + "&time=12121511331");
+                shareDialog.showWithdrapDialog(mActivity, 1, title.getText().toString(), var1.getShare_info(), bean.getAd_title_pics().get(0), UrlConstants.ISHARE+"ishare/app/adsDetail?aid=" + id + "&time=12121511331");
             }
 
             @Override
@@ -397,8 +401,6 @@ public class VideoDetailActivity extends BaseActivity {
     private boolean isFinish=false;
     private boolean isPurpose=false;
     private void getDetail() {
-
-        System.out.println("参数传递: " + isPurpose);
 
         mStateView.showLoading();
         Map map = new HashMap();
@@ -528,6 +530,12 @@ public class VideoDetailActivity extends BaseActivity {
                     }
                     tvDrap.setVisibility(View.VISIBLE);
                 }
+
+                if(var1.getAd().getOptions() == null){
+                    //没有答题 隐藏
+                    mAnswerLayout.setVisibility(View.GONE);
+                }
+
                 tvOption1 = var1.getAd().getOptions().getOption1();
                 tvOption2 = var1.getAd().getOptions().getOption2();
                 tvOption3 = var1.getAd().getOptions().getOption3();
@@ -611,6 +619,7 @@ public class VideoDetailActivity extends BaseActivity {
                     text.setText(getString(R.string.nochance));
                     text.setEnabled(true);
                 }
+
 
                 getComment();
                 getRecommend();
@@ -718,7 +727,6 @@ public class VideoDetailActivity extends BaseActivity {
         btFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("加关注----" + isFollow);
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
                 }
@@ -733,7 +741,6 @@ public class VideoDetailActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                System.out.println("点击了关注...." + isFollow);
 
                 if (!LoginUtil.isLogin(mActivity)) {
                     return;
@@ -1449,6 +1456,7 @@ public class VideoDetailActivity extends BaseActivity {
                             String number;
                             if(ad_type == 1){
                                 number = var1.getReward_number();
+                                dialogUtils.showOpenRedpacketDialog(number,uri);
                             }else{
                                 //判断是否为会员
                                 if(num.equals("0")){
@@ -1456,10 +1464,10 @@ public class VideoDetailActivity extends BaseActivity {
                                 }else{
                                     number = var1.getReward_number() +" +"+ num;
                                 }
-
+                                dialogUtils.showTaskAwardDialog(number);
                             }
-                            dialogUtils.showTaskAwardDialog(number);
-                            //dialogUtils.showRedpacketDialog(ad_type, var1.getReward_number(),num,uri);
+
+
                         }catch (Exception e) {
                             //dialogUtils.showTaskAwardDialog(var1.getReward_number());
                             //dialogUtils.showRedpacketDialog(ad_type, var1.getReward_number(),"0",uri);
@@ -1580,12 +1588,10 @@ public class VideoDetailActivity extends BaseActivity {
 
     private void follow() {
         Map map = new HashMap();
-        System.out.println("关注人的ID " + userid);
         YSBSdk.getService(OAuthService.class).fans(userid, map, new YRequestCallback<PicCodeBean>() {
             @Override
             public void onSuccess(PicCodeBean var1) {
 
-                System.out.println("成功关注*********************************");
 
                 isFollow = true;
                 btFollow.setText(mContext.getString(R.string.isfollow));
@@ -1602,12 +1608,10 @@ public class VideoDetailActivity extends BaseActivity {
 
             @Override
             public void onFailed(String var1, String message) {
-                System.out.println("关注失败 1");
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("关注失败 2");
             }
         });
     }
@@ -1640,12 +1644,10 @@ public class VideoDetailActivity extends BaseActivity {
 
                     @Override
                     public void onFailed(String var1, String message) {
-                        System.out.println("数据异常 1 ");
                     }
 
                     @Override
                     public void onException(Throwable var1) {
-                        System.out.println("数据异常 2 ");
                     }
                 });
             }

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorPrimary">#E01F22</color>
     <color name="colorPrimaryDark">#E01F22</color>
     <color name="colorAccent">#FF4081</color>
 
 
     <color name="transparent">#00000000</color><!-- 透明 -->
-    <color name="transparent5">#f2ffffff</color><!-- 透明 -->
-    <color name="transparent10">#E6ffffff</color><!-- 透明 -->
-    <color name="transparent20">#CCffffff</color><!-- 透明 -->
-    <color name="transparent30">#B3ffffff</color><!-- 透明 -->
-    <color name="transparent40">#99ffffff</color><!-- 透明 -->
+    <color name="transparent5" tools:keep="@color/transparent5">#f2ffffff</color><!-- 透明 -->
+    <color name="transparent10" tools:keep="@color/transparent10">#E6ffffff</color><!-- 透明 -->
+    <color name="transparent20" tools:keep="@color/transparent20">#CCffffff</color><!-- 透明 -->
+    <color name="transparent30" tools:keep="@color/transparent30">#B3ffffff</color><!-- 透明 -->
+    <color name="transparent40" tools:keep="@color/transparent40">#99ffffff</color><!-- 透明 -->
     <color name="transparent50">#80ffffff</color><!-- 透明 -->
-    <color name="transparent60">#66ffffff</color><!-- 透明 -->
-    <color name="transparent70">#4Dffffff</color><!-- 透明 -->
-    <color name="transparent80">#33ffffff</color><!-- 透明 -->
-    <color name="transparent90">#1Affffff</color><!-- 透明 -->
-    <color name="transparent95">#0cffffff</color><!-- 透明 -->
+    <color name="transparent60" tools:keep="@color/transparent60">#66ffffff</color><!-- 透明 -->
+    <color name="transparent70" tools:keep="@color/transparent70">#4Dffffff</color><!-- 透明 -->
+    <color name="transparent80" tools:keep="@color/transparent80">#33ffffff</color><!-- 透明 -->
+    <color name="transparent90" tools:keep="@color/transparent90">#1Affffff</color><!-- 透明 -->
+    <color name="transparent95" tools:keep="@color/transparent95">#0cffffff</color><!-- 透明 -->
     <color name="btransparent10">#E6000000</color><!-- 透明 -->
-    <color name="btransparent20">#CC000000</color><!-- 透明 -->
-    <color name="btransparent30">#B3000000</color><!-- 透明 -->
-    <color name="btransparent40">#99000000</color><!-- 透明 -->
-    <color name="btransparent50">#80000000</color><!-- 透明 -->
-    <color name="btransparent60">#66000000</color><!-- 透明 -->
-    <color name="btransparent70">#4D000000</color><!-- 透明 -->
+    <color name="btransparent20" tools:keep="@color/btransparent20">#CC000000</color><!-- 透明 -->
+    <color name="btransparent30" tools:keep="@color/btransparent30">#B3000000</color><!-- 透明 -->
+    <color name="btransparent40" tools:keep="@color/btransparent40">#99000000</color><!-- 透明 -->
+    <color name="btransparent50" tools:keep="@color/btransparent50">#80000000</color><!-- 透明 -->
+    <color name="btransparent60" tools:keep="@color/btransparent60">#66000000</color><!-- 透明 -->
+    <color name="btransparent70" tools:keep="@color/btransparent70">#4D000000</color><!-- 透明 -->
     <color name="btransparent80">#33000000</color><!-- 透明 -->
     <color name="btransparent85">#26000000</color><!-- 透明 -->
     <color name="btransparent90">#1A000000</color><!-- 透明 -->
@@ -58,14 +58,14 @@
 
     <color name="mine_function_divider">#f7f7f7</color><!-- 下划线 -->
     <color name="background_color">#f7f7f7</color><!-- 背景色 -->
-    <color name="color_ff8">#fffff8</color>
+    <color name="color_ff8" tools:keep="@color/color_ff8">#fffff8</color>
 
 
     <!--账单-->
-    <color name="success">#666666</color> <!-- 成功 -->
-    <color name="fail">#f2415a</color> <!--失败 -->
+    <color name="success" tools:keep="@color/success">#666666</color> <!-- 成功 -->
+    <color name="fail" tools:keep="@color/fail">#f2415a</color> <!--失败 -->
     <color name="doing">#e99c2e</color> <!--进行中 -->
-    <color name="dialog">#f8f8f8</color> <!--进行中 -->
+    <color name="dialog" tools:keep="@color/dialog">#f8f8f8</color> <!--进行中 -->
     <color name="color_f8a142">#f8a142</color>
     <color name="yellow">#ffb701</color>
     <color name="color_FCE8E8">#FCE8E8</color>

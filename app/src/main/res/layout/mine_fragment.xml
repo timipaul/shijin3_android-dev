@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_ee"
@@ -209,9 +210,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="@dimen/dp_340"
-            android:layout_height="@dimen/dp_170"
-            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:background="@drawable/my_balance_bg"
             android:gravity="center"
@@ -222,28 +222,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dp_20"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <Button
-                    android:id="@+id/tv_looked"
                     style="@style/my_button_ic"
                     android:drawableTop="@mipmap/icon_yj"
                     android:text="足迹" />
 
                 <Button
-                    android:id="@+id/tv_gz"
+
                     style="@style/my_button_ic"
                     android:drawableTop="@mipmap/icon_gz"
                     android:text="关注" />
 
                 <Button
-                    android:id="@+id/tv_sc"
+
                     style="@style/my_button_ic"
                     android:drawableTop="@mipmap/icon_sc"
                     android:text="收藏" />
 
                 <Button
-                    android:id="@+id/tv_rush"
+
                     style="@style/my_button_ic"
                     android:drawableTop="@mipmap/mine_rush_icon"
                     android:text="抢购" />
@@ -255,33 +255,90 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <Button
-                    android:id="@+id/tv_vip"
+
                     style="@style/my_button_ic"
                     android:drawableTop="@mipmap/mine_coupon_icon"
-                    android:text="会员机制" />
+                    android:text="十金大使" />
 
                 <Button
-                    android:id="@+id/tv_yj"
+
                     style="@style/my_button_ic"
                     android:drawableTop="@mipmap/icon_feedback"
                     android:text="反馈" />
 
                 <Button
-                    android:id="@+id/tv_tg"
                     style="@style/my_button_ic"
-                    android:drawableTop="@mipmap/icon_mall"
-                    android:text="十金特供" />
+                    android:drawableTop="@mipmap/icon_ranking"
+                    android:text="排行榜" />
 
                 <Button
-                    android:id="@+id/tv_sz"
+
                     style="@style/my_button_ic"
                     android:drawableTop="@mipmap/icon_sz"
                     android:text="设置" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_love_share"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_share"
+                android:text="爱分享"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_tg"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_ranking"
+                android:text="排行榜"/>
+
+            <TextView
+                android:id="@+id/tv_looked"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_footprint"
+                android:text="我的足迹"/>
+
+            <TextView
+                android:id="@+id/tv_gz"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_attention"
+                android:text="我的关注"/>
+
+            <TextView
+                android:id="@+id/tv_sc"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_collect"
+                android:text="我的收藏"/>
+
+            <TextView
+                android:id="@+id/tv_rush"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_rush"
+                android:text="我的抢购"/>
+
+            <TextView
+                android:id="@+id/tv_vip"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_vip"
+                android:text="十金大使"/>
+
+            <TextView
+                android:id="@+id/tv_yj"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_gg"
+                android:text="意见反馈"/>
+
+
+            <TextView
+                android:id="@+id/tv_sz"
+                style="@style/my_menu_view_list"
+                android:drawableLeft="@mipmap/icon_mine_set"
+                android:text="设置"/>
+
 
         </LinearLayout>
 

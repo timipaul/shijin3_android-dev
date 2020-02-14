@@ -140,8 +140,8 @@ public abstract class BaseActivity extends AppCompatActivity implements GrobalLi
             mStateView.setLoadingResource(R.layout.page_loading);
             mStateView.setRetryResource(R.layout.page_net_error);
             mStateView.setEmptyResource(R.layout.page_detail_error);
-
         }
+
         mStateView.setOnInflateListener(new StateView.OnInflateListener() {
             @Override
             public void onInflate(int viewType, View view) {

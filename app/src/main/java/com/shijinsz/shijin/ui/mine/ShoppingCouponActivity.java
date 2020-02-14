@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
+import com.hongchuang.ysblibrary.common.UrlConstants;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.AdAllianceBean;
 import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
@@ -114,7 +115,7 @@ public class ShoppingCouponActivity extends BaseActivity implements OnLoadMoreLi
             @Override
             public void onSuccess(ShareBean var1) {
                 mStateView.showContent();
-                new ShareDialog(mActivity).showWithdrapDialog(mActivity,3,var1.getShare_title(),var1.getShare_info(),var1.getShare_pic(), Comment.url+"invitation_registration?nickname="+ ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_nickname)+"&username="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_USER_NAME)+"&imageurl="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_imageurl));
+                new ShareDialog(mActivity).showWithdrapDialog(mActivity,3,var1.getShare_title(),var1.getShare_info(),var1.getShare_pic(), UrlConstants.ISHARE+"ishare/app/invitation_registration?nickname="+ ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_nickname)+"&username="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_USER_NAME)+"&imageurl="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_imageurl));
             }
 
             @Override

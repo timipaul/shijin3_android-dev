@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="UnusedResources">
+        <ignore path="src/main/res/mipmap/icon_return_clicked.png" />
+        <ignore path="src/main/res/mipmap/icon_return_clicked.png" />
+        <ignore path="src/main/res/mipmap/icon_return_clicked.png" />
+    </issue>
+</lint>

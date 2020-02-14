@@ -30,7 +30,7 @@
             android:id="@+id/tv_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="￥49884"
+            android:text="¥49884"
             android:textColor="@color/white"
             android:textSize="58sp"
             android:layout_marginTop="@dimen/dp_100"

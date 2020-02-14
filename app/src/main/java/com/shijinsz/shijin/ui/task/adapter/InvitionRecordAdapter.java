@@ -29,14 +29,10 @@ public class InvitionRecordAdapter extends BaseQuickAdapter<InvitationBean,BaseV
         helper.setText(R.id.tv_status,String.format(mContext.getString(R.string.invite_earnings),item.getInviter_reward()));
 
 
-        /*if (item.getInvitation_status().equals("success")){
-            helper.setText(R.id.tv_status,mContext.getString(R.string.useful));
-            helper.setTextColor(R.id.tv_status,mContext.getResources().getColor(R.color.colorPrimary));
-            helper.setBackgroundRes(R.id.tv_status,R.drawable.bt_checked);
+        if (item.getInvitation_status().equals("success")){
+            helper.setText(R.id.tv_status,String.format(mContext.getString(R.string.invite_earnings),item.getInviter_reward()));
         }else {
-            helper.setText(R.id.tv_status,mContext.getString(R.string.un_activation));
-            helper.setTextColor(R.id.tv_status,mContext.getResources().getColor(R.color.text_999999));
-            helper.setBackgroundRes(R.id.tv_status,R.drawable.bt_uncheck);
-        }*/
+            helper.setText(R.id.tv_status,"邀请中");
+        }
     }
 }

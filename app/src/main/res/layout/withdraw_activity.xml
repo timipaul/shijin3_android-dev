@@ -2,25 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/white"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:background="@color/white">
+    android:orientation="vertical">
+
+
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_70"
-        android:background="@color/colorPrimary"
-        >
+        android:background="@color/colorPrimary">
+
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginTop="@dimen/dp_20"
             android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/dp_20"
             android:scaleType="center"
             android:src="@mipmap/goback_white"
             android:visibility="visible" />
+
         <TextView
             android:id="@+id/tv_author"
             android:layout_width="wrap_content"
@@ -28,365 +31,403 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_33"
             android:gravity="center"
-            android:singleLine="true"
             android:letterSpacing="0.1"
+            android:singleLine="true"
             android:text="@string/withdraw"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_16" />
+
         <TextView
             android:id="@+id/tv_right"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginTop="@dimen/dp_20"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_marginRight="@dimen/dp_10"
-            android:letterSpacing="0.115"
             android:gravity="center_vertical"
+            android:letterSpacing="0.115"
             android:scaleType="center"
             android:text="@string/withdraw_record"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_13"
-            />
+            android:textSize="@dimen/sp_13" />
     </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background_color"
             android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_105"
-        android:background="@color/colorPrimary"
-        >
-        <TextView
-            android:id="@+id/money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_13"
-            android:textSize="33sp"
-            android:textColor="@color/white"
-            android:text="0"
-            android:layout_centerHorizontal="true"
-            />
-        <TextView
-            android:layout_toLeftOf="@+id/money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="￥"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_18"
-            android:layout_marginTop="@dimen/dp_25"/>            />
-        <TextView
-            android:id="@+id/tv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/now_balance"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_14"
-            android:layout_below="@+id/money"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_10"
-        android:background="@color/mine_function_divider"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_105"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp_13"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="33sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_25"
+                    android:layout_toLeftOf="@+id/money"
+                    android:text="¥"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_18" />
+                />
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/money"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/now_balance"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_10"
+                android:background="@color/mine_function_divider" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_50"
-                android:orientation="horizontal"
+                android:background="@color/white"
                 android:gravity="center_vertical"
-                android:background="@color/white">
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_10"
-                    android:text="￥"/>
+                    android:text="¥" />
+
                 <EditText
                     android:id="@+id/ed_money"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:background="@null"
                     android:layout_marginLeft="@dimen/dp_10"
-                    android:textSize="@dimen/sp_12"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/input_withdraw_num"
                     android:inputType="number"
-                    android:hint="@string/input_withdraw_num"/>
+                    android:textSize="@dimen/sp_12" />
+
                 <TextView
                     android:id="@+id/withdraw_all"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="@string/all_withdraw"
-                    android:paddingRight="@dimen/dp_10"
                     android:paddingLeft="@dimen/dp_10"
-                    android:textSize="@dimen/sp_13"
-                    android:textColor="@color/colorPrimary"/>
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="@string/all_withdraw"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_13" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_1"
-                android:background="@color/mine_function_divider"
+                android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_10"
-                android:layout_marginLeft="@dimen/dp_10"/>
+                android:background="@color/mine_function_divider" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_66"
-                android:orientation="horizontal"
                 android:background="@color/white"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingLeft="@dimen/dp_10"
                 android:paddingRight="@dimen/dp_10">
+
                 <TextView
                     android:id="@+id/tv_1yuan"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="@dimen/dp_40"
+                    android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:textSize="@dimen/sp_18"
-                    android:textColor="@color/white"
                     android:gravity="center"
-                    android:text="@string/yuan"/>
+                    android:text="@string/yuan"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_18" />
+
                 <TextView
                     android:id="@+id/tv_5yuan"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="@dimen/dp_40"
-                    android:background="@drawable/gray_biankuang_1"
-                    android:textSize="@dimen/sp_18"
-                    android:textColor="@color/text_33"
                     android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/gray_biankuang_1"
                     android:gravity="center"
-                    android:text="@string/yuan"/>
+                    android:text="@string/yuan"
+                    android:textColor="@color/text_33"
+                    android:textSize="@dimen/sp_18" />
+
                 <TextView
                     android:id="@+id/tv_10yuan"
                     android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_40"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:layout_weight="1"
-                    android:layout_height="@dimen/dp_40"
-                    android:textSize="@dimen/sp_18"
                     android:background="@drawable/gray_biankuang_1"
-                    android:textColor="@color/text_33"
                     android:gravity="center"
-                    android:text="@string/yuan"/>
+                    android:text="@string/yuan"
+                    android:textColor="@color/text_33"
+                    android:textSize="@dimen/sp_18" />
             </LinearLayout>
+
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/sp_13"
-                android:textColor="@color/text_6"
                 android:background="@color/white"
-                android:visibility="gone"
-                android:text="@string/withdraw_prompt4"
                 android:paddingLeft="@dimen/dp_10"
-                />
+                android:text="@string/withdraw_prompt4"
+                android:textColor="@color/text_6"
+                android:textSize="@dimen/sp_13"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/tv4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:paddingLeft="@dimen/dp_10"
-                android:paddingRight="@dimen/dp_10"
                 android:paddingTop="@dimen/dp_9"
-                android:visibility="gone"
+                android:paddingRight="@dimen/dp_10"
                 android:paddingBottom="@dimen/dp_15"
                 android:text="@string/withdraw_prompt5"
                 android:textColor="@color/text_999999"
-                android:textSize="@dimen/sp_12"/>
+                android:textSize="@dimen/sp_12"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/dp_14"
                 android:background="@color/white"
-                android:text="@string/withdraw_prompt6"
                 android:paddingLeft="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_14"
+                android:text="@string/withdraw_prompt6"
                 android:textColor="@color/text_6"
-                android:textSize="@dimen/sp_13"/>
+                android:textSize="@dimen/sp_13" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@color/white"
-                android:layout_marginTop="@dimen/dp_5">
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_45"
-                    android:text="@string/choice_withdraw_type"
+                    android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_10"
+                    android:text="@string/choice_withdraw_type"
                     android:textColor="@color/text_33"
-                    android:textSize="@dimen/sp_16"
-                    android:gravity="center_vertical"/>
+                    android:textSize="@dimen/sp_16" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_1"
-                    android:background="@color/mine_function_divider"/>
+                    android:background="@color/mine_function_divider" />
+
                 <LinearLayout
                     android:id="@+id/ln_alipay"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
-                    android:visibility="gone"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
                     <ImageView
                         android:id="@+id/rb_alipay"
                         android:layout_width="@dimen/dp_15"
                         android:layout_height="@dimen/dp_15"
-                        android:src="@mipmap/radio_button_on"
-                        android:layout_marginLeft="@dimen/dp_10"/>
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:src="@mipmap/radio_button_on" />
+
                     <ImageView
                         android:id="@+id/img_alipay"
                         android:layout_width="@dimen/dp_30"
                         android:layout_height="@dimen/dp_30"
-                        android:src="@mipmap/icon_alipay"
-                        android:layout_marginLeft="@dimen/dp_2"/>
+                        android:layout_marginLeft="@dimen/dp_2"
+                        android:src="@mipmap/icon_alipay" />
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_weight="1"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tv_alipay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/alipay"
                             android:textColor="@color/text_33"
-                            android:textSize="@dimen/sp_14"
-                            android:text="@string/alipay"/>
+                            android:textSize="@dimen/sp_14" />
+
                         <TextView
                             android:id="@+id/tv_alipay2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/limit"
                             android:textColor="@color/text_999999"
-                            android:textSize="@dimen/sp_12"
-                            android:text="@string/limit"/>
+                            android:textSize="@dimen/sp_12" />
                     </LinearLayout>
+
                     <TextView
                         android:id="@+id/tv_alipay3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/sp_12"
-                        android:textColor="@color/text_999999"
-                        android:text="@string/morethan1"
                         android:layout_marginRight="@dimen/dp_10"
-                        />
+                        android:text="@string/morethan1"
+                        android:textColor="@color/text_999999"
+                        android:textSize="@dimen/sp_12" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/ln_wechat"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_50"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <ImageView
                         android:id="@+id/rb_wechat"
                         android:layout_width="@dimen/dp_15"
                         android:layout_height="@dimen/dp_15"
-                        android:src="@mipmap/radio_button_on"
-                        android:layout_marginLeft="@dimen/dp_10"/>
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:src="@mipmap/radio_button_on" />
+
                     <ImageView
                         android:id="@+id/img_wechat"
                         android:layout_width="@dimen/dp_30"
                         android:layout_height="@dimen/dp_30"
-                        android:src="@mipmap/icon_wechat_2"
-                        android:layout_marginLeft="@dimen/dp_2"/>
+                        android:layout_marginLeft="@dimen/dp_2"
+                        android:src="@mipmap/icon_wechat_2" />
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="@dimen/dp_10"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_weight="1"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tv_wechat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/wechat"
                             android:textColor="@color/text_33"
-                            android:textSize="@dimen/sp_14"
-                            android:text="@string/wechat"/>
+                            android:textSize="@dimen/sp_14" />
+
                         <TextView
                             android:id="@+id/tv_wechat2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/limit"
                             android:textColor="@color/text_999999"
-                            android:textSize="@dimen/sp_12"
-                            android:text="@string/limit"/>
+                            android:textSize="@dimen/sp_12" />
                     </LinearLayout>
+
                     <TextView
                         android:id="@+id/tv_wechat3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/sp_12"
-                        android:textColor="@color/text_999999"
-                        android:text="@string/morethan1"
                         android:layout_marginRight="@dimen/dp_10"
-                        />
+                        android:text="@string/morethan1"
+                        android:textColor="@color/text_999999"
+                        android:textSize="@dimen/sp_12" />
                 </LinearLayout>
             </LinearLayout>
+
             <Button
                 android:id="@+id/bt_pay_now"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_45"
-                android:layout_marginTop="@dimen/dp_25"
                 android:layout_marginLeft="@dimen/dp_43"
+                android:layout_marginTop="@dimen/dp_25"
                 android:layout_marginRight="@dimen/dp_43"
-                android:textSize="@dimen/sp_16"
-                android:textColor="@color/white"
-                android:text="@string/withdraw_now"
+                android:background="@drawable/bt_red"
                 android:paddingBottom="@dimen/dp_3"
-                android:background="@drawable/bt_red"/>
+                android:text="@string/withdraw_now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
                 android:text="每人每日5次提现机会"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/sp_12"/>
+                android:textSize="@dimen/sp_12" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_20"
                 android:lineSpacingExtra="@dimen/dp_5"
                 android:text="十金平台用户每日提现次数为5次，5次机会用完后可等到第二天再来进行提现操作"
                 android:textColor="@color/text_999999"
-                android:textSize="@dimen/sp_12"/>
+                android:textSize="@dimen/sp_12" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
                 android:text="@string/withdraw_prompt1"
                 android:textColor="@color/text_33"
-                android:textSize="@dimen/sp_12"/>
+                android:textSize="@dimen/sp_12" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_20"
                 android:lineSpacingExtra="@dimen/dp_5"
                 android:text="@string/withdraw_prompt2"
                 android:textColor="@color/text_999999"
-                android:textSize="@dimen/sp_12"/>
+                android:textSize="@dimen/sp_12" />
+
             <TextView
                 android:id="@+id/tv_prompt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_5"
-                android:lineSpacingExtra="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginBottom="@dimen/dp_20"
+                android:lineSpacingExtra="@dimen/dp_5"
                 android:text="@string/withdraw_prompt3"
                 android:textColor="@color/text_999999"
-                android:textSize="@dimen/sp_12"/>
+                android:textSize="@dimen/sp_12" />
         </LinearLayout>
 
     </ScrollView>

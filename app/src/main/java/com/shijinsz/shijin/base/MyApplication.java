@@ -93,14 +93,11 @@ public class MyApplication extends MultiDexApplication implements GrobalListener
         if (!"generic".equalsIgnoreCase(Build.BRAND)) {
             SDKInitializer.initialize(getApplicationContext());
     }
-        CrashReport.setIsDevelopmentDevice(this, true);
-        //公司qq注册 热跟新插件
-        Bugly.init(getApplicationContext(), Constants.BuglyAppId, true);
 
-        //设置是否允许自动下载补丁
-        Beta.canAutoDownloadPatch = true;
-        //设置是否允许自动合成补丁
-        Beta.canAutoPatch = true;
+        //公司qq注册 热跟新插件
+        Bugly.init(getApplicationContext(), Constants.BuglyAppId, isDebug);
+        //设置开发设备
+        CrashReport.setIsDevelopmentDevice(this, isDebug);
 
         Beta.betaPatchListener = new BetaPatchListener() {
             @Override
@@ -166,6 +163,7 @@ public class MyApplication extends MultiDexApplication implements GrobalListener
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        Log.i("MyApplication","热更新***");
         MultiDex.install(base);
         Beta.installTinker();
     }

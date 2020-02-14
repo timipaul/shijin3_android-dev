@@ -10,13 +10,11 @@
         android:id="@+id/i_backup"
         android:icon="@drawable/icon_ask"
         android:title="视频" />
-    <!--must set the item title to empty-->
-    <item
-        android:id="@+id/i_empty"
-        android:title="" />
-    <!--<item-->
-        <!--android:id="@+id/i_empty"-->
-        <!--android:title="" />-->
+   <item
+        android:id="@+id/i_store"
+        android:icon="@drawable/icon_store"
+        android:title="商城" />
+
     <item
         android:id="@+id/i_favor"
         android:icon="@drawable/icon_task"

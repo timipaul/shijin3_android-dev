@@ -6,21 +6,22 @@
     android:orientation="vertical"
     android:background="@color/background_color">
     <include layout="@layout/common_title"/>
+
     <RelativeLayout
         android:id="@+id/rl_empty"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:drawableTop="@mipmap/icon_placeholder_empty"
-            android:text="@string/empty"
             android:drawablePadding="@dimen/dp_25"
-            android:textSize="@dimen/sp_15"
+            android:text="@string/empty"
             android:textColor="@color/text_33"
-            />
+            android:textSize="@dimen/sp_15" />
     </RelativeLayout>
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
@@ -42,11 +43,14 @@
             android:layout_height="match_parent"
             android:background="#eeeeee"
             android:overScrollMode="never"
+            app:dividerSize="@dimen/dp_1"
+            app:dividerColor="@color/black"
             />
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srlFinishDuration="0"/>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 
 </LinearLayout>

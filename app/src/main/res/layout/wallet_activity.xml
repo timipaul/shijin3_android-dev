@@ -49,7 +49,7 @@
         android:layout_toLeftOf="@+id/money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="￥"
+        android:text="¥"
         android:textColor="@color/white"
         android:textSize="@dimen/sp_18"
         android:layout_marginTop="@dimen/dp_108"

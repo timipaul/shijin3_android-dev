@@ -31,6 +31,7 @@ import com.shijinsz.shijin.MainActivity;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.utils.ErrorUtils;
+import com.shijinsz.shijin.utils.LoginUtil;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -329,6 +330,10 @@ public class RenewActivity extends BaseActivity {
     }
 
     private void pay() {
+
+        //绑定微信
+        new LoginUtil().isWxData(mContext);
+
         Map map = new HashMap();
         map.put("mode", "wxpay");
         map.put("channel", "app");

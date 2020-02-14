@@ -116,7 +116,6 @@ public class VoteRecordData extends BaseActivity implements OnLoadMoreListener, 
                 }
                 list.addAll(var1.getResult());
                 adapter.notifyDataSetChanged();
-                System.out.println("投票记录: " + list.toString());
 
             }
 

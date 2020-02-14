@@ -41,8 +41,8 @@ import retrofit.callback.YRequestCallback;
 
 /**
  * Created by yrdan on 2018/9/4.
+ * 邀请记录
  */
-
 public class InviteRecordActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     @BindView(R.id.invite_money)
     TextView inviteMoney;
@@ -103,8 +103,6 @@ public class InviteRecordActivity extends BaseActivity implements OnRefreshLoadM
         map.put("mode", "person");
         map.put("cursor", cursor);
         map.put("size", "10");
-
-        System.out.println("时间值: " + cursor);
 
         YSBSdk.getService(OAuthService.class).invitation(map, new YRequestCallback<BaseBean<InvitationBean>>() {
             @Override

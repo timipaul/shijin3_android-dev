@@ -44,6 +44,10 @@
 -dontwarn cn.jiguang.**
 -keep class cn.jiguang.** { *; }
 #==================gson && protobuf==========================
+
+
+
+
 -dontwarn com.google.**
 -keep class com.google.gson.** {*;}
 -keep class com.google.protobuf.** {*;}
@@ -75,7 +79,4 @@ public void *(***);
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-
-
-##广告通
 

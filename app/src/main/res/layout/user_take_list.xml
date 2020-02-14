@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="@dimen/dp_1"
+    android:paddingBottom="@dimen/dp_15"
+    android:paddingTop="@dimen/sp_15">
+
+    <TextView
+        android:id="@+id/item_head"
+        android:layout_width="@dimen/dp_44"
+        android:layout_height="@dimen/dp_44"
+        android:background="@drawable/shape_label_gray"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:text="周"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/sp_18"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_15"
+            android:text="**"/>
+
+        <TextView
+            android:id="@+id/item_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_14"
+            android:layout_toRightOf="@id/item_name"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="**"/>
+
+        <TextView
+            android:id="@+id/item_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_f3"
+            android:background="@color/color_fff"
+            android:layout_below="@id/item_name"
+            android:paddingLeft="@dimen/dp_2"
+            android:paddingRight="@dimen/dp_2"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginRight="@dimen/dp_5"
+            android:text="默认"/>
+
+        <TextView
+            android:id="@+id/item_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="广东省 深圳市"
+            android:layout_toRightOf="@id/item_state"
+            android:layout_below="@id/item_name"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/dp_4"
+            android:textSize="@dimen/sp_15"/>
+
+        <TextView
+            android:id="@+id/item_detail_site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_15"
+            android:layout_below="@id/item_city"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="某某小区某某楼101号"/>
+
+        <TextView
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="@dimen/dp_22"
+            android:background="@color/color_f2"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/item_compile"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="@dimen/sp_14"
+        android:paddingRight="@dimen/dp_15"
+        android:paddingLeft="@dimen/dp_10"
+        android:text="编辑"/>
+
+</LinearLayout>

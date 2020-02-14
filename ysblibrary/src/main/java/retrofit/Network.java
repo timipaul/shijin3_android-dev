@@ -56,7 +56,6 @@ public class Network<T> {
 
 
     private synchronized static Retrofit getRetrofit2() {
-        System.out.println("请求第二个路径");
         if (retrofit2 == null) {
             retrofit2 = new Retrofit.Builder()
                     .client(okHttpClient)

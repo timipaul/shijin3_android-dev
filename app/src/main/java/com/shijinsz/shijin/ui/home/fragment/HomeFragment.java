@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -18,6 +19,9 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,6 +34,7 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.bumptech.glide.Glide;
 import com.github.nukc.stateview.StateView;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
@@ -37,7 +42,9 @@ import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
 import com.hongchuang.ysblibrary.model.model.bean.CategoriesBean;
+import com.hongchuang.ysblibrary.model.model.bean.ShenmiBean;
 import com.hongchuang.ysblibrary.model.model.bean.VoteBean;
+import com.shijinsz.shijin.MainActivity;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseFragment;
 import com.shijinsz.shijin.ui.activity.UnifiedInterstitialADActivity;
@@ -45,7 +52,9 @@ import com.shijinsz.shijin.ui.home.NewGuideActivity;
 import com.shijinsz.shijin.ui.home.SearchActivity;
 import com.shijinsz.shijin.ui.home.adapter.MainTabAdapter;
 import com.shijinsz.shijin.ui.task.ChallengeTaskActivity;
+import com.shijinsz.shijin.ui.task.SignInActivity;
 import com.shijinsz.shijin.ui.wallet.PointActivity;
+import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.LocationUtils;
 import com.shijinsz.shijin.utils.LoginUtil;
 
@@ -75,21 +84,15 @@ public class HomeFragment extends BaseFragment{
     @BindView(R.id.tv_locate)
     TextView tvLocate;
     @BindView(R.id.tv_guide)
-    TextView tvGuide;
+    ImageView tvGuide;
     @BindView(R.id.tv_selete)
     TextView tvSelete;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
     @BindView(R.id.indicator)
     MagicIndicator indicator;
-    @BindView(R.id.goods_but)
-    TextView mGoods_but;
-    @BindView(R.id.goods_name)
-    TextView mGoods_name;
     @BindView(R.id.gif_img)
     ImageView mGif_img;
-    @BindView(R.id.goods_layout)
-    RelativeLayout goods_layout;
 
     public String ad_state = "off";
 
@@ -98,7 +101,7 @@ public class HomeFragment extends BaseFragment{
     public UnifiedInterstitialADActivity adActivity;
 
     private CommonNavigator commonNavigator;
-    private static final String[] CHANNELS = new String[]{"关注","推荐"};
+    private static final String[] CHANNELS = new String[]{"关注","爱分享","推荐"};
     private List<String> mDataList = new ArrayList<String>(Arrays.asList(CHANNELS));
     private final static String TAG = "HomeFragment";
     @Override
@@ -126,30 +129,25 @@ public class HomeFragment extends BaseFragment{
         super.initView(rootView);
     }
 
-
     private View footView1;
     private boolean isFirst = true;
     private List<Fragment> mFragments = new ArrayList<>();
     private void initView() {
 
-
-
         footView1 = mInflater.inflate(R.layout.empty_layout, null);
         View view = mInflater.inflate(R.layout.home_header, null);
-        mFragments.add(NewListFragment2.getInstance("follow"));
-        mFragments.add(NewListFragment2.getInstance("individuation"));
-//        mFragments.add(NewListFragment.getInstance("hotpoint"));
-//        mFragments.add(NewListFragment.getInstance("point"));
-//        mFragments.add(NewListFragment.getInstance("change"));
+        mFragments.add(NewListFragment.getInstance("follow"));
+        mFragments.add(LoveShareFragment.getInstance("loveShare"));
+        mFragments.add(NewListFragment.getInstance("individuation"));
 //        tvGuide = view.findViewById(R.id.tv_guide);
         tvGuide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mActivity, NewGuideActivity.class));
+                new DialogUtils(getContext()).showIssueMenuDialog();
+
             }
         });
 
-//        tvSelete = view.findViewById(R.id.tv_selete);
         tvSelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -208,22 +206,48 @@ public class HomeFragment extends BaseFragment{
         });
 
         //动态图片
-        //Glide.with(mActivity).load(R.drawable.vote_gif_img).into(mGif_img);
-
-        getGoods();
-        //获取投票跳转链接
-        getVoteUrl();
+        Glide.with(mActivity).load(R.drawable.vote_gif_img).into(mGif_img);
 
         adActivity = new UnifiedInterstitialADActivity(getActivity());
         adActivity.loadAd();
-        setTimer();
+        ifGameIntoEntrance();
+
     }
+
+
+    //判断手机型号 隐藏广告弹窗入口
+    public void ifGameIntoEntrance(){
+        if(Build.MANUFACTURER.toLowerCase().contains("huawei")){
+            YSBSdk.getService(OAuthService.class).getGameStatue(new YRequestCallback<ShenmiBean>() {
+                @Override
+                public void onSuccess(ShenmiBean var1) {
+                    adActivity.loadAd();
+                    setTimer();
+                }
+
+                @Override
+                public void onFailed(String var1, String message) {
+                    Log.i("game", "onFailed");
+
+                }
+
+                @Override
+                public void onException(Throwable var1) {
+                    Log.i("game", "onException");
+                }
+            });
+        }else{
+            adActivity.loadAd();
+            setTimer();
+        }
+    }
+
 
     private static final int TIMER = 999;
     private static boolean flag = true;
     private void setTimer(){
         Message message = mHandler.obtainMessage(TIMER);     // Message
-        mHandler.sendMessageDelayed(message, 10000);
+        mHandler.sendMessageDelayed(message, 20000);
     }
 
     private Handler mHandler = new Handler(){
@@ -251,34 +275,13 @@ public class HomeFragment extends BaseFragment{
         flag = false;
     }
 
-    private void getVoteUrl(){
-        YSBSdk.getService(OAuthService.class).get_vote(new YRequestCallback<VoteBean>() {
-            @Override
-            public void onSuccess(VoteBean var1) {
-                //保存路径
-                ShareDataManager.getInstance().save(getContext(),SharedPreferencesKey.KEY_vote_url,var1.getUrl());
-                ShareDataManager.getInstance().save(getContext(),SharedPreferencesKey.KET_vote_number,var1.getRewards_number());
-            }
-
-            @Override
-            public void onFailed(String var1, String message) {
-
-            }
-
-            @Override
-            public void onException(Throwable var1) {
-
-            }
-        });
-    }
-
     private void getChannel() {
         YSBSdk.getService(OAuthService.class).categories(new YRequestCallback<BaseBean<CategoriesBean>>() {
             @Override
             public void onSuccess(BaseBean<CategoriesBean> var1) {
                 for (CategoriesBean categoriesBean : var1.getCategories()) {
                      mDataList.add(categoriesBean.getValue());
-                     mFragments.add(NewListFragment2.getInstance(categoriesBean.getKey()));
+                     mFragments.add(NewListFragment.getInstance(categoriesBean.getKey()));
                 }
                 initviewPage();
             }
@@ -357,7 +360,7 @@ public class HomeFragment extends BaseFragment{
             }
         });
         indicator.onPageScrollStateChanged(1);
-        viewpager.setCurrentItem(1,false);
+        viewpager.setCurrentItem(2,false);
 
     }
 
@@ -439,42 +442,17 @@ public class HomeFragment extends BaseFragment{
     }
 
 
-    @OnClick({R.id.goods_but,R.id.gif_img})
+    @OnClick({R.id.gif_img})
     public void onGoodsClick(View view){
         switch (view.getId()){
-            case R.id.goods_but:
-                if (!LoginUtil.isLogin(mActivity)) {
-                    return;
-                }
-                //跳转到兑换页面
-                Intent intent = new Intent(getActivity(),PointActivity.class);
-                startActivity(intent);
-                goods_layout.setVisibility(View.GONE);
-                break;
             case R.id.gif_img:
-                Log.i(TAG,"跳转到任务");
-                //跳转到任务
-                startActivity(new Intent(getContext(),ChallengeTaskActivity.class));
-                //String url = ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_vote_url);
-
+                Log.i(TAG,"跳转到抽奖");
+                //跳转到签到抽奖
+                if(LoginUtil.isLogin(mActivity)){
+                    startActivity(new Intent(mActivity, SignInActivity.class));
+                }
                 break;
         }
-    }
-
-    private void getGoods() {
-
-        String hint = String.format(getString(R.string.loing_show_prize_hint),"3","3");
-        SpannableStringBuilder invitestyle = new SpannableStringBuilder(hint);
-        ForegroundColorSpan colorSpan = new ForegroundColorSpan(mActivity.getResources().getColor(R.color.colorPrimary));
-        ForegroundColorSpan colorSpan2 = new ForegroundColorSpan(mActivity.getResources().getColor(R.color.colorPrimary));
-        ForegroundColorSpan colorSpan3 = new ForegroundColorSpan(mActivity.getResources().getColor(R.color.color_f3));
-        RelativeSizeSpan sizeSpan = new RelativeSizeSpan(1.5f);
-        invitestyle.setSpan(colorSpan,2,3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        invitestyle.setSpan(colorSpan2,7,8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        invitestyle.setSpan(colorSpan3,11,12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        invitestyle.setSpan(sizeSpan,11,12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        mGoods_name.setText(invitestyle);
-
     }
 
     @Override

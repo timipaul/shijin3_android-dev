@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"
+        android:color="@color/color_ffb"/> <!-- pressed -->
+    <item android:color="@color/color_ffb"
+        android:state_checked="true"/>
+    <item android:state_focused="true"
+        android:color="@color/color_ffb"/> <!-- focused -->
+    <item android:color="@color/black"/> <!-- default -->
+    <!--<item android:color="#ff999999"/> &lt;!&ndash; default &ndash;&gt;-->
+
+</selector>

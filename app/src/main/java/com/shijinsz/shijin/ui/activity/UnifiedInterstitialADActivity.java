@@ -39,12 +39,10 @@ public class UnifiedInterstitialADActivity extends Activity implements View.OnCl
 
     public void loadAd(){
 
-        //System.out.println("加载广告");
         getIAD().loadAD();
     }
 
     public void showAd(){
-       // System.out.println("显示广告");
        // Toast.makeText(getApplicationContext(),"显示",Toast.LENGTH_LONG).show();
         showAD();
     }
@@ -85,7 +83,6 @@ public class UnifiedInterstitialADActivity extends Activity implements View.OnCl
 
     @Override
     public void onADReceive() {
-        System.out.println("加载广告成功");
         //Toast.makeText(getApplicationContext(), "广告加载成功 ！ ", Toast.LENGTH_LONG).show();
     }
 
@@ -93,7 +90,6 @@ public class UnifiedInterstitialADActivity extends Activity implements View.OnCl
     public void onNoAD(AdError error) {
         String msg = String.format(Locale.getDefault(), "onNoAD, error code: %d, error msg: %s",
                 error.getErrorCode(), error.getErrorMsg());
-        System.out.println("广告异常:" + msg);
         //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 

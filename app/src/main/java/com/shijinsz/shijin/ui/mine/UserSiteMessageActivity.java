@@ -20,6 +20,7 @@ import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ErrorUtils;
+import com.shijinsz.shijin.utils.LoginUtil;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -123,12 +124,6 @@ public class UserSiteMessageActivity extends BaseActivity {
         ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_consignee_site,site);
         ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_consignee_remark,remark);
 
-        if(TextUtil.isPhoneNumber(phone)){
-            System.out.println("手机号码正确");
-        }else{
-            System.out.println("手机号码不正确");
-        }
-
         if(name.trim().equals("") ||phone.trim().equals("") || site.trim().equals("")){
             Toast.makeText(mContext,"内容不能为空",Toast.LENGTH_SHORT).show();
         }else{
@@ -147,6 +142,8 @@ public class UserSiteMessageActivity extends BaseActivity {
 
                     //提交成功调取支付
                     getPayData();
+                    //绑定微信
+                    new LoginUtil().isWxData(mContext);
 
                 }
 
@@ -177,11 +174,6 @@ public class UserSiteMessageActivity extends BaseActivity {
         attachBean.put("reward_plan",rewardPlan);
         attachBean.put("goods_id",goods.getId());
         map.put("attach",gson.toJson(attachBean)+"");
-
-
-        System.out.println("支付....");
-        System.out.println("user_id: " + user_id);
-
         YSBSdk.getService(OAuthService.class).preorder(map, new YRequestCallback<WechatPayBean>() {
             @Override
             public void onSuccess(WechatPayBean var1) {
@@ -202,7 +194,6 @@ public class UserSiteMessageActivity extends BaseActivity {
             @Override
             public void onFailed(String var1, String message) {
                 ErrorUtils.error(mContext,var1,message);
-                System.out.println("zhu");
             }
 
             @Override

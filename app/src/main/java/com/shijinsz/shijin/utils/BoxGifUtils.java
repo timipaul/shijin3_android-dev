@@ -77,8 +77,8 @@ public class BoxGifUtils {
 
             }
         });*/
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
         dialog.showDialog(view, 0, 0,1);
     }
 

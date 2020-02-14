@@ -195,12 +195,10 @@ public class BottomNavigationViewEx extends BottomNavigationView {
             BottomNavigationItemView button = mButtons[0];
             if (null != button) {
                 final ImageView mIcon = getField(button.getClass(), button, "mIcon");
-//                System.out.println("mIcon.getMeasuredHeight():" + mIcon.getMeasuredHeight());
                 if (null != mIcon) {
                     mIcon.post(new Runnable() {
                         @Override
                         public void run() {
-//                            System.out.println("mIcon.getMeasuredHeight():" + mIcon.getMeasuredHeight());
                             setItemHeight(mItemHeight - mIcon.getMeasuredHeight());
                         }
                     });
@@ -283,7 +281,6 @@ public class BottomNavigationViewEx extends BottomNavigationView {
             // private final int mItemHeight;
 
             // change mItemHeight
-//            System.out.println("mLargeLabel.getMeasuredHeight():" + getFontHeight(mSmallLabelSize));
             setItemHeight(mItemHeight - getFontHeight(mSmallLabelSize));
 
         } else {
@@ -369,7 +366,6 @@ public class BottomNavigationViewEx extends BottomNavigationView {
 
                 // debug start
 //                mLargeLabelSize = mLargeLabel.getTextSize();
-//                System.out.println("mLargeLabel:" + mLargeLabelSize);
                 // debug end
 
             } else {

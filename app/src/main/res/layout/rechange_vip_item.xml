@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/price"
         android:layout_centerHorizontal="true"
-        android:text="原价￥199"
+        android:text="原价¥199"
         android:textColor="@color/vip_old_price_color"
         android:textSize="12sp" />
 

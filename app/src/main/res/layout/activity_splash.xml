@@ -36,7 +36,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:contentDescription="gdtslogan"
-            android:src="@mipmap/gdt_splash_logo"
+            android:src="@mipmap/icon_title"
             tools:visibility="gone" />
 
         <!-- 2.开屏广告容器区域：-->

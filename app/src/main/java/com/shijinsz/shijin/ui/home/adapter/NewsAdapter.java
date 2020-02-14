@@ -11,16 +11,15 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
 import com.hongchuang.ysblibrary.model.model.bean.Ads;
-import com.hubcloud.adhubsdk.NativeAd;
-import com.hubcloud.adhubsdk.NativeAdResponse;
-import com.hubcloud.adhubsdk.internal.nativead.NativeAdEventListener;
-import com.hubcloud.adhubsdk.internal.nativead.NativeAdUtil;
 import com.shijinsz.shijin.R;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/31.
+ *
+ * 应该是无用了
+ *
  */
 
 public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
@@ -48,7 +47,7 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
     }
 
     public OnCloseClickListen CloseClickListen;
-    private NativeAd nativeAd;
+
 
     public NewsAdapter(int layoutResId, @Nullable List<Ads> data) {
         super(layoutResId, data);
@@ -58,6 +57,7 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
                 for (String s : news.getTags()) {
                     if (s.equals("fixed")){
                         return HOT;
+
                     }
                 }
                 if (news.getAd_mode().equals("one_small_pic")) {
@@ -87,6 +87,7 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
     @Override
     protected void convert(final BaseViewHolder helper, Ads item) {
         ImageView bigimg = helper.getView(R.id.img);
+
         switch (helper.getItemViewType()) {
             case HOT:
                 helper.setGone(R.id.tv_red_type,true);
@@ -124,7 +125,7 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
                 LinearLayout lnAd=helper.getView(R.id.adhub);
                 lnAd.removeAllViews();
                 lnAd.addView((View)item.getAdhub());
-                ((NativeAd)item.getNativeAd()).nativeRender((View)item.getAdhub());
+
                 break;
             case ADHUB2:
                 helper.setGone(R.id.tv_red_type,true);
@@ -133,21 +134,12 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
                 bigimg.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 //helper.setGone(R.id.im_play,false);
                 helper.setGone(R.id.ln_bottom,false);
-                ImageView adimg=helper.getView(R.id.img_ad);
-                if (((NativeAdResponse)item.getAdhub()).getAdUrl().getType()==0) {
-                    Glide.with(mContext).load(((NativeAdResponse)item.getAdhub()).getAdUrl().getAdurl()).into(adimg);
-                }else {
-                    helper.setText(R.id.tv_ad,((NativeAdResponse)item.getAdhub()).getAdUrl().getAdurl());
-                }
-                ImageView adimg2=helper.getView(R.id.img_ad2);
-                if (((NativeAdResponse)item.getAdhub()).getAdUrl().getType()==0) {
-                    Glide.with(mContext).load(((NativeAdResponse)item.getAdhub()).getlogoUrl().getAdurl()).into(adimg2);
-                }else {
-                    helper.setText(R.id.tv_ad2,((NativeAdResponse)item.getAdhub()).getlogoUrl().getAdurl());
-                }
+
+
                 break;
 
         }
+
         if (helper.getItemViewType()!=ADHUB) {
             boolean isFixed=false;
             for (String s : item.getTags()) {
@@ -184,11 +176,11 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
             }else {
                 helper.setVisible(R.id.close,true);
             }
-//        if (item.getReward_mode().equals("change")) {
-//            helper.setText(R.id.tv_type,"现金");
-//        } else {
-//            helper.setText(R.id.tv_type,"金币");
-//        }
+        if (item.getReward_mode().equals("change")) {
+            helper.setText(R.id.tv_type,"现金");
+        } else {
+            helper.setText(R.id.tv_type,"金币");
+        }
             helper.setText(R.id.title, item.getAd_title() + "");
 
             if (helper.getItemViewType()!=ADHUB2){
@@ -207,20 +199,7 @@ public class NewsAdapter extends BaseQuickAdapter<Ads, BaseViewHolder> {
                     }
                 }
             });
-            if (helper.getItemViewType()==ADHUB2){
-                NativeAdUtil.registerTracking((NativeAdResponse)item.getAdhub(), helper.getView(R.id.ln_hub), new NativeAdEventListener() {
-                    @Override
-                    //显示素材的view被点击时回调
-                    public void onAdWasClicked() {
-                        Log.i(TAG, "onAdWasClicked: ");
-                    }
-                    @Override
-                    public void onAdWillLeaveApplication() {
-                        Log.i(TAG, "onAdWillLeaveApplication: ");
-//                        Toast.makeText(mContext, "onAdWillLeaveApplication", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
+
         }
 
     }

@@ -4,11 +4,10 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -21,20 +20,22 @@ import android.widget.TextView;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
-import com.hongchuang.ysblibrary.common.Constants;
 import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.PicCodeBean;
+import com.hongchuang.ysblibrary.model.model.bean.ShenmiBean;
 import com.hongchuang.ysblibrary.utils.NetworkUtil;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
 import com.meituan.android.walle.WalleChannelReader;
 import com.shijinsz.shijin.BuildConfig;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
+import com.shijinsz.shijin.ui.home.NewGuideActivity;
+import com.shijinsz.shijin.ui.store.UserLocationActivity;
 import com.shijinsz.shijin.ui.user.LoginActivity;
 import com.shijinsz.shijin.utils.APKVersionCodeUtils;
+import com.shijinsz.shijin.utils.KdniaoTrackQueryAPI;
 import com.shijinsz.shijin.utils.StatusBarUtil;
-import com.xiqu.sdklibrary.util.XWUtils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -51,13 +52,18 @@ import butterknife.OnClick;
 import retrofit.ToKenUtil;
 import retrofit.callback.YRequestCallback;
 
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_privacy_code;
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_user_code;
+
 /**
- * Created by yrdan on 2018/8/6.
+ * 设置
  */
 
 public class SettingActivity extends BaseActivity {
     @BindView(R.id.now_version)
     TextView nowVersion;
+//    @BindView(R.id.tv_guide_info)
+//    TextView tvGuide;
 
     @Override
     public int bindLayout() {
@@ -70,12 +76,42 @@ public class SettingActivity extends BaseActivity {
         setTitle(getString(R.string.setting));
         nowVersion.setText(String.format(getString(R.string.now_version),APKVersionCodeUtils.getVerName(mContext)));
         showTitleBackButton();
+
+        initData();
+
+    }
+
+    private void initData() {
+        //华为设置隐藏开屏广告
+        if(Build.MANUFACTURER.toLowerCase().contains("huawei")){
+            YSBSdk.getService(OAuthService.class).getGameStatue(new YRequestCallback<ShenmiBean>() {
+                @Override
+                public void onSuccess(ShenmiBean var1) {
+                    //tvGuide.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onFailed(String var1, String message) {
+                    //tvGuide.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onException(Throwable var1) {
+                    //tvGuide.setVisibility(View.GONE);
+                }
+            });
+        }
+
     }
 
 
     @OnClick({R.id.tv_personal_info, R.id.tv_black_list, R.id.tv_user_safe, R.id.tv_data_cache,
-            R.id.tv_logout,R.id.now_version,R.id.tv_discounts_info})
+            R.id.tv_logout,R.id.now_version,R.id.tv_discounts_info,
+            R.id.tv_site_info,R.id.tv_user_agreement,R.id.tv_privacy_agreement})
     public void onViewClicked(View view) {
+
+        Bundle bundle = null;
+
         switch (view.getId()) {
             case R.id.tv_personal_info:
                 startActivity(UserInformationActivity.class);
@@ -98,6 +134,27 @@ public class SettingActivity extends BaseActivity {
             case R.id.tv_discounts_info:
                 //提货卡
                 startActivity(CommodityDiscountsActivity.class);
+                break;
+//            case R.id.tv_guide_info:
+//                //新手指南
+//                startActivity(new Intent(mActivity, NewGuideActivity.class));
+//                break;
+            case R.id.tv_site_info:
+                Intent intent = new Intent(mActivity, UserLocationActivity.class);
+                intent.putExtra("select","false");
+                startActivity(intent);
+                break;
+            case R.id.tv_user_agreement:
+                //用户协议
+                bundle = new Bundle();
+                bundle.putString("code",KEY_user_code);
+                startActivity(AgreementActivity.class,bundle);
+                break;
+            case R.id.tv_privacy_agreement:
+                //隐私协议
+                bundle = new Bundle();
+                bundle.putString("code",KEY_privacy_code);
+                startActivity(AgreementActivity.class,bundle);
                 break;
         }
     }

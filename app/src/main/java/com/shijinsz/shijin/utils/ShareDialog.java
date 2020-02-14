@@ -191,7 +191,7 @@ public class ShareDialog {
 
                     }
                 });
-// 执行图文分享
+                // 执行图文分享
                 wechat.share(sp);
                 dismissWithdrapDialog();
             }
@@ -896,7 +896,6 @@ public class ShareDialog {
         YSBSdk.getService(OAuthService.class).set_transmit_data(new YRequestCallback<TaskBean>() {
             @Override
             public void onSuccess(TaskBean var1) {
-                //System.out.println("分享成功任务增加");
             }
 
             @Override

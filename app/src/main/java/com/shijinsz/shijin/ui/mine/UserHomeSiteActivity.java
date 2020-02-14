@@ -64,10 +64,7 @@ public class UserHomeSiteActivity extends BaseActivity {
         String site = mSite.getText().toString();
         String remark = mRemark.getText().toString();
 
-        if(TextUtil.isPhoneNumber(phone)){
-            System.out.println("手机号码正确");
-        }else{
-            System.out.println("手机号码不正确");
+        if(!TextUtil.isPhoneNumber(phone)){
             Toast.makeText(mContext,"手机号码不正确",Toast.LENGTH_SHORT).show();
             return;
         }

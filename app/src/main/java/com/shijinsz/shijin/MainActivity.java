@@ -4,6 +4,7 @@ package com.shijinsz.shijin;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -22,6 +23,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -44,11 +46,7 @@ import com.hongchuang.hclibrary.utils.DataCleanManager;
 import com.hongchuang.hclibrary.utils.TextUtil;
 import com.hongchuang.hclibrary.utils.TimeUtil;
 import com.hongchuang.hclibrary.view.BottomNavigationViewEx;
-import com.hongchuang.hclibrary.view.menu.ButtonData;
-import com.hongchuang.hclibrary.view.menu.ButtonEventListener;
-import com.hongchuang.hclibrary.view.menu.SectorMenuButton;
 import com.hongchuang.ysblibrary.YSBSdk;
-import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.PicCodeBean;
 import com.hongchuang.ysblibrary.model.model.bean.PointDetailBean;
@@ -57,15 +55,10 @@ import com.hongchuang.ysblibrary.widget.NoScrollViewPager;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
 import com.meituan.android.walle.WalleChannelReader;
 import com.shijinsz.shijin.base.BaseActivity;
-import com.shijinsz.shijin.ui.ad.NewAdActivity;
-import com.shijinsz.shijin.ui.ask.fragment.AskFragment;
 import com.shijinsz.shijin.ui.home.adapter.MainTabAdapter;
 import com.shijinsz.shijin.ui.home.fragment.HomeFragment;
-import com.shijinsz.shijin.ui.mine.CertificationActivity;
-import com.shijinsz.shijin.ui.mine.DataStatisticsActivity;
-import com.shijinsz.shijin.ui.mine.DraftActivity;
-import com.shijinsz.shijin.ui.mine.MyPutActivity;
 import com.shijinsz.shijin.ui.mine.fragment.MineFragment;
+import com.shijinsz.shijin.ui.store.StoreHomeActivity;
 import com.shijinsz.shijin.ui.task.fragment.TaskFragment;
 import com.shijinsz.shijin.ui.video.fragment.VideoFragment;
 import com.shijinsz.shijin.utils.APKVersionCodeUtils;
@@ -73,6 +66,7 @@ import com.shijinsz.shijin.utils.DialogUtils;
 import com.shijinsz.shijin.utils.ImgUtils;
 import com.shijinsz.shijin.utils.LoginUtil;
 import com.shijinsz.shijin.utils.StatusBarUtil;
+import com.xiqu.sdklibrary.util.AppUtil;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -80,7 +74,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,9 +102,12 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     TextView pass;
     @BindView(R.id.open)
     FrameLayout open;
-    @BindView(R.id.fab)
-    SectorMenuButton fab;
     private CountDownTimer timer;
+
+    long time = 0;
+    private int previousPosition = -1;
+
+
 
     @Override
     public int bindLayout() {
@@ -118,30 +117,16 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     @Override
     public void initView(View view) {
 
-        StatusBarUtil.setStatusTextColor(true, mActivity);
-        String storePath = getCacheDir().getAbsolutePath() + "/ad.png";
 
+
+        StatusBarUtil.setStatusTextColor(true, mActivity);
         initBnve();
-        final List<ButtonData> buttonDatas = new ArrayList<>();
-        int[] drawable = {R.mipmap.add_contacts, R.mipmap.icon_datastatistics,
-                R.mipmap.icon_release, R.mipmap.icon_draftbox, R.mipmap.icon_new};
-        for (int i = 0; i < 5; i++) {
-            ButtonData buttonData = ButtonData.buildIconButton(this, drawable[i], 0);
-            buttonData.setBackgroundColorId(this, R.color.white);
-            buttonDatas.add(buttonData);
-        }
-        fab.setButtonDatas(buttonDatas);
-        fab.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                Toast.makeText(MainActivity.this, "Center", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
+
+        System.out.println("我就是进入APP");
         List<Fragment> mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new VideoFragment());
-        //mFragments.add(new AskFragment());
+        //mFragments.add(new StoreFragment());
         mFragments.add(new TaskFragment());
         mFragments.add(new MineFragment());
         MainTabAdapter mTabAdapter = new MainTabAdapter(mFragments, getSupportFragmentManager());
@@ -149,10 +134,11 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         vpContent.setOffscreenPageLimit(mFragments.size());
 
         bnve.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            private int previousPosition = -1;
+
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 int position = 0;
                 switch (item.getItemId()) {
                     case R.id.i_music:
@@ -167,10 +153,13 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                     case R.id.i_visibility:
                         position = 3;
                         break;
-                    case R.id.i_empty: {
-                        return false;
-                    }
                 }
+
+//                if(position == -1){
+//                    Intent intent = new Intent(mContext, StoreHomeActivity.class);
+//                    startActivity(intent);
+//                    return true;
+//                }
                 if(position == 1){
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN); //隐藏状态栏
                 }else{
@@ -180,13 +169,10 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                     vpContent.setCurrentItem(position, false);
                     previousPosition = position;
                     Log.i(TAG, "-----bnve-------- previous item:" + bnve.getCurrentItem() + " current item:" + position + " ------------------");
-
                 }
-
                 return true;
             }
         });
-
 
         // set listener to change the current checked item of bottom nav when scroll view pager
         vpContent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -198,9 +184,10 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
             @Override
             public void onPageSelected(int position) {
                 Log.i(TAG, "-----ViewPager-------- previous item:" + bnve.getCurrentItem() + " current item:" + position + " ------------------");
-                if (position >= 2)// 2 is center
-                    position++;// if page is 2, need set bottom item to 3, and the same to 3 -> 4
+                //if (position >= 2)// 2 is center
+                    //position++;// if page is 2, need set bottom item to 3, and the same to 3 -> 4
                 bnve.setCurrentItem(position);
+                previousPosition = position;
 
             }
 
@@ -209,7 +196,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
             }
         });
-        fab.setOnLongTouchListener(new SectorMenuButton.LongTouchListener() {
+        /*fab.setOnLongTouchListener(new SectorMenuButton.LongTouchListener() {
             @Override
             public void onLongTouch() {
                 if (!LoginUtil.isLogin(mActivity)) {
@@ -225,8 +212,8 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                 }
                 startActivity(NewAdActivity.class);
             }
-        }, 1500);
-        fab.setButtonEventListener(new ButtonEventListener() {
+        }, 1500);*/
+        /*fab.setButtonEventListener(new ButtonEventListener() {
             @Override
             public void onButtonClicked(int index) {
                 if (!LoginUtil.isLogin(mActivity)) {
@@ -270,15 +257,15 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
             public void onCollapse() {
 
             }
-        });
+        });*/
 
         // center item click listener
-        fab.setOnClickListener(new View.OnClickListener() {
+        /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
-        });
+        });*/
         //新手红包弹框
         /*if (timer == null) {
             if (!ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_is_login).equals("on")) {
@@ -311,6 +298,24 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
             }
         }
 
+        //判断用户是否同意协议
+        if(!ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_consent_protocol).equals("true")){
+            DialogUtils dialogUtils = new DialogUtils(mContext);
+            dialogUtils.showUserAgreementDialog(mContext, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_consent_protocol,"true");
+                    dialogUtils.dismissUserAgreementDialog();
+                }
+            }, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialogUtils.dismissUserAgreementDialog();
+                    finish();
+                }
+            });
+        }
+
         if (getIntent().getStringExtra("id") != null) {
 //            bnve.setCurrentItem(3);
             vpContent.setCurrentItem(Integer.parseInt(getIntent().getStringExtra("id")), false);
@@ -328,7 +333,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         YSBSdk.getService(OAuthService.class).points_add(map, new YRequestCallback<PointDetailBean>() {
             @Override
             public void onSuccess(PointDetailBean var1) {
-                //System.out.println("返回结果: --------------" );
             }
 
             @Override
@@ -367,7 +371,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         bnve.setTextTintList(1, getResources().getColorStateList(R.color.home_bottom));
         bnve.setTextTintList(2, getResources().getColorStateList(R.color.home_bottom));
         bnve.setTextTintList(3, getResources().getColorStateList(R.color.home_bottom));
-        bnve.setTextTintList(4, getResources().getColorStateList(R.color.home_bottom));
+        //bnve.setTextTintList(4, getResources().getColorStateList(R.color.home_bottom));
         bnve.setItemHeight(BottomNavigationViewEx.dp2px(this, 52));
         bnve.setIconsMarginTop(BottomNavigationViewEx.dp2px(this, 10));
 
@@ -730,9 +734,13 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         new DownloadAPK(progressDialog).execute(downloadUrl);
     }
 
-    @OnClick({R.id.pass, R.id.open})
+    @OnClick({R.id.pass, R.id.open,R.id.i_store})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.i_store:
+                Intent intent = new Intent(mContext, StoreHomeActivity.class);
+                startActivity(intent);
+                break;
             case R.id.pass:
 //                timer.onFinish();
 //                timer.cancel();

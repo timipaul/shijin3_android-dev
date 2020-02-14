@@ -108,7 +108,6 @@ public class VoteDetailsActivity extends BaseActivity implements View.OnClickLis
                 @Override
                 public void buttonDataMore(int item,int index) {
                     radioMap.put(item+"",index);
-                    //System.out.println("当前选中数据" + radioMap.toString());
                 }
             });
         }else if(voteBean.getContent().getVoteType().equals("2")){

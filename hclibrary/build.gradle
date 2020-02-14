@@ -56,4 +56,6 @@ dependencies {
     api 'com.sunfusheng:marqueeview:+'
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     api 'com.github.hackware1993:MagicIndicator:1.5.0'
+    /* 流式布局 */
+    api 'com.nex3z:flow-layout:1.0.0'
 }

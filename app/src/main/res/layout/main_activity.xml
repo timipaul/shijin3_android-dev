@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_with_view_pager"
     android:background="#eeeeee"
     android:layout_width="match_parent"
@@ -15,12 +16,6 @@
         android:layout_above="@+id/rl"
         android:layout_weight="1" />
 
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_65"
-        android:layout_alignParentBottom="true"
-        android:background="@mipmap/mian_menu_bg" />
 
     <RelativeLayout
         android:id="@+id/rl"
@@ -47,7 +42,7 @@
     </RelativeLayout>
 
 
-    <com.hongchuang.hclibrary.view.menu.SectorMenuButton
+    <!--<com.hongchuang.hclibrary.view.menu.SectorMenuButton
         android:id="@+id/fab"
         android:layout_width="@dimen/dp_56"
         android:layout_height="@dimen/dp_56"
@@ -69,7 +64,8 @@
         app:aebMaskBackgroundColor="@color/transparent50"
         app:aebRippleEffect="true"
         app:aebStartAngleDegree="30"
-        app:aebSubButtonSizeDp="@dimen/dp_52" />
+        app:aebSubButtonSizeDp="@dimen/dp_52"
+        tools:visibility="visible" />-->
 
 
 
@@ -98,5 +94,6 @@
             android:text="跳过"
             android:textColor="@color/text_999999"
             android:textSize="@dimen/sp_14" />
+
     </FrameLayout>
 </RelativeLayout>

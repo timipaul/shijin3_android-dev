@@ -1,6 +1,7 @@
 package com.shijinsz.shijin.ui.user;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -24,6 +25,7 @@ import com.hongchuang.ysblibrary.utils.NetworkUtil;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.ui.home.PerfectInformation1Activiity;
+import com.shijinsz.shijin.ui.mine.AgreementActivity;
 import com.shijinsz.shijin.utils.ErrorUtils;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 
@@ -32,6 +34,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
@@ -39,6 +42,9 @@ import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 import retrofit.ToKenUtil;
 import retrofit.callback.YRequestCallback;
+
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_privacy_code;
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_user_code;
 
 //import com.tencent.tauth.UiError;
 
@@ -164,9 +170,10 @@ public class LoginActivity extends BaseActivity implements QQLoginHandle {
 //            handler.sendMessage(msg);
         }
     };
-    @OnClick({R.id.back, R.id.login, R.id.bt_register, R.id.forget_password, R.id.bt_wechat, R.id.bt_qq})
+    @OnClick({R.id.back, R.id.login, R.id.bt_register, R.id.forget_password, R.id.bt_wechat, R.id.bt_qq,R.id.user_agreement,R.id.privacy_agreement})
     public void onViewClicked(View view) {
         Intent intent;
+        Bundle bundle;
         switch (view.getId()) {
             case R.id.back:
                 ToKenUtil.deleteToken();
@@ -195,6 +202,18 @@ public class LoginActivity extends BaseActivity implements QQLoginHandle {
                 break;
             case R.id.bt_qq:
                 tencentAuthorized();
+                break;
+            case R.id.user_agreement:
+                //用户协议
+                bundle = new Bundle();
+                bundle.putString("code",KEY_user_code);
+                startActivity(AgreementActivity.class,bundle);
+                break;
+            case R.id.privacy_agreement:
+                //隐私协议
+                bundle = new Bundle();
+                bundle.putString("code",KEY_privacy_code);
+                startActivity(AgreementActivity.class,bundle);
                 break;
         }
     }
@@ -240,6 +259,7 @@ public class LoginActivity extends BaseActivity implements QQLoginHandle {
 
                 ToastUtil.showToast("登录成功");
                 platform.getDb().exportData();
+
                 loginWechat(platform.getDb().getUserId(),platform.getDb().getUserName(),platform.getDb().getUserIcon());
 
             }
@@ -409,7 +429,7 @@ public class LoginActivity extends BaseActivity implements QQLoginHandle {
 
     public void SaveData(UserBean bean){
 
-        //System.out.println("是否会员: " + bean.getUser().getMember_status());
+
         ToKenUtil.saveToken(bean.getToken());
         ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_first_login_status,bean.getUser().getFirst_login_status());
         ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_nickname,bean.getUser().getNickname());

@@ -172,7 +172,6 @@ public class BadgeUtil {
             intent.putExtra("className", launchClassName); intent.putExtra("notificationNum", count);
             context.sendBroadcast(intent);
         }catch (Exception e){
-            System.out.println("设置错误...");
             e.printStackTrace();
         }
     }

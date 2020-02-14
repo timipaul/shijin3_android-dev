@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按钮渐变 -->
+    <stroke android:color="@color/white" android:width="0dp"/>
+    <corners android:radius="@dimen/dp_20"/>
+
+    <solid android:color="@color/color_f8"/>
+    <gradient android:startColor="@color/color_f4"
+        android:endColor="@color/color_f8"
+        android:angle="0"/>
+</shape>

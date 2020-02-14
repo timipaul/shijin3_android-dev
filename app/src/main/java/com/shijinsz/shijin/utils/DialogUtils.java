@@ -7,16 +7,23 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Bundle;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +37,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
+import com.hongchuang.hclibrary.utils.AndroidSystemUtil;
 import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.Ads;
@@ -38,8 +46,13 @@ import com.hongchuang.ysblibrary.model.model.bean.ShareBean;
 import com.hongchuang.ysblibrary.widget.NoticeDialog;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.Comment;
+import com.shijinsz.shijin.ui.ad.NewAdActivity;
 import com.shijinsz.shijin.ui.ad.NewGraphicActivity;
 import com.shijinsz.shijin.ui.ad.NewVideoActivity;
+import com.shijinsz.shijin.ui.mine.AgreementActivity;
+import com.shijinsz.shijin.ui.mine.DataStatisticsActivity;
+import com.shijinsz.shijin.ui.mine.DraftActivity;
+import com.shijinsz.shijin.ui.mine.MyPutActivity;
 import com.shijinsz.shijin.ui.mine.MyVipActivity;
 import com.shijinsz.shijin.ui.user.LoginActivity;
 import com.shijinsz.shijin.ui.wallet.BoxListActivity;
@@ -47,7 +60,12 @@ import com.shijinsz.shijin.ui.wallet.PointActivity;
 import com.shijinsz.shijin.ui.wallet.WalletActivity;
 import com.shijinsz.shijin.ui.wallet.WithdrawActivity;
 
+import java.io.InputStream;
+
 import retrofit.callback.YRequestCallback;
+
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_privacy_code;
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_user_code;
 
 /**
  * Created by yrdan on 2018/8/28.
@@ -110,6 +128,98 @@ public class DialogUtils {
     }
 
     /**
+     * 启动用户协议
+     */
+    private View userAgreementView;
+    private NoticeDialog userAgreementDialog;
+    public void showUserAgreementDialog(Context context,View.OnClickListener confirm,View.OnClickListener cancel) {
+        userAgreementView = (RelativeLayout) inflater.inflate(
+                R.layout.user_agreement_pop, null);
+
+        TextView tv = ((TextView)userAgreementView.findViewById(R.id.tv_protocol));
+        String str = mContext.getString(R.string.privacy_and_service_hint);
+        int serv_index = str.indexOf("《服务协议》");
+        int privacy_index = str.indexOf("《隐私政策》");
+
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(str);
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.BLUE);
+        ForegroundColorSpan foregroundColorSpan2 = new ForegroundColorSpan(Color.BLUE);
+        spannableStringBuilder.setSpan(foregroundColorSpan, serv_index, serv_index+6, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        spannableStringBuilder.setSpan(foregroundColorSpan2, privacy_index, privacy_index+6, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+        spannableStringBuilder.setSpan(new ClickableSpan(){
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("code",KEY_user_code);
+                Intent intent = new Intent(mContext,AgreementActivity.class);
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.BLUE);
+                ds.setUnderlineText(false);
+            }
+        }, serv_index, serv_index+6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        spannableStringBuilder.setSpan(new ClickableSpan(){
+
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("code",KEY_privacy_code);
+                Intent intent = new Intent(mContext,AgreementActivity.class);
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.BLUE);
+                ds.setUnderlineText(false);
+            }
+        }, privacy_index, privacy_index+6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+        tv.setText(spannableStringBuilder);
+        tv.setMovementMethod(LinkMovementMethod.getInstance());//不设置 没有点击事件
+        tv.setHighlightColor(Color.TRANSPARENT); //设置点击后的颜色为透明
+
+        ((Button)userAgreementView.findViewById(R.id.text_cancel)).setOnClickListener(cancel);
+        ((Button)userAgreementView.findViewById(R.id.text_confirm)).setOnClickListener(confirm);
+
+        userAgreementDialog = new NoticeDialog(mContext);
+        userAgreementDialog.setCanceledOnTouchOutside(false);
+        userAgreementDialog.setCancelable(false);
+        userAgreementDialog.showDialog(userAgreementView, 0, 0,1);
+    }
+    public void dismissUserAgreementDialog(){
+        userAgreementDialog.dismiss();
+    }
+
+    /** 榜单说明弹框 */
+    private View rankingExplainView;
+    private NoticeDialog rankingExplainDialog;
+    public void showRankingExplainDialog(View.OnClickListener clickListener){
+        rankingExplainView = (RelativeLayout) inflater.inflate(
+                R.layout.ranking_explain_pop, null);
+
+        ((Button)rankingExplainView.findViewById(R.id.button)).setOnClickListener(clickListener);
+
+        rankingExplainDialog = new NoticeDialog(mContext);
+        rankingExplainDialog.setCanceledOnTouchOutside(true);
+        rankingExplainDialog.setCancelable(true);
+        rankingExplainDialog.showDialog(rankingExplainView, 0, 0,1);
+    }
+    public void dismissRankingExplainDialog(){
+        rankingExplainDialog.dismiss();
+    }
+
+
+    /**
      * 关注公众号弹框
      */
     private View taskAttentionWeChatView;
@@ -127,8 +237,8 @@ public class DialogUtils {
         });
 
         taskAttentionWeChatDialog = new NoticeDialog(mContext);
-        taskAttentionWeChatDialog.setCanceledOnTouchOutside(false);
-        taskAttentionWeChatDialog.setCancelable(false);
+        taskAttentionWeChatDialog.setCanceledOnTouchOutside(true);
+        taskAttentionWeChatDialog.setCancelable(true);
         taskAttentionWeChatDialog.showDialog(taskAttentionWeChatView, 0, 0,1);
     }
     public void dismissTaskAttentionWeChatDialog(){
@@ -456,6 +566,11 @@ public class DialogUtils {
                 tv.setText(String.format(mContext.getString(R.string.withdraw_limit),"15","8"));
                 bt.setText(mContext.getString(R.string.go_to_signin));
                 break;
+            case 7:
+                img.setImageResource(R.mipmap.icon_balance_3);
+                tv.setText("钱包余额不足");
+                bt.setText("赶快邀请会员赚钱吧");
+                break;
         }
         bt.setOnClickListener(listener);
         WindowManager.LayoutParams lp = mActivity.getWindow()
@@ -738,8 +853,8 @@ public class DialogUtils {
             }
         });
         openRedPacketDialog = new NoticeDialog(mContext);
-        openRedPacketDialog.setCanceledOnTouchOutside(false);
-        openRedPacketDialog.setCancelable(false);
+        openRedPacketDialog.setCanceledOnTouchOutside(true);
+        openRedPacketDialog.setCancelable(true);
         openRedPacketDialog.showDialog(openRedPacketView, 0, 0);
         openRedPacketDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -886,6 +1001,76 @@ public class DialogUtils {
     }
 
 
+    private View issueMenuView;
+    private NoticeDialog issueMenuDialog;
+    public void showIssueMenuDialog(){
+        issueMenuView = (RelativeLayout) inflater.inflate(
+                R.layout.issue_menu_pop, null);
+
+        issueMenuView.findViewById(R.id.layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                issueMenuDialog.dismiss();
+            }
+        });
+
+        LinearLayout layout = issueMenuView.findViewById(R.id.layout_view);
+        int view_height = new AndroidSystemUtil(mContext).Height();
+
+        //layout.
+        if(view_height == 1920){
+            layout.setPadding(0,130,0,0);
+        }else if(view_height == 2130){
+
+        }else if(view_height == 1280){
+            layout.setPadding(0,87,0,0);
+        }
+
+
+        issueMenuView.findViewById(R.id.bt_new_ad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //新建
+                mContext.startActivity(new Intent(mContext, NewAdActivity.class));
+                issueMenuDialog.dismiss();
+            }
+        });
+
+        issueMenuView.findViewById(R.id.bt_issue_ad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //发布
+                mContext.startActivity(new Intent(mContext, MyPutActivity.class));
+                issueMenuDialog.dismiss();
+            }
+        });
+
+        issueMenuView.findViewById(R.id.bt_draft).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //草稿
+                mContext.startActivity(new Intent(mContext, DraftActivity.class));
+                issueMenuDialog.dismiss();
+
+
+            }
+        });
+
+        issueMenuView.findViewById(R.id.bt_statistics).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //统计
+                mContext.startActivity(new Intent(mContext,DataStatisticsActivity.class));
+                issueMenuDialog.dismiss();
+            }
+        });
+
+        issueMenuDialog = new NoticeDialog(mContext);
+        issueMenuDialog.setCanceledOnTouchOutside(true);
+        issueMenuDialog.setCancelable(true);
+        issueMenuDialog.showDialog(issueMenuView, 0, 0,1);
+    }
+
     /**
      * 新手红包
      */
@@ -1014,7 +1199,7 @@ public class DialogUtils {
     public void showOpenActivityDialog(String money) {
         openActivityView = (RelativeLayout) inflater.inflate(R.layout.activity_pop
                 , null);
-        ((TextView)openActivityView.findViewById(R.id.money)).setText("￥"+money);
+        ((TextView)openActivityView.findViewById(R.id.money)).setText("¥"+money);
         ((TextView)openActivityView.findViewById(R.id.get)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

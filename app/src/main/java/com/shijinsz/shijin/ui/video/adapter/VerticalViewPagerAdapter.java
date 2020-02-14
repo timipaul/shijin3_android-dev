@@ -23,8 +23,8 @@ import java.util.List;
  */
 public class VerticalViewPagerAdapter extends PagerAdapter {
     private FragmentManager fragmentManager;
-    private FragmentTransaction mCurTransaction;
-    private BaseFragment mCurrentPrimaryItem = null;
+    public FragmentTransaction mCurTransaction;
+    public BaseFragment mCurrentPrimaryItem = null;
     public List<Ads> mData;
     private View mView;
 

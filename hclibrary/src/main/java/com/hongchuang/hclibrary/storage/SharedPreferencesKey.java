@@ -94,6 +94,12 @@ public class SharedPreferencesKey {
     public static final String KEY_new_person_task = "new_person_task";
     //是否允许流量播放
     public static final String KEY_flow_play_video = "flow_play_video";
+    //同意用户协议
+    public static final String KEY_consent_protocol = "consent_protocol";
+
+    /* 商城 */
+    //是否商城会员
+    public static final String KEY_is_store_vip = "store_vip";
 
 
 

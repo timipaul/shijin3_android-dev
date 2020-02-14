@@ -1,6 +1,7 @@
 package com.shijinsz.shijin.ui.mine.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;
@@ -78,13 +79,21 @@ public class CouponListViewAdapter extends BaseAdapter {
         Glide.with(mContext).load(mList.get(i).getImg_url()).into(viewHolder.imageView);
         viewHolder.title.setText(mList.get(i).getName());
         viewHolder.hint.setText(mList.get(i).getDetails());
-        viewHolder.price.setText("现价：￥"+mList.get(i).getCoupon_price());
-        viewHolder.old_price.setText("劵后：￥" + mList.get(i).getPrice());
+        viewHolder.price.setText("现价：¥"+mList.get(i).getCoupon_price());
+        viewHolder.old_price.setText("劵后：¥" + mList.get(i).getPrice());
+        viewHolder.old_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG ); //中间横线（删除线）
+        try {
 
-        SpannableString dis_money = new SpannableString("￥" + (Integer.valueOf(mList.get(i).getCoupon_price()) - Integer.valueOf(mList.get(i).getPrice())));
-        RelativeSizeSpan sizeSpan = new RelativeSizeSpan(0.7f);
-        dis_money.setSpan(sizeSpan,0,1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        viewHolder.discounts_money.setText(dis_money);
+            SpannableString dis_money = new SpannableString("¥" + (int)(Double.valueOf(mList.get(i).getPrice()) - Double.valueOf(mList.get(i).getCoupon_price())));
+            RelativeSizeSpan sizeSpan = new RelativeSizeSpan(0.7f);
+            dis_money.setSpan(sizeSpan,0,1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            viewHolder.discounts_money.setText(dis_money);
+        }catch (Exception e) {
+        }
+
+
+
+
         viewHolder.coupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -83,8 +83,6 @@ public class GetFreeVipActivity extends BaseActivity {
 
     private void updata() {
 
-        System.out.println("当前会员状态: " + vip_state);
-
         if(vip_state.equals("on")){
             mButton.setText("领取");
             mButton.setBackground(getResources().getDrawable(R.drawable.button_red_bg));
@@ -103,7 +101,6 @@ public class GetFreeVipActivity extends BaseActivity {
         YSBSdk.getService(OAuthService.class).free_vip(map, new YRequestCallback<VIpStateBean>() {
             @Override
             public void onSuccess(VIpStateBean var1) {
-                System.out.println("当前返回信息: " + var1.toString());
                 if(var1 != null){
                     ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KET_free_vip_state, "off");
                     ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_user_vip_state, "on");

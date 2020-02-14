@@ -174,7 +174,6 @@ public class PointActivity extends BaseActivity {
             Bundle data = getIntent().getExtras();
             request_code = data.getInt("code");
         }catch (Exception e) {
-            System.out.println("");
         }
 
         String channel = WalleChannelReader.getChannel(mContext.getApplicationContext());

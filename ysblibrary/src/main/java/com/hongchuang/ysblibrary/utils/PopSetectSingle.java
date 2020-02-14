@@ -106,6 +106,7 @@ public class PopSetectSingle {
 //			mHour=mHour+1;
 //			times[1]=mHour+":00";
 //		}
+
 		pv_year.setData(list,pos);
 		times[0] = list.get(pos);
 

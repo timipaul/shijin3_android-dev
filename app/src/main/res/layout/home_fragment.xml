@@ -24,16 +24,15 @@
         android:textColor="@color/white"
         android:textSize="@dimen/sp_14" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_guide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dp_34"
+        android:layout_height="@dimen/dp_34"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/dp_32"
-        android:layout_marginRight="@dimen/dp_10"
-        android:background="@mipmap/icon_guide"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_11" />
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_5"
+        android:src="@mipmap/home_issue_ic"
+        android:padding="@dimen/dp_5" />
 
     <TextView
         android:id="@+id/tv_selete"
@@ -41,7 +40,7 @@
         android:layout_height="@dimen/dp_34"
         android:layout_marginLeft="@dimen/dp_15"
         android:layout_marginTop="@dimen/dp_24"
-        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_5"
         android:layout_toLeftOf="@+id/tv_guide"
         android:layout_toRightOf="@+id/tv_locate"
         android:background="@drawable/home_bg"
@@ -126,61 +125,40 @@
         android:layout_below="@id/indicator"
         android:background="@color/mine_function_divider" />
 
-    <RelativeLayout
-        android:id="@+id/goods_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_10"
-        android:layout_marginBottom="@dimen/dp_20"
-        android:background="@color/color_ff8">
 
-        <!-- android:background="@color/btransparent90" -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:gravity="bottom|right"
+        android:visibility="gone">
+
 
         <ImageView
-            android:id="@id/goods_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:src="@mipmap/goods_hint_ic" />
+            android:id="@+id/gif_img"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_55"
+            android:src="@drawable/vote_gif_img"
+            tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/goods_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_toRightOf="@+id/goods_img"
-            android:singleLine="true"
-            android:text="@string/loing_show_prize_hint"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/goods_but"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dp_10"
-            android:background="@drawable/task_button_orange_border"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingTop="@dimen/dp_4"
-            android:paddingRight="@dimen/dp_10"
-            android:paddingBottom="@dimen/dp_4"
-            android:text="@string/get_prize"
-            android:textColor="@color/task_but_border" />
-
-
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/gif_img"
+            android:background="@drawable/bt_shade_orange_18"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_10"
+            android:paddingTop="@dimen/dp_2"
+            android:paddingBottom="@dimen/dp_2"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:text="抽奖送豪礼"/>
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/gif_img"
-        android:layout_width="60dp"
-        android:layout_height="80dp"
-        android:layout_above="@+id/goods_layout"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginBottom="@dimen/dp_20"
-        tools:visibility="gone" />
+
+
 </RelativeLayout>

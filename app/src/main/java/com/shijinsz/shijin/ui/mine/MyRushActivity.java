@@ -92,7 +92,6 @@ public class MyRushActivity extends BaseActivity implements OnLoadMoreListener, 
         YSBSdk.getService(OAuthService.class).exchange_goods(map, new YRequestCallback<BaseBean<PointDetailBean>>() {
             @Override
             public void onSuccess(BaseBean<PointDetailBean> var1) {
-               // System.out.println("111数据: " + var1.getRecords().toString());
                 mStateView.showContent();
                 refresh.finishLoadMore();
                 refresh.finishRefresh();
@@ -124,9 +123,6 @@ public class MyRushActivity extends BaseActivity implements OnLoadMoreListener, 
             @Override
             public void onFailed(String var1, String message) {
                 ErrorUtils.error(mContext,var1,message);
-
-                System.out.println("没有数据1");
-
                 mStateView.showContent();
                 refresh.finishLoadMore();
                 refresh.finishRefresh();
@@ -134,7 +130,6 @@ public class MyRushActivity extends BaseActivity implements OnLoadMoreListener, 
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("没有数据2");
                 try {
                     mStateView.showContent();
                     refresh.finishLoadMore();

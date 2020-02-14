@@ -7,8 +7,8 @@ android {
         applicationId "com.shijinsz.shijin"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 123
-        versionName "1.2.5"
+        versionCode 146
+        versionName "1.6.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         signingConfig signingConfigs.debug
@@ -16,13 +16,11 @@ android {
         renderscriptSupportModeEnabled true
         //2019-5-28晚上加入 因studio3.0
         flavorDimensions "default"
-       
-
         ndk {
             //设置支持的SO库架构
-            abiFilters 'armeabi' , 'armeabi-v7a'//, 'arm64-v8a'
+            //abiFilters 'armeabi' , 'armeabi-v7a'//, 'arm64-v8a'
             //优化SO库 2019.8.26 paul
-            //abiFilters 'armeabi-v7a'
+            abiFilters 'armeabi-v7a'
         }
     }
 
@@ -39,7 +37,6 @@ android {
 
     buildTypes {
         release {
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
@@ -150,13 +147,13 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':ysblibrary')
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.7.1'
     implementation 'com.github.open-android:Glide-transformations:0.1.0'
+    implementation project(':ysblibrary')
     implementation project(':luckly_popupwindow')
     implementation project(':takephoto_library')
     implementation project(':videolibrary')
@@ -165,15 +162,19 @@ dependencies {
     compile(name: 'SecurityBodySDK-external-release-5.4.40', ext: 'aar')
     compile(name: 'SecurityGuardSDK-external-release-5.4.56', ext: 'aar')
     compile(name: 'verificationsdklib-1.3.2.3417747-3ND-SMS-NC', ext: 'aar')
-    compile(name: 'adhub_sdk_2.2.2', ext: 'aar')
     compile(name: 'open_ad_sdk', ext: 'aar')
     compile(name: 'adpoymer', ext: 'aar')
     compile project(path: ':xiqusdklibrary')
+    /* 轮播图 */
+    implementation 'com.github.xiaohaibin:XBanner:1.7.0'
+    /* 三级联动地址 */
+    implementation 'com.github.ywp0919:AddressPickerLib:1.0.1'
 
-    //implementation 'com.tencent.bugly:crashreport_upgrade:1.3.5'
-    //implementation 'com.tencent.tinker:tinker-android-lib:1.9.6'
-    //implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+
 }
+
+
+
 walle{
     // 指定渠道包的输出路径
     apkOutputFolder = new File("C:/Tinker/bakApk/outputs/channels");
@@ -182,5 +183,8 @@ walle{
     // 渠道配置文件
     channelFile = new File("${project.getProjectDir()}/channel")
 }
+
+
 // 依赖插件脚本
 apply from: 'tinker-support.gradle'
+apply from: 'and_res_guard.gradle'

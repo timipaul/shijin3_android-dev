@@ -8,6 +8,12 @@ public class PointDetailBean {
     public String id;
     public String user_id;
     public String channel;
+    public String created_at;
+    public String modified_at;
+    public ChannelInfo channel_info;
+    public String points;
+    public String change;
+    public String status;
 
     public String getCreated_at() {
         return created_at;
@@ -25,8 +31,6 @@ public class PointDetailBean {
         this.modified_at = modified_at;
     }
 
-    public String created_at;
-    public String modified_at;
 
     public ChannelInfo getChannel_info() {
         return channel_info;
@@ -36,7 +40,6 @@ public class PointDetailBean {
         this.channel_info = channel_info;
     }
 
-    public ChannelInfo channel_info;
     public class ChannelInfo{
         public String getTitle() {
             return title;
@@ -48,7 +51,6 @@ public class PointDetailBean {
 
         public String title;
     }
-    public String points;
 
     public String getChange() {
         return change;
@@ -58,7 +60,6 @@ public class PointDetailBean {
         this.change = change;
     }
 
-    public String change;
 
     public String getId() {
         return id;
@@ -84,7 +85,6 @@ public class PointDetailBean {
         this.channel = channel;
     }
 
-
     public String getPoints() {
         return points;
     }
@@ -101,5 +101,4 @@ public class PointDetailBean {
         this.status = status;
     }
 
-    public String status;
 }

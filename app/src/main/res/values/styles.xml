@@ -121,4 +121,162 @@
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:background">@null</item>
     </style>
+
+    <!-- 我的页面 目录列表 -->
+    <style name="my_menu_view_list">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_46</item>
+        <item name="android:background">@drawable/view_bottom_border_line</item>
+        <item name="android:paddingLeft">@dimen/dp_20</item>
+        <item name="android:paddingRight">@dimen/dp_20</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawableRight">@mipmap/jiantou</item>
+        <item name="android:drawablePadding">@dimen/dp_10</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <!-- 广告发布菜单按钮样式 -->
+    <style name="ad_issue_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">@dimen/dp_10</item>
+        <item name="android:paddingBottom">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_20</item>
+        <item name="android:paddingLeft">@dimen/dp_20</item>
+        <item name="android:drawablePadding">@dimen/dp_10</item>
+    </style>
+
+    <!-- 商城菜单按钮样式 -->
+    <style name="store_menu_but_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/dp_5</item>
+
+    </style>
+
+    <!-- 商城抢购按钮组 -->
+    <style name="store_radio_but">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/color_fe</item>
+        <item name="android:background">@drawable/bt_store_radio_selector</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <!-- 商城搜索分类按钮 -->
+    <style name="store_seek_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">@dimen/dp_50</item>
+        <item name="android:paddingRight">@dimen/dp_50</item>
+        <item name="android:background">@drawable/rb_checked_55_orange</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+    </style>
+
+    <!-- 商城商品详情菜单按钮 -->
+    <style name="store_details_rb" parent="store_seek_button">
+        <item name="android:background">@drawable/rb_checked_30_orange</item>
+        <item name="android:textColor">@color/store_button_text</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:layout_weight">1</item>
+
+    </style>
+
+    <!-- 商城商品详情 客服 购物车 按钮 -->
+    <style name="store_button_bg">
+        <item name="android:layout_width">@dimen/dp_75</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/bg_line_1_gray</item>
+        <item name="android:paddingTop">@dimen/dp_8</item>
+        <item name="android:paddingBottom">@dimen/dp_7</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+    <!-- 通用距离样式 -->
+    <style name="common_padding_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_44</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_10</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/color_6f</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:gravity">center_vertical</item>
+
+    </style>
+
+    <!-- 通用按钮样式 -->
+    <style name="common_button">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:minWidth">@dimen/dp_0</item>
+        <item name="android:minHeight">@dimen/dp_0</item>
+
+    </style>
+
+    <!-- 商城 我的 网格按钮 -->
+    <style name="store_mine_layout_button" parent="common_button">
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/dp_5</item>
+
+    </style>
+
+    <!-- 商城 我的 目录列表 -->
+    <style name="store_mine_line_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_45</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:drawableRight">@mipmap/jiantou</item>
+        <item name="android:drawablePadding">@dimen/dp_5</item>
+        <item name="android:background">@drawable/view_bottom_border_line</item>
+
+    </style>
+
+    <!-- 商城成为会员&合伙人 -->
+    <style name="store_add_vip_text_hint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:layout_marginLeft">@dimen/dp_0</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:drawableLeft">@mipmap/symbol_side_ic</item>
+        <item name="android:drawablePadding">@dimen/dp_5</item>
+
+    </style>
+
+    <!-- 商城订单记录按钮 -->
+    <style name="store_record_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dp_35</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/button_text_color</item>
+
+
+
+    </style>
+
 </resources>

@@ -22,7 +22,10 @@ import android.widget.Toast;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.hclibrary.utils.DevicesUtil;
+import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.common.Constants;
+import com.hongchuang.ysblibrary.model.model.OAuthService;
+import com.hongchuang.ysblibrary.model.model.bean.ShenmiBean;
 import com.meituan.android.walle.WalleChannelReader;
 import com.qq.e.ads.splash.SplashAD;
 import com.qq.e.ads.splash.SplashADListener;
@@ -39,6 +42,7 @@ import java.util.Map;
 import butterknife.BindView;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
+import retrofit.callback.YRequestCallback;
 
 /**
  * Created by Administrator on 2018/3/17.
@@ -83,12 +87,17 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
     private String url = "";
 
 
+    //华为是否显示广告
+    public boolean huawei = false;
+
+
     @Override
     public int bindLayout() {
         return R.layout.activity_splash;
     }
     @Override
     public void initView(View view) {
+
         String channel = WalleChannelReader.getChannel(mContext.getApplicationContext());
         //img.setImageResource(R.mipmap.splash_360);
         switch (channel + "") {
@@ -132,13 +141,14 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
             findViewById(R.id.app_logo).setVisibility(View.GONE);
         }
         // 如果targetSDKVersion >= 23，就要申请好权限。如果您的App没有适配到Android6.0（即targetSDKVersion < 23），那么只需要在这里直接调用fetchSplashAD接口。
+
+
         if (Build.VERSION.SDK_INT >= 23) {
             checkAndRequestPermission();
         } else {
             // 如果是Android6.0以下的机器，默认在安装时获得了所有权限，可以直接调用SDK
             fetchSplashAD(this, container, skipView, Constants.APPID, Constants.SplashPosID, this, 0);
         }
-
 
         //requestPermission();
 //        handlerdelay.postDelayed(JumpActivity, 980);
@@ -170,13 +180,13 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
             lackedPermission.add(Manifest.permission.ACCESS_FINE_LOCATION);
         }
 
-        /*if (!(checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
-            lackedPermission.add(Manifest.permission.READ_PHONE_STATE);
-        }*/
-
         // 权限都已经有了，那么直接调用SDK
         if (lackedPermission.size() == 0) {
-            fetchSplashAD(this, container, skipView, Constants.APPID, Constants.SplashPosID, this, 0);
+            if(!Build.MANUFACTURER.toLowerCase().contains("huawei")){
+                    fetchSplashAD(this, container, skipView, Constants.APPID, Constants.SplashPosID, this, 0);
+            }else{
+                SplashActivity.this.startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            }
         } else {
             // 请求所缺少的权限，在onRequestPermissionsResult中再看是否获得权限，如果获得权限就可以调用SDK，否则不要调用SDK。
             String[] requestPermissions = new String[lackedPermission.size()];
@@ -388,11 +398,10 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
+        /*if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
             //拒绝授权后，从系统设置了授权后，返回APP进行相应的操作
-            startActivity(OpenActivity.class);
-            finish();
-        }
+
+        }*/
     }
 
 
@@ -522,7 +531,7 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
     private void jumpWhenCanClick() {
         Log.d("SplashActivity", "canJumpImmediately:" + canJumpImmediately);
         if (canJumpImmediately) {
-            System.out.println("----------***** 11111 ******-------------");
+
             this.startActivity(new Intent(this, MainActivity.class));
             this.finish();
         } else {

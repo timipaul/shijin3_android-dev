@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,15 +16,18 @@ import com.hongchuang.ysblibrary.YSBSdk;
 import com.hongchuang.ysblibrary.common.toast.ToastUtil;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.CommodityCardBean;
+import com.hongchuang.ysblibrary.model.model.bean.ShenmiBean;
 import com.hongchuang.ysblibrary.model.model.bean.WechatPayBean;
 import com.shijinsz.shijin.R;
 import com.shijinsz.shijin.base.BaseActivity;
 import com.shijinsz.shijin.utils.ErrorUtils;
+import com.shijinsz.shijin.utils.LoginUtil;
 import com.shijinsz.shijin.utils.StatusBarUtil;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,9 +70,8 @@ public class DiscountsParticularsActivity extends BaseActivity {
     TextView mTotal;//共计
     @BindView(R.id.ed_details)
     EditText mDetails;
-
-
-
+    @BindView(R.id.bt_submit)
+    Button mSubmit;
 
 
     private IWXAPI api;
@@ -98,6 +101,9 @@ public class DiscountsParticularsActivity extends BaseActivity {
 
         api= WXAPIFactory.createWXAPI(this,getString(R.string.WEIXIN_APPID),true);
         api.registerApp(getString(R.string.WEIXIN_APPID));
+
+
+
 
         //设置收货信息
         setUserSite();
@@ -129,16 +135,45 @@ public class DiscountsParticularsActivity extends BaseActivity {
     public void setCommodityData(){
         mCard_name.setText(mCard.getCategoryName());
         mNum.setText("数量 "+mCard.getNum());
-        mPrice.setText("￥ "+Double.valueOf(mCard.getPrice()));
+        mPrice.setText("¥ "+Double.valueOf(mCard.getPrice()));
 
         mPrice.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG ); //中间横线（删除线）
 
         mNum2.setText(mCard.getNum());
-        mPos_price.setText("￥ "+Double.valueOf(mCard.getPostage()));
-        mTotal.setText("￥ "+Double.valueOf(mCard.getPostage()));
-        mInsurance_price.setText("￥ " + Double.valueOf(mCard.getInsurancePrice()));
+        mPos_price.setText("¥ "+Double.valueOf(mCard.getPostage()));
+
+        double total_num = Double.valueOf(mCard.getPostage()) + Double.valueOf(mCard.getInsurancePrice());
+        DecimalFormat df = new DecimalFormat("#.00");
+        mTotal.setText("¥ "+ df.format(total_num));
+        mInsurance_price.setText("¥ " + Double.valueOf(mCard.getInsurancePrice()));
         mDescribe.setText("描述：");
         Glide.with(this).load(mCard.getCoverImg()).into(mImg);
+
+        getPayStatue();
+
+    }
+
+    //获取支付状态
+    private void getPayStatue() {
+        YSBSdk.getService(OAuthService.class).getGameStatue(new YRequestCallback<ShenmiBean>() {
+            @Override
+            public void onSuccess(ShenmiBean var1) {
+                mSubmit.setEnabled(true);
+                mSubmit.setText("提交订单");
+            }
+
+            @Override
+            public void onFailed(String var1, String message) {
+                mSubmit.setEnabled(false);
+                mSubmit.setText("系统维护中");
+
+            }
+
+            @Override
+            public void onException(Throwable var1) {
+
+            }
+        });
     }
 
     //判断收货信息是否为空
@@ -161,6 +196,12 @@ public class DiscountsParticularsActivity extends BaseActivity {
     public void onClickBut(View view){
         switch (view.getId()){
             case R.id.bt_submit:
+
+                if(!LoginUtil.isWeixinAvilible(mContext)){
+                    ToastUtil.showToast("未安装微信");
+                    return;
+                }
+
                 submitData();
                 break;
             case R.id.user_layout:
@@ -177,29 +218,48 @@ public class DiscountsParticularsActivity extends BaseActivity {
             return;
         }
 
+        ToastUtil.showToast("领取中...");
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("cardId", mCard.getCardId());
         map.put("name", mName.getText());
         map.put("address", mSite.getText());
         map.put("phone", mPhone.getText());
         map.put("details",mDetails.getText().toString());
-        YSBSdk.getService(OAuthService.class).set_card_data(map, new YRequestCallback<CommodityCardBean>() {
+        YSBSdk.getService(OAuthService.class).set_card_data(map, new YRequestCallback<WechatPayBean>() {
             @Override
-            public void onSuccess(CommodityCardBean var1) {
-                mCard.setInsurancePrice(var1.getInsurancePrice());
-                getPayData(var1.getAttach());
+            public void onSuccess(WechatPayBean var1) {
+                //mCard.setInsurancePrice(var1.getInsurancePrice());
+
+                //调取支付
+                ShareDataManager.getInstance().save(mContext, SharedPreferencesKey.KEY_pay_type,"4");
+                //ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_pay_money,total_number+"");
+                PayReq request = new PayReq();
+                request.appId = var1.getAppid();
+                request.partnerId = var1.getPartnerid();
+                request.prepayId= var1.getPrepayid();
+                request.packageValue = "Sign=WXPay";
+                request.nonceStr= var1.getNoncestr();
+                request.timeStamp= var1.getTimestamp();
+                request.sign= var1.getSign();
+                api.sendReq(request);
+                finish();
+
+
+                //getPayData(var1.getAttach());
+                //绑定微信
+                new LoginUtil().isWxData(mContext);
             }
 
             @Override
             public void onFailed(String var1, String message) {
-                ErrorUtils.error(DiscountsParticularsActivity.this, var1, message);
+                ErrorUtils.error(mContext, var1, message);
                 mStateView.showContent();
-                System.out.println("没有数据1");
+
             }
 
             @Override
             public void onException(Throwable var1) {
-                System.out.println("处理报错");
+
             }
         });
     }
@@ -207,23 +267,16 @@ public class DiscountsParticularsActivity extends BaseActivity {
     //获取支付数据
     private void getPayData(String attach) {
 
+        double price = Double.valueOf(Double.valueOf(mCard.getPostage()) + Double.valueOf(mCard.getInsurancePrice()));
+        DecimalFormat df = new DecimalFormat("#0.00");
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("mode","wxpay");
         map.put("channel","card");
-
-
-
-        map.put("change",Double.valueOf(Double.valueOf(mCard.getPostage()) + Double.valueOf(mCard.getInsurancePrice())));
+        map.put("change",Double.parseDouble(df.format(price)));
         Map<String,Object> attachBean =new HashMap<String, Object>();
         Map rewardPlan=new HashMap();
         attachBean.put("reward_plan",rewardPlan);
-        System.out.println("attach----: " + attach);
         map.put("attach",attach);
-
-
-        System.out.println("支付....");
-        //System.out.println("user_id: " + user_id);
-
         YSBSdk.getService(OAuthService.class).preorder(map, new YRequestCallback<WechatPayBean>() {
             @Override
             public void onSuccess(WechatPayBean var1) {
@@ -245,7 +298,6 @@ public class DiscountsParticularsActivity extends BaseActivity {
             @Override
             public void onFailed(String var1, String message) {
                 ErrorUtils.error(mContext,var1,message);
-                System.out.println("zhu");
             }
 
             @Override

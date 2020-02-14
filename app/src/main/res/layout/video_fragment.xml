@@ -88,7 +88,8 @@
             android:paddingBottom="@dimen/dp_4"
             android:text=""
             android:textColor="@color/gray"
-            android:textSize="@dimen/sp_10" />
+            android:textSize="@dimen/sp_10"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/username"

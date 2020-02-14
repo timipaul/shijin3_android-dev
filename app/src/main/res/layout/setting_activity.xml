@@ -23,6 +23,43 @@
         android:layout_height="@dimen/dp_1"
         android:background="@color/mine_function_divider"/>
 
+
+    <TextView
+        android:id="@+id/tv_site_info"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:text="@string/person_site"
+        android:textSize="@dimen/sp_14"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:textColor="@color/text_33"
+        android:drawableRight="@mipmap/jiantou"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/mine_function_divider"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_guide_info"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/dp_45"-->
+        <!--android:layout_marginTop="@dimen/dp_6"-->
+        <!--android:text="@string/new_guide"-->
+        <!--android:textSize="@dimen/sp_14"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:background="@color/white"-->
+        <!--android:paddingLeft="@dimen/dp_10"-->
+        <!--android:paddingRight="@dimen/dp_10"-->
+        <!--android:textColor="@color/text_33"-->
+        <!--android:drawableRight="@mipmap/jiantou"-->
+        <!--android:visibility="gone"/>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/mine_function_divider"/>
+
     <TextView
         android:id="@+id/tv_discounts_info"
         android:layout_width="match_parent"
@@ -85,6 +122,44 @@
         android:background="@color/white"
         android:textColor="@color/text_33"
         android:drawableRight="@mipmap/jiantou"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/mine_function_divider"/>
+
+    <TextView
+        android:id="@+id/tv_user_agreement"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:text="用户协议"
+        android:textSize="@dimen/sp_14"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:background="@color/white"
+        android:textColor="@color/text_33"
+        android:drawableRight="@mipmap/jiantou"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/mine_function_divider"/>
+
+    <TextView
+        android:id="@+id/tv_privacy_agreement"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:text="隐私政策"
+        android:textSize="@dimen/sp_14"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:background="@color/white"
+        android:textColor="@color/text_33"
+        android:drawableRight="@mipmap/jiantou"/>
+
+
     <TextView
         android:id="@+id/tv_logout"
         android:layout_width="match_parent"

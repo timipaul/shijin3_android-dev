@@ -20,9 +20,9 @@
         android:layout_height="@dimen/dp_13"
         android:text="金币"
         android:gravity="center"
-        android:background="@drawable/bule_5dp"
+        android:background="@drawable/orange_5dp"
         android:textSize="@dimen/sp_9"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/color_f3"/>
     <FrameLayout
         android:layout_width="@dimen/dp_22"
         android:layout_height="@dimen/dp_22"

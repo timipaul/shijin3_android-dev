@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.hongchuang.hclibrary.storage.ShareDataManager;
 import com.hongchuang.hclibrary.storage.SharedPreferencesKey;
 import com.hongchuang.ysblibrary.YSBSdk;
+import com.hongchuang.ysblibrary.common.UrlConstants;
 import com.hongchuang.ysblibrary.model.model.OAuthService;
 import com.hongchuang.ysblibrary.model.model.bean.BaseBean;
 import com.hongchuang.ysblibrary.model.model.bean.InvitationInfoBean;
@@ -27,6 +28,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit.callback.YRequestCallback;
+
+import static com.hongchuang.ysblibrary.common.UrlConstants.ISHARE;
 
 /**
  * Created by yrdan on 2018/9/3.
@@ -119,7 +122,6 @@ public class InviteFriendActivity extends BaseActivity {
             @Override
             public void onSuccess(InvitationInfoBean var1) {
 
-
                 tvGetMoney.setText(String.format(getString(R.string.invite_money),var1.getInvite_change_number()));
                 tvPeopleNum.setText(String.format(getString(R.string.invite_people),var1.getInvite_people_number()));
 
@@ -130,21 +132,20 @@ public class InviteFriendActivity extends BaseActivity {
                 if (var1.getInvitation_code()!=null){
                     ShareDataManager.getInstance().save(mContext,SharedPreferencesKey.KEY_invitation_code,var1.getInvitation_code());
                 }
-
-
-
-
             }
 
             @Override
             public void onFailed(String var1, String message) {
-
+                tvGetMoney.setText(String.format(getString(R.string.invite_money),"0"));
+                tvPeopleNum.setText(String.format(getString(R.string.invite_people),"0"));
             }
 
             @Override
             public void onException(Throwable var1) {
-
+                tvGetMoney.setText(String.format(getString(R.string.invite_money),"0"));
+                tvPeopleNum.setText(String.format(getString(R.string.invite_people),"0"));
             }
+
         });
     }
 
@@ -162,7 +163,7 @@ public class InviteFriendActivity extends BaseActivity {
             @Override
             public void onSuccess(ShareBean var1) {
                 mStateView.showContent();
-                new ShareDialog(mActivity).showWithdrapDialog(mActivity,3,var1.getShare_title(),var1.getShare_info(),var1.getShare_pic(), Comment.url+"invitation_registration?nickname="+ ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_nickname)+"&username="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_USER_NAME)+"&imageurl="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_imageurl));
+                new ShareDialog(mActivity).showWithdrapDialog(mActivity,3,var1.getShare_title(),var1.getShare_info(),var1.getShare_pic(), UrlConstants.ISHARE+"ishare/app/invitation_registration?nickname="+ ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_nickname)+"&username="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_USER_NAME)+"&imageurl="+ShareDataManager.getInstance().getPara(SharedPreferencesKey.KEY_imageurl));
             }
 
             @Override

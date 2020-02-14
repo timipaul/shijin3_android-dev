@@ -108,11 +108,11 @@ public class RedPacketAdapter extends BaseAdapter {
             viewHolder.img.setImageDrawable(mContent.getResources().getDrawable(R.mipmap.red_packet_off));
 
         }else if(mList.get(i).getGet_time().equals(day_time)){
-            viewHolder.num.setText("￥" + mList.get(i).getRed_package_number());
+            viewHolder.num.setText("¥" + mList.get(i).getRed_package_number());
             viewHolder.img.setImageDrawable(mContent.getResources().getDrawable(R.mipmap.red_packet_on));
 
         }else{
-            viewHolder.num.setText("￥" + mList.get(i).getRed_package_number());
+            viewHolder.num.setText("¥" + mList.get(i).getRed_package_number());
             viewHolder.img.setImageDrawable(mContent.getResources().getDrawable(R.mipmap.red_packet_on));
         }
 

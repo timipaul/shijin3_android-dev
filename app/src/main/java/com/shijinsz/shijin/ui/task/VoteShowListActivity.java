@@ -92,7 +92,6 @@ public class VoteShowListActivity extends BaseActivity implements OnLoadMoreList
         adapter.setOnItemClickListener(new VoteListViewAdapter.OnItemClickListener() {
             @Override
             public void buttonOnclick() {
-                System.out.println();
             }
 
             @Override
