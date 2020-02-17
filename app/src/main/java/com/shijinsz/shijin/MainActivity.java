@@ -119,6 +119,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
         StatusBarUtil.setStatusTextColor(true, mActivity);
         initBnve();
+        System.out.println("测试");
         List<Fragment> mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new VideoFragment());
