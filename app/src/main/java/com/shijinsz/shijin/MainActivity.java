@@ -117,10 +117,8 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     @Override
     public void initView(View view) {
 
-        System.out.println("设置界面********");
         StatusBarUtil.setStatusTextColor(true, mActivity);
         initBnve();
-        System.out.println("哪里报错了");
         List<Fragment> mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new VideoFragment());
@@ -130,7 +128,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         MainTabAdapter mTabAdapter = new MainTabAdapter(mFragments, getSupportFragmentManager());
         vpContent.setAdapter(mTabAdapter);
         vpContent.setOffscreenPageLimit(mFragments.size());
-        System.out.println("哪里报错了2");
         bnve.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
 
