@@ -165,7 +165,6 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
      */
     @TargetApi(Build.VERSION_CODES.M)
     private void checkAndRequestPermission() {
-        System.out.println("获取权限************");
         List<String> lackedPermission = new ArrayList<String>();
         if (!(checkSelfPermission(Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED)) {
             lackedPermission.add(Manifest.permission.READ_PHONE_STATE);
