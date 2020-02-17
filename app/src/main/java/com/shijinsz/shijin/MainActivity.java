@@ -130,7 +130,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         vpContent.setOffscreenPageLimit(mFragments.size());
         bnve.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
