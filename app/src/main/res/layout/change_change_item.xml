@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ln"
+    android:layout_width="@dimen/dp_106"
+    android:layout_height="@dimen/dp_58"
+    android:orientation="vertical"
+    android:background="@drawable/change_before"
+    android:gravity="center">
+    <TextView
+        android:id="@+id/change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/yuan"
+        android:textColor="@color/text_33"
+        android:textSize="@dimen/sp_19"
+        />
+    <TextView
+        android:id="@+id/point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/text_6"
+        android:text="@string/need_x_point"/>
+
+</LinearLayout>

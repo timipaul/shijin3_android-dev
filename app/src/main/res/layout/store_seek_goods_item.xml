@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dp_164"
+    android:layout_height="wrap_content"
+    android:background="@drawable/color_white_5"
+    android:padding="@dimen/dp_10">
+
+
+    <ImageView
+        android:id="@+id/item_img"
+        android:layout_width="@dimen/dp_140"
+        android:layout_height="@dimen/dp_100"
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_35"
+        android:layout_below="@id/item_img"
+        android:layout_marginTop="@dimen/dp_10"
+        android:maxLines="2"
+        android:text="商品名称"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_14" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_25"
+        android:layout_below="@id/item_name"
+        android:layout_alignRight="@id/item_img"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_new_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥00.00"
+            android:textColor="@color/red"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/item_old_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/item_new_price"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_toRightOf="@id/item_new_price"
+            android:gravity="bottom"
+            android:text="00.00"
+            android:textSize="@dimen/sp_10" />
+
+
+        <RelativeLayout
+            android:id="@+id/num_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="gone">
+
+            <Button
+                android:id="@+id/item_bt_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:drawableRight="@mipmap/store_car_add_ic"
+                android:minWidth="0dp"
+                android:paddingLeft="@dimen/dp_5" />
+
+            <TextView
+                android:id="@+id/tv_car_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/item_bt_add"
+                android:gravity="center"
+                android:text="0"
+                tools:visibility="gone" />
+
+            <Button
+                android:id="@+id/item_bt_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/tv_car_num"
+                android:background="@null"
+                android:drawableRight="@mipmap/car_minus_ic"
+                android:minWidth="0dp"
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_5"
+                tools:visibility="gone" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

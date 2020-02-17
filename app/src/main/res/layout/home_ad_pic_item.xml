@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/ln_hub"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_diamond" />
+
+            <TextView
+                android:id="@+id/money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_6"
+                android:layout_weight="1"
+                android:text="0.00"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp_17"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_15"
+                android:text="答对：999人"
+                android:textColor="#ff4200"
+                android:textSize="@dimen/sp_13" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_3"
+            android:text="我一看到你就感冒，你知道为什么吗？因为我对你毫无抵抗力！"
+            android:textColor="@color/text_33"
+            android:textSize="@dimen/sp_17"
+           />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_182"
+            android:layout_marginBottom="@dimen/dp_5">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_182"
+                android:background="@color/black"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:id="@+id/im_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/icon_play" />
+            <TextView
+                android:id="@+id/tv_ad"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"/>
+            <TextView
+                android:id="@+id/tv_ad2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"/>
+            <ImageView
+                android:id="@+id/img_ad"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="bottom|left"/>
+            <ImageView
+                android:id="@+id/img_ad2"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="bottom|right"/>
+        </FrameLayout>
+
+        <include
+            android:id="@+id/ln_bottom"
+            layout="@layout/home_item_layout" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/mine_function_divider"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"/>
+</LinearLayout>

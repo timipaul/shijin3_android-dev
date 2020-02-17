@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_with_view_pager"
+    android:background="#eeeeee"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <com.hongchuang.ysblibrary.widget.NoScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl"
+        android:layout_weight="1" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+
+        <com.hongchuang.hclibrary.view.BottomNavigationViewEx
+            android:id="@+id/bnve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemTextColor="@color/text_6"
+            app:menu="@menu/menu_navigation_center_fab">
+
+            <!-- android:background="@drawable/main_balance_bg" -->
+
+
+        </com.hongchuang.hclibrary.view.BottomNavigationViewEx>
+
+        <!-- android:background="@drawable/main_balance_bg" -->
+
+
+    </RelativeLayout>
+
+
+    <!--<com.hongchuang.hclibrary.view.menu.SectorMenuButton
+        android:id="@+id/fab"
+        android:layout_width="@dimen/dp_56"
+        android:layout_height="@dimen/dp_56"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_6"
+        android:paddingRight="@dimen/dp_6"
+        app:aebAnimDurationMillis="175"
+        app:aebBlurBackground="false"
+        app:aebBlurRadius="10"
+        app:aebButtonElevation="0dp"
+        app:aebButtonGapDp="60dp"
+        app:aebEndAngleDegree="150"
+        app:aebIsSelectionMode="false"
+        app:aebMainButtonRotateAnimDurationMillis="300"
+        app:aebMainButtonRotateDegree="45"
+        app:aebMainButtonSizeDp="@dimen/dp_56"
+        app:aebMaskBackgroundColor="@color/transparent50"
+        app:aebRippleEffect="true"
+        app:aebStartAngleDegree="30"
+        app:aebSubButtonSizeDp="@dimen/dp_52"
+        tools:visibility="visible" />-->
+
+
+
+    <FrameLayout
+        android:id="@+id/open"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/img_ad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_ceb_s" />
+
+        <TextView
+            android:id="@+id/pass"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:gravity="center"
+            android:text="跳过"
+            android:textColor="@color/text_999999"
+            android:textSize="@dimen/sp_14" />
+
+    </FrameLayout>
+</RelativeLayout>

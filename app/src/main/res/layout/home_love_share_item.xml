@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ln_hub"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingRight="@dimen/dp_10"
+    android:paddingTop="@dimen/dp_10">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/dp_340"
+        android:layout_height="@dimen/dp_155"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_33"
+        android:textSize="@dimen/sp_17"
+        android:layout_marginTop="@dimen/dp_3"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10">
+
+        <!--<TextView
+            android:id="@+id/share_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share_period"
+            tools:visibility="gone" />-->
+
+        <TextView
+            android:id="@+id/look_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@mipmap/jiantou"
+            android:drawablePadding="@dimen/dp_5"
+            android:textColor="@color/black"
+            android:text="@string/look_details" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/mine_function_divider"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"/>
+</LinearLayout>

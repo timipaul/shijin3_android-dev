@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_5"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_145"
+            android:background="@color/white"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/look_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/img_item"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
+            android:background="@drawable/color_gray_c98_5"
+            android:drawableLeft="@mipmap/store_tv_play_ic"
+            android:drawablePadding="@dimen/dp_2"
+            android:paddingLeft="@dimen/dp_3"
+            android:paddingRight="@dimen/dp_3"
+            android:text="1367"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:id="@+id/title_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/img_item"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:text="标题"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_10" />
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

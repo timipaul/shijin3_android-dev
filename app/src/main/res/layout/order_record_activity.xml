@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color">
+    <include layout="@layout/common_title" />
+
+    <EditText
+        android:id="@+id/seek_but"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:hint="搜索所有订单"
+        android:textSize="@dimen/sp_14"
+        android:paddingLeft="@dimen/dp_10"
+        android:drawableLeft="@mipmap/icon_search"
+        android:drawablePadding="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginBottom="@dimen/dp_5"/>
+
+
+    <RadioGroup
+        android:id="@+id/rg_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <RadioButton
+            android:id="@+id/bt_all"
+            style="@style/store_record_button"
+            android:text="全部"/>
+
+        <RadioButton
+            android:id="@+id/bt_payment"
+            style="@style/store_record_button"
+            android:text="待付款"/>
+
+        <RadioButton
+            android:id="@+id/bt_deliver"
+            style="@style/store_record_button"
+            android:text="待发货"/>
+
+        <RadioButton
+            android:id="@+id/bt_take"
+            style="@style/store_record_button"
+            android:text="待收货"/>
+
+        <RadioButton
+            android:id="@+id/bt_finish"
+            style="@style/store_record_button"
+            android:text="已完成"/>
+    </RadioGroup>
+
+    <RelativeLayout
+        android:id="@+id/rl_empty"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/not_order_record_show_bg"
+            android:layout_gravity="center_horizontal" />
+
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/refresh"
+        android:background="@color/white"
+        android:overScrollMode="never">
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="center"
+            android:src="@mipmap/freshing"
+            app:layout_srlSpinnerStyle="Scale"
+            app:layout_srlBackgroundColor="@android:color/transparent"/>
+        <com.hongchuang.hclibrary.recyclerview.PowerfulRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeee"
+            android:overScrollMode="never"
+            app:dividerSize="@dimen/dp_1"
+            app:dividerColor="@color/black"
+            />
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlFinishDuration="0"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

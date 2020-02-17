@@ -1,0 +1,190 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
+apply plugin: 'walle'
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.shijinsz.shijin"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 144
+        versionName "1.6.9"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        signingConfig signingConfigs.debug
+        renderscriptTargetApi 18
+        renderscriptSupportModeEnabled true
+        //2019-5-28晚上加入 因studio3.0
+        flavorDimensions "default"
+        ndk {
+            //设置支持的SO库架构
+            //abiFilters 'armeabi' , 'armeabi-v7a'//, 'arm64-v8a'
+            //优化SO库 2019.8.26 paul
+            abiFilters 'armeabi-v7a'
+        }
+    }
+
+    //跳过Lint和Test相关的task, 以加速编译 2019.8.27 paul
+    if (isDebug()) {
+        gradle.taskGraph.whenReady {
+            tasks.each { task ->
+                if (task.name.contains("Test") || task.name.contains("Lint")) {
+                    task.enabled = false
+                }
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            crunchPngs false //关闭crunchPng优化, 以加快构建
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        incremental = true  //开启增量编译 2019.8.27 paul
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'sjsd'
+            keyPassword 'sjsd2016'
+            storeFile file('../sjsd.keystore')
+            storePassword 'sjsd2016'
+        }
+        release {
+            keyAlias 'sjsd'
+            keyPassword 'sjsd2016'
+            storeFile file('../sjsd.keystore')
+            storePassword 'sjsd2016'
+        }
+    }
+
+    //如果是构建debug包, 则禁用 "png cruncher" (默认cruncherEnabled=true, 禁用以加速构建)
+    def enableCruncher = { ->
+        return !isDebug()
+    }
+    aaptOptions { //禁用cruncher, 以加速编译
+        cruncherEnabled = enableCruncher()
+        cruncherProcesses = 0
+    }
+
+
+    productFlavors {
+        //2019-5-28晚上加入
+    }
+    dexOptions {
+        //incremental true
+        javaMaxHeapSize "4g"
+    }
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+}
+MobSDK {
+
+    appKey "27b10560e770f"
+    appSecret "f63b1d239c513ee78b82342430972ce5"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            SinaWeibo {
+                appKey "1717645331"
+                appSecret "f886994df28da534e9ad18df7dd89649"
+//                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient true
+            }
+            Wechat {
+                appId "wx14139eb90916ba5d"
+                appSecret "f846a43fd6c1f47b082ddbc54b1ff8f0"
+            }
+            QQ {
+                appId "1107790421"
+                appKey "OysQU7GwPmC7gvV9"
+                shareByAppClient true
+            }
+            QZone {
+                appId "1107790421"
+                appKey "OysQU7GwPmC7gvV9"
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+            WechatMoments {
+                id 5
+                sortId 5
+                appId "wx14139eb90916ba5d"
+                appSecret "f846a43fd6c1f47b082ddbc54b1ff8f0"
+                bypassApproval false
+                enable true
+            }
+        }
+    }
+
+}
+
+repositories{
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:multidex:1.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.7.1'
+    implementation 'com.github.open-android:Glide-transformations:0.1.0'
+    implementation project(':ysblibrary')
+    implementation project(':luckly_popupwindow')
+    implementation project(':takephoto_library')
+    implementation project(':videolibrary')
+    implementation 'com.meituan.android.walle:library:1.1.6'
+    compile(name: 'NoCaptchaSDK-external-release-5.4.20', ext: 'aar')
+    compile(name: 'SecurityBodySDK-external-release-5.4.40', ext: 'aar')
+    compile(name: 'SecurityGuardSDK-external-release-5.4.56', ext: 'aar')
+    compile(name: 'verificationsdklib-1.3.2.3417747-3ND-SMS-NC', ext: 'aar')
+    compile(name: 'open_ad_sdk', ext: 'aar')
+    compile(name: 'adpoymer', ext: 'aar')
+    compile project(path: ':xiqusdklibrary')
+    /* 轮播图 */
+    implementation 'com.github.xiaohaibin:XBanner:1.7.0'
+    /* 三级联动地址 */
+    implementation 'com.github.ywp0919:AddressPickerLib:1.0.1'
+
+
+}
+
+
+
+walle{
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("C:/Tinker/bakApk/outputs/channels");
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
+}
+
+
+// 依赖插件脚本
+apply from: 'tinker-support.gradle'
+apply from: 'and_res_guard.gradle'

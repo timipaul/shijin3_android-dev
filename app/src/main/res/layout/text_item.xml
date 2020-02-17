@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_gray_10"
+        android:text="物流快哦"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingBottom="@dimen/dp_2"
+        android:textColor="@color/color_9b9"
+        android:layout_marginRight="@dimen/dp_10"/>
+
+</LinearLayout>

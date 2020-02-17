@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- 单选按钮下划线 -->
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:top="@dimen/dp_38"
+                android:left="@dimen/dp_55"
+                android:right="@dimen/dp_55">
+                <shape android:shape="rectangle" >
+                    <solid android:color="@color/color_fdb" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <item android:drawable="@color/transparent"></item>
+</selector>

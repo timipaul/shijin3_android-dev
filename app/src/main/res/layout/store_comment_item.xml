@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <com.hongchuang.hclibrary.view.CircleImageView
+        android:id="@+id/item_img"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:src="@mipmap/ic_launcher"
+        android:layout_margin="@dimen/dp_10"/>
+
+    <TextView
+        android:id="@+id/item_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户名"
+        android:layout_toRightOf="@id/item_img"
+        android:layout_alignTop="@id/item_img"
+        android:textSize="@dimen/sp_12"/>
+
+    <TextView
+        android:id="@+id/item_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VIP会员"
+        android:textSize="@dimen/sp_10"
+        android:textColor="@color/color_8f"
+        android:layout_toRightOf="@id/item_user"
+        android:layout_alignTop="@id/item_user"
+        android:layout_marginLeft="@dimen/dp_6"/>
+
+    <TextView
+        android:id="@+id/item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_10"
+        android:text="2019-05-28"
+        android:layout_alignBottom="@id/item_img"
+        android:layout_alignLeft="@id/item_user"/>
+
+    <TextView
+        android:id="@+id/item_measure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="尺寸大小"
+        android:textSize="@dimen/sp_10"
+        android:layout_toRightOf="@id/item_time"
+        android:layout_alignTop="@id/item_time"
+        android:layout_marginLeft="@dimen/dp_7"/>
+
+
+    <TextView
+        android:id="@+id/item_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="随便评论点信息"
+        android:textSize="@dimen/sp_12"
+        android:layout_below="@id/item_time"
+        android:layout_alignLeft="@id/item_img"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/dp_5"
+        android:minLines="2"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_rotate"
+    android:layout_width="144dp"
+    android:layout_height="133dp"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_dialog_loading"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:text="正在上传"
+        android:textColor="#ffffff"
+        android:textSize="13.5sp" />
+</LinearLayout>
+

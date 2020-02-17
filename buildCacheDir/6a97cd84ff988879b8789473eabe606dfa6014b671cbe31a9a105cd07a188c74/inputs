@@ -1,0 +1,4 @@
+COMMAND=FIX_STACK_FRAMES
+file.path=C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\crashreport_upgrade-1.3.5.aar\aef64d91cadd1df82e02753a71ebfa02\jars\classes.jar
+file.size=416254
+file.timestamp=1572919601410

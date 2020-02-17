@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_30">
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="256dp"
+        android:layout_height="42dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:background="@drawable/bt_red_15"
+        android:text="提交"
+        android:textColor="@color/white"
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/submit"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:text="@string/start_date" />
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/submit"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_30"
+        android:text="@string/join_people_number" />
+</RelativeLayout>

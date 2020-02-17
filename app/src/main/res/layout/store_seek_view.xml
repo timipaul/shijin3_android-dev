@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_f1">
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:text="取消"
+            android:textSize="@dimen/sp_16" />
+
+        <EditText
+            android:id="@+id/et_seek"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toLeftOf="@id/tv_cancel"
+            android:background="@drawable/bg_white_16"
+            android:hint="搜索关键词"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:paddingLeft="@dimen/dp_15" />
+
+
+        <Button
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/et_seek"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@null"
+            android:drawableLeft="@mipmap/store_seek_ic"
+            android:gravity="center"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="@dimen/dp_5"
+            tools:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_40"
+        android:paddingRight="@dimen/dp_40">
+
+        <RadioButton
+            android:id="@+id/rb_goods"
+            style="@style/store_seek_button"
+            android:checked="true"
+            android:text="商品" />
+
+        <RadioButton
+            android:id="@+id/rb_shop"
+            style="@style/store_seek_button"
+            android:text="店铺" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rg_goods"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_40"
+        android:paddingRight="@dimen/dp_40"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/rb_goods_sales"
+            style="@style/store_details_rb"
+            android:background="@null"
+            android:checked="true"
+            android:text="销量" />
+
+        <RadioButton
+            android:id="@+id/rb_goods_price"
+            style="@style/store_details_rb"
+            android:background="@null"
+            android:drawableRight="@mipmap/car_num_default_ic"
+            android:drawablePadding="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_50"
+            android:text="价格" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/ln_nofind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="@dimen/dp_107"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/dp_73"
+            android:layout_height="@dimen/dp_77"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_25"
+            android:src="@mipmap/icon_placeholder_search" />
+
+        <TextView
+            android:id="@+id/tv_nofind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="实在找不到您要的东西"
+            android:textColor="@color/text_33"
+            android:textSize="@dimen/sp_15" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_25"
+            android:text="换个词再试一次吧"
+            android:textColor="@color/text_999999"
+
+            android:textSize="@dimen/sp_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="vertical"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_weight="1"
+                android:text="@string/history"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <ImageView
+                android:id="@+id/img_delete"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center"
+
+                android:scaleType="center"
+                android:src="@mipmap/icon_trash" />
+        </LinearLayout>
+
+        <com.hongchuang.hclibrary.view.FlowTagList
+            android:id="@+id/store_seek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:gravity="center"
+            android:horizontalSpacing="1pt"
+            android:verticalSpacing="1pt">
+
+
+        </com.hongchuang.hclibrary.view.FlowTagList>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_25"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:text="@string/hot_search"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16" />
+
+        <com.hongchuang.hclibrary.view.FlowTagList
+            android:id="@+id/store_seek_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:gravity="center"
+            android:horizontalSpacing="1pt"
+            android:verticalSpacing="1pt">
+
+
+        </com.hongchuang.hclibrary.view.FlowTagList>
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gl_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/dp_10"
+        android:numColumns="2"
+        android:verticalSpacing="@dimen/dp_10"
+        android:scrollbars="none"
+        android:visibility="gone"
+        android:background="@color/color_f1">
+
+    </GridView>
+
+    <com.hongchuang.hclibrary.recyclerview.PowerfulRecyclerView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+
+    </com.hongchuang.hclibrary.recyclerview.PowerfulRecyclerView>
+
+</LinearLayout>

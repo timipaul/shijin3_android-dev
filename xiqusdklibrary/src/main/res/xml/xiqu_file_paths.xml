@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- aar用到的-->
+    <external-path name="xiqu" path="xiqu" />
+    <files-path  name="downloads" path="downloads"/>
+    <!--项目中用到的-->
+</paths>

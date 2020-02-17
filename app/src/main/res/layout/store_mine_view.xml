@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_e"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_35"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_125"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
+            android:background="@mipmap/mine_user_bg"
+            android:padding="@dimen/dp_20">
+
+            <com.hongchuang.hclibrary.view.CircleImageView
+                android:id="@+id/user_img"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/zhanghu" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_toRightOf="@id/user_img"
+
+                android:text="十金"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/view_bottom_border_line"
+                android:padding="@dimen/dp_10"
+                android:text="我的订单"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/all_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/jiantou"
+                android:drawablePadding="@dimen/dp_5"
+                android:padding="@dimen/dp_10"
+                android:text="查看全部"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10">
+
+            <Button
+                android:id="@+id/bt_payment"
+                style="@style/store_mine_layout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/icon_mine_stay_pay"
+                android:text="待付款" />
+
+            <Button
+                android:id="@+id/bt_shipments"
+                style="@style/store_mine_layout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/icon_mine_deliver"
+                android:text="待发货" />
+
+            <Button
+                android:id="@+id/bt_take"
+                style="@style/store_mine_layout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/icon_mine_take"
+                android:text="待收货" />
+
+            <Button
+                android:id="@+id/bt_accomplish"
+                style="@style/store_mine_layout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/icon_mine_comment"
+                android:text="已完成" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/add_member"
+            style="@style/store_mine_line_text"
+            android:drawableLeft="@mipmap/icon_mine_cooperation"
+            android:text="成为合伙人" />
+
+        <TextView
+            android:id="@+id/tv_user_site"
+            style="@style/store_mine_line_text"
+            android:drawableLeft="@mipmap/icon_mine_site"
+            android:text="收货地址" />
+
+        <TextView
+            android:id="@+id/my_group"
+            style="@style/store_mine_line_text"
+            android:drawableLeft="@mipmap/icon_mine_team"
+            android:text="@string/my_group" />
+
+        <TextView
+            android:id="@+id/my_wallet"
+            style="@style/store_mine_line_text"
+            android:drawableLeft="@mipmap/icon_mine_wallet"
+            android:text="钱包" />
+
+        <TextView
+            style="@style/store_mine_line_text"
+            android:drawableLeft="@mipmap/icon_mine_about"
+            android:text="关于我们" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,663 @@
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string name="app_name">十金时代</string>
+    <string name="QQ_GROUP_KEY">01jJwxya6ghw0NsUSUgbYLkiyeBL1qjo</string>
+    <string name="WEIXIN_APPID">wx14139eb90916ba5d</string>
+    <string name="cancel">取消</string>
+
+    <string name="define">确定</string>
+    <string name="QQNUM">2775285963</string>
+
+
+    <string name="love_share_group">团队: %d人</string>
+    <string name="love_share_my">业绩：%d</string>
+    <string name="look_details">查看详情</string>
+    <string name="love_share_hint">分享(%1$d/%2$d)</string>
+
+
+    <string name="banner_ad_unit_id">943</string>
+    <!-- 设置 -->
+    <string name="person_information">个人信息</string>
+    <string name="person_site">收货地址</string>
+    <string name="new_guide">新手指南</string>
+    <string name="setting">设置</string>
+    <string name="black_list">黑名单</string>
+    <string name="user_and_safe">账号与安全</string>
+    <string name="logout">退出账号</string>
+    <string name="now_version">当前版本：%s ></string>
+    <string name="data_and_cache">数据与缓存</string>
+    <string name="logout_content">确定退出当前账号？</string>
+    <string name="remove">移除</string>
+    <string name="remove_dialog">确定将其移出黑名单？</string>
+    <string name="phone_number">手机号码</string>
+    <string name="change_password">修改密码</string>
+    <string name="bind_wechat">微信账号绑定</string>
+    <string name="bind_qq">QQ账号绑定</string>
+    <string name="unbind">未绑定</string>
+    <string name="change_now">马上修改</string>
+    <string name="bind_success">绑定成功</string>
+    <string name="unbind_success">解绑成功</string>
+    <string name="wechat_dialog">解绑会影响微信登录十金， 确定解绑微信账号吗？</string>
+    <string name="qq_dialog">解绑会影响QQ登录十金， 确定解绑QQ账号吗？</string>
+    <string name="put_first_pwd">请输入原始密码</string>
+    <string name="put_new_pwd">请输入新密码</string>
+    <string name="put_pwd_again">请确认新密码</string>
+    <string name="define_change_pwd">确认修改密码</string>
+    <string name="nosame_pwd">两次密码不一致</string>
+    <string name="change_success">修改成功</string>
+    <string name="wifi_auto">Wi-Fi下自动播放视频</string>
+    <string name="clear_cache">清理本地缓存数据</string>
+    <string name="cache_dialog">所有缓存数据（包括音频、图片） 将从你的设备上移除</string>
+    <string name="cache_success">清理成功</string>
+    <string name="loading">玩命加载中</string>
+    <string name="net_error">网络不太给力，获取数据失败了</string>
+    <string name="refresh">刷新一下吧</string>
+    <string name="empty">这里空空如也~</string>
+
+    <!-- 榜单说明 -->
+    <string name="ranking_hint_1" >用户可通过阅读文章、发布文章、完成日常任务获取金币等方获取金币奖励。</string>
+    <string name="ranking_hint_2" >排行榜排名每月月底0点0分将进行重置，重置后将开始新的一轮金币积分排名。</string>
+    <string name="ranking_hint_3" >积分排名重置后，上周排名前30的用户可联系客服领取排名奖励：排名前三的依次获得150、100、80元现金奖励；7-15名用户各奖励500金币,16-30名奖励200金币。</string>
+    <string name="ranking_hint_4" >中奖须知：\n
+        1.用户通过非正规方式获得金币奖励，我们将收回金币奖励，并封号处理。\n
+        2.中奖用户请添加客服微信“shijin1”提供个人信息便于工作人员核实颁发奖励。</string>
+
+    <!-- 消息 -->
+    <string name="message">消息</string>
+    <string name="dynamic_message">动态消息</string>
+    <string name="user_message">账户消息</string>
+    <string name="system_message">系统消息</string>
+    <string name="comment">评论</string>
+    <string name="ad_like">点赞</string>
+    <string name="user_like">关注</string>
+    <string name="recommend_text">推荐</string>
+    <string name="user_like_num">关注：</string>
+    <string name="fans_num">粉丝：</string>
+    <string name="fans">粉丝</string>
+    <string name="notification">通知</string>
+    <string name="change">零钱</string>
+    <string name="point">金币</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="select_all">全选</string>
+    <string name="finish">完成</string>
+    <string name="delete_message_dialog">确定要删除选中的消息记录吗？</string>
+    <string name="system_title">十金小助手</string>
+    <string name="system_type">系统通知</string>
+    <string name="shijinteam">十金团队</string>
+    <string name="my_get">我收到的</string>
+    <string name="my_push">我发出的</string>
+    <string name="request">回复</string>
+    <string name="comment_you"> 评论了你的文章 </string>
+    <string name="request_you"> 回复了你的评论</string>
+    <string name="follow_you">关注了你</string>
+    <string name="like_you_ad">赞了你的资讯</string>
+    <string name="message_empty">还没有消息噢，先去看看其他文章？</string>
+
+    <!-- 我的广告 -->
+    <string name="my_ad">我的资讯</string>
+    <string name="new_ad">新建</string>
+    <string name="draft">草稿箱</string>
+    <string name="my_release">我的发布</string>
+    <string name="data_statistics">数据统计</string>
+    <string name="pls_send_idfont">上传身份证有人像一面</string>
+    <string name="pls_send_idback">上传身份证有国徽一面</string>
+    <string name="pls_send_id">请上传手持身份证照片</string>
+    <string name="no_send">您的证件照片还未上传完成噢~</string>
+    <string name="commit_sh">提交审核</string>
+    <string name="careful">您的照片仅用于审核，我们将为您严格保密</string>
+    <string name="certification_dialog">您的认证还未完成， 确定要退出吗？</string>
+    <string name="go_on">继续认证</string>
+    <string name="camera">拍一张</string>
+    <string name="choice_pic">相册选择</string>
+    <string name="personal_certification">个人认证</string>
+    <string name="business_certification">商家认证</string>
+    <string name="certification_no1">您还没有进行十金平台认证噢！</string>
+    <string name="certification_no2">认证后就能发布资讯啦！</string>
+    <string name="certification_doing1">工作人员马不停蹄审核中， 请耐心等待噢！</string>
+    <string name="certification_doing2">请耐心等待噢！</string>
+    <string name="certification_doing3">先去答题赚钱吧</string>
+    <string name="certification_dont1">认证未通过！</string>
+    <string name="certification_dont3">重新认证</string>
+    <string name="certification_success1">恭喜您！认证成功</string>
+    <string name="certification_success2">可以开启十金发布之旅啦！</string>
+    <string name="certification_success3">立即发布</string>
+    <string name="pls_send_business">请上传营业执照照片</string>
+    <string name="no_send_phone">请输入联系人电话便于我们审核哦</string>
+    <string name="contact">联系人：</string>
+    <string name="tel">电话：</string>
+    <string name="data_user">用户统计</string>
+    <string name="data_ad">资讯数据</string>
+    <string name="data_put">投放数据</string>
+    <string name="data_yesterday">昨日概况</string>
+    <string name="user_about">用户概况</string>
+    <string name="follow_num">关注人数</string>
+    <string name="today_add">今日新增</string>
+    <string name="unfollow">取消关注</string>
+    <string name="user_num">用户总数</string>
+    <string name="near_7day">近7日</string>
+    <string name="near_30day">近30日</string>
+    <string name="to">到</string>
+    <string name="ad_show_num">曝光量</string>
+    <string name="ad_click_num">点击量</string>
+    <string name="ad_share_num">转发量</string>
+    <string name="ad_star_num">收藏量</string>
+    <string name="ad_like_num">点赞量</string>
+    <string name="ad_comment">评论量</string>
+    <string name="near_ad">最近资讯</string>
+    <string name="near_put">近期投放</string>
+    <string name="sort">排序</string>
+    <string name="ans_num">已答人数</string>
+    <string name="true_num">答对人数</string>
+    <string name="total_change">投入总零钱</string>
+    <string name="last_change">剩余零钱</string>
+    <string name="total_point">投入总金币</string>
+    <string name="last_point">剩余金币</string>
+    <string name="change_detail">零钱投入消耗情况：</string>
+    <string name="up_to_down">由高到低</string>
+    <string name="down_to_up">由低到高</string>
+    <string name="total_draft">共有%s条记录</string>
+    <string name="total_put">共有%s条发布记录</string>
+    <string name="under_review">审核中</string>
+    <string name="success_review">审核通过</string>
+    <string name="fail_review">审核不通过</string>
+    <string name="renew">续费</string>
+    <string name="topay">待支付</string>
+    <string name="down_off">下架</string>
+    <string name="no_pass">您的内容审核不通过，原因如下：</string>
+    <string name="change_now1">立即修改</string>
+    <string name="change_put">修改发布</string>
+    <string name="last_reward">剩余奖励</string>
+    <string name="red_bag_num">红包个数</string>
+    <string name="edit_num">填写个数</string>
+    <string name="num">个</string>
+    <string name="total_money">总金额</string>
+    <string name="edit_money">输入金额</string>
+    <string name="yuan">元</string>
+    <string name="when_reward">续费什么时候生效？</string>
+    <string name="ask_when_reward">红包领完后立即生效</string>
+    <string name="why_reward">续费有什么好处？</string>
+    <string name="good_for_reward">1.积攒人气（积累留言、点赞等互动）2.影响更多用户（避免重复领取问题）3.更简单（不需要重复编辑内容）</string>
+    <string name="pay">支付</string>
+    <string name="shijin_balance">十金余额</string>
+    <string name="balance">剩余%s元</string>
+    <string name="alipay">支付宝</string>
+    <string name="wechat">微信</string>
+    <string name="wechat_friend">朋友圈</string>
+    <string name="qqzone">QQ空间</string>
+    <string name="weibo">新浪微博</string>
+    <string name="copy_link">复制链接</string>
+    <string name="morethan1">≥1元可用</string>
+    <string name="limit">每日上限%s元</string>
+    <string name="commit_pay">确认支付</string>
+    <string name="reward_success">续费成功</string>
+    <string name="pay_success">支付成功</string>
+    <string name="pay_fail">支付失败</string>
+    <string name="pay_success_wait">支付成功，资讯待审核</string>
+    <string name="tv_red_bag_num">红包个数：%s个</string>
+    <string name="reward_money">续费金额：%s元</string>
+    <string name="return_list">返回列表</string>
+    <string name="new_graphic">发布图文资讯</string>
+    <string name="good_for_graphic1">据说丰富的图片和最为详尽的描述</string>
+    <string name="good_for_graphic2">可以让你的资讯更加打动人哟</string>
+    <string name="new_video">发布视频资讯</string>
+    <string name="good_for_video1">真实的视频，极具渲染力的讲解</string>
+    <string name="good_for_video2">谁能拒绝你呢</string>
+    <string name="empty_comment">暂无评论，赶快来抢沙发~</string>
+    <string name="save_draft">存为草稿</string>
+    <string name="no_save">不保存</string>
+    <string name="shui" formatted="false">您当前设置的红包金额为%1$s元，扣除手续费%2$s,实际投放金额为%3$s元。</string>
+    <string name="take_person">收货人: %s</string>
+    <string name="take_site">收货地址: %s</string>
+
+    <!-- 广告 -->
+    <string name="small_pic">小图</string>
+    <string name="next">下一步</string>
+    <string name="big_pic">大图</string>
+    <string name="three_pic">三图</string>
+    <string name="add_title_img">点击添加封面图</string>
+    <string name="plz_input_title">请输入标题</string>
+    <string name="input_content">点击编辑正文内容</string>
+    <string name="input_video">点击上传视频</string>
+    <string name="prompt_1">注：</string>
+    <string name="prompt_2">1.您的视频资讯的第一帧将成为默认的封面图</string>
+    <string name="prompt_3">2.视频资讯发布不能超过10M</string>
+    <string name="prompt_4">3.视频时长不能超过3分钟</string>
+    <string name="video_to_long">视频过大</string>
+    <string name="edit_text">编辑文字</string>
+    <string name="filter">精准筛选</string>
+    <string name="pass">跳过</string>
+    <string name="sex">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="age">年龄</string>
+    <string name="after70">70后</string>
+    <string name="after80">80后</string>
+    <string name="after90">90后</string>
+    <string name="after00">00后</string>
+    <string name="job">职业</string>
+    <string name="doctor">医生</string>
+    <string name="mom">宝妈</string>
+    <string name="white_work">白领</string>
+    <string name="IT">IT</string>
+    <string name="free_work">自由职业者</string>
+    <string name="teacher">教师</string>
+    <string name="other">其他</string>
+    <string name="locate">位置/范围</string>
+    <string name="country">全国</string>
+    <string name="location_here">定位到当前位置</string>
+    <string name="put_range">发布范围</string>
+    <string name="northwest">西北</string>
+    <string name="southwest">西南</string>
+    <string name="northeast">东北</string>
+    <string name="southeast">东南</string>
+    <string name="center_china">华中</string>
+    <string name="south_china">华南</string>
+    <string name="north_china">华北</string>
+    <string name="all_city">全市</string>
+    <string name="all_area">全区</string>
+    <string name="kilo_1">%s公里范围</string>
+    <string name="setting_redbag">设置红包</string>
+    <string name="plz_put_question">请输入您的问题，并在正确选项后打勾</string>
+    <string name="more_than_15">最多不超过15个字</string>
+    <string name="put_url">URI（非必填）：淘宝或官网等链接都可以噢</string>
+    <string name="preview">预览</string>
+    <string name="publish">发布</string>
+    <string name="more_than_01">单个红包金额不可低于0.1元</string>
+    <string name="more_than_1yuan">红包总金额不可低于1元</string>
+    <string name="plz_setnum">请设置红包个数</string>
+    <string name="plz_setmoney">请设置红包金额</string>
+    <string name="plz_setquestion">请设置问题</string>
+    <string name="plz_setanswer">请设置答案</string>
+    <string name="plz_choice_answer">请选择正确答案</string>
+    <string name="plz_put_title">请输入标题内容</string>
+    <string name="less_than_title">标题不能少于十个字 </string>
+    <string name="plz_put_img">请补充完整封面图</string>
+    <string name="plz_put_content">请补充正文内容</string>
+    <string name="plz_put_video">请上传视频</string>
+    <string name="pay_money">实付金额</string>
+    <string name="choice_pay_type">选择支付方式</string>
+    <string name="pay_now">立即支付</string>
+    <string name="recommend">相关推荐</string>
+    <string name="commend">快来说说你的想法吧</string>
+    <string name="pay_prompt"> 支付成功发布之后不能撤销，通过审核后将直接展示给用户噢！如审核不通过您的支付金额将退还到原支付路径  </string>
+    <string name="total_request">共%s条回复 ></string>
+    <string name="more_comment">查看更多评论 ></string>
+    <string name="one_more">再看一次</string>
+    <string name="isanswar">已答</string>
+    <string name="nochance">机会\n用完</string>
+    <string name="clickanswar">点我\n答题</string>
+    <string name="answer_wrong">好可惜，答错了噢~</string>
+    <string name="congratulations">恭喜你,答对啦</string>
+    <string name="get_redpackter">快来领取红包吧！</string>
+    <string name="youget">恭喜你获得</string>
+    <string name="share_to_more">分享一下，更多惊喜</string>
+    <string name="change_point">0元好物，马上兑换</string>
+    <string name="see_other">在去看看别的题目吧！</string>
+    <string name="sorry_late">来晚一步，红包被抢完啦！</string>
+    <string name="more_request1">查看%s条回复</string>
+    <string name="more_request2">查看更多回复</string>
+    <string name="gone_request">收起所有回复</string>
+    <string name="request_to">回复</string>
+    <string name="comment_num">评论（%s）</string>
+    <string name="report">举报</string>
+    <string name="get">恭喜你获得%s</string>
+    <string name="myad_empty">好品牌好产品要让更多的人知道！</string>
+    <string name="put_ad_now">马上发布资讯</string>
+
+    <!-- 商城 -->
+    <string name="goods_num">共%d件商品  小计:</string>
+    <string name="add_member_hint">商城的商品销售统一由十金平台直接收款、直接发货，并提供产品的售后服务，以及佣金发放</string>
+    <!--商城合伙人权益-->
+    <string name="store_vip_hint_1">20份公司美妆产品套餐，每份价值250元，总价值5000</string>
+    <string name="store_vip_hint_2">推荐合伙人奖励1000元现金，推荐会员奖励100元现金</string>
+    <string name="store_vip_hint_3">享有推荐会员总销售额6-10%的提成</string>
+    <!-- 商城会员权益 -->
+    <string name="store_team_hint_1">2份公司美妆产品套餐，每份价值250元，总价值500</string>
+    <string name="store_team_hint_2">推荐合伙人奖励800元现金，推荐会员奖励80元现金</string>
+    <string name="store_team_hint_3">享有推荐会员总销售额5%的提成</string>
+    <string name="my_group">我的团队</string>
+    <string name="share_period">分享周期：%d天</string>
+
+
+    <!-- 我的 -->
+    <string name="isfollow">已关注</string>
+    <string name="myfollow">我关注的</string>
+    <string name="unfollow_dialog">确定不再关注此人？</string>
+    <string name="mylook">我看过的</string>
+    <string name="convert_recode">兑换记录</string>
+    <string name="rush_recode">抢购记录</string>
+    <string name="ten_gold_vip">十金大使</string>
+    <string name="vip_state_off">尊敬的用户, 您暂未开通会员权益</string>
+    <string name="vip_state_on">您的十金大使有效期至</string>
+    <string name="rechange_vip_hint">会员首次充值将返还等额金币 (如: %1$s,充值后可在""%2$s""中查看返还金币</string>
+    <string name="total_look">共有%s条浏览记录</string>
+    <string name="far_to_near">由远到近</string>
+    <string name="near_to_far">由近到远</string>
+    <string name="my_collection">我的收藏</string>
+    <string name="feedback">意见反馈</string>
+    <string name="must_item">必填项*</string>
+    <string name="take_suggest">提个建议</string>
+    <string name="have_error">出错误啦</string>
+    <string name="no_understand">不懂操作</string>
+    <string name="bad_use">不好用</string>
+    <string name="plz_detail_question">请在此处详细描述问题</string>
+    <string name="plz_phone">请留下手机号/QQ/邮箱</string>
+    <string name="click_down_group">点击下方秒入群，不定时发红包</string>
+    <string name="qq_group">官方QQ群：%s</string>
+    <string name="wechat_num">十金客服微信：%s</string>
+    <string name="commit">提交</string>
+    <string name="commit_success">提交成功</string>
+    <string name="plz_edit_suggest">请填写问题</string>
+    <string name="plz_edit_phone">请填写联系方式</string>
+    <string name="follow_empty">还没有关注任何人噢</string>
+    <string name="fans_empty">好冷清，多发内容才能多涨粉噢~</string>
+    <string name="collect_empty">那么多好文章，你居然没收藏</string>
+    <string name="seen_empty">那么多好文章，你都不去看一下</string>
+    <string name="black_empty">你还没有设置黑名单用户</string>
+    <string name="black">拉黑</string>
+    <string name="addition_hint">亲,您还没有记录哦,立即答题吧</string>
+
+
+    <!-- 我的钱包 -->
+    <string name="my_wallet">我的钱包</string>
+    <string name="now_balance">当前余额</string>
+    <string name="my_balance">我的余额</string>
+    <string name="withdraw">提现</string>
+    <string name="record">记录</string>
+    <string name="shijin_box">十金宝箱</string>
+    <string name="box_prompt">平台券等</string>
+    <string name="my_point">我的金币</string>
+    <string name="point_detail_list">金币明细</string>
+    <string name="exchange">兑换</string>
+    <string name="exchange_aday">每日%s次兑换机会</string>
+    <string name="exchanged">%s人已抢</string>
+    <string name="exchange_dialog">确定要兑换吗？</string>
+    <string name="exchange_success_2">兑换成功，请前往\n我的兑换 查看</string>
+    <string name="exchange_fail">很抱歉，金币不足噢！</string>
+    <string name="use">使用</string>
+    <string name="contact_service">联系客服</string>
+    <string name="withdraw_record">提现记录</string>
+    <string name="input_withdraw_num">输入提现金额（不低于10元）</string>
+    <string name="all_withdraw">全部提现</string>
+    <string name="choice_withdraw_type">请选择提现方式</string>
+    <string name="withdraw_now">立即提现</string>
+    <string name="withdraw_prompt1">24小时内到账</string>
+    <string name="withdraw_prompt2">提现申请十金平台将在24小时内处理审批，请耐心等待，可及时关注提现记录查看状态</string>
+    <string name="withdraw_prompt3">如果您的提现遇到问题，点击此处联系我们，我们将竭诚为您解决。</string>
+    <string name="withdraw_prompt6">1元即可提现，收益秒到账！快来试试吧！</string>
+    <string name="withdraw_prompt4">%s元提现说明</string>
+    <string name="withdraw_prompt5">连续签到%1$s天的用户将永久获得%2$s元提现机会，如没有达到要求，满10元才能提现噢</string>
+    <string name="more_than_10">输入提现金额不能低于10元噢！</string>
+    <string name="unbind_alipay">支付宝未绑定</string>
+    <string name="unbind_wechat">关注“十金时代”公众号—点击绑\n定提现菜单—输入十金账号\n密码，即可成功绑定！</string>
+    <string name="bind_now">立即绑定</string>
+    <string name="no_money">零钱余额不足</string>
+    <string name="get_money_now">赶快去赚钱吧</string>
+    <string name="withdraw_limit">连续签到%1$s天才能%2$s元提现噢</string>
+    <string name="go_to_signin">快去签到吧</string>
+    <string name="withdraw_nochange">今天的5次提现机会\n已经用完啦，明天再来吧~</string>
+    <string name="grand_total">累计成功提现：</string>
+    <string name="withdraw_success">提现成功</string>
+    <string name="withdraw_fail">提现失败</string>
+    <string name="process_fail">审核失败</string>
+    <string name="processing">处理中</string>
+
+    <!-- 会员专区 -->
+    <string name="day_rate">今日兑换比率： %s金币=1元</string>
+    <string name="vip_packet_money_hint">恭喜获得%s元红包！</string>
+    <string name="official_explain">活动最终解释权十金官方所有</string>
+    <string name="commodity_prices">仅需%s金币</string>
+    <string name="number_people">%s人兑换</string>
+    <string name="zero_buy_hint">限量%1$s件&#160;&#160;&#160;今日%2$s结束</string>
+
+
+
+    <!-- 任务 -->
+    <string name="signin">签到</string>
+    <string name="signin_hint">签到得奖励,连续%s天抽大奖</string>
+    <string name="new_person_task">新手任务</string>
+    <string name="day_task">日常任务</string>
+    <string name="challenge_task">挑战任务</string>
+    <string name="vote_award">投票有奖</string>
+    <string name="open_box">开箱领取金币</string>
+    <string name="signin_prompt">签到得金币，连续%s天抽大奖</string>
+    <string name="new_task_prompt">完成指定任务,享新手福利</string>
+    <string name="day_task_prompt">完成日常任务有奖励</string>
+    <string name="challenge_task_prompt">完成挑战任务有奖励</string>
+    <string name="vote_prompt">每天一次投票机会,可领取%s</string>
+    <string name="invite_friend">邀请好友</string>
+    <string name="invite_friend_prompt">每邀请一位好友可得%s</string>
+    <string name="show_income">晒晒收入</string>
+    <string name="show_income_prompt">每周提现分享朋友圈，截图给客服，奖励%s</string>
+    <string name="prefect_information">个人信息完善</string>
+    <string name="prefect_information_prompt">便于推荐最匹配您需求的内容，补充完整可领取%s奖励</string>
+    <string name="good_comment">优质评论</string>
+    <string name="good_comment_prompt">在文章中留下犀利评论，小金会不定期给出%s奖励</string>
+    <string name="share_answer">分享答题（%s）</string>
+    <string name="share_answer_prompt">分享任何一个现金答题或者金币答题的页面均可得%1$s，每天最多可分享%2$s次</string>
+    <string name="good_feedback">优质反馈</string>
+    <string name="good_feedback_prompt">向官方反馈产品使用时出现的问题，一经证实奖励%s金币</string>
+    <string name="follow_wechat">关注微信公众号</string>
+    <string name="write_invite">填写邀请码</string>
+    <string name="write_invite_prompt">填写好友邀请码，立得%s金币</string>
+    <string name="follow_wechat_prompt">关注十金微信公众号，各种优惠活动早知道</string>
+    <string name="task_attention_wechat_hint">关注十金微信公众号\n更多优惠活动早知道</string>
+    <string name="vote_end_date">截止时间: %s</string>
+    <string name="vote_join_num">已参与人数: %s</string>
+    <string name="day">%s天</string>
+    <string name="add">补</string>
+    <string name="free_lottery">剩余免费抽奖%s次</string>
+    <string name="activity_rule">活动规则</string>
+    <string name="activity_time">活动时间：%s开始</string>
+    <string name="sign_prompt1">活动期间，用户登录十金APP客户端首页进入抽奖页面，每签到一天成功可获得免费抽奖机会，成功分享好友参与可以额外获得免费抽奖机会，也可用金币兑换抽奖机会</string>
+    <string name="sign_prompt2">奖品包含：面膜，口红，爽肤水，金币，现金，爱奇艺会员，手机不等，奖品不定时更新，先到先得，抽完即止（实物奖品每个用户最多只能领取一个）</string>
+    <string name="sign_prompt3">实物奖品将在获奖后的七个工作日内由十金客服联席您登记收货地址，也可添加咨询客服微信：shijinsz1</string>
+    <string name="sign_prompt4">本活动最终解释权归十金APP平台所有</string>
+    <string name="share_now">立即分享</string>
+    <string name="invite_code">邀请码邀请</string>
+    <string name="invite_face">面对面邀请</string>
+    <string name="invite_group">群发邀请</string>
+    <string name="invite_money">¥%s\n已获得奖励</string>
+    <string name="invite_people">%s人\n已成功邀请</string>
+    <string name="registered_at">注册于%s</string>
+    <string name="invite_earnings">到账收益%s元</string>
+    <string name="invited_friend">已邀请好友</string>
+    <string name="invited_record" formatted="false">%s&#160;刚刚邀请了%s位好友&#160;获得了%s奖励</string>
+    <string name="invite_rule">邀请奖励规则</string>
+    <string name="follow_wechat_havemore">关注微信公众号，更多福利早知道</string>
+    <string name="wechat_search">微信搜索：“shijinsz2016”或十金时代</string>
+    <string name="save_pic">保存图片</string>
+    <string name="long_click_rlcode">长按二维码赚钱</string>
+    <string name="open_wechat_search">打开微信然后在搜索框里搜索“群发助手”</string>
+    <string name="group_now">立即群发</string>
+    <string name="share">分享</string>
+    <string name="click_copy">点击复制</string>
+    <string name="invite_friend_get">邀请好友奖励</string>
+    <string name="congratulation_get">恭喜你获得</string>
+    <string name="putin_your">%s已放入您的账户中\n可在我的-零钱-十金宝箱中查看 </string>
+    <string name="putin_your_money">%s已放入您的账户中\n可在我的-零钱中查看 </string>
+    <string name="putin_your_point">%s已放入您的账户中\n可在我的-金币中查看 </string>
+    <string name="goto_take">前往领取>></string>
+    <string name="addsign_prompt">补签1天需要1张补签卡\n拥有补签卡数量：%s</string>
+    <string name="sure_addsign">确定补签</string>
+    <string name="get_addsign">获取补签卡</string>
+    <string name="sevenday_get">恭喜得到%s</string>
+    <string name="sevenday_get2">您连续签到7天送%s\n继续加油哦！</string>
+    <string name="share_to_friend">向好友炫耀</string>
+    <string name="invite_empty">这么多的赚钱机会，赶紧分享给小伙伴吧！</string>
+    <string name="start_date">发起时间: %s</string>
+    <string name="join_people_number">参与人数: %s</string>
+    <string name="perfect_my_data">完善我的资料</string>
+    <string name="send_one_img">发一次图文</string>
+    <string name="send_one_video">发一次视频</string>
+    <string name="whole_answer">完成互动问答</string>
+    <string name="my_data_task_hint">完善个人资料奖励%s金币</string>
+    <string name="invitation_code_task_hint">首次填写邀请码可奖励%s金币</string>
+    <string name="invitation_friend_hint">邀请一位好友可奖励%s金币</string>
+    <string name="first_issue_img_hint">首次发布图文可奖励%s金币</string>
+    <string name="first_issue_video_hint">首次发布视频可奖励%s金币</string>
+    <string name="first_finish_answer_hint">首次完成互动问答可奖励%s金币</string>
+    <string name="task_collect">收藏</string>
+    <string name="immediately_collect">立即收藏</string>
+    <string name="immediately_perfection">立即完善</string>
+    <string name="immediately_write">立即填写</string>
+    <string name="immediately_invite">立即邀请</string>
+    <string name="immediately_issue">立即发布</string>
+    <string name="immediately_join">立即参与</string>
+    <string name="immediately_look">立即查看</string>
+    <string name="immediately_attention">立即关注</string>
+    <string name="immediately_comment">立即评论</string>
+    <string name="immediately_like">立即点赞</string>
+    <string name="immediately_transpond">立即转发</string>
+    <string name="task_statue_off">未完成</string>
+    <string name="transpond">转发</string>
+    <string name="transpond_hint">转发图文或视频可奖励%s金币</string>
+    <string name="day_task_like_hint">完成日常点赞可奖励%s金币</string>
+    <string name="day_task_comment_hint">完成日常评论可奖励%s金币</string>
+    <string name="day_task_issue_hint">每日发布视频或图文可奖励%s金币</string>
+    <string name="day_task_attention_hint">关注用户可奖励%s金币</string>
+    <string name="day_task_answer_hint">完成任意互动问答可奖励%s金币</string>
+    <string name="content_task">内容任务</string>
+    <string name="issue_content">发布内容数</string>
+    <string name="answer_num">答题数</string>
+    <string name="count_invitation">累计邀请%1$s位奖励%2$s金币</string>
+    <string name="count_issue">累计发布内容数量达%1$s条奖励%2$s金币</string>
+    <string name="count_answer">累计完成%1$s道答题奖励%2$s金币</string>
+    <string name="subtask_schedule">完成获得奖励,已完成%1$s/%2$s次</string>
+    <string name="now_schedule" tools:keep="@string/now_schedule">当前已达到21次</string>
+    <string name="subtask_schedule_hint">恭喜您获得%s金币</string>
+    <string name="loing_show_prize_hint" tools:keep="@string/loing_show_prize_hint">签到%1$s天/邀请%2$s个好友送好礼!</string>
+    <string name="get_prize" tools:keep="@string/get_prize">领取礼品</string>
+    <string name="postage_hint_text">免费商品,需自付%s元邮费!</string>
+
+
+    <string name="new_person_task_rule">
+        活动对象：新用户均可参加，如已完成则无法重复领取\n
+        1.用户首次成功完善个人资料可获得金币奖励30个\n
+        2.用户复制个人账号上的邀请码发给好友可获得50个金币奖励。\n
+        3.首次成功邀请好友，好友通过你分享的邀请码下载并完成，双方即可领取8元返现并获得100个金币奖励。\n
+        4.新用户首次发布图文可获得50个金币奖励。\n
+        5.新用户首次发布视频可获得50个金币奖励。\n
+        6.新用户首次完成互动问答除应获得问答20金币奖励外可额外获得50个金币奖励。\n
+        *本次活动的最终解释权在法律允许的范围内归十金时代所有。\n
+
+    </string>
+
+    <string name="privacy_and_service_hint">请你务必审慎阅读、充分理解\"服务协议\"和\"隐私政策\"各条款,
+        包括但不限于：为了向你提供即时通讯、内容分享等服务，我们需要收集你的设备信息、操作日志等人信息。
+        你可以在“设置”中查看、变更、删除个人信息并管理你的授权。\n
+        你可阅读《服务协议》和《隐私政策》了解详细信息。如你同意,请点击“同意”开始接受我们的服务。</string>
+
+    <!-- 首页 -->
+    <string name="input_keyword">请输入关键字</string>
+    <string name="search">搜索</string>
+    <string name="history">历史记录</string>
+    <string name="hot_search">热门搜索</string>
+    <string name="delete_history">确定清空历史记录吗？</string>
+    <string name="sorry_nofind">抱歉，没有找到“%s”相关的内容</string>
+    <string name="check_1">1.请检查您的输入是否正确</string>
+    <string name="check_2">2.缩短关键词或更换关键词</string>
+    <string name="answer">答题</string>
+    <string name="user">用户</string>
+    <string name="detail_info">详细信息</string>
+    <string name="no_find_seeother">找不到相关内容噢~先去看看其他文章？</string>
+    <string name="no_find">找不到相关内容噢~</string>
+    <string name="news_notide">新手指南</string>
+    <string name="case_answer">用户操作流程</string>
+    <string name="put_detail">发布流程</string>
+    <string name="put_red">发布流程</string>
+    <string name="usefull_get">常见问题</string>
+    <string name="mack_money">赚钱秘籍</string>
+    <string name="how_mack_money">如何在十金赚取长久的效益？</string>
+    <string name="user_need_know">常见问题</string>
+    <string name="how_refuse">什么情况会被禁言，删除，封号？</string>
+    <string name="about_shijin">关于我们</string>
+    <string name="locate_pop">你忘了开启定位\n精确附近一公里，超值优惠信息，\n满减折扣不再错过</string>
+
+    <!--瓜分现金-->
+    <string name="submit_num">已提交任务%d人</string>
+    <string name="rule">规则</string>
+    <string name="tomorrow_num" formatted="false">参加人数已达:%1$s;总金额:%2$s</string>
+    <string name="ask_num0"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num1"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num2"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num3"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num4"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num5"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num6"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num7"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num8"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num9"><![CDATA[已完成:/10题\n去答题>>]]></string>
+    <string name="ask_num10">已完成:/10题\n点击提交</string>
+    <string name="rule1">需要缴纳1块钱保证金，每天必须答题10道。确认参赛后是不能退赛的，完成任务的人就可以瓜分奖金池全部奖金。</string>
+    <string name="rule2">红包参赛资格一次（当日报名次日参赛），比赛日完成目标即可视为挑战成功，可获得大于1元的奖励红包。</string>
+    <string name="rule3">没有完成目标的用户，或者完成目标但未提交成绩的用户，均视为挑战失败，无法获得奖励金，请务必在比赛日24点前打开十金app提交比赛成绩，否则视为未达标。</string>
+    <string name="rule4">比赛时间：当日报名，次日比赛，完成目标计算时间为比赛日的00：00：00~23：59：59，第三天早上10:00为领奖时间。</string>
+    <string name="rule5">如果邀请到好友注册并参与红包赛，除本身邀请奖励之外，当天参赛所获得的金额翻1.3倍v (5位为上限)，如当天获得的奖金为100元，邀请5位好友注册并参与红包赛，当天所获得奖金为100+30x5=250元。</string>
+    <string name="rule6">将每位参与比赛的用户随机分为20等份，如参与比赛的人为100人，则5人为一组，平分已报名未参与活动或已参与未达标用户及平台投入到奖金池的奖金。如平台投入奖金为2000，总参与人数为1000，则总奖金池为3000，分为20等份即为每组平分150元。如无法平均分，少的人数由平台补充虚拟金额。</string>
+    <string name="pop_prom">奖金将在明天10:00瓜分,请注意查收\n邀请好友还能获得翻倍奖金哦\n赶紧邀请吧~~
+</string>
+
+    <!--登录注册-->
+    <string name="register">注册</string>
+    <string name="forget_pwd">忘记密码</string>
+    <string name="perfect_info">完善信息</string>
+    <string name="plz_into_code">请输入验证码</string>
+    <string name="get_code">获取验证码</string>
+    <string name="reget_code">重新获取验证码</string>
+    <string name="edt_phone">手机号（仅支持中国大陆号码）</string>
+    <string name="code_sendto">验证码已发至</string>
+    <string name="cant_over_18">密码不能超过18个字符噢</string>
+    <string name="cant_less_6">请至少输入6个字符噢</string>
+    <string name="include_num_word">密码需要包含数字和字母</string>
+    <string name="register_success">注册成功</string>
+    <string name="unregister_success">还未注册成功，是否返回？</string>
+    <string name="pwd_combination">密码为6-18位字母与数字的组合</string>
+    <string name="plz_into_invitecode">请输入邀请码（选填）</string>
+    <string name="confirm">确认</string>
+    <string name="confirm_pwd">请确认新密码</string>
+    <string name="pwd_set_success">密码设置成功</string>
+    <string name="pwd_set_fail">还未修改成功，是否返回？</string>
+
+
+    <!--完善信息-->
+    <string name="perfect1">为了给到您最优的好物推荐\n我们需要知道您是</string>
+    <string name="im_girl">我是女生</string>
+    <string name="im_boy">我是男生</string>
+    <string name="your_age">您是属于?</string>
+    <string name="your_income">您的收入是？</string>
+    <string name="less_2k">2K以下</string>
+    <string name="your_job">您的职业是?</string>
+    <string name="your_interest">您对什么比较感兴趣？</string>
+    <string name="star_tengold">开始十金</string>
+    <string name="skincare">护肤</string>
+    <string name="emotion">情感</string>
+    <string name="beauty">美妆</string>
+    <string name="house">家居</string>
+    <string name="special_sale">特卖</string>
+    <string name="childcare">母婴</string>
+    <string name="video">视频</string>
+    <string name="life">生活</string>
+    <string name="food">美食</string>
+    <string name="APP">APP</string>
+    <string name="tourism">旅游</string>
+
+
+    <!--首页-->
+    <string name="exit_again">再按一次退出程序</string>
+    <string name="need_sd_prim">保存图片需要读取sd卡的权限</string>
+    <string name="need_site">获取位置信息权限</string>
+    <string name="new_version">发现最新版本</string>
+    <string name="ps">提示</string>
+    <string name="downloading">正在下载...</string>
+    <string name="about_x_yuan">约%s元</string>
+    <string name="need_x_point">需要%s金币</string>
+
+    <!-- 协议 -->
+
+
+
+
+
+</resources>

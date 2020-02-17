@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="347dp"
+            android:background="@mipmap/guidance_vip_bg_pop">
+
+
+            <TextView
+                android:id="@+id/close"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/open"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/button_frame_gray_bg"
+                android:gravity="center"
+                android:text="跳过"
+                android:textColor="@color/text_6"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/open"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/dp_25"
+                android:background="@drawable/button_frame_red_bg"
+                android:gravity="center"
+                android:text="开启"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

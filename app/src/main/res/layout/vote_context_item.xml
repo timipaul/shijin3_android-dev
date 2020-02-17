@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my_attrs="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10">
+
+    <RadioButton
+        android:id="@+id/item_name"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="海南"
+        android:textSize="17sp" />
+
+    <com.shijinsz.shijin.utils.MyProgressBar
+        android:id="@+id/myProgressBar"
+        android:layout_width="110dp"
+        android:layout_height="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@drawable/scheduled_show"
+        my_attrs:max="100"
+        my_attrs:progress="0"
+        my_attrs:type="ALERT_TYPE" />
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100人 (10%)" />
+</LinearLayout>
