@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -50,6 +51,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit.ToKenUtil;
 import retrofit.callback.YRequestCallback;
+
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_privacy_code;
+import static com.shijinsz.shijin.ui.mine.MyVipActivity.KEY_user_code;
 
 /**
  * 设置
@@ -103,8 +107,10 @@ public class SettingActivity extends BaseActivity {
 
     @OnClick({R.id.tv_personal_info, R.id.tv_black_list, R.id.tv_user_safe, R.id.tv_data_cache,
             R.id.tv_logout,R.id.now_version,R.id.tv_discounts_info,
-            R.id.tv_site_info})
+            R.id.tv_site_info,R.id.tv_user_agreement,R.id.tv_privacy_agreement})
     public void onViewClicked(View view) {
+
+        Bundle bundle = null;
         switch (view.getId()) {
             case R.id.tv_personal_info:
                 startActivity(UserInformationActivity.class);
@@ -136,6 +142,19 @@ public class SettingActivity extends BaseActivity {
                 Intent intent = new Intent(mActivity, UserLocationActivity.class);
                 intent.putExtra("select","false");
                 startActivity(intent);
+                break;
+
+            case R.id.tv_user_agreement:
+                //用户协议
+                bundle = new Bundle();
+                bundle.putString("code",KEY_user_code);
+                startActivity(AgreementActivity.class,bundle);
+                break;
+            case R.id.tv_privacy_agreement:
+                //隐私协议
+                bundle = new Bundle();
+                bundle.putString("code",KEY_privacy_code);
+                startActivity(AgreementActivity.class,bundle);
                 break;
 
         }
