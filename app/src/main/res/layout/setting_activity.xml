@@ -110,6 +110,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"
         android:background="@color/mine_function_divider"/>
+
+
     <TextView
         android:id="@+id/tv_data_cache"
         android:layout_width="match_parent"
@@ -122,6 +124,10 @@
         android:background="@color/white"
         android:textColor="@color/text_33"
         android:drawableRight="@mipmap/jiantou"/>
+
+
+
+
     <TextView
         android:id="@+id/tv_logout"
         android:layout_width="match_parent"
